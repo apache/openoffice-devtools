@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>Working with OpenOffice.org Add-Ons</title>
+    <link rel="stylesheet" href="nbdocs:/org/netbeans/modules/usersguide/ide.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<h2>Working with OpenOffice.org Add-Ons</h2>
+<p> <small><a href="#seealso">See Also</a>&nbsp; </small>
+
+<table border="0" cellpadding="0" cellspacing="0" summary="The left column contains each
+   process step. The right column contains detailed information about each process.">
+  <tr valign="top"> 
+    <td align="center"><img src="./images/circle1.gif" alt="Number one"><br>
+      <b>Create and configure a project</b></td>
+    <td> 
+      <ol>
+        <li>Make sure that you have configured a valid OpenOffice.org and OpenOffice.org SDK installation
+            under Tools &gt; Options &gt; Miscellaneous &gt; OOo API Plugin</li>  
+        <li>Use the <b>OpenOffice.org Add-On</b> project template.<br>
+            Choose File &gt; New Project &gt; OpenOffice.org &gt; OpenOffice.org Add-On.</li>
+        <li>Specify the project name.</li>
+        <li>Specify the main class name.  The main class name is used to create a Java class.</li>
+        <li>Specify a Java package (implicitly used, together with the main class name, to create a protocol belonging to your Add-On).</li>
+        <li>Select the project location.  The project location is the directory where the new project should be created.</li>
+        <li>Choose if you want to create an entry in the Menu structure or a Toolbar. Either one, or both of those must be selected.
+        <li>Define the commands, and add localization and icons to represent the commands.</li>
+        <li>Define submenus or separators, and structure the commands. The same structure that is defined here will be created in the OpenOffice.org menu bar.
+            Select the context where your commands should be visible.
+        </li>
+        <li>Define the toolbar with separators, and structure the commands. The same structure that is defined here will be created in OpenOffice.org as new toolbar.
+            Select the context where your commands should be visible.
+        </li>
+        <li>Finish the wizard to generate all necessary files and the initial 
+            code skeleton for the new Add-On.</li>
+        <li>Open the generated Java file with the class name and implement actions 
+            for the commands the Add-On will react on.</li>
+        <li><a href="nbdocs:/org/netbeans/modules/java/helpset/docs/compile/comp_classpath.html">
+            Configure the classpath</a> for the project. You can add a JAR file, a 
+            <a href="nbdocs:/org/netbeans/modules/java/helpset/docs/compile/comp_libraries.html">
+            library</a>, or 
+            <a href="nbdocs:/org/netbeans/modules/java/helpset/docs/compile/comp_dependencies.html">
+            an IDE project</a> to the classpath.</li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <hr align="center" width="80%">
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td align="center"> 
+      <p><img src="./images/circle2.gif" alt="Number two"><br>
+        <b>Build the project</b> </p>
+    </td>
+    <td> 
+      <ol>
+        <li>Choose Build &gt; <a href="nbdocs:/org/netbeans/modules/java/helpset/docs/compile/comp_project.html">
+            Build Main Project</a> or right-click any project and choose Build Project.</li>
+        <li>With the context menu of the project node (projects window) you can create and deploy an office
+            extension package directly in your specified office installation.<br>
+            Right click on the project node &gt; Create OXT<br> to create the extension package.<br>
+            Right click on the project node &gt; Deploy and Run Extension in OpenOffice.org<br> to deploy the extension and start OpenOffice.org.<br>
+        </li>           
+        <li>Alternatively, you can chose the appropriate targets in the context menu for the build.xml file.<br>
+            Choose build.xml &gt; Run Target &gt; uno-package<br> to create the extension package.<br>
+            Choose build.xml &gt; Run Target &gt; uno-deploy<br> to deploy the extension.<br>
+        </li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <hr align="center" width="80%">
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td align="center"> <img src="./images/circle3.gif" alt="Number three"><br>
+      <b>Run the project</b> </td>
+    <td> 
+      <ol>
+          <li>In the Project window, open the context menu and select 
+          &quot;Deploy and Run Extension in OpenOffice.org&quot;.</li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <hr align="center" width="80%">
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td align="center"> <img src="./images/circle4.gif" alt="Number three" width="21" height="21"><br>
+      <b>Debug the project</b> </td>
+    <td> 
+      <ol>
+        <li>Debugging OpenOffice.org extensions is quite simple. In the Projects window, open the context
+        menu and select &quot;Debug Extension in Target Office&quot;.</li>
+        <li>OpenOffice.org is started with a new user installation that is created in the
+        build/soffice_debug directory. Your extension is deployed in this new user installation
+        and OpenOffice.org is started.</li>
+        <li>Set <a href="nbdocs:/org/netbeans/modules/java/helpset/docs/debug/breakpoint_setting.html">breakpoints</a> or 
+          <a href="nbdocs:/org/netbeans/modules/java/helpset/docs/debug/debug_new_watch.html">watches</a> in your code.</li>  
+        <li>Use your Add-In in OpenOffice.org so that your code is executed.</li>
+          <li>The code execution will stop at your breakpoint.</li>
+      </ol>
+    </td>
+  </tr>
+</table>
+
+<dl>
+  <dt><a name="seealso">See Also</a></dt>
+    <dd><a href="nbdocs:/org/openoffice/extensions/docs/overview-addons.html">OpenOffice.org Add-Ons</a></dd>
+        <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/WritingUNO/AddOns/Add-Ons">
+                <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Add-Ons</u></html>">
+                <param name="textFontSize" value="medium">
+                <param name="textColor" value="blue">
+            </object></dd>
+</dl>
+</body>
+</html>

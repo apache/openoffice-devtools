@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN" "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+<toc version="2.0">
+    <tocitem text="OpenOffice.org Extension Develoment">
+        <tocitem text="Getting Started">
+            <tocitem text="Overview" target="org.openoffice.extensions.about"/>
+            <tocitem text="Working with UNO Client Applications" target="org.openoffice.extensions.working.with.clients"/>
+            <tocitem text="Working with UNO Components" target="org.openoffice.extensions.working.with.components"/>
+            <tocitem text="Working with Calc Add-Ins" target="org.openoffice.extensions.working.with.addins"/>
+            <tocitem text="Working with Add-Ons" target="org.openoffice.extensions.working.with.addons"/>
+        </tocitem>
+        <tocitem text="UNO Client Applications">
+            <tocitem text="Overview" target="org.openoffice.extensions.overview.clients"/>
+        </tocitem>
+        <tocitem text="UNO Components">
+            <tocitem text="Overview" target="org.openoffice.extensions.overview.components"/>
+        </tocitem>
+        <tocitem text="Calc Add-Ins">
+            <tocitem text="Overview" target="org.openoffice.extensions.overview.addins"/>
+        </tocitem>
+        <tocitem text="Add-Ons">
+            <tocitem text="Overview" target="org.openoffice.extensions.overview.addons"/>
+        </tocitem>
+        <!-- <tocitem text="all the rest">
+            <tocitem text="Enum idl def" target="org.openoffice.extensions.data.type.enum"/>
+            <tocitem text="Exception idl def" target="org.openoffice.extensions.data.type.exception"/>
+            <tocitem text="Interface idl def" target="org.openoffice.extensions.data.type.interface"/>
+            <tocitem text="Poly struct idl def" target="org.openoffice.extensions.data.type.polystruct"/>
+            <tocitem text="Service idl def" target="org.openoffice.extensions.data.type.service"/>
+            <tocitem text="Struct idl def" target="org.openoffice.extensions.data.type.struct"/>
+            <tocitem text="Config paths" target="org.openoffice.extensions.config.paths"/>
+            <tocitem text="AddOn deleted command" target="org.openoffice.extensions.addon.deleted.command"/>
+            <tocitem text="Version props - TODO!" target="org.openoffice.extensions.actions.version.properties"/>
+            <tocitem text="Display props - TODO!" target="org.openoffice.extensions.actions.display.properties"/> 
+        </tocitem> -->
+    </tocitem>
+</toc>

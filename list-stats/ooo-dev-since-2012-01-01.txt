@@ -1,0 +1,682 @@
+These statistics were derived as follows:
+
+1) Download the ooo-dev mbox files from http://incubator.apache.org/mail/ooo-dev/
+
+2) Concatenating the mboxes for 2012 into one large text file
+ 
+3) Running list-stats.py with the concatenated file as input
+ 
+4) Replacing  @  with " AT " to prevent trvial address harvesters
+
+Rob Weir <robweir AT apache.org>,1478
+Kay Schenk <kay.schenk AT gmail.com>,676
+Dave Fisher <dave2wave AT comcast.net>,565
+=?ISO-8859-1?Q?J=FCrgen_Schmidt?= <jogischmidt AT googlemail.com>,559
+Pedro Giffuni <pfg AT apache.org>,466
+Oliver-Rainer Wittmann <orwittmann AT googlemail.com>,397
+Ariel Constenla-Haile <arielch AT apache.org>,380
+drew <drew AT baseanswers.com>,335
+"Marcus (OOo)" <marcus.mail AT wtnet.de>,325
+Andrea Pescetti <pescetti AT apache.org>,324
+Andre Fischer <af AT a-w-f.de>,305
+"Dennis E. Hamilton" <dennis.hamilton AT acm.org>,282
+=?UTF-8?B?SsO8cmdlbiBTY2htaWR0?= <jogischmidt AT googlemail.com>,214
+Joe Schaefer <joe_schaefer AT yahoo.com>,210
+Ross Gardler <rgardler AT opendirective.com>,202
+RGB ES <rgb.mldc AT gmail.com>,183
+Kevin Grignon <kevingrignon.oo AT gmail.com>,180
+Regina Henschel <rb.henschel AT t-online.de>,171
+Roberto Galoppini <rgaloppini AT geek.net>,147
+imacat <imacat AT mail.imacat.idv.tw>,130
+Herbert Duerr <hdu AT apache.org>,129
+Rory O'Farrell <ofarrwrk AT iol.ie>,124
+Shenfeng Liu <liushenf AT gmail.com>,121
+Armin Le Grand <Armin.Le.Grand AT me.com>,115
+Albino Biasutti Neto <biasuttin AT gmail.com>,108
+Zhe Liu <aliuzhe AT gmail.com>,108
+Andrew Rist <andrew.rist AT oracle.com>,103
+xia zhao <lilyzhao8 AT gmail.com>,94
+Donald Harbison <dpharbison AT gmail.com>,89
+Ji Yan <yanji.yj AT gmail.com>,89
+Juergen Schmidt <jogischmidt AT googlemail.com>,85
+Claudio Filho <filhocf AT gmail.com>,84
+Wolf Halton <wolf.halton AT gmail.com>,80
+eric b <eric.bachard AT free.fr>,80
+drew jensen <drewjensen.inbox AT gmail.com>,75
+=?iso-8859-1?Q?Louis_Su=E1rez-Potts?= <luispo AT gmail.com>,73
+Paulo de Souza Lima <paulo.s.lima AT varekai.org>,72
+bugzilla AT apache.org,72
+Fernando Cassia <fcassia AT gmail.com>,71
+TJ Frazier <tjfrazier AT cfl.rr.com>,67
+Hagar Delest <hagar.delest AT laposte.net>,63
+"Yuri Dario" <mc6530 AT mclink.it>,60
+chengjh <chengjh AT apache.org>,60
+Jean Weber <jeanweber AT gmail.com>,59
+Larry Gusaas <larry.gusaas AT gmail.com>,59
+Chao Huang <chao.dev.h AT gmail.com>,57
+=?ISO-8859-1?Q?Louis_Su=E1rez=2DPotts?= <lsuarezpotts AT gmail.com>,55
+Raphael Bircher <r.bircher AT gmx.ch>,55
+sebb <sebbaz AT gmail.com>,52
+lou ql <louqingle AT gmail.com>,51
+"Dennis E. Hamilton" <orcmid AT apache.org>,50
+FR web forum <oooforum AT free.fr>,48
+zhangjf <zhangjf AT apache.org>,48
+Joost Andrae <Joost.Andrae AT gmx.de>,47
+Andre Fischer <awf.aoo AT gmail.com>,46
+"O.Felka" <olaf-openoffice AT gmx.de>,45
+=?ISO-8859-1?Q?Risto_J=E4=E4skel=E4inen?= <rjaaskel AT saunalahti.fi>,45
+Shane Curcuru <asf AT shanecurcuru.org>,45
+Maho NAKATA <maho AT apache.org>,44
+Yong Lin Ma <mayongl AT gmail.com>,44
+Raphael Bircher <rbircher AT apache.org>,43
+Simon Phipps <simon AT webmink.com>,41
+Kazunari Hirano <khirano AT gmail.com>,40
+Linyi Li <lilinyi921734 AT gmail.com>,40
+Alexandro Colorado <jza AT oooes.org>,39
+Donald Whytock <dwhytock AT gmail.com>,39
+Yong Lin Ma <mayongl AT apache.org>,38
+Carl Marcum <cmarcum AT apache.org>,37
+jianlizhao <jianlizhao6 AT hotmail.com>,37
+=?iso-8859-1?Q?Pavel_Jan=EDk?= <Pavel AT Janik.cz>,36
+Torokhov Sergey <torokhov_s_a AT mail.ru>,36
+Albino B Neto <binoabn AT gmail.com>,35
+Andrew Douglas Pitonyak <andrew AT pitonyak.org>,35
+Peter Junge <peter.junge AT gmx.org>,35
+Graham Lauder <g.a.lauder AT gmail.com>,34
+Xia Zhao <lilyzhao8 AT gmail.com>,34
+Jianyuan Li <lijianyuan1983 AT gmail.com>,33
+Michael Acevedo <vea1083 AT gmail.com>,33
+Yue Helen <helenyuehy AT gmail.com>,32
+shzh zhao <aoo.zhaoshzh AT gmail.com>,31
+Nancy K <nancythirteen AT yahoo.com>,30
+Yan Ji <yanji.yj AT gmail.com>,30
+fabian <fmh AT netempire.de>,29
+Alexandro Colorado <jza AT apache.org>,28
+Fan Zheng <zheng.easyfan AT gmail.com>,28
+Raphael Bircher <rbircher_aoo AT bluewin.ch>,28
+"L'oiseau de mer" <oiseaumer AT gmail.com>,27
+Fernand Vanrie <sos AT pmgroup.be>,27
+"Gavin McDonald" <gavin AT 16degrees.com.au>,26
+=?UTF-8?Q?J=C3=BCrgen_Schmidt?= <jogischmidt AT googlemail.com>,26
+Ian Lynch <ianrlynch AT gmail.com>,26
+dongjun zong <zongdj001 AT gmail.com>,26
+=?ISO-8859-1?Q?Reizinger_Zolt=E1n?= <zreizinger AT hdsnet.hu>,25
+Guy Waterval <waterval.guy AT gmail.com>,25
+Graham Lauder <yo AT apache.org>,24
+Lei Wang <lei.wang.leiw AT gmail.com>,24
+Shan Zhu <shanzhu33 AT gmail.com>,24
+ZuoJun Chen <zjchencdl AT gmail.com>,24
+"C. J. Palmer" <cjpalmer AT charter.net>,23
+=?utf-8?Q?Michal_Hri=C5=88?= <anonymous AT apache.org>,23
+Kevin Sisco <kevinsisco61784 AT gmail.com>,23
+Li Feng Wang <phoenix.wanglf AT gmail.com>,23
+debin lei <debin.lei AT gmail.com>,23
+"Keith N. McKenna" <keith.mckenna AT comcast.net>,22
+Serg Bormant <bormant AT gmail.com>,22
+Tsutomu Uchino <hanya.runo AT gmail.com>,21
+YangTerry <polo8495 AT hotmail.com>,21
+Michael Meeks <michael.meeks AT suse.com>,20
+Paolo Pozzan <paolo AT z2z.it>,20
+Yi Xuan Liu <liuyixuan.527 AT gmail.com>,20
+tj <tj AT apache.org>,20
+=?ISO-8859-15?Q?J=FCrgen_Schmidt?= <jogischmidt AT googlemail.com>,19
+Ian <ian AT amham.net>,19
+Liu Da Li <wawalovo AT gmail.com>,19
+Maho NAKATA <chat95 AT mac.com>,19
+bjcheny <companycy AT gmail.com>,19
+hongyun.an <hongyun.an AT cs2c.com.cn>,19
+"Rony G. Flatscher (Apache)" <rony AT apache.org>,18
+=?ISO-8859-1?Q?J=FCrgen_Schmidt?= <jogischmidt AT gmail.com>,18
+=?UTF-8?B?TG91aXMgU3XDoXJlei1Qb3R0cw==?= <luispo AT gmail.com>,18
+Christoph Jopp <jopp AT gmx.de>,18
+Jim Jagielski <jim AT jaguNET.com>,18
+Josef Latt <Josef.Latt AT gmx.net>,18
+Lin Yuan <yuanlin.ibm AT gmail.com>,18
+Michael Bauer <fios AT akerbeltz.org>,18
+De Bin Lei <debin.lei AT gmail.com>,17
+Nelson Marques <nmo.marques AT gmail.com>,17
+"=?gb18030?B?zs/Fow==?=" <56091246 AT qq.com>,16
+=?UTF-8?B?WWFrb3YgUmV6dHNvdg==?= <yakovr_st AT mail.ru>,16
+Clarence GUO <clarence.guo.bj AT gmail.com>,16
+Sylvain DENIS <sylvain.technic AT gmail.com>,16
+ying sun <sunyingshadesun AT gmail.com>,16
+"=?utf-8?Q?Michal_Hri=C5=88?=" <michalhrin AT aol.com>,15
+Anton Meixome <meixome AT certima.net>,15
+Daniel Shahaf <d.s AT daniel.shahaf.name>,15
+Huaidong Qiu <qiuhuaidong AT gmail.com>,15
+Ochirov Nikolay <ochirovnikolay AT gmail.com>,15
+Oliver Brinzing <Oliver.Brinzing AT gmx.de>,15
+"Marco A.G.Pinto" <marcoagpinto AT mail.telepac.pt>,14
+=?GB2312?B?Sqi5cmdlbiBTY2htaWR0?= <jogischmidt AT googlemail.com>,14
+=?ISO-8859-1?Q?Louis_Su=E1rez=2DPotts?= <louis AT apache.org>,14
+=?UTF-8?B?SsO8cmdlbiBTY2htaWR0?= <jogischmidt AT gmail.com>,14
+Paul Gress <pgress AT optonline.net>,14
+Simon Brouwer <simon AT brousant.nl>,14
+lifeng wang <phoenix.wanglf AT gmail.com>,14
+"=?utf-8?Q?J=C3=BCrgen_Schmidt?=" <jogischmidt AT googlemail.com>,13
+Alexander Thurgood <alex.thurgood AT gmail.com>,13
+Du Jing <bjdujing AT gmail.com>,13
+Nicolas Christener <nicolas.christener AT adfinis-sygroup.ch>,13
+Peng Chen <chenpeng2006 AT gmail.com>,13
+Peter Brawley <peter.brawley AT earthlink.net>,13
+=?UTF-8?B?UmVpemluZ2VyIFpvbHTDoW4=?= <zreizinger AT hdsnet.hu>,12
+Bjoern Michaelsen <bjoern.michaelsen AT canonical.com>,12
+Daniel Shahaf <danielsh AT apache.org>,12
+Jean-Louis 'Hans' Fuchs <jean-louis.fuchs AT adfinis-sygroup.ch>,12
+Phillip Rhodes <motley.crue.fan AT gmail.com>,12
+Steve Yin <steve.yin.aoo AT gmail.com>,12
+liu ping <doneyourself AT gmail.com>,12
+luizheli <luizheli AT gmail.com>,12
+"Hans Zybura" <hzybura AT zybura.com>,11
+=?koi8-r?B?797J0s/XIO7Jy8/Mwco=?= <nvochirov AT yandex.ru>,11
+=?windows-1252?Q?J=FCrgen_Schmidt?= <jogischmidt AT googlemail.com>,11
+David McKay <dmckay AT btconnect.com>,11
+Greg Roberts <lookfortherabbit AT yahoo.com>,11
+Hennie Potgieter <pbhj.potgieter AT gmail.com>,11
+Stuart Swales <stuart.swales.croftnuisk AT gmail.com>,11
+"Shenfeng Liu" <anonymous AT apache.org>,10
+=?ISO-8859-1?Q?Andreas_S=E4ger?= <villeroy AT t-online.de>,10
+=?ISO-8859-2?Q?Reizinger_Zolt=E1n?= <zreizinger AT hdsnet.hu>,10
+=?iso-8859-1?Q?Peter_P=F6ml?= <peter AT poeml.de>,10
+Armin <Armin.Le.Grand AT me.com>,10
+Bin Guo <binbjguo AT gmail.com>,10
+Chen Peng <chenpeng2006 AT gmail.com>,10
+NoOp <glgxg AT sbcglobal.net>,10
+Wang Zhe <kingwisemmx AT gmail.com>,10
+Xin Li <lxnice123 AT gmail.com>,10
+Ying Zhang <tldyzem AT gmail.com>,10
+"F C. Costero" <fjcc.apache AT gmail.com>,9
+"Juan C. Sanz" <juancsanzc AT hotmail.com>,9
+=?UTF-8?B?SsO8cmdlbiBMYW5nZQ==?= <jl AT juergen-lange.de>,9
+Jing Bai <jingbaibetsy AT gmail.com>,9
+Liang Weike <weike.liang AT cs2c.com.cn>,9
+Roberto Salomon <roberto.salomon AT gmail.com>,9
+rjaaskel AT saunalahti.fi,9
+"Gianluca Turconi" <gt AT letturefantastiche.com>,8
+<qa AT imsoftwaresystems.com>,8
+Carsten Otto <otto AT informatik.rwth-aachen.de>,8
+Christian Lohmaier <cloph AT openoffice.org>,8
+Kayo Hamid <khflab AT gmail.com>,8
+Lei Wang <leiw AT apache.org>,8
+Zhang Lu <zhanglu.aoo AT gmail.com>,8
+li zhang <lizh.fee AT gmail.com>,8
+=?utf-8?Q?J=C3=B6rg_Schmidt?= <joesch AT j-m-schmidt.de>,7
+Andor E <eymux2009 AT googlemail.com>,7
+Giuseppe Castagno <giuseppe.castagno AT acca-esse.eu>,7
+Greg Madden <gomadtroll AT gmail.com>,7
+Jihui Choi <jihui.choi AT gmail.com>,7
+Jingbai <jingbaibetsy AT gmail.com>,7
+Mark Ramm <mark AT geek.net>,7
+Mechtilde <ooo AT mechtilde.de>,7
+Rob Weir <apache AT robweir.com>,7
+bo.tian <bo.tian AT cs2c.com.cn>,7
+linyi li <lilinyi921734 AT gmail.com>,7
+"tanmgeng" <tmyl2010 AT gmail.com>,6
+=?ISO-8859-1?Q?Louis_Su=E1rez=2DPotts?= <luispo AT gmail.com>,6
+=?UTF-8?B?5L6d55Gq6LKT?= <imacat AT mail.imacat.idv.tw>,6
+=?utf-8?B?TWljaGFsIEhyacWI?= <michalhrin AT aol.com>,6
+Bingbing Ma <jiazema AT gmail.com>,6
+Christian Grobmeier <grobmeier AT gmail.com>,6
+Damjan Jovanovic <damjan.jov AT gmail.com>,6
+Dick Groskamp <th.groskamp AT quicknet.nl>,6
+Eike Rathke <ooo AT erack.de>,6
+Erik Wigforss <erik.wigforss AT gmail.com>,6
+Michael Stahl <mst AT openoffice.org>,6
+Nazmul Alam <fadedreamz AT gmail.com>,6
+Rylan Wassem <dryland28 AT gmail.com>,6
+Sam Ruby <rubys AT intertwingly.net>,6
+Surya Kanth <surya.openoffice.org AT gmail.com>,6
+Tan Li <litan.test AT gmail.com>,6
+Xue Fei Duan <duanxf06 AT gmail.com>,6
+eric b <eric.bachardNOSPAM AT free.fr>,6
+lin yuan <yuanlin.ibm AT gmail.com>,6
+"Phil Sargent" <snogoose AT maine.rr.com>,5
+"Sahand.T" <sashther AT gmail.com>,5
+"Steele, Raymond" <raymond.steele AT lmco.com>,5
+=?GB2312?B?yrfW3LKo?= <zhoubo.shi AT cs2c.com.cn>,5
+=?iso-8859-1?Q?Louis_R_Su=E1rez-Potts?= <louis AT apache.org>,5
+=?utf-8?Q?Michal_Hri=C5=88?= <michalhrin AT aol.com>,5
+Danese Cooper <danese AT gmail.com>,5
+Edward <martinezedward228 AT gmail.com>,5
+Facundo Cevey <fcevey AT gmail.com>,5
+Florian Effenberger <floeff AT documentfoundation.org>,5
+James Lee <list AT oxdrove.co.uk>,5
+Khoem Sokhem <khoemsokhem AT khmeros.info>,5
+Marcelo Santana <marcgsantana AT yahoo.com.br>,5
+Marvin <no-reply AT apache.org>,5
+Norbert Thiebaud <nthiebaud AT gmail.com>,5
+Peter Eberlein <pet.ebe AT refofd.verwalt-berlin.de>,5
+Rajarshi Mukherjee <rajmukherjee2007 AT gmail.com>,5
+Wie Kiang <onlinewie AT gmail.com>,5
+Xiao Ting Xiao <tingxiaox AT gmail.com>,5
+acrux <acrux_it AT libero.it>,5
+jane kang <kangjane2012 AT gmail.com>,5
+tanli li <litan.test AT gmail.com>,5
+=?ISO-8859-1?Q?J=FCrgen_Lange?= <jl AT juergen-lange.de>,4
+=?UTF-8?B?0KHQtdGA0LPQtdC5INCi0L7RgNC+0YXQvtCy?= <torohov_s_a AT mail.ru>,4
+Ariel Constenla-Haile <ariel.constenla.haile AT gmail.com>,4
+Carl Marcum <carl AT codebuilders.net>,4
+Ian C <ian AT amham.net>,4
+Issac Goldstand <issac AT volo-net.com>,4
+Jinlong Wu <wujinlong AT gmail.com>,4
+Juergen Schmidt <jogischmidt AT gmail.com>,4
+Marco Benatto <marco.antonio.780 AT gmail.com>,4
+Martin Srebotnjak <miles AT filmsi.net>,4
+Peter =?iso-8859-1?Q?P=F6ml?= <peter AT poeml.de>,4
+Tor Lillqvist <tml AT iki.fi>,4
+Uwe Altmann <ooo AT altsys.de>,4
+floris v <florisv59 AT gmail.com>,4
+laser laser <jianlizhao6 AT hotmail.com>,4
+suhail ansari <suhailazaz AT gmail.com>,4
+win <wmbooth AT gmail.com>,4
+"Chery" <Chery AT mchsi.com>,3
+"KS AT apache.org" <kschenk AT apache.org>,3
+"Pedro F. Giffuni" <giffunip AT yahoo.com>,3
+"Rony G. Flatscher" <Rony.Flatscher AT wu-wien.ac.at>,3
+"Sally Khudairi" <sallykhudairi AT yahoo.com>,3
+"eric wu" <jinjin.wu AT cs2c.com.cn>,3
+"taotao.liu" <taotao.liu AT cs2c.com.cn>,3
+=?UTF-8?B?QW5kcmVhcyBTw6RnZXI=?= <villeroy AT t-online.de>,3
+=?iso-8859-1?Q?Jan_H=F8ydahl?= <jan.asf AT cominvent.com>,3
+=?iso-8859-1?Q?Peter_P=F6ml?= <Peter AT poeml.de>,3
+Andrew Pitonyak <andrew AT pitonyak.org>,3
+Asghar Rahmani <asrah AT gmx.de>,3
+Chen Luo <luochen AT cn.ibm.com>,3
+Daniel Gruno <rumble AT cord.dk>,3
+Dave Barton <bmcs AT apache.org>,3
+Dave Brondsema <dbrondsema AT geek.net>,3
+Graham Wright <gwright2803 AT hotmail.es>,3
+Henri Yandell <flamefew AT gmail.com>,3
+JH Chen <chenjinh AT gmail.com>,3
+Javier Sola <lists AT khmeros.info>,3
+Jonathan Allen <allen_jonathan_t AT hotmail.com>,3
+Raul Pacheco da Silva <raulpachecodasilva AT gmail.com>,3
+Roberto Resoli <roberto.resoli AT gmail.com>,3
+Shawn Pringle <shawn.pringle AT gmail.com>,3
+Shmuel Wolfson <shmuelw1 AT gmail.com>,3
+Thorsten Behrens <thb AT documentfoundation.org>,3
+Tony Stevenson <pctony AT apache.org>,3
+Yaron Shahrabani <sh.yaron AT gmail.com>,3
+louise zuleger <mapuanakaponimoi AT hotmail.com>,3
+pengyunquan <pengyunquan AT gmail.com>,3
+tiffany mobileofficehq <mobileofficehq AT gmail.com>,3
+"Andrea Pescetti" <pescetti AT apache.org>,2
+"Gosha Sn AT per" <goshasnaper AT gmail.com>,2
+"Judy Jones" <Judy.Jones AT pcug.org.au>,2
+"Karsten Burger" <karsten_burger AT gmx.de>,2
+"Nicolas Costa" <nicolas.costa AT psi-informatique.com>,2
+"Oliver Brinzing" <oliver.brinzing AT gmx.de>,2
+"WilfriedBiesinger" <WilfriedBiesinger AT web.de>,2
+"larry ross" <larry.ross AT iskraae.com>,2
+<taotao.liu AT cs2c.com.cn>,2
+=?GB2312?B?xe3Uxsir?= <pengyunquan AT gmail.com>,2
+=?GB2312?B?zfWGtA==?= <kingwisemmx AT gmail.com>,2
+=?ISO-8859-2?Q?J=FCrgen_Schmidt?= <jogischmidt AT googlemail.com>,2
+=?UTF-8?B?5p2o57un6LaF?= <jcyangzh AT gmail.com>,2
+=?UTF-8?B?Q2jDrS1UaGFuaCBDaHJpc3RvcGhlciBOZ3V54buFbg==?=
+ <chithanh AT gentoo.org>,2
+=?UTF-8?B?U2VyZ2V5IFRvcm9raG92?= <torohov_s_a AT mail.ru>,2
+=?UTF-8?Q?J=C3=B6rg_Schmidt?= <joesch AT j-m-schmidt.de>,2
+=?UTF-8?Q?Reizinger_Zolt=C3=A1n?= <zreizinger AT hdsnet.hu>,2
+=?iso-8859-1?Q?Louis_R_Su=E1rez-Potts?= <luispo AT gmail.com>,2
+=?iso-8859-1?Q?Pavel_Jan=EDk?= <pavel AT janik.cz>,2
+=?utf-8?Q?Jan_H=C3=B8ydahl?= <jan.asf AT cominvent.com>,2
+=?utf-8?Q?Louis_Su=C3=A1rez-Potts?= <luispo AT gmail.com>,2
+Ashok Hariharan <ashok AT parliaments.info>,2
+Bob Self <drrself AT gmail.com>,2
+Carl Botha <botha AT live.fr>,2
+Chong Minsk Goh <cmgoh1979 AT gmail.com>,2
+Christopher Tsai <ctsai AT geek.net>,2
+Claudio F Filho <filhocf AT gmail.com>,2
+Damjan Jovanovic <damjan AT apache.org>,2
+David Paenson <davepolit AT googlemail.com>,2
+Denis Simonet <denis.simonet AT adfinis-sygroup.ch>,2
+Fiona Causer <fiona.causer AT gmail.com>,2
+Gheyret Tohti <gheyret AT yahoo.com>,2
+Gianluca Turconi <public AT letturefantastiche.com>,2
+Guenter Marxen <guenter.marxen AT googlemail.com>,2
+Guenter Mehle <guentermehle AT googlemail.com>,2
+Guillaume <guillm.frndz AT club.fr>,2
+Herbert Duerr <hdu_ooo AT alice.de>,2
+Hyoung joon Jun <hi.joony AT gmail.com>,2
+Info Agipa <info AT apli-agipa.com>,2
+Jared Digby <jared.digby AT gmail.com>,2
+Jerry Kemp <sun.mail.list47 AT oryx.cc>,2
+Jose <josedropbox AT gmail.com>,2
+K M <kfmann5 AT yahoo.com>,2
+Kurt Underhay <kurt.underhay AT gmail.com>,2
+Lynnette Boucher <lynnetteboucher AT ymail.com>,2
+Ma Yong Lin <mayongl AT apache.org>,2
+Ma Yong Lin <mayongl AT gmail.com>,2
+Maho NAKATA <maho.nakata AT gmail.com>,2
+Marc Sanders <marcsanders23 AT gmail.com>,2
+Max Merbald <max.merbald AT gmx.de>,2
+Michael Schultheiss <schultmc AT spi-inc.org>,2
+Michael Stahl <mstahl AT redhat.com>,2
+MiguelAngel <mariosv AT miguelangel.mobi>,2
+Painius AT aol.com,2
+Pedro Giffuni <pfg AT FreeBSD.org>,2
+Philip Thomas <pt AT hear.org>,2
+Rob Weir <rabastus AT gmail.com>,2
+Rupert <feisa.recursos AT gmail.com>,2
+Sally Khudairi <sk AT apache.org>,2
+Steven Asselman <steven.asselman AT gmail.com>,2
+Taf <tafmail AT gmail.com>,2
+Tim Williams <williamstw AT gmail.com>,2
+XiuLi Xu <susan.dongdong AT gmail.com>,2
+alex <guzzi-alex AT web.de>,2
+aseem sharma <aseem_sharma12 AT yahoo.co.in>,2
+eric <eric.bachard AT free.fr>,2
+info AT softwaredistributor.info,2
+toki <toki.kantoor AT gmail.com>,2
+"=?ISO-8859-1?Q?G=F6tz_Wohlberg?=" <goetz.wohlberg AT googlemail.com>,1
+"=?ISO-8859-1?Q?J=FCrgen_Schmidt?=" <jogischmidt AT gmail.com>,1
+"=?gb2312?B?0O3JvbSo?=" <shanchuan.xu AT cs2c.com.cn>,1
+"=?utf-8?B?6JyX54mb?=" <56091246 AT qq.com>,1
+"=?utf-8?B?ZmFpdGhAZmlsZXB1bWEuY29t?=" <faith AT filepuma.com>,1
+"=?utf-8?B?dGFvdGFvLmxpdQ==?=" <taotao.liu AT cs2c.com.cn>,1
+"=?utf-8?Q?Louis_Su=C3=A1rez-Potts?=" <oulipo.apache AT gmail.com>,1
+"Allison Barnes" <abhrslvr AT hotmail.com>,1
+"Andreas Wagner" <aw-wiesloch AT web.de>,1
+"Angie" <angie AT winxdvd.com>,1
+"Annmarie Schroden" <schrodenannmarie AT googlemail.com>,1
+"Antonio.Wang" <kingwisemmx AT gmail.com>,1
+"Casey, James" <James.Casey AT NewHorizons.com>,1
+"Christopher Jackson" <tigger76 AT verizon.net>,1
+"Cody Miller" <codymiller1996 AT live.com>,1
+"Cole, Ken (MOH)" <Ken.Cole2 AT ontario.ca>,1
+"Dale" <da.wilson AT shaw.ca>,1
+"Daniel Albrecht" <l3inad AT gmx.net>,1
+"David Simister" <dave.simister AT tiscali.co.uk>,1
+"David Terron" <daterron AT sky.com>,1
+"Dennis E. Hamilton" <himself AT orcmid.com>,1
+"Dennis Roy Martin" <dennism AT nexicom.net>,1
+"Gav..." <gavin AT 16degrees.com.au>,1
+"Gianluca Turconi" <public AT letturefantastiche.com>,1
+"Guillaume Fernandez (Club)" <guillm.frndz AT club.fr>,1
+"James Loring" <jamesloring AT btinternet.com>,1
+"Jean Harnden" <perriwinkle.sunshine AT shaw.ca>,1
+"Jian, Carver YH" <Carver.YH.Jian AT ctm.com.mo>,1
+"Jill St. Denis" <jill.st.denis AT gmail.com>,1
+"Jim Franks" <jbfranks AT optusnet.com.au>,1
+"Joe Schaefer" <joes AT apache.org>,1
+"John Schmidt" <support AT 123openoffice.com>,1
+"John" <support AT 123openoffice.com>,1
+"Keith Shafe" <k.shafe AT ntlworld.com>,1
+"Kevin & Leonie" <kevinleonie AT cbi.net.au>,1
+"Lawrence Rosen" <lrosen AT rosenlaw.com>,1
+"Lou Devlin" <loudevlin AT gmail.com>,1
+"Luciano" <megabro AT yahoo.com>,1
+"Mattmann, Chris A (388J)" <chris.a.mattmann AT jpl.nasa.gov>,1
+"Mike Buzzard" <mike01 AT earth-focus.org.uk>,1
+"Nancy" <nancy.bh1944 AT gmail.com>,1
+"Nick Koopmans" <nickkoopmans AT chello.nl>,1
+"Pam Tuthill" <pam.tuthill AT virgin.net>,1
+"Pedro =?iso-8859-1?Q?Dom=EDnguez?=" <pedro.dominguez AT apr.es>,1
+"Phil Hocott" <phocott AT frontier.com>,1
+"R.V. Subramanyan" <rv.subbu AT gmail.com>,1
+"Reinhold Lehmann" <mail AT reinhold-lehmann.de>,1
+"Rushi Anil Phutane" <rushi19phutane AT rediffmail.com>,1
+"S&M MIELNICKI" <marjoriem2 AT verizon.net>,1
+"Sara Davis" <sara-davis AT tiscali.co.uk>,1
+"Shan Zhu" <anonymous AT apache.org>,1
+"Sharon Peak" <sharon AT grandmgmt.com>,1
+"SpindleHill Auctions" <email AT spindlehill.com>,1
+"Stefano Cianca" <stefano_cianca AT alice.it>,1
+"Stephen Anstey" <stephenanstey AT hotmail.com>,1
+"Sully" <tazicouple AT gmail.com>,1
+"Sybil Snyders" <sybil AT redfern.co.za>,1
+"There were three lines of mismatched tags" <anonymous AT apache.org>,1
+"Vasavi Ch." <vasavig01 AT gmail.com>,1
+"Werner J. Kronenberg" <wernerkro AT mwebbiz.co.za>,1
+"faith AT filepuma.com" <faith AT filepuma.com>,1
+"hagar.delest" <hagar.delest AT laposte.net>,1
+"kay.schenk" <kay.schenk AT gmail.com>,1
+"koda.m AT libero.it" <koda.m AT libero.it>,1
+"lijian" <lijianbuaa AT gmail.com>,1
+"p.a.sa.h." <ppasah AT gmail.com>,1
+"robweir" <anonymous AT apache.org>,1
+"roman.griego" <roman.griego AT gmail.com>,1
+"support AT 123openoffice.com" <support AT 123openoffice.com>,1
+"thomas" <57chevy AT evenlink.com>,1
+'Tony Stevenson' <pctony AT apache.org>,1
+<huangone111 AT sina.com>,1
+=?GB2312?B?UmVpemluZ2VyIFpvbHSoom4=?= <zreizinger AT hdsnet.hu>,1
+=?GB2312?B?wO7V8MT+?= <zhenning.li AT cs2c.com.cn>,1
+=?ISO-8859-15?Q?Andr=E9_Schnabel?= <andre.schnabel AT gmx.net>,1
+=?ISO-8859-15?Q?Andreas_S=E4ger?= <villeroy AT t-online.de>,1
+=?ISO-8859-15?Q?G=FCnter_Mayer?= <h8952223 AT wu.ac.at>,1
+=?ISO-8859-1?Q?Clovis_Trist=E3o?= <tclovis AT gmail.com>,1
+=?ISO-8859-1?Q?Ibrahim_Toygun_=D6zbek?= <toygunozbek AT googlemail.com>,1
+=?ISO-8859-1?Q?Jan_=D6hman?= <Jan_Ohman AT glocalnet.net>,1
+=?ISO-8859-1?Q?V=EDctor_L=F3pez_Rivero?=
+ <victor.lopez.rivero AT gmail.com>,1
+=?ISO-8859-2?Q?Baranya_P=E9ter?= <bp1 AT bovito.hu>,1
+=?KOI8-R?B?7cHSydEg4tnLz9fB?= <bykova.mary AT gmail.com>,1
+=?UTF-8?B?56iL5bu65a6P?= <swordflychj AT gmail.com>,1
+=?UTF-8?B?5Y+y5ZGo5rOi?= <zhoubo.shi AT cs2c.com.cn>,1
+=?UTF-8?B?TG91aXMgU3XDoXJlei1Qb3R0cw==?= <louis AT apache.org>,1
+=?UTF-8?B?TXVoYXJlbSBEb2JybmppxIc=?= <muharem AT mediasky.ba>,1
+=?UTF-8?B?UmlzdG8gSsOkw6Rza2Vsw6RpbmVu?= <rjaaskel AT saunalahti.fi>,1
+=?UTF-8?Q?J=C3=BCrgen_Schmidt?= <jogischmidt AT gmail.com>,1
+=?UTF-8?Q?Martin_T=C3=B5numaa?= <mtonumaa AT gmail.com>,1
+=?UTF-8?Q?Tor=2DIvar_Krogs=C3=A6ter?= <the1cannedman AT gmail.com>,1
+=?iso-8859-1?B?T2xpdmVyIFT2bnNob2Zm?= <zapata AT freakmail.de>,1
+=?iso-8859-1?Q?J=F6rg_Schmidt?= <joesch AT j-m-schmidt.de>,1
+=?iso-8859-1?Q?St=E9phane_FONTAINE?= <fontste AT free.fr>,1
+=?koi8-r?Q?=EF=CC=C5=C7_?= =?koi8-r?Q?=ED=C1=CC=A3=D7=C1=CE=D9=CA?= <deer_oleg AT mail.ru>,1
+=?utf-8?B?5pmT5YipIOautQ==?= <iloaixnaud AT yahoo.com.cn>,1
+=?utf-8?B?ZG1ja2F5QGJ0Y29ubmVjdC5jb20=?= <dmckay AT btconnect.com>,1
+=?utf-8?Q?"Dr._Peter_P=C3=B6ml"?= <peter AT poeml.de>,1
+=?utf-8?Q?Peter_P=C3=B6ml?= <peter AT poeml.de>,1
+=?windows-1252?Q?Arthur_Buijs?= <arthur AT artietee.nl>,1
+=?windows-1252?Q?J=FCrgen_Schmidt?= <jogischmidt AT gmail.com>,1
+=?windows-1256?Q?J=FCrgen_Schmidt?= <jogischmidt AT googlemail.com>,1
+Alex Baeza <alex AT baeza.name>,1
+Alex Thurgood <alex.thurgood AT gmail.com>,1
+Alexander Bolbas <greenue AT gmail.com>,1
+Alexandre Bezroutchko <abb AT gremwell.com>,1
+Alexandro Colorado <acolorado AT gmail.com>,1
+Alistair Botha <alistairb AT system5.co.za>,1
+Amanda Sutej <amanda.sutej AT raywhite.com>,1
+Amos Denny <amos.denny AT gmail.com>,1
+AmyJo10155 AT aol.com,1
+Andrew Rist <andrew.rist AT ORACLE.COM>,1
+Ann Harris <friscoann AT yahoo.com>,1
+Anonymous CMS User <anonymous AT apache.org>,1
+Armando Barrera <varios2524 AT hotmail.com>,1
+Armin Le Grand <armin_le_grand AT me.com>,1
+Arthur Buijs <arthur AT artietee.nl>,1
+Barry Storah <barrystorah AT yahoo.com>,1
+Bing BJ Yin <ybing AT cn.ibm.com>,1
+Bob Smith <dasttann AT gmail.com>,1
+Brandi Cole <brandi_cole_ AT hotmail.com>,1
+Brandon Chen <fringe.forest AT gmail.com>,1
+Brian <brianc AT psmail.net>,1
+Brian Fu <fudachao AT gmail.com>,1
+Brian N <brian.n AT nocturnitybooks.com>,1
+CetaceaAnn AT aol.com,1
+Chaitanya Sevak <3chaitanya AT gmail.com>,1
+Cherise Kelley <cherise_kelley AT hotmail.com>,1
+Christophe <christophe.delannoy AT synapse-fr.com>,1
+Conny Molin <conny.molin AT gmail.com>,1
+Cristian Eduardo Cabezas <cristian AT psiuxo.net>,1
+Cynthia Woo <cynthwoo AT gmail.com>,1
+Dakota <dakota22789 AT live.com>,1
+Daniel Naber <naber AT danielnaber.de>,1
+Darlene Saeger <Cin-dar-ellasaeger AT hotmail.com>,1
+Dave Alger <algerdp AT gmail.com>,1
+Dave Barton <db AT tasit.net>,1
+David Lindblad <dlindblad1 AT verizon.net>,1
+David Rumpf <rumpfda AT yahoo.com>,1
+David Sheffield <dwsheffi AT gmail.com>,1
+Davide B <67davide AT libero.it>,1
+De Bin Lei <leidb AT apache.org>,1
+Dean Odiorne <dodiorne AT embarqmail.com>,1
+Debbie <midniteandpooky AT yahoo.com>,1
+Des <china2 AT orcon.net.nz>,1
+Devin Han <devinhan AT apache.org>,1
+Dirk-Willem van Gulik <dirkx AT webweaving.org>,1
+Dotan Cohen <dotancohen AT gmail.com>,1
+Doug Samuelson <samuelsondoug AT yahoo.com>,1
+Drew Jensen <drewjensen.inbox AT gmail.com>,1
+Dwayne Bailey <dwayne AT translate.org.za>,1
+Eberhard Moenkeberg <emoenke AT gwdg.de>,1
+Emanuele <emanuele45 AT gmail.com>,1
+Eric Klassen <eric.klassen AT gmail.com>,1
+Eric Otchet <eotchet AT us.ibm.com>,1
+Eric Otchet <eric.otchet AT gmail.com>,1
+Evette Caple <Evette.Caple AT phoenix.edu>,1
+Fatih Can Akay <fatihcan.akay AT gmail.com>,1
+Felix Brown <buy-a-thing-or-two AT sbcglobal.net>,1
+Francisco Mancardi <francisco.mancardi AT gmail.com>,1
+Fridrich Strba <fridrich.strba AT graduateinstitute.ch>,1
+Frosch <HerrFrosch AT gmx.de>,1
+Gaurav prasad <prasad.gaurav14 AT gmail.com>,1
+George Tsinarakis <gtsin77 AT gmail.com>,1
+Glen Blackstock <blacksto AT hotmail.com>,1
+Graham Lauder <yorick_ AT openoffice.org>,1
+Greg Stein <gstein AT gmail.com>,1
+HKuerbiss <HKuerbiss AT web.de>,1
+Hannu Puhakka <hannu AT vetokonsultit.fi>,1
+Henrikki Rutanen <hrutanen AT abo.fi>,1
+Hristo Simeonov Hristov <h.hristov AT icobgr.info>,1
+Huang Chao <chao.dev.h AT gmail.com>,1
+Ian MacDonald <ianjamesmacdonald AT telstra.com>,1
+Ina Marantz <IMHappy103 AT yahoo.com>,1
+Ingrid Gjermstad <ingrid.gje AT gmail.com>,1
+JALIGOT Jean <jean.jaligot AT orange.fr>,1
+JDO Designs & Consulting <jdodesigns AT gmail.com>,1
+JORGE LUIS MEZA <jorge_89652 AT hotmail.com>,1
+Jacob Moorman <moorman AT geek.net>,1
+Jacob Yturri <jbyturri AT gmail.com>,1
+Jake Meyer <Jake AT futureads.com>,1
+James Pearson <james-p AT moving-picture.com>,1
+Jan <jrheinlaender AT gmx.de>,1
+Jan Holesovsky <kendy AT suse.cz>,1
+Janet Wallace <Janet.Wallace AT ea.edin.sch.uk>,1
+Jeffery Tong <jeffery.tong AT gmail.com>,1
+Jim Jagielski <jim AT apache.org>,1
+Jim Sanders <jim AT netdataltd.com>,1
+Joachim Busse <jbstuhr AT t-online.de>,1
+John Andrejack <jandrejack AT inbox.com>,1
+John Logan <logan-j AT btconnect.com>,1
+John McClelland <JMcClell AT roosevelt.edu>,1
+Jomar Silva <homembit AT gmail.com>,1
+Jonathan Lee <jonathan.lee AT hattengrp.com>,1
+Julie John <jules.john AT gmail.com>,1
+Kay Schenk <kschenk AT apache.org>,1
+Kevan Miller <kevan.miller AT gmail.com>,1
+Kyabsuchi <kyabsuchi AT gmail.com>,1
+LUMS Mirror Team <mirror-lums-notify AT pakistani.org>,1
+Lars Bo Christensen <larsbo AT it.dk>,1
+Leah Rishona Blachman <leahrishona AT verizon.net>,1
+Luis E Vasquez <levarcol AT agenciastm.com>,1
+Luiz Oliveira <lcoluiggi AT gmail.com>,1
+Luu Tinh <luutinh09 AT googlemail.com>,1
+MJ Ray <mjr AT debian.org>,1
+MJ Ray <mjr AT phonecoop.coop>,1
+MaJun <jun.ma AT cs2c.com.cn>,1
+Malte Timmermann <malte_timmermann AT gmx.com>,1
+Manfred Schmidt <manfred-schmidt AT gmx.de>,1
+Marcelo Santana <msantana AT cnen.gov.br>,1
+Margaret Crozier <john3_3 AT telus.net>,1
+Mark McCormack <notmicro AT aol.com>,1
+Markus Mattsson <rocosy AT hotmail.com>,1
+Matheus Garcia <matheus.figueiredo AT almg.gov.br>,1
+Maya Cain <ecloudrider AT gmail.com>,1
+Michael Adamowicz <mike.adamowicz AT gmail.com>,1
+Michael Halsall <trueblue1878 AT gmail.com>,1
+Michael Parchet <mparchet AT sunrise.ch>,1
+Mike <mdhuk1085 AT aol.co.uk>,1
+Mohammad Nour El-Din <nour.mohammad AT gmail.com>,1
+Nancy Ritter <ritternw AT gmail.com>,1
+Nardia Keenan <telegramnardiajane AT gmail.com>,1
+Nicholas Kircher <Nick_Kircher AT sil.org>,1
+Nick Burch <nick AT apache.org>,1
+Nicolas Christener <lists AT 0x17.ch>,1
+Nik Fiala <pmeduzzzzz AT gmail.com>,1
+Ninka Albada <ninka_albada AT yahoo.com.au>,1
+Noah Tilton <noahktilton AT gmail.com>,1
+Noel Grandin <noelgrandin AT gmail.com>,1
+Olav Dahlum <odahlum AT gmail.com>,1
+Patrick Durusau <patrick AT durusau.net>,1
+Peter Oliva <snsr5045 AT yahoo.com>,1
+Peter Roelofsen <p_roelofsen AT tele2.nl>,1
+Phil Perera <phil.perera AT gmail.com>,1
+Ravish kumar <rav.ravish AT gmail.com>,1
+Ric Gaudet <ricgaudet AT hotmail.com>,1
+Rich Reynolds <rich AT redstar-assoc.com>,1
+Rimas Kudelis <rq AT akl.lt>,1
+Rita Garrone <ritagarrone AT ymail.com>,1
+Rob Weir <rob AT robweir.com>,1
+Roman Meisenberg <roman AT silenceproductions.net>,1
+Sally Khudairi <sk AT haloworldwide.com>,1
+Samuel Richard <samrichard08 AT gmail.com>,1
+Saramet George Alexandru <sarametgeorge AT gmail.com>,1
+Scott Marion <shmarion AT me.com>,1
+Shannon Jacobs <shanen AT alumni.rice.edu>,1
+Shao Zhi Zhao <zhaoshzh AT cn.ibm.com>,1
+Simon Brouwer <simon.o AT brousant.nl>,1
+Stackpole John D <jstackpo AT alum.mit.edu>,1
+Stefan Lindel <stefan AT famlindel.de>,1
+Stefan Ludwig <dipl-ing.ludwig AT web.de>,1
+Stephen Alrich Marshall <cluely AT gmail.com>,1
+Steve Allison <freetekg AT gmail.com>,1
+Steven Ball <bigoltexasboy78 AT yahoo.com>,1
+Subodh Asthana <asthana.subodh AT gmail.com>,1
+Super User <superuserlaptop AT gmail.com>,1
+TJ Frazier <tjfrazier AT openoffice.org>,1
+Tenille Brathwaite <tenille_brathwaite AT hotmail.com>,1
+Terry <terauck-aouser AT yahoo.com.au>,1
+Terry Crook <terrycrook AT earthlink.net>,1
+Thomas McFarland <thepersuaderiam AT gmail.com>,1
+Thomas Rothschild <thomas.rothschild AT ilw.uni-stuttgart.de>,1
+Thomas Walton <technutopia AT hotmail.com>,1
+Tobias Cortese <tobiascortese AT hotmail.com>,1
+Tom Cartwright <tom.cartwright AT hotmail.co.uk>,1
+Tomasz Wieczorek <wieczoorek AT gmail.com>,1
+Tony Stevenson <tony AT pc-tony.com>,1
+Uwe Fischer <uwefis AT googlemail.com>,1
+Vello Laanemaa <vello.laanemaa AT gmail.com>,1
+Veronica Cubilla <veronica.cubilla AT cubixlat.com>,1
+Wanda Phillips <wetcoastwriter AT me.com>,1
+Wilson Goh <wgoh AT allot.com>,1
+Xia Zhao <zhaoxia AT cn.ibm.com>,1
+Yuri Dario <yd AT os2power.com>,1
+alan tenore <alantenore AT att.net>,1
+aram harrow <harrow AT gmail.com>,1
+brian mullan <bmullan.mail AT gmail.com>,1
+cklsynt <cklsynt AT gmail.com>,1
+dan crocker <tankster2001d AT yahoo.com>,1
+dan roch <dan.gum.tree.11 AT gmail.com>,1
+debin lei <leidb AT apache.org>,1
+dryzen <drysler AT gmx.de>,1
+emanuel.almeida AT globmail.com.br,1
+flamin hotdog <flamin_hotdog AT hotmail.com>,1
+frankie lee <waterfrogi AT gmail.com>,1
+funny fanny <google4555 AT live.dk>,1
+gavin AT 16degrees.com.au,1
+gerard <gerard AT dehoenderkooi.nl>,1
+hs AT nachhilferunde.de,1
+ironmancopeland AT aol.com,1
+l x <lxnice123 AT gmail.com>,1
+lumen54 AT q.com,1
+marc.damestoy AT free.fr,1
+martin.appel AT idg.se,1
+nanoretro77 AT gmail.com,1
+online-werbung AT 24translate.de,1
+ravoori varan <ravoorivaran AT gmail.com>,1
+robweir AT cms.zones.apache.org, -- AT cms.zones.apache.org,
+	testing AT cms.zones.apache.org,
+	no need to apply patch <anonymous AT apache.org>,1
+ron.dawson AT gmail.com,1
+satyabrota kundu <satyacaluniv AT gmail.com>,1
+srinivas gopu <gopusrinivas AT gmail.com>,1
+tracy ann essoglou <taessoglou AT gmail.com>,1
+wawalovo <wawalovo AT gmail.com>,1
+william kenneweg <wkenneweg AT cablespeed.com>,1
+wkso AT comcast.net,1
+yue helen <helenyuehy AT gmail.com>,1
+zhangying tldyzem <tldyzem AT gmail.com>,1
+

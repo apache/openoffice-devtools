@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>Working with OpenOffice.org UNO components</title>
+    <link rel="stylesheet" href="nbdocs:/org/netbeans/modules/usersguide/ide.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<h2>Working with OpenOffice.org UNO components: Creating an Interface</h2>
+<p> <small><a href="#seealso">See Also</a>&nbsp; </small>
+
+<table border="0" cellpadding="0" cellspacing="0" summary="The left column contains each
+element in the UI. The right column contains detailed information about each element.">
+  <tr valign="top"> 
+    <td align="left" colspan="2">
+        Communication between UNO objects is based on object interfaces. The 
+        concept of interfaces is quite natural and frequently used in everyday 
+        life. Interfaces allow the creation of things that fit in with each 
+        other without requiring you to know all of the internal details about them. 
+        A power plug that fits into a standard socket or a one-size-fits-all working glove are 
+        simple examples of interfaces. They all work by standardizing the minimal conditions 
+        that must be met to make things work together.
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <hr align="center" width="80%">
+    </td>
+  </tr>
+  <tr> 
+    <td align="center">
+        <b>Properties</b>
+    </td>
+    <td>
+        <ul>
+            <li>Name: The name of the interface.</li>
+            <li>Package: The package structure.</li>
+            <li>Parent: The parent interface that this interface is derived from.
+            The default is com.sun.star.uno.XInterface.</li>
+        </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <hr align="center" width="80%">
+    </td>
+  </tr>
+  <tr> 
+    <td align="center">
+        <b>Functions</b>
+    </td>
+    <td>
+        <ul>
+            <li>Name: The name of the function.</li>
+            <li>ReturnValue: The value this function returns. It can be either a
+            simple type or an interface, etc. To return <i>arrays</i>, 
+            choose <b>[]</b> in the drop down box.</li>
+            <li>Exceptions: One or several exceptions this function might throw.</li>
+        </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <hr align="center" width="80%">
+    </td>
+  </tr>
+  <tr> 
+    <td align="center">
+        <b>Parameters</b>
+    </td>
+    <td>
+        <ul>
+            <li>Name: The name of the parameter</li>
+            <li>Type: The type of this parameter. The parameter can be either a
+            simple type or an interface, etc. To return <i>arrays</i>, 
+            choose <b>[]</b> in the drop down box.</li>
+        </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <hr align="center" width="80%">
+    </td>
+  </tr>
+  <tr> 
+    <td align="center">
+        <b>Buttons</b>
+    </td>
+    <td>
+        <ul>
+            <li>Add Function: Add a new function to the interface below the selected function.</li>
+            <li>Add Parameter: Add a new parameter to the selected function below the selected parameter.</li>
+            <li>Delete: Delete the selected function or parameter.</li>
+        </ul>
+    </td>
+  </tr>
+</table>
+
+<dl>
+  <dt><a name="seealso">See Also</a></dt>
+    <dd><a href="nbdocs:/org/openoffice/extensions/docs/overview-components.html">
+        Overview of OpenOffice.org Components</a></dd>
+        
+    <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+            <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/WritingUNO/Writing_UNO_Components">
+            <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Writing UNO Components</u></html>">
+            <param name="textFontSize" value="medium">
+            <param name="textColor" value="blue">
+        </object></dd>
+    <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+            <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/ProUNO/Java/Mapping_of_Interface_Types">
+            <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Mapping of Interface Types</u></html>">
+            <param name="textFontSize" value="medium">
+            <param name="textColor" value="blue">
+        </object></dd>
+</dl>
+</body>
+</html>
+

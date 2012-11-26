@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>OpenOffice.org Add-Ons</title>
+        <link rel="stylesheet" href="nbdocs:/org/netbeans/modules/usersguide/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>OpenOffice.org Add-Ons</h2>
+        <p> <small><a href="#seealso">See Also</a>&nbsp; </small>
+        <p>OpenOffice.org Add-Ons provide one or more functions through 
+        the user interface of OpenOffice.org. A typical Add-On is available 
+        as a UNO package (or component) that is easily deployed.
+        In addition to an ordinary UNO package, an Add-On package contains configuration files 
+        which specify the user interface, registration for a protocol scheme, and 
+        first-time instantiation. An Add-On will typically react on one or more commands
+        defined for the protocol of the Add-On.<br>
+<!-- self reference unnecessary       See for example
+        <a href="nbdocs:/org/openoffice/extensions/docs/overview-addons.html">Add-Ons</a>. -->
+        </p>
+        <p>The commands that are defined in an Add-On are available either in an menu,
+            in a toolbar, or in both a menu and a toolbar in OpenOffice.org. The <i>context</i>
+            of a command determines in which OpenOffice.org application
+            it will be visible. Some possible contexts are:
+            <ul>
+                <li>Chart</li>
+                <li>Draw</li>
+                <li>Spreadsheet</li>
+                <li>Writer</li>
+            </ul>
+          The context can be selected for every command. If you do not select a specific context, then your Add-On 
+          will be available in all contexts including the back-end window. If you select all contexts, then your Add-On
+          will be available in all contexts excluding the back-end window.<br>
+          You can use sub-menus and separators to organize the commands in the menu structure, and separators to organize the
+          commands in a toolbar.<br>
+        </p>
+        <p>
+        </p>
+        <h3>Using Add-Ons in OpenOffice.org</h3>
+        <p>After you have deployed the Add-On in an OpenOffice.org installation you can use it directly from the user interface. 
+        You will see the name of your new top-level menu in the OpenOffice.org menu bar.
+        When you click on the new menu item, the menu structure with the commands you defined will drop down.
+        A toolbar is shown containing the new commands for the current context.<br>
+        You must implement the calls to your commands in your main Java file with the actions that 
+        should happen when your command is selected.</p>
+    <dl>
+        <dt><a name="seealso">See Also</a></dt>
+        <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/WritingUNO/AddOns/Add-Ons">
+                <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Add-Ons</u></html>">
+                <param name="textFontSize" value="medium">
+                <param name="textColor" value="blue">
+            </object></dd>
+        <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+            <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/WritingUNO/Writing_UNO_Components">
+            <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Writing UNO Components</u></html>">
+            <param name="textFontSize" value="medium">
+            <param name="textColor" value="blue">
+        </object></dd>
+        <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+            <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/ProUNO/Professional_UNO">
+            <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Professional UNO</u></html>">
+            <param name="textFontSize" value="medium">
+            <param name="textColor" value="blue">
+        </object></dd>
+    </dl>
+</body>
+</html>
+

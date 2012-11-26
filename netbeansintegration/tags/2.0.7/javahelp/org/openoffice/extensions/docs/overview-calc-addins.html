@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>OpenOffice.org Calc Add-Ins</title>
+        <link rel="stylesheet" href="nbdocs:/org/netbeans/modules/usersguide/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>OpenOffice.org Calc Add-Ins</h2>
+        <p> <small><a href="#seealso">See Also</a>&nbsp; </small>
+        <p>OpenOffice.org Calc Add-Ins are special extensions for Calc in OpenOffice.org. Calc Add-Ins provide new built-in functions
+        for the spreadsheet application which can be used directly in spreadsheet documents, and they are
+        found in the function dialog box in the application. Add-Ins provide an easy way to add new functions
+        to the existing functions. For example, you can use Add-Ins to add specialized financial calculation 
+        functions to Calc.
+        </p>
+        <p>Add-Ins are created as UNO components that implement a special service provider interface for Add-Ins. The 
+        OpenOffice.org Calc Add-In project wizard abstracts from the specific UNO components and 
+        simplifies the task on the pure implementation of the new functions.<br>
+        The wizard helps to define all necessary information for new Add-In functions:
+        <dl>
+            <dt><b>Function Name</b></dt>
+            <dd>The implementation function name which is used in the UNOIDL interface definition, in the configuration
+            file to identify the node section for this function, and when you want to use the Add-In function 
+            programmatically.</dd>
+            <dt><b>Display Name</b></dt>
+            <dd>A human readable function or parameter name which is shown in the user interface of the function dialog box.
+            This name is localizable and it is common to specify at least an English name.</dd>
+            <dt><b>Description</b></dt>
+            <dd>A human readable description of the function or parameter that is shown in the user interface of the function 
+            dialog box. This description is localizable and it is common to specify at least an English description.</dd>
+            <dt><b>Category</b></dt>
+            <dd>The function dialog box categorizes the functions in different categories and you can select a
+            predefined category where the the new function should appear later in the function dialog box.</dd>
+            <dt><b>Category Display Name</b></dt>
+            <dd>The category display name is optional. You can only select from a list of predefined categories.
+            <!--In the future it is planned to support the definition of new categories and then the category 
+            display name will provide a localized display name for the new category.--></dd>
+            <dt><b>Compatibility Name</b></dt>
+            <dd>Compatibility names are localized names of Add-In functions that are used to import files from other 
+            applications. If, on import, a localized function name is read, this list of compatibility names is used to 
+            find the internal name of the function. For more information about compatibility names please read the 
+            appropriate section in the 
+            <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide">
+                <param name="text" value="<html><u>Developer's Guide</u></html>">
+                <param name="textFontSize" value="medium">
+                <param name="textColor" value="blue">
+            </object></dd>            
+            </dd>
+            <dt><b>Return Type</b></dt>
+            <dd>The return type of the Add-In function. The list provides only valid types. Add-In functions 
+            support only a subset of the UNOIDL types as return types.</dd>
+            <dt><b>Parameter Name</b></dt>
+            <dd>The implementation parameter name which is used in the UNOIDL interface definition. You can 
+            define a localized display name and a description for the parameter as well as for the function itself.</dd>
+            <dt><b>Parameter Type</b></dt>
+            <dd>The parameter type of an Add-In parameter. The list provides only valid types. Add-In functions 
+            only support a subset of the UNOIDL types as parameter types.</dd>
+        </dl>
+        </p>
+        <h3>Using Add-In functions in OpenOffice.org</h3>
+        <p>After you have deployed a Calc Add-In extension in an OpenOffice.org installation you can use it directly from the
+        built-in function dialog box in Calc.</p>
+        <p><img src="./images/usage_calc_addin.png"></p>
+        <p>Select an Add-In function and click Next. Follow the function wizard to parameterize the function and insert
+        the function into the open spreadsheet document.</p>
+        <p>Add-In functions can be used in the same way as the regular built-in functions. 
+        <!--and you can use them directly without the function dialog box in the common way.--></p>
+        <p><img src="./images/usage_calc_addin_direct.png"></p>
+        <dl>
+            <dt><a name="seealso">See Also</a></dt>
+            <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/Spreadsheets/Spreadsheet_Add-Ins">
+                <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Spreadsheet Calc Add-Ins</u></html>">
+                <param name="textFontSize" value="medium">
+                <param name="textColor" value="blue">
+            </object></dd>
+        <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+            <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/WritingUNO/Writing_UNO_Components">
+            <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Writing UNO Components</u></html>">
+            <param name="textFontSize" value="medium">
+            <param name="textColor" value="blue">
+        </object></dd>
+        <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+            <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/ProUNO/Professional_UNO">
+            <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Professional UNO</u></html>">
+            <param name="textFontSize" value="medium">
+            <param name="textColor" value="blue">
+        </object></dd>
+        </dl>
+    </body>
+</html>
+

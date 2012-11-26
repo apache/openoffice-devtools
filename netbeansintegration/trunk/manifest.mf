@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.openoffice.extensions/3
+OpenIDE-Module-Layer: org/openoffice/extensions/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/openoffice/extensions/Bundle.properties
+OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
+OpenIDE-Module-Install: org/openoffice/extensions/config/OOoModuleInstall.class
+OpenIDE-Module-Specification-Version: 3.0.0
+
+Name: org/openoffice/extensions/filetypes/odf/OdfDataLoader.class
+OpenIDE-Module-Class: Loader
+
+Name: org/openoffice/extensions/filetypes/unoidl/UnoIdlTypeDataLoader.class
+OpenIDE-Module-Class: Loader
+
+Name: org/openoffice/extensions/filetypes/xcs/XcsDataLoader.class
+Install-Before: org.openide.loaders.XMLDataObject, org.netbeans.modules.xml.core.XMLDataObject
+OpenIDE-Module-Class: Loader
+
+Name: org/openoffice/extensions/filetypes/xcu/XcuDataLoader.class
+Install-Before: org.openide.loaders.XMLDataObject, org.netbeans.modules.xml.core.XMLDataObject
+OpenIDE-Module-Class: Loader

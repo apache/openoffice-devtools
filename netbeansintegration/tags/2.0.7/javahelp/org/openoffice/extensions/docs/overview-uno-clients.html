@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>OpenOffice.org UNO Client Applications</title>
+        <link rel="stylesheet" href="nbdocs:/org/netbeans/modules/usersguide/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>OpenOffice.org UNO Client Applications</h2>
+        <p> <small><a href="#seealso">See Also</a>&nbsp; </small>
+        <p>An OpenOffice.org UNO client application is a Java application that provides access to the 
+        OpenOffice.org API. It uses OpenOffice.org functionality in its own applications via a remote connection. 
+        Typical use cases are office automation tasks like:
+        <ul>
+            <li>Creating new document based on a template.
+            <li>Extracting data from spreadsheet documents, and working with this data in the client application.
+        </ul>           
+        </p>This simple UNO client application requires a local OpenOffice.org installation on the computer where the application
+            is running because it communicates over a named pipe connection with the OpenOffice.org process. The application  
+            automatically starts a new OpenOffice.org process, or if an OpenOffice.org process is already running it connects 
+            to this process. If no further option is specified, the default OpenOffice.org installation is used.
+        </p>
+        <p>If you prefer to use a specific OpenOffice.org installation, you can overload the automatic search algorithm 
+        by specifying an office installation for the system property <b><i>com.sun.star.lib.loader.unopath</i></b>.<br>
+        For example:
+        <dl>
+            <dd><code>java -Dcom.sun.star.lib.loader.unopath=&quot;/opt/staroffice8/program&quot; -jar MyApplication.jar</code>
+        </dl>
+        </p>
+        <p>UNO client applications do not require a special environment to
+        run. The necessary environment is prepared automatically by using a classloader mechanism
+        that knows all the necessary API jar files in the OpenOffice.org installation.<br>
+        The application includes some precompiled class files and a Microsoft Windows specific dll from the OpenOffice.org SDK in the 
+        application jar file, and the manifest is extended to make use of a special loader mechanism. The dll is 
+        included to make the client application platform independent.
+        </p>
+        <p>Mainfest entries:<br>
+        <blockquote><code>
+            Main-Class: com.sun.star.lib.loader.Loader<br><br>
+            Name: com/sun/star/lib/loader/Loader.class<br>
+            Application-Class: TestMinimalComponent
+        </code></blockquote>
+        </p>
+        <p>Bundled class files and dll:<br>
+        <blockquote><code>
+            com/sun/star/lib/loader/Loader$CustomURLClassLoader.class<br>
+            com/sun/star/lib/loader/Loader.class<br>
+            com/sun/star/lib/loader/InstallationFinder$StreamGobbler.class<br>
+            com/sun/star/lib/loader/InstallationFinder.class<br>
+            com/sun/star/lib/loader/WinRegKey.class<br>
+            com/sun/star/lib/loader/WinRegKeyException.class<br>
+            win/unowinreg.dll
+        </code></blockquote>
+        </p>
+        <p>
+            Additional jar files that may be added standalone or as part of a library
+            are copied into the dist/lib folder of the project when the project is built.<br>
+            Excluded here are the OpenOffice.org jars that come with the OpenOffice.org library. As explained
+            earlier, these jars are alwayes taken from the local OpenOffice.org installation.
+        </p>
+
+        <dl>
+            <dt><a name="seealso">See Also</a></dt>
+            <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                  <param name="content" value="http://wiki.services.openoffice.org/wiki/OpenOffice_Simple_UNO_Client_Application_Project_Type">
+                  <param name="text" value="<html><u>OpenOffice.org Simple UNO CLient Application</u></html>">
+                  <param name="textFontSize" value="medium">
+                  <param name="textColor" value="blue">
+                </object></dd>
+        </dl>
+    </body>
+</html>
+

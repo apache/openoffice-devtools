@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+<!--    <attr name="SpringFramework\Templates\index.jsp\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\JSF\Page.jsp\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\JSF\PageFragment.jspf\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\JSP_Servlet\JSP.jsp\Content-Encoding" stringvalue="${encoding}"/>
+    <attr name="Templates\JSP_Servlet\JSPF.jspf\Content-Encoding" stringvalue="${encoding}"/>
+    <attr name="Templates\JSP_Servlet\JSPFX.jspf\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\JSP_Servlet\JSPX.jspx\Content-Encoding" stringvalue="${encoding}"/>
+    <attr name="Templates\JSP_Servlet\TagFile.tag\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\JSP_Servlet\TagFileF.tagf\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\JSP_Servlet\TagFileFX.tagf\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\JSP_Servlet\TagFileX.tagx\Content-Encoding" stringvalue="${encoding}"/>
+    <attr name="Templates\WebServices\JmakiTemplates.jsp\Content-Encoding" stringvalue="ISO-8859-1"/>
+    <attr name="Templates\WebServices\JmakiTestResourcesTable.jsp\Content-Encoding" stringvalue="UTF-8"/>
+    <attr name="org-netbeans-modules-web-jsf\welcomeJSF.jsp\Content-Encoding" stringvalue="__ENCODING__"/>
+    <attr name="org-netbeans-modules-web-struts\welcome.jsp\Content-Encoding" stringvalue="__ENCODING__"/> -->
+    <folder name="OptionsDialog">
+        <folder name="Advanced">
+            <file name="org-openoffice-extensions-config-ConfigurationAdvancedOption.instance"/>
+        </folder>
+        <folder name="PreviewExamples">
+            <folder name="text">
+                <file name="x-uno-idl" url="editors/unoidl/resources/IdlExample"/>
+            </folder>
+        </folder>        
+    </folder>
+    <folder name="Templates">
+<!--        <folder name="OpenOfficeorg">
+            <file name="registry">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.Bundle"/>
+                <attr name="instantiatingIterator" newvalue="org.openoffice.extensions.filetypes.registry_ui.RegistryWizardIterator"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="templateWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/filetypes/registry_ui/registry.html"/>
+            </file>
+        </folder> -->
+        <folder name="Project">
+            <folder name="org-openoffice-extensions">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.Bundle"/>
+                
+                <file name="UNOClientAppProject" url="projecttemplates/unoclientapplication/UNOClientAppProject.zip">
+                    <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.projecttemplates.unoclientapplication.Bundle"/>
+                    <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/unoclientapplication/unoclient.gif"/>
+                    <attr name="instantiatingIterator" methodvalue="org.openoffice.extensions.projecttemplates.unoclientapplication.UNOClientAppWizardIterator.createIterator"/>
+                    <attr name="instantiatingWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/unoclientapplication/UNOClientAppDescription.html"/>
+                    <attr name="template" boolvalue="true"/>
+                </file>
+                <file name="AddinProject" url="projecttemplates/calcaddin/AddinProject.zip">
+                    <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.projecttemplates.calcaddin.Bundle"/>
+                    <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/calcaddin/calcaddin.gif"/>
+                    <attr name="instantiatingIterator" methodvalue="org.openoffice.extensions.projecttemplates.calcaddin.AddinWizardIterator.createIterator"/>
+                    <attr name="instantiatingWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/calcaddin/AddinDescription.html"/>
+                    <attr name="template" boolvalue="true"/>
+                </file>
+                <file name="ComponentProject" url="projecttemplates/component/ComponentProject.zip">
+                    <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.projecttemplates.component.Bundle"/>
+                    <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/calcaddin/calcaddin.gif"/>
+                    <attr name="instantiatingIterator" methodvalue="org.openoffice.extensions.projecttemplates.component.ComponentWizardIterator.createIterator"/>
+                    <attr name="instantiatingWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/component/ComponentDescription.html"/>
+                    <attr name="template" boolvalue="true"/>
+                </file>
+                <file name="AddOnProject" url="projecttemplates/addon/AddOnProject.zip">
+                    <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.projecttemplates.addon.Bundle"/>
+                    <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/calcaddin/calcaddin.gif"/>
+                    <attr name="instantiatingIterator" methodvalue="org.openoffice.extensions.projecttemplates.addon.AddOnWizardIterator.createIterator"/>
+                    <attr name="instantiatingWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/projecttemplates/addon/AddOnDescription.html"/>
+                    <attr name="template" boolvalue="true"/>
+                </file>
+            </folder>         
+        </folder>
+        <folder name="org-openoffice-extensions">
+            <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.Bundle"/>
+            <!-- idl file wizard -->
+            <file name="idl">
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/org/openoffice/extensions/filetypes/unoidl/idlfile.png"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.unoidl.Bundle"/>
+                <attr name="instantiatingIterator" newvalue="org.openoffice.extensions.filetypes.unoidl.IdlWizardIterator"/>
+                <attr name="templateWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/filetypes/unoidl/UnoIdlDescription.html"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+            <!-- xcu file template -->
+            <file name="XcuTemplate.xcu" url="filetypes/xcu/XcuTemplate.xcu">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.xcu.Bundle"/>
+                <attr name="instantiatingIterator" newvalue="org.openoffice.extensions.filetypes.registry_ui.XcuWizardIterator"/>
+                <attr name="templateWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/filetypes/xcu/XcuDescription.html"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+            <!-- xcs file template -->
+            <file name="XcsTemplate.xcs" url="filetypes/xcs/XcsTemplate.xcs">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.xcs.Bundle"/>
+                <attr name="instantiatingIterator" newvalue="org.openoffice.extensions.filetypes.registry_ui.XcsWizardIterator"/>
+                <attr name="templateWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/filetypes/xcs/XcsDescription.html"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+            <!-- java implementation object -->
+            <file name="ImplObjectTemplate.java" url="filetypes/implobject/ImplObjectTemplate.java">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.implobject.Bundle"/>
+                <attr name="instantiatingIterator" newvalue="org.openoffice.extensions.filetypes.implobject.ImplObjectIterator"/>
+                <attr name="templateWizardURL" urlvalue="nbresloc:/org/openoffice/extensions/filetypes/implobject/ImplObjectDescription.html"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+        </folder>
+    </folder>
+    
+    <folder name="Actions">
+        <folder name="Build">
+            <file name="org-openoffice-extensions-filetypes-unoidl-actions-CompileFileAction.instance">
+                <attr name="instanceClass" stringvalue="org.openoffice.extensions.filetypes.unoidl.actions.CompileFileAction"/>
+            </file>
+        </folder> 
+        <!--        <folder name="Window">
+            <file name="org-openoffice-extensions-util-typebrowser-UnoIdlTypeBrowserAction.instance"/>
+        </folder> -->
+        <folder name="Edit">
+            <file name="org-openoffice-extensions-filetypes-odf-OpenWithOpenOffice.instance"/>
+        </folder>
+    </folder>
+    
+    <folder name="Editors">
+        <folder name="text">
+            <folder name="x-uno-idl">
+<!--                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.editors.unoidl.Bundle"/>
+                <folder name="NetBeans">
+                    <folder name="Defaults">
+                        <file name="coloring.xml" url="editors/unoidl/resources/NetBeans-Idl-fontsColors.xml">
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.editors.unoidl.Bundle"/>
+                        </file>
+                    </folder>
+                </folder> 
+                <folder name="CityLights">
+                    <folder name="Defaults">
+                        <file name="coloring.xml" url="editors/unoidl/resources/CityLights-Properties-fontsColors.xml">
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.editors.unoidl.Bundle"/>
+                        </file>
+                    </folder>
+                </folder> -->
+                <file name="language.nbs" url="filetypes/unoidl/language.nbs"/>
+<!--                <file name="Settings.settings" url="editors/unoidl/options/IdlOptions.settings"/>
+                <file name="EditorKit.instance">
+                    <attr name="instanceClass" stringvalue="org.openoffice.extensions.editors.unoidl.UnoIdlEditorKit"/>
+                </file> -->
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Navigator">
+        <folder name="Panels">
+            <folder name="text">
+                <folder name="x-uno-idl">
+                    <file name="org-netbeans-modules-languages-features-LanguagesNavigator.instance"/>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+    
+    <!--    <folder name="Menu">        
+        <folder name="Window">
+            <file name="UnoIdlTypeBrowserAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-openoffice-extensions-util-typebrowser-UnoIdlTypeBrowserAction.instance"/>
+            </file>
+        </folder>
+    </folder>  -->
+    <folder name="Loaders">
+        <folder name="text">
+            <folder name="x-uno-idl">
+                <folder name="Actions">
+                    <file name="org-openide-actions-OpenAction.instance"/>
+                    <attr name="org-openide-actions-OpenAction.instance/org-openide-actions-FileSystemAction.instance" boolvalue="true"/>
+                    <attr name="org-openide-actions-OpenAction.instance/org-openoffice-extensions-separatorBefore.instance" boolvalue="true"/>
+                    <file name="org-openoffice-extensions-separatorBefore.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="org-openoffice-extensions-separatorBefore.instance/org-openoffice-extensions-filetypes-unoidl-actions-CompileFileAction.shadow" boolvalue="true"/>
+                    <file name="org-openoffice-extensions-filetypes-unoidl-actions-CompileFileAction.shadow">
+                        <attr name="originalFile" stringvalue="Actions/Build/org-openoffice-extensions-filetypes-unoidl-actions-CompileFileAction.instance"/>
+                    </file>
+                    <attr name="org-openoffice-extensions-filetypes-unoidl-actions-CompileFileAction.shadow/org-openoffice-extensions-filetypes-unoidl-actions-separatorAfter.instance" boolvalue="true"/>
+                    <file name="org-openoffice-extensions-separatorAfter.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="org-openoffice-unoidleditor-separatorAfter.instance/org-openide-actions-FileSystemAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-FileSystemAction.instance"/>
+                    <attr name="org-openide-actions-FileSystemAction.instance/sep-1.instance" boolvalue="true"/>
+                    <file name="sep-1.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-1.instance/org-openide-actions-CutAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-CutAction.instance"/>
+                    <attr name="org-openide-actions-CutAction.instance/org-openide-actions-CopyAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-CopyAction.instance"/>
+                    <attr name="org-openide-actions-CopyAction.instance/sep-2.instance" boolvalue="true"/>
+                    <file name="sep-2.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-2.instance/org-openide-actions-DeleteAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-DeleteAction.instance"/>
+                    <attr name="org-openide-actions-DeleteAction.instance/org-openide-actions-RenameAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-RenameAction.instance"/>
+                    <attr name="org-openide-actions-RenameAction.instance/sep-3.instance" boolvalue="true"/>
+                    <file name="sep-3.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-3.instance/org-openide-actions-SaveAsTemplateAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-SaveAsTemplateAction.instance"/>
+                    <attr name="org-openide-actions-SaveAsTemplateAction.instance/sep-4.instance" boolvalue="true"/>
+                    <file name="sep-4.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-4.instance/org-openide-actions-ToolsAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-ToolsAction.instance"/>
+                    <attr name="org-openide-actions-ToolsAction.instance/org-openide-actions-PropertiesAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-PropertiesAction.instance"/>
+                </folder>
+            </folder>
+            <folder name="x-vnd.oasis.opendocument.text">
+                <folder name="Actions">
+                    <file name="org-openide-actions-CopyAction.instance">
+                        <attr name="position" intvalue="500"/>
+                    </file>
+                    <file name="org-openide-actions-CutAction.instance">
+                        <attr name="position" intvalue="400"/>
+                    </file>
+                    <file name="org-openide-actions-DeleteAction.instance">
+                        <attr name="position" intvalue="700"/>
+                    </file>
+                    <file name="org-openide-actions-FileSystemAction.instance">
+                        <attr name="position" intvalue="200"/>
+                    </file>
+<!--                    <file name="org-openide-actions-OpenAction.instance">
+                        <attr name="position" intvalue="100"/>
+                    </file> -->
+                    <file name="org-openide-actions-PropertiesAction.instance">
+                        <attr name="position" intvalue="1300"/>
+                    </file>
+                    <file name="org-openide-actions-RenameAction.instance">
+                        <attr name="position" intvalue="800"/>
+                    </file>
+<!--                    <file name="org-openide-actions-SaveAsTemplateAction.instance">
+                        <attr name="position" intvalue="1000"/>
+                    </file> -->
+                    <file name="org-openide-actions-ToolsAction.instance">
+                        <attr name="position" intvalue="1200"/>
+                    </file>
+                    <file name="org-openoffice-extensions-filetypes-odf-OpenWithOpenOffice-separatorAfter.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="175"/>
+                    </file>
+                    <file name="org-openoffice-extensions-filetypes-odf-OpenWithOpenOffice-separatorBefore.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="125"/>
+                    </file>
+                    <file name="org-openoffice-extensions-filetypes-odf-OpenWithOpenOffice.shadow">
+                        <attr name="originalFile" stringvalue="Actions/Edit/org-openoffice-extensions-filetypes-odf-OpenWithOpenOffice.instance"/>
+                        <attr name="position" intvalue="150"/>
+                    </file>
+                    <file name="sep-1.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="300"/>
+                    </file>
+                    <file name="sep-2.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="600"/>
+                    </file>
+                    <file name="sep-3.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="900"/>
+                    </file>
+                    <file name="sep-4.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="1100"/>
+                    </file>
+                </folder>
+            </folder>
+            <folder name="xcs+xml">
+                <folder name="Actions">
+                    <file name="org-openide-actions-OpenAction.instance"/>
+                    <attr name="org-openide-actions-OpenAction.instance/org-openide-actions-FileSystemAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-FileSystemAction.instance"/>
+                    <attr name="org-openide-actions-FileSystemAction.instance/sep-1.instance" boolvalue="true"/>
+                    <file name="sep-1.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-1.instance/org-openide-actions-CutAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-CutAction.instance"/>
+                    <attr name="org-openide-actions-CutAction.instance/org-openide-actions-CopyAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-CopyAction.instance"/>
+                    <attr name="org-openide-actions-CopyAction.instance/sep-2.instance" boolvalue="true"/>
+                    <file name="sep-2.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-2.instance/org-openide-actions-DeleteAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-DeleteAction.instance"/>
+                    <attr name="org-openide-actions-DeleteAction.instance/org-openide-actions-RenameAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-RenameAction.instance"/>
+                    <attr name="org-openide-actions-RenameAction.instance/sep-3.instance" boolvalue="true"/>
+                    <file name="sep-3.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-3.instance/org-openide-actions-SaveAsTemplateAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-SaveAsTemplateAction.instance"/>
+                    <attr name="org-openide-actions-SaveAsTemplateAction.instance/sep-4.instance" boolvalue="true"/>
+                    <file name="sep-4.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-4.instance/org-openide-actions-ToolsAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-ToolsAction.instance"/>
+                    <attr name="org-openide-actions-ToolsAction.instance/org-openide-actions-PropertiesAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-PropertiesAction.instance"/>
+                </folder>
+            </folder>
+            <folder name="xcu+xml">
+                <folder name="Actions">
+                    <file name="org-openide-actions-OpenAction.instance"/>
+                    <attr name="org-openide-actions-OpenAction.instance/org-openide-actions-FileSystemAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-FileSystemAction.instance"/>
+                    <attr name="org-openide-actions-FileSystemAction.instance/sep-1.instance" boolvalue="true"/>
+                    <file name="sep-1.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-1.instance/org-openide-actions-CutAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-CutAction.instance"/>
+                    <attr name="org-openide-actions-CutAction.instance/org-openide-actions-CopyAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-CopyAction.instance"/>
+                    <attr name="org-openide-actions-CopyAction.instance/sep-2.instance" boolvalue="true"/>
+                    <file name="sep-2.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-2.instance/org-openide-actions-DeleteAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-DeleteAction.instance"/>
+                    <attr name="org-openide-actions-DeleteAction.instance/org-openide-actions-RenameAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-RenameAction.instance"/>
+                    <attr name="org-openide-actions-RenameAction.instance/sep-3.instance" boolvalue="true"/>
+                    <file name="sep-3.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-3.instance/org-openide-actions-SaveAsTemplateAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-SaveAsTemplateAction.instance"/>
+                    <attr name="org-openide-actions-SaveAsTemplateAction.instance/sep-4.instance" boolvalue="true"/>
+                    <file name="sep-4.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="sep-4.instance/org-openide-actions-ToolsAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-ToolsAction.instance"/>
+                    <attr name="org-openide-actions-ToolsAction.instance/org-openide-actions-PropertiesAction.instance" boolvalue="true"/>
+                    <file name="org-openide-actions-PropertiesAction.instance"/>
+                </folder>
+            </folder>
+        </folder>
+    </folder>    
+    <folder name="Services">
+        <!--        <folder name="AutoupdateType">
+            <file name="org_openoffice_extensions_update_center.settings" url="org_openoffice_extensions_update_centerSettings.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.Bundle"/>
+                <attr name="enabled" boolvalue="true"/>
+                <attr name="url_key" stringvalue="org_openoffice_extensions_update_center"/>
+            </file>
+        </folder> -->
+        <folder name="JavaHelp">
+            <file name="extensions-helpset.xml" url="extensions-helpset.xml"/>
+        </folder>
+        <folder name="MIMEResolver">
+            <!-- <file name="ImplObjectResolver.xml" url="filetypes/implobject/ImplObjectResolver.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.implobject.Bundle"/>
+            </file> -->
+            <file name="OdfResolver.xml" url="filetypes/odf/OdfResolver.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.odf.Bundle"/>
+            </file>
+            <file name="UnoIdlTypeResolver.xml" url="filetypes/unoidl/UnoIdlTypeResolver.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.unoidl.Bundle"/>
+            </file>
+            <file name="XcsResolver.xml" url="filetypes/xcs/XcsResolver.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.xcs.Bundle"/>
+            </file>
+            <file name="XcuResolver.xml" url="filetypes/xcu/XcuResolver.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.openoffice.extensions.filetypes.xcu.Bundle"/>
+            </file>
+        </folder>
+    </folder>
+    <!--    <folder name="Windows2">
+          <folder name="Components">
+            <file name="UnoIdlTypeBrowserTopComponent.settings" url="util/typebrowser/UnoIdlTypeBrowserTopComponentSettings.xml"/>
+        </folder> 
+        <folder name="Modes">
+            <folder name="navigator">
+                <file name="UnoIdlTypeBrowserTopComponent.wstcref" url="util/typebrowser/UnoIdlTypeBrowserTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder> -->
+  
+    <folder name="Projects">
+        <!-- register lookup with project open hook -->
+        <folder name="org-netbeans-modules-java-j2seproject">
+            <folder name="Lookup">
+                <file name="org.openoffice.extensions.util.lookup.LookupProviderImpl.instance"/>
+            </folder>
+            <folder name="Nodes">
+                <file name="org.openoffice.extensions.util.nodes.ImportantFilesNodeFactoryImpl.instance">
+                    <attr name="position" intvalue="1200"/>
+                </file>            
+            </folder>
+           <folder name="Customizer">
+               <file name="Component.instance">
+                   <attr name="instanceCreate" methodvalue="org.openoffice.extensions.util.nodes.OOoCustomizerProvider.create"/>
+                   <attr name="position" intvalue="1200"/>
+               </file>
+           </folder>
+        </folder>
+        <!-- right click actions on own projects -->
+        <folder name="Actions">    
+            <file name="ownsep-1.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+            </file>
+            <attr name="ownsep-1.instance/org-openoffice-extensions-projecttemplates-actions-DebugAction.instance" boolvalue="true"/>
+            <file name="org-openoffice-extensions-projecttemplates-actions-DebugAction.instance"/>
+            <attr name="org-openoffice-extensions-projecttemplates-actions-DebugAction.instance/org-openoffice-extensions-projecttemplates-actions-DeployAndRunAction.instance" boolvalue="true"/>
+            <file name="org-openoffice-extensions-projecttemplates-actions-DeployAndRunAction.instance"/>
+            <attr name="org-openoffice-extensions-projecttemplates-actions-DeployAndRunAction.instance/org-openoffice-extensions-projecttemplates-actions-PackageAction.instance" boolvalue="true"/>
+            <file name="org-openoffice-extensions-projecttemplates-actions-PackageAction.instance"/>
+            <attr name="org-openoffice-extensions-projecttemplates-actions-PackageAction.instance/org-openoffice-extensions-projecttemplates-actions-OpenBrowser.instance" boolvalue="true"/>
+            <file name="org-openoffice-extensions-projecttemplates-actions-OpenBrowser.instance"/>
+            <attr name="org-openoffice-extensions-projecttemplates-actions-OpenBrowser.instance/ownsep-2.instance" boolvalue="true"/>
+            <file name="ownsep-2.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+            </file>
+<!--            <attr name="ownsep-2.instance/org-openoffice-extensions-projecttemplates-actions-UnoPropertiesAction.instance" boolvalue="true"/>
+            <file name="org-openoffice-extensions-projecttemplates-actions-UnoPropertiesAction.instance"/> -->
+        </folder>
+    </folder>
+</filesystem>

@@ -1,0 +1,5 @@
+ooextensions/src/**/Bundle.properties
+ooextensions/src/**/*.html
+ooextensions/javahelp/**/*.html
+ooextensions/javahelp/**/*.xml
+ooextensions/javahelp/**/*.gif

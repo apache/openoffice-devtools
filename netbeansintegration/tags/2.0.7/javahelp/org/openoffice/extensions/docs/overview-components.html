@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>OpenOffice.org UNO components</title>
+        <link rel="stylesheet" href="nbdocs:/org/netbeans/modules/usersguide/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>OpenOffice.org UNO components</h2>
+        <p> <small><a href="#seealso">See Also</a>&nbsp; </small>
+        <p>OpenOffice.org UNO components provide functional enhancements for an existing 
+        OpenOffice.org office installation. UNO components can provide completely new
+        functions for a specific functional area, or they can provide a new implementation for an existing set
+        of services and interfaces. UNO components are the common way to extend the functionality of OpenOffice.org.  
+        Specialized wizards can simplify the work for specfic service provider interfaces. For example
+        <a href="nbdocs:/org/openoffice/extensions/docs/overview-calc-addins.html">Calc Add-Ins</a> can be used to 
+        add specialized financial calculation functions to Calc.
+        </p>
+        <p>UNO components can be realized in different ways and different programming languages (see the
+        <a href="#seealso">references</a> below). The wizard is currently focused on Java technolgies. UNO components
+        are realized as normal J2SE class libraries where one class is identified to be the entry point for the UNO
+        component framework. This class provides information about newly implemented services, which are are like a 
+        contract that new instances or objects for this service must fullfill. This means that it should not matter which 
+        implementation you have for such a contract. All implementations should fullfill the contract according to the service
+        specification. The registration class supports the necessary entry points to create new instances 
+        for a specific implementation.<br>
+        The generated component skeletons implement service specific interfaces as well as interfaces that the UNO
+        framework requires.  All UNO components should implement these interfaces.
+        <dl>
+            <dt><b>XServiceInfo</b></dt>
+            <dd>This interface provides information about the supported/implemented service.</dd>
+            <dt><b>UNO component functions</b></dt>
+            <dd>These two methods must be implemented by any UNO component, and they provide necessary information
+            for the UNO component framework.<br>
+            <b>__getComponentFactory</b> returns a component specific factory to create new instances of this component<br>
+            <b>__writeRegistryServiceInfo</b> provides information about supported services and provides the relationship 
+            between the implementation and the service that is used by the UNO framework to instantiate the right 
+            implementation for this service.<br>
+            To be able to have more than one sinbgle implementation of one (or more) services, there are sspecialized file 
+            wizards to add service definitions and their implementations to the extension.
+            </dd>
+        </dl>
+        </p>
+        <h3>Using Components in OpenOffice.org</h3>
+        <p>Once you have deployed a new UNO component in an OpenOffice.org installation you can use it directly from any 
+        other code or in macros. You can simply instantiate a new instance via the global service manager. If you have
+        a new style service, you can call either the default constructor or a construcor defined in the 
+        service definition in UNOIDL.</p>
+        <p>For example:<br>
+            <code>XMyType xMT = org.openoffice.MyType.create(xContext);</code>
+        </p>
+        <dl>
+            <dt><a name="seealso">See Also</a></dt>
+            <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/WritingUNO/Writing_UNO_Components">
+                <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Writing UNO Components</u></html>">
+                <param name="textFontSize" value="medium">
+                <param name="textColor" value="blue">
+            </object></dd>
+            <dd><object classid="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                <param name="content" value="http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/ProUNO/Professional_UNO">
+                <param name="text" value="<html><u>OpenOffice.org Developer's Guide - Professional UNO</u></html>">
+                <param name="textFontSize" value="medium">
+                <param name="textColor" value="blue">
+            </object></dd>
+        </dl>
+    </body>
+</html>
+
