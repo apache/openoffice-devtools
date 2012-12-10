@@ -32,8 +32,6 @@ bzsoap = "https://issues.apache.org/ooo/xmlrpc.cgi"
 issue_pattern = "^\s*(?:re)?(?:fix)?\s*(?:for)?\s*(?:bug|issue|problem)?\s*#?i?([1-9][0-9][0-9][0-9]+)[#: ]"
 bugref_url = "https://issues.apache.org/ooo/show_bug.cgi?id="
 infoout_name = "izlist.htm"
-svnout_name = "tmp_svn2info_svnout.txt"
-bzout_name = "tmp_svn2info_bzout.txt"
 
 
 class Revision(object):
@@ -74,7 +72,6 @@ def get_svn_log( svnurl, revmin, revmax):
 
 	svncmd = "svn log -v -r%d:%d %s" % (revmin, revmax, svnurl)
 	svnout = Popen( svncmd, shell=True, stdout=PIPE).communicate()[0]
-	open( svnout_name, "wb").write( svnout.encode("utf-8"))
 	return svnout
 
 
@@ -165,7 +162,6 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 		htmlfile.write( "<h2>Issues addressed:</h2>\n<table border=\"0\">\n")
 		proxy = xmlrpclib.ServerProxy( bzsoap, verbose=False)
                 soaprc = proxy.Bug.get( {"ids" : bugid_map.keys()})
-		open( bzout_name, "wb").write( str(soaprc))
 		for bug in soaprc["bugs"]:
 			idnum = int( bug[ "id"])
 			bug_url = bugref_url + str(idnum)
@@ -235,7 +231,7 @@ def main(args):
 	revmax = int(args[3])
 
 	svnurl = "http://svn-master.apache.org/repos/asf/openoffice/%s" % (branchname)
-	svnout = open( svnout_name, "rb").read()
+	svnout = get_svn_log( svnurl, revmin, revmax):
 	revlist = parse_svn_log( svnout)
 	revs2info( infoout_name, revlist, svnurl, revmin, revmax)
 
