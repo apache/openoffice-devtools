@@ -124,7 +124,7 @@ def parse_svn_rev( s):
 				break
 			cdirs.append( m_dir.group(2))
 			s = s[ m_dir.end(2):]
-		s = s[1:]
+		s = s[2:]
 
 	# parse commit comment
 	line_re = re.compile( ".*?$", re.MULTILINE)
