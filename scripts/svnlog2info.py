@@ -23,24 +23,25 @@
 
 import sys
 import re
+import codecs
 import xmlrpclib
 from subprocess import Popen, PIPE
-
+from xml.dom.minidom import parseString
+from xml.sax.saxutils import escape, quoteattr
 
 # string constants to get the info for the Apache OpenOffice project
-bzsoap = "https://issues.apache.org/ooo/xmlrpc.cgi"
 issue_pattern = "^\s*(?:re)?(?:fix)?\s*(?:for)?\s*(?:bug|issue|problem)?\s*#?i?([1-9][0-9][0-9][0-9]+)[#: ]"
+bzsoap = "https://issues.apache.org/ooo/xmlrpc.cgi"
 bugref_url = "https://issues.apache.org/ooo/show_bug.cgi?id="
 infoout_name = "izlist.htm"
 
 
 class Revision(object):
 	"""Constructor for a Revision object"""
-	def __init__( self, revnum, author, revlog, dirs_changed):
+	def __init__( self, revnum, author, revlog):
 		self.revnum = revnum
 		self.author = author
 		self.log    = revlog
-		self.dirs_changed = dirs_changed
 		self.issue  = get_issue( revlog)
 
 
@@ -70,82 +71,32 @@ def get_svn_log( svnurl, revmin, revmax):
 		print "revision %d is out of range" % (revmax)
 		return None
 
-	svncmd = "svn log -v -r%d:%d %s" % (revmin, revmax, svnurl)
+	svncmd = "svn log --xml -r%d:%d %s" % (revmin, revmax, svnurl)
 	svnout = Popen( svncmd, shell=True, stdout=PIPE).communicate()[0]
 	return svnout
 
 
-def parse_svn_log( svnout):
-	"""Parse the output of the svn log command"""
+def parse_svn_log_xml( svnout):
+	"""Parse the output of the xml-formatted svn log command"""
 	all_revs = []
-	s = svnout
-	while True:
-		(s,rev) = parse_svn_rev( s)
-		if not rev:
-			break
-		all_revs.append( rev)
+
+	dom = parseString( svnout)
+	for log in dom.getElementsByTagName('logentry'):
+		revnum = int(log.getAttribute("revision"))
+		author = log.getElementsByTagName("author")[0].firstChild.nodeValue
+		comment = log.getElementsByTagName("msg")[0].firstChild.nodeValue
+		all_revs.append( Revision( revnum, author, comment))
+
 	return all_revs
-
-
-def parse_svn_rev( s):
-	"""Parse a revision from the svn log output"""
-	# parse the seperator line
-	sep_re = re.compile( "-----+")
-	sep_line = sep_re.match( s)
-	if not sep_line:
-		print "SVN revision log separator line not found: \"%s\"" % (s[0:80])
-		return (s, None)
-	s = s[ sep_line.end()+1:]
-	if len(s) == 0:
-		return (s, None)
-	# parse the revision line
-	# :r1418023 | jani | 2012-12-06 19:30:45 +0100 (Thu, 06 Dec 2012) | 2 lines
-	rev_pattern = "r(\d+) \| (\w+) \| .* \| (\d+) lines?\n"
-	rev_re = re.compile( rev_pattern, re.MULTILINE)
-	m_rev = rev_re.match( s)
-	if m_rev == None:
-		print( "SVN revision header line not found: \"%s\" !!!" % (s[:200]))
-		return (s, None)
-	revnum = int(m_rev.group(1))
-	author = m_rev.group(2)
-	linecnt = int(m_rev.group(3))
-	s = s[ m_rev.end():]
-
-	# parse changed dirs
-	cdirs = []
-	cpath_re = re.compile( "Changed paths?:\n", re.MULTILINE)
-	cpath_match = cpath_re.match( s)
-	if cpath_match:
-		s = s[ cpath_match.end():]
-		dir_re = re.compile( "\s+([MAD])\s+/?(.*?)$", re.MULTILINE)
-		while True:
-			m_dir = dir_re.match( s)
-			if m_dir == None:
-				break
-			cdirs.append( m_dir.group(2))
-			s = s[ m_dir.end(2):]
-		s = s[2:]
-
-	# parse commit comment
-	line_re = re.compile( ".*?$", re.MULTILINE)
-	idx = 0
-	while linecnt > 0:
-		linecnt -= 1
-		m_line = line_re.match(s,idx+1)
-		if m_line == None:
-			break
-		idx = m_line.end()
-	comment = s[:idx]
-	s = s[idx+2:]
-	return (s,Revision( revnum, author, comment, cdirs))
 
 
 def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 	"""Create a HTML file with infos about revision range and its referenced issues"""
 	# emit html header to the info file
-	htmlfile = open( htmlname, "wb")
+	htmlfile = codecs.open( htmlname, "wb", encoding='utf-8')
 	branchname = svnurl.split("/")[-1]
-	header = "<html><title>Annotated Log for r%d..r%d</title>\n" % (revmin, revmax)
+	header = "<html><head><meta charset=\"utf-8\"></head>\n"
+	header += "<title>Annotated Log for r%d..r%d</title>\n" % (revmin, revmax)
 	header += "<body><h1>Revisions %d..%d from <a href=\"%s\">%s</a></h1>\n" % (revmin, revmax, svnurl, branchname)
 	htmlfile.write( header)
 
@@ -156,7 +107,7 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 		if rev.issue:
 			if not rev.issue in bugid_map:
 				bugid_map[ rev.issue] = []
-			bugid_map[ rev.issue].append( rev.revnum)
+			bugid_map[ rev.issue].append( rev)
 		else:
 			other_revs.append( rev.revnum)
 
@@ -197,15 +148,16 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 			line += "<td>%s</td>" % (bug_type)
 			line += "<td>"
 			for r in bugid_map[ idnum]:
-				revurl = revurl_base % (r)
-				line += "<a href=\"%s\">c</a>" % (revurl)
+				revurl = revurl_base % (r.revnum)
+				revtitle = r.log.splitlines()[0]
+				line += "<a href=%s title=\"%s\">c</a>" % (revurl, quoteattr(revtitle))
 			line += "</td>"
 			line += "<td>%s</td>" % (bug_target)
 			line += "<td>%s</td>" % (bug_status)
 			line += "<td>"
 			if color:
 				line += "<font color=\"%s\">" % (color)
-			line += "%s" % (bug_desc.encode('utf-8', 'xmlcharrefreplace'))
+			line += escape( bug_desc)
 			if color:
 				line += "</font>"
 			line += "<td>"
@@ -224,7 +176,7 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 			revurl = revurl_base % (rev.revnum)
 			line += "<td><a href=\"%s\">r%d</a></td>" % (revurl, rev.revnum)
 			summary = rev.log.splitlines()[0]
-			line += "<td>%s</td>" % (summary.encode('utf-8'))
+			line += "<td>%s</td>" % (escape(summary))
 			line += "</tr>\n"
 			htmlfile.write( line)
 
@@ -248,7 +200,7 @@ def main(args):
 
 	svnurl = "http://svn.apache.org/repos/asf/openoffice/%s" % (branchname)
 	svnout = get_svn_log( svnurl, revmin, revmax)
-	revlist = parse_svn_log( svnout)
+	revlist = parse_svn_log_xml( svnout)
 	revs2info( infoout_name, revlist, svnurl, revmin, revmax)
 
 
