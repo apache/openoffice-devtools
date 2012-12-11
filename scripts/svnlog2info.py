@@ -88,7 +88,7 @@ def parse_svn_log( svnout):
 
 
 def parse_svn_rev( s):
-	"""Parse a revision from a svn log command"""
+	"""Parse a revision from the svn log output"""
 	# parse the seperator line
 	sep_re = re.compile( "-----+")
 	sep_line = sep_re.match( s)
@@ -109,7 +109,7 @@ def parse_svn_rev( s):
 	revnum = int(m_rev.group(1))
 	author = m_rev.group(2)
 	linecnt = int(m_rev.group(3))
-	s = s[ m_rev.end()+1:]
+	s = s[ m_rev.end():]
 
 	# parse changed dirs
 	cdirs = []
@@ -124,6 +124,7 @@ def parse_svn_rev( s):
 				break
 			cdirs.append( m_dir.group(2))
 			s = s[ m_dir.end(2):]
+		s = s[1:]
 
 	# parse commit comment
 	line_re = re.compile( ".*?$", re.MULTILINE)
@@ -169,6 +170,12 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 		type2prio = {"FEATURE":1, "ENHANCEMENT":2, "PATCH":3, "DEFECT":4, "TASK":5}
 		sorted_issues = sorted( soaprc["bugs"],
 			key = lambda b: type2prio[b["cf_bug_type"]]*1e9 + int(b["priority"][1:])*1e8 + int(b["id"]))
+		type2color = {
+			"F1":"#0F0", "F2":"#0C0", "F3":"#080", "F4":"#040", "F5":"#020",
+			"E1":"#0C8", "E2":"#0A6", "E3":"#084", "E4":"#063", "E5":"#042",
+			"D1":"#F00", "D2":"#C00", "D3":"#800", "D4":"#600", "D5":"#300",
+			"P1":"#00F", "P2":"#00C", "P3":"#008", "P4":"#006", "P5":"#003",
+			"T1":"#0FF", "T2":"#0CC", "T3":"#088", "T4":"#066", "T5":"#063"};
 		for bug in sorted_issues:
 			idnum = int( bug[ "id"])
 			bug_url = bugref_url + str(idnum)
@@ -176,27 +183,19 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 			bug_type = bug[ "cf_bug_type"]
 			bug_target = bug[ "target_milestone"]
 			bug_status = bug[ "resolution"]
-			priority = int(bug[ "priority"][1:])
+			priority = bug[ "priority"]
 
-			if bug_type == "DEFECT":
-				color = "#800"
-				if priority <= 2:
-					color = "#F00"
-			elif bug_type == "FEATURE":
-				color = "#0F0"
-			elif bug_type == "ENHANCEMENT":
-				color = "#080"
-			elif bug_type == "TASK":
-				color = "#008"
+			colortype = bug_type[0]+priority[1]
+			if colortype in type2color:
+				color = type2color[ colortype]
 			else:
 				color = None
 
 			line = "<tr>"
 			line += "<td><a href=\"%s\">#i%d#</a></td>" % (bug_url, idnum)
-			line += "<td>P%d</td>" % (priority)
+			line += "<td>%s</td>" % (priority)
 			line += "<td>%s</td>" % (bug_type)
 			line += "<td>"
-			print str(bugid_map[ idnum])
 			for r in bugid_map[ idnum]:
 				revurl = revurl_base % (r)
 				line += "<a href=\"%s\">c</a>" % (revurl)
