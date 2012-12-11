@@ -27,7 +27,7 @@ import xmlrpclib
 from subprocess import Popen, PIPE
 
 
-# string constants for the Apache OpenOffice project
+# string constants to get the info for the Apache OpenOffice project
 bzsoap = "https://issues.apache.org/ooo/xmlrpc.cgi"
 issue_pattern = "^\s*(?:re)?(?:fix)?\s*(?:for)?\s*(?:bug|issue|problem)?\s*#?i?([1-9][0-9][0-9][0-9]+)[#: ]"
 bugref_url = "https://issues.apache.org/ooo/show_bug.cgi?id="
@@ -153,16 +153,23 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 	other_revs = []
 	for rev in all_revs:
 		if rev.issue:
-			bugid_map[ rev.issue] = True
+			if not rev.issue in bugid_map:
+				bugid_map[ rev.issue] = []
+			bugid_map[ rev.issue].append( rev.revnum)
 		else:
 			other_revs.append( rev.revnum)
+
+	revurl_base = "http://svn.apache.org/viewvc?view=revision&revision=%d"
 
 	# emit info about issues referenced in revisions
 	if len(bugid_map):
 		htmlfile.write( "<h2>Issues addressed:</h2>\n<table border=\"0\">\n")
 		proxy = xmlrpclib.ServerProxy( bzsoap, verbose=False)
                 soaprc = proxy.Bug.get( {"ids" : bugid_map.keys()})
-		for bug in soaprc["bugs"]:
+		type2prio = {"FEATURE":1, "ENHANCEMENT":2, "PATCH":3, "DEFECT":4, "TASK":5}
+		sorted_issues = sorted( soaprc["bugs"],
+			key = lambda b: type2prio[b["cf_bug_type"]]*1e9 + int(b["priority"][1:])*1e8 + int(b["id"]))
+		for bug in sorted_issues:
 			idnum = int( bug[ "id"])
 			bug_url = bugref_url + str(idnum)
 			bug_desc = bug[ "summary"]
@@ -172,18 +179,26 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 			priority = int(bug[ "priority"][1:])
 
 			if bug_type == "DEFECT":
-				color = "#800000"
+				color = "#800"
 				if priority <= 2:
-					color = "#F00000"
+					color = "#F00"
 			elif bug_type == "FEATURE":
-				color = "#008000#"
+				color = "#080"
 			elif bug_type == "TASK":
-				color = "#000080#"
+				color = "#008"
+			else:
+				color = None
 
 			line = "<tr>"
 			line += "<td><a href=\"%s\">#i%d#</a></td>" % (bug_url, idnum)
-			line += "<td>%s</td>" % (bug_type)
 			line += "<td>P%d</td>" % (priority)
+			line += "<td>%s</td>" % (bug_type)
+			line += "<td>"
+			print str(bugid_map[ idnum])
+			for r in bugid_map[ idnum]:
+				revurl = revurl_base % (r)
+				line += "<a href=\"%s\">c</a>" % (revurl)
+			line += "</td>"
 			line += "<td>%s</td>" % (bug_target)
 			line += "<td>%s</td>" % (bug_status)
 			line += "<td>"
@@ -200,12 +215,12 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 
 	# emit info about other revisions
 	if len(other_revs):
-		htmlfile.write( "<h2>Other Commits:</h2>\n<table border=\"0\">\n")
+		htmlfile.write( "<h2>Commits without Issue References:</h2>\n<table border=\"0\">\n")
 		for rev in all_revs:
 			if rev.issue:
 				continue
 			line = "<tr>"
-			revurl = "http://svn-master.apache.org/viewvc?view=revision&revision=%d" % (rev.revnum)
+			revurl = revurl_base % (rev.revnum)
 			line += "<td><a href=\"%s\">r%d</a></td>" % (revurl, rev.revnum)
 			summary = rev.log.splitlines()[0]
 			line += "<td>%s</td>" % (summary.encode('utf-8'))
@@ -230,8 +245,8 @@ def main(args):
 	revmin = int(args[2])
 	revmax = int(args[3])
 
-	svnurl = "http://svn-master.apache.org/repos/asf/openoffice/%s" % (branchname)
-	svnout = get_svn_log( svnurl, revmin, revmax):
+	svnurl = "http://svn.apache.org/repos/asf/openoffice/%s" % (branchname)
+	svnout = get_svn_log( svnurl, revmin, revmax)
 	revlist = parse_svn_log( svnout)
 	revs2info( infoout_name, revlist, svnurl, revmin, revmax)
 
