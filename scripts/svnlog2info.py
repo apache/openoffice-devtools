@@ -183,6 +183,8 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 				if priority <= 2:
 					color = "#F00"
 			elif bug_type == "FEATURE":
+				color = "#0F0"
+			elif bug_type == "ENHANCEMENT":
 				color = "#080"
 			elif bug_type == "TASK":
 				color = "#008"
