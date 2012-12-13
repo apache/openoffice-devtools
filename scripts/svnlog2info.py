@@ -90,7 +90,7 @@ def parse_svn_log_xml( svnout):
 	return all_revs
 
 
-def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
+def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
 	"""Create a HTML file with infos about revision range and its referenced issues"""
 	# emit html header to the info file
 	htmlfile = codecs.open( htmlname, "wb", encoding='utf-8')
@@ -144,16 +144,20 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 
 			line = "<tr>"
 			line += "<td><a href=\"%s\">#i%d#</a></td>" % (bug_url, idnum)
-			line += "<td>%s</td>" % (priority)
+			if detail_level >= 5:
+				line += "<td>%s</td>" % (priority)
 			line += "<td>%s</td>" % (bug_type)
-			line += "<td>"
-			for r in bugid_map[ idnum]:
-				revurl = revurl_base % (r.revnum)
-				revtitle = r.log.splitlines()[0]
-				line += "<a href=\"%s\" title=%s>c</a>" % (revurl, quoteattr(revtitle))
-			line += "</td>"
-			line += "<td>%s</td>" % (bug_target)
-			line += "<td>%s</td>" % (bug_status)
+			if detail_level >= 9:
+				line += "<td>"
+				for r in bugid_map[ idnum]:
+					revurl = revurl_base % (r.revnum)
+					revtitle = r.log.splitlines()[0]
+					line += "<a href=\"%s\" title=%s>c</a>" % (revurl, quoteattr(revtitle))
+				line += "</td>"
+			if detail_level >= 7:
+				line += "<td>%s</td>" % (bug_target)
+				line += "<td>%s</td>" % (bug_status)
+
 			line += "<td>"
 			if color:
 				line += "<font color=\"%s\">" % (color)
@@ -167,7 +171,7 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 		htmlfile.write( "</table>\n")
 
 	# emit info about other revisions
-	if len(other_revs):
+	if len(other_revs) and (detail_level >= 6):
 		htmlfile.write( "<h2>Commits without Issue References:</h2>\n<table border=\"0\">\n")
 		for rev in all_revs:
 			if rev.issue:
@@ -191,17 +195,28 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 
 
 def main(args):
-	if len(args) != 4:
-		print "Usage: " + args[0] + "branchname minrev maxrev"
+	if (len(args) < 4) or (5 < len(args)):
+		print "Usage: " + args[0] + "branchname minrev maxrev [enduser|developer]"
 		sys.exit(1)
 	branchname = args[1]
 	revmin = int(args[2])
 	revmax = int(args[3])
 
+	if len(args) >= 5:
+		audience = args[4]
+	else:
+		audience = "developer"
+
+	audience2verbosity = {"enduser":1, "developer":9}
+	if audience not in audience2verbosity:
+		print "Audience \"%s\" not known! Only \"%s\" can be selected." % (audience,str(audience2verbosity.keys()))
+		sys.exit(2)
+	detail_level = audience2verbosity[ audience]
+
 	svnurl = "http://svn.apache.org/repos/asf/openoffice/%s" % (branchname)
 	svnout = get_svn_log( svnurl, revmin, revmax)
 	revlist = parse_svn_log_xml( svnout)
-	revs2info( infoout_name, revlist, svnurl, revmin, revmax)
+	revs2info( infoout_name, detail_level, revlist, svnurl, revmin, revmax)
 
 
 if __name__ == "__main__":
