@@ -150,7 +150,7 @@ def revs2info( htmlname, all_revs, svnurl, revmin, revmax):
 			for r in bugid_map[ idnum]:
 				revurl = revurl_base % (r.revnum)
 				revtitle = r.log.splitlines()[0]
-				line += "<a href=%s title=\"%s\">c</a>" % (revurl, quoteattr(revtitle))
+				line += "<a href=\"%s\" title=%s>c</a>" % (revurl, quoteattr(revtitle))
 			line += "</td>"
 			line += "<td>%s</td>" % (bug_target)
 			line += "<td>%s</td>" % (bug_status)
