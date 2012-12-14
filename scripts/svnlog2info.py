@@ -63,25 +63,14 @@ def get_issue( revlog):
 	return issue_id
 
 
-def get_svn_log( svnurl, revmin, revmax):
+def get_svn_log( svnurl, revmin_name, revmax_name):
 	"""Run the svn log command for the requested revision range"""
-	# check input arguments
-	if int(revmin) > int(revmax):
-		print "start revision %d must be less than end revision %d!" % (revmin, revmax)
-		return None
-
-	revmin_limit = 1162288
-	revmax_limit = 3000000
-	if revmin < revmin_limit:
-		print "revision %d is out of range" % (revmin)
-		return None
-	if revmax_limit < revmax:
-		print "revision %d is out of range" % (revmax)
-		return None
-
-	svncmd = "svn log --xml -r%d:%d %s" % (revmin, revmax, svnurl)
-	svnout = Popen( svncmd, shell=True, stdout=PIPE).communicate()[0]
-	return svnout
+	svncmd = "svn log --xml -r%s:%s %s" % (revmin_name, revmax_name, svnurl)
+	svnproc = Popen( svncmd, shell=True, stdout=PIPE, close_fds=True)
+	svnout = svnproc.communicate()
+	if svnproc.returncode != 0:
+		raise Exception( "SVN LOG failure %d for \"%s\" with \"%s\"" % (svnproc.returncode,svncmd,svnout[1]))
+	return svnout[0]
 
 
 def parse_svn_log_xml( svnout):
@@ -98,14 +87,16 @@ def parse_svn_log_xml( svnout):
 	return all_revs
 
 
-def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
+def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_name):
 	"""Create a HTML file with infos about revision range and its referenced issues"""
 	# emit html header to the info file
 	htmlfile = codecs.open( htmlname, "wb", encoding='utf-8')
 	branchname = svnurl.split("/")[-1]
 	header = "<html><head><meta charset=\"utf-8\"></head>\n"
-	header += "<title>Annotated Log for r%d..r%d</title>\n" % (revmin, revmax)
-	header += "<body><h1>Revisions %d..%d from <a href=\"%s\">%s</a></h1>\n" % (revmin, revmax, svnurl, branchname)
+	revmin_number = all_revs[+0].revnum
+	revmax_number = all_revs[-1].revnum
+	header += "<title>Annotated Log for %s..%s</title>\n" % (revmin_name, revmax_name)
+	header += "<body><h1>Revisions %d..%d from <a href=\"%s\">%s</a></h1>\n" % (revmin_number, revmax_number, svnurl, branchname)
 	htmlfile.write( header)
 
 	# split revisions with issue references from other revisions
@@ -215,8 +206,8 @@ def main(args):
 		print "Usage: " + args[0] + "[svnurl|branchname] minrev maxrev [enduser|developer]"
 		sys.exit(1)
 	svnurl = args[1]
-	revmin = int(args[2])
-	revmax = int(args[3])
+	revmin = args[2]
+	revmax = args[3]
 
 	if len(args) >= 5:
 		audience = args[4]
