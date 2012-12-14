@@ -16,10 +16,14 @@
 # limitations under the License.
 #
 
-# Svn2Info - Create a HTML file with info about a revision range
+# Svn2Info - Create a HTML file with info about a revision range and connect it with a Bugzilla infos
+#
+# Usage:
+#	python svnlog2info.py [svnurl|branchname] minrev maxrev [enduser|developer]
 #
 # Example:
-#	python svnlog2info.py trunk 1405864 1418409
+#	python svnlog2info.py trunk 1405864 1418409 developer
+#	python svnlog2info.py http://svn.apache.org/repos/asf/openoffice/trunk 1405864 1418409 enduser
 
 import sys
 import re
@@ -29,10 +33,14 @@ from subprocess import Popen, PIPE
 from xml.dom.minidom import parseString
 from xml.sax.saxutils import escape, quoteattr
 
-# string constants to get the info for the Apache OpenOffice project
-issue_pattern = "^\s*(?:re)?(?:fix)?\s*(?:for)?\s*(?:bug|issue|problem)?\s*#?i?([1-9][0-9][0-9][0-9]+)[#: ]"
+# string constants specific to the Apache OpenOffice project
+# adjust them to your project's needs
+svn_default_root_url = "http://svn.apache.org/repos/asf/openoffice/"
+svn_viewrev_url_base = "http://svn.apache.org/viewvc?view=revision&revision=%d"
 bzsoap = "https://issues.apache.org/ooo/xmlrpc.cgi"
 bugref_url = "https://issues.apache.org/ooo/show_bug.cgi?id="
+
+issue_pattern = "^\s*(?:re)?(?:fix)?\s*(?:for)?\s*(?:bug|issue|problem)?\s*#?i?([1-9][0-9][0-9][0-9]+)[#: ]"
 infoout_name = "izlist.htm"
 
 
@@ -111,10 +119,8 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
 		else:
 			other_revs.append( rev.revnum)
 
-	revurl_base = "http://svn.apache.org/viewvc?view=revision&revision=%d"
-
 	# emit info about issues referenced in revisions
-	if len(bugid_map):
+	if len(bugid_map) and bzsoap:
 		htmlfile.write( "<h2>Issues addressed:</h2>\n<table border=\"0\">\n")
 		proxy = xmlrpclib.ServerProxy( bzsoap, verbose=False)
                 soaprc = proxy.Bug.get( {"ids" : bugid_map.keys()})
@@ -129,7 +135,8 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
 			"T1":"#0FF", "T2":"#0CC", "T3":"#088", "T4":"#066", "T5":"#063"};
 		for bug in sorted_issues:
 			idnum = int( bug[ "id"])
-			bug_url = bugref_url + str(idnum)
+			if bugref_url:
+				bug_url = bugref_url + str(idnum)
 			bug_desc = bug[ "summary"]
 			bug_type = bug[ "cf_bug_type"]
 			bug_target = bug[ "target_milestone"]
@@ -143,14 +150,17 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
 				color = None
 
 			line = "<tr>"
-			line += "<td><a href=\"%s\">#i%d#</a></td>" % (bug_url, idnum)
+			if bug_url:
+				line += "<td><a href=\"%s\">#i%d#</a></td>" % (bug_url, idnum)
+			else:
+				line += "<td>#i%d#</td>" % (idnum)
 			if detail_level >= 5:
 				line += "<td>%s</td>" % (priority)
 			line += "<td>%s</td>" % (bug_type)
 			if detail_level >= 9:
 				line += "<td>"
 				for r in bugid_map[ idnum]:
-					revurl = revurl_base % (r.revnum)
+					revurl = svn_viewrev_url_base % (r.revnum)
 					revtitle = r.log.splitlines()[0]
 					line += "<a href=\"%s\" title=%s>c</a>" % (revurl, quoteattr(revtitle))
 				line += "</td>"
@@ -177,8 +187,13 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
 			if rev.issue:
 				continue
 			line = "<tr>"
-			revurl = revurl_base % (rev.revnum)
-			line += "<td><a href=\"%s\">r%d</a></td>" % (revurl, rev.revnum)
+
+			if svn_viewrev_url_base:
+				revurl = svn_viewrev_url_base % (rev.revnum)
+				line += "<td><a href=\"%s\">r%d</a></td>" % (revurl, rev.revnum)
+			else:
+				line += "<td>r%d</td>" % (rev.revnum)
+
 			summary = rev.log.splitlines()[0]
 			line += "<td>%s</td>" % (escape(summary))
 			line += "</tr>\n"
@@ -188,6 +203,7 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
 
 	# emit html footer to the info file
 	htmlfile.write( "</body></html>\n")
+
 	# print summary of the HTML file created
 	print "Processed %d revisions" % (len(all_revs))
 	print "Found %d issues referenced" % (len(bugid_map))
@@ -196,9 +212,9 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin, revmax):
 
 def main(args):
 	if (len(args) < 4) or (5 < len(args)):
-		print "Usage: " + args[0] + "branchname minrev maxrev [enduser|developer]"
+		print "Usage: " + args[0] + "[svnurl|branchname] minrev maxrev [enduser|developer]"
 		sys.exit(1)
-	branchname = args[1]
+	svnurl = args[1]
 	revmin = int(args[2])
 	revmax = int(args[3])
 
@@ -213,7 +229,10 @@ def main(args):
 		sys.exit(2)
 	detail_level = audience2verbosity[ audience]
 
-	svnurl = "http://svn.apache.org/repos/asf/openoffice/%s" % (branchname)
+	full_url_re = re.compile( "https?://")
+	if not full_url_re.match( svnurl):
+		svnurl = svn_default_root_url + svnurl
+
 	svnout = get_svn_log( svnurl, revmin, revmax)
 	revlist = parse_svn_log_xml( svnout)
 	revs2info( infoout_name, detail_level, revlist, svnurl, revmin, revmax)
