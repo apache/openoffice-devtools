@@ -91,6 +91,29 @@ def parse_svn_log_xml( svnout):
 	return all_revs
 
 
+def get_bug_details( bugs_to_get):
+	proxy = xmlrpclib.ServerProxy( bzsoap, verbose=False)
+	# try to get all bug details at once
+	try:
+		soaprc = proxy.Bug.get( {"ids" : bugs_to_get})
+		return soaprc
+	except xmlrpclib.Fault as err:
+		print( err)
+		print( "Problem getting all issue details at once. Retrying each issue individually.")
+	# getting the bug details individually
+	soaprc = {"bugs":[], "faults":[]}
+	for one_id in bugs_to_get:
+		try:
+			one_bug = proxy.Bug.get( {"ids":[one_id]})
+			soaprc["bugs"].extend( one_bug["bugs"])
+		except xmlrpclib.Fault as err:
+			print( err)
+			print( "ignoring #i%d#" % (one_id))
+			soaprc["faults"].append( one_id)
+
+	return soaprc
+
+
 def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_name):
 	"""Create a HTML file with infos about revision range and its referenced issues"""
 	# emit html header to the info file
@@ -117,11 +140,12 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 	# emit info about issues referenced in revisions
 	if len(bugid_map) and bzsoap:
 		htmlfile.write( "<h2>Issues addressed:</h2>\n<table border=\"0\">\n")
-		proxy = xmlrpclib.ServerProxy( bzsoap, verbose=False)
-                soaprc = proxy.Bug.get( {"ids" : bugid_map.keys()})
+
+		soaprc = get_bug_details( bugid_map.keys())
 		type2prio = {"FEATURE":1, "ENHANCEMENT":2, "PATCH":3, "DEFECT":4, "TASK":5}
 		sorted_issues = sorted( soaprc["bugs"],
 			key = lambda b: type2prio[b["cf_bug_type"]]*1e9 + int(b["priority"][1:])*1e8 + int(b["id"]))
+
 		type2color = {
 			"F1":"#0F0", "F2":"#0C0", "F3":"#080", "F4":"#040", "F5":"#020",
 			"E1":"#0C8", "E2":"#0A6", "E3":"#084", "E4":"#063", "E5":"#042",
