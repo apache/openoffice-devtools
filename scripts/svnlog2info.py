@@ -81,7 +81,11 @@ def parse_svn_log_xml( svnout):
 	for log in dom.getElementsByTagName('logentry'):
 		revnum = int(log.getAttribute("revision"))
 		author = log.getElementsByTagName("author")[0].firstChild.nodeValue
-		comment = log.getElementsByTagName("msg")[0].firstChild.nodeValue
+		cmtnode = log.getElementsByTagName("msg")[0].firstChild
+		if cmtnode:	
+			comment = cmtnode.nodeValue
+		else:
+			comment = "UNCOMMENTED CHANGE"
 		all_revs.append( Revision( revnum, author, comment))
 
 	return all_revs
@@ -203,7 +207,7 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 
 def main(args):
 	if (len(args) < 4) or (5 < len(args)):
-		print "Usage: " + args[0] + "[svnurl|branchname] minrev maxrev [enduser|developer]"
+		print "Usage: " + args[0] + " [svnurl|branchname] minrev maxrev [enduser|developer]"
 		sys.exit(1)
 	svnurl = args[1]
 	revmin = args[2]
