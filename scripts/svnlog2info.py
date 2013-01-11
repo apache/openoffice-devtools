@@ -104,12 +104,13 @@ def get_bug_details( bugs_to_get):
 	soaprc = {"bugs":[], "faults":[]}
 	for one_id in bugs_to_get:
 		try:
-			one_bug = proxy.Bug.get( {"ids":[one_id]})
-			soaprc["bugs"].extend( one_bug["bugs"])
+			one_bug = proxy.Bug.get( {"ids":[one_id]})["bugs"][0]
 		except xmlrpclib.Fault as err:
+			one_bug = {'id':one_id, "summary":err.faultString[:32], 'priority':'P3', 'cf_bug_type':'UNKNOWN', 'resolution':'UNKNOWN', 'target_milestone':"UNKNOWN"}
 			print( err)
 			print( "ignoring #i%d#" % (one_id))
 			soaprc["faults"].append( one_id)
+		soaprc["bugs"].append( one_bug.copy())
 
 	return soaprc
 
@@ -142,7 +143,7 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 		htmlfile.write( "<h2>Issues addressed:</h2>\n<table border=\"0\">\n")
 
 		soaprc = get_bug_details( bugid_map.keys())
-		type2prio = {"FEATURE":1, "ENHANCEMENT":2, "PATCH":3, "DEFECT":4, "TASK":5}
+		type2prio = {"FEATURE":1, "ENHANCEMENT":2, "PATCH":3, "DEFECT":4, "TASK":5, "UNKNOWN":9}
 		sorted_issues = sorted( soaprc["bugs"],
 			key = lambda b: type2prio[b["cf_bug_type"]]*1e9 + int(b["priority"][1:])*1e8 + int(b["id"]))
 
