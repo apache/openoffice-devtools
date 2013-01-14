@@ -169,11 +169,12 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 			else:
 				color = None
 
+			idstr = ("#i%d#" if (detail_level >= 3) else "%d") % (idnum)
 			line = "<tr>"
 			if bug_url:
-				line += "<td><a href=\"%s\">#i%d#</a></td>" % (bug_url, idnum)
+				line += "<td><a href=\"%s\">%s</a></td>" % (bug_url, idstr)
 			else:
-				line += "<td>#i%d#</td>" % (idnum)
+				line += "<td>%s</td>" % (idstr)
 			if detail_level >= 5:
 				line += "<td>%s</td>" % (priority)
 			line += "<td>%s</td>" % (bug_type)
