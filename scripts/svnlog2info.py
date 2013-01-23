@@ -123,8 +123,10 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 	header = "<html><head><meta charset=\"utf-8\"></head>\n"
 	revmin_number = all_revs[+0].revnum
 	revmax_number = all_revs[-1].revnum
+	revmin_url = svn_viewrev_url_base % (revmin_number)
+	revmax_url = svn_viewrev_url_base % (revmax_number)
 	header += "<title>Annotated Log for %s..%s</title>\n" % (revmin_name, revmax_name)
-	header += "<body><h1>Revisions %d..%d from <a href=\"%s\">%s</a></h1>\n" % (revmin_number, revmax_number, svnurl, branchname)
+	header += "<body><h1>Revisions <a href=\"%s\">%d</a>..<a href=\"%s\">%d</a> from <a href=\"%s\">%s</a></h1>\n" % (revmin_url, revmin_number, revmax_url, revmax_number, svnurl, branchname)
 	htmlfile.write( header)
 
 	# split revisions with issue references from other revisions
