@@ -1,0 +1,1 @@
+This extension implements a component that listens for printing events.
