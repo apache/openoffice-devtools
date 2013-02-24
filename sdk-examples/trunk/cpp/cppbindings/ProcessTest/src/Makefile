@@ -21,7 +21,7 @@
 
 # On *nix can be overridden with
 # make PRJ=$OO_SDK_HOME
-PRJ=../../../..
+PRJ=../../../../..
 SETTINGS=$(PRJ)/settings
 
 include $(SETTINGS)/settings.mk
