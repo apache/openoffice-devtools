@@ -22,6 +22,9 @@
 #include "macros.hxx"
 #include "Listener.hxx"
 
+#include <com/sun/star/view/XPrintJob.hpp>
+#include <com/sun/star/frame/XModel2.hpp>
+
 using namespace ::com::sun::star;
 using namespace sdk_job_print_listener;
 
@@ -65,6 +68,21 @@ throw ( css::uno::RuntimeException )
             OSL_TRACE( "PrintListener::printJobEvent - JOB_SPOOLING_FAILED" );
             break;
     }
+
+    uno::Reference< view::XPrintJob > xPrintJob(
+        aPrintJobEvent.Source, uno::UNO_QUERY );
+    if ( !xPrintJob.is() )
+        return;
+
+    // Before Apache OpenOffice 4.0 this sequence was empty
+    uno::Sequence< beans::PropertyValue > aPrintOps(
+        xPrintJob->getPrintOptions() );
+    for (const beans::PropertyValue *pPropVal = aPrintOps.getConstArray(),
+            *pEnd = pPropVal + aPrintOps.getLength();
+            pPropVal != pEnd; pPropVal++ )
+    {
+        OSL_TRACE( "\"%s\"", U2C( pPropVal->Name ) );
+    }
 #else
     (void) aPrintJobEvent;
 #endif
@@ -80,6 +98,13 @@ throw ( uno::RuntimeException )
     if ( rEvent.EventName.equalsAsciiL( RTL_CONSTASCII_STRINGPARAM ( "OnPrint" ) ) )
     {
         // Do something...
+        uno::Reference< frame::XModel2 > xModel( rEvent.Source, uno::UNO_QUERY );
+        uno::Reference< frame::XController2 > xController( rEvent.ViewController );
+        uno::Any aSupplement = rEvent.Supplement;
+
+        OSL_ENSURE( xModel.is(), "PrintListener::documentEventOccured - Source != XModel");
+        OSL_ENSURE( xController.is(), "PrintListener::documentEventOccured - No XController!");
+        OSL_TRACE( "Supplement is dummy? ", !aSupplement.hasValue() ? "yes" : "no" );
     }
 }
 
