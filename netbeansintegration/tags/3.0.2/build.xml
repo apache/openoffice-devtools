@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--**************************************************************
+ * 
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ * 
+ *************************************************************-->
+<!-- You may freely edit this file. See harness/README in the NetBeans platform -->
+<!-- for some information on what you could do (e.g. targets to override). -->
+<!-- If you delete this file and reopen the project it will be recreated. -->
+<project name="org.openoffice.extensions" default="netbeans" basedir=".">
+    <description>Builds, tests, and runs the project org.openoffice.extensions.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <import file="project_templates/build_project_templates.xml"/>
+    
+<!--    <target name="javahelp" depends="init" if="has.javahelp">
+        <property name="jhall.jar" location="${harness.dir}/jsearch-2.0_05.jar"/>
+        <available property="jhall.jar.exists" file="${jhall.jar}"/>
+        <fail unless="jhall.jar.exists">You must set 'jhall.jar' (e.g. in private.properties) to the location of jsearch.jar from a JavaHelp distribution</fail>
+        <mkdir dir="${build.javahelp.dir}/${javahelp.base}/${javahelp.search}"/>
+        <copy todir="${build.javahelp.dir}">
+            <fileset dir="javahelp"/>
+        </copy>
+        
+        <jhindexer basedir="${build.javahelp.dir}/${javahelp.base}"
+                   db="${build.javahelp.dir}/${javahelp.base}/${javahelp.search}">
+            <classpath>
+                <pathelement location="${jhall.jar}"/>
+            </classpath>
+            <include name="**/*.html"/>
+            <exclude name="ja/**"/>
+            <exclude name="zh_CN/**"/>
+            <exclude name="${javahelp.search}/"/>
+            <exclude name="${javahelp.excludes}"/>
+        </jhindexer>
+        
+        <mkdir dir="${build.javahelp.dir}/${javahelp.base}/ja/${javahelp.search}"/>
+        <jhindexer basedir="${build.javahelp.dir}/${javahelp.base}"
+                   db="${build.javahelp.dir}/${javahelp.base}/ja/${javahelp.search}">
+            <classpath>
+                <pathelement location="${jhall.jar}"/>
+            </classpath>
+            <include name="ja/**/*.html"/>
+            <exclude name="zh_CN/**"/>
+            <exclude name="${javahelp.search}/"/>
+            <exclude name="${javahelp.excludes}"/>
+        </jhindexer> 
+
+        <mkdir dir="${build.javahelp.dir}/${javahelp.base}/zh_CN/${javahelp.search}"/>
+        <jhindexer basedir="${build.javahelp.dir}/${javahelp.base}"
+                   db="${build.javahelp.dir}/${javahelp.base}/zh_CN/${javahelp.search}">
+            <classpath>
+                <pathelement location="${jhall.jar}"/>
+            </classpath>
+            <include name="zh_CN/**/*.html"/>
+            <exclude name="ja/**"/>
+            <exclude name="${javahelp.search}/"/>
+            <exclude name="${javahelp.excludes}"/>
+        </jhindexer> 
+
+        <mkdir dir="${cluster}/${javahelp.jar.dir}"/>
+        <jar jarfile="${cluster}/${javahelp.jar}" compress="true">
+            <fileset dir="${build.javahelp.dir}"/>
+        </jar>
+    </target> 
+-->
+    <!-- to get a chance to create the project template zips from
+         sources, override the jar-prep tarrget. Just copy what jar-prep
+         originally does.  Some better idea? -->
+    <target name="-pre-jar-prep"  depends="create_zip_templates"/> 
+    <target name="jar-prep" depends="init,-pre-jar-prep">
+        <mkdir dir="${cluster}/${module.jar.dir}"/>
+        <tstamp>
+            <format property="buildnumber" pattern="yyMMdd" timezone="UTC"/>
+        </tstamp>
+    </target>
+
+    <!-- override for som eown stuff: <target name="netbeans-extra"/> -->
+    
+    <!-- Building help needs always a clean build, to speed things up, delete help
+    and keep the rest -->
+    <target name="delete-help" depends="init">
+        <echo message="${build.javahelp.dir}"/>
+        <delete dir="${build.javahelp.dir}"/>
+    </target>
+</project>

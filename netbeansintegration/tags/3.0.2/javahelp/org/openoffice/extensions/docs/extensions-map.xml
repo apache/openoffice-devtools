@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN" "http://java.sun.com/products/javahelp/map_2_0.dtd">
+<map version="2.0">
+    <mapID target="org.openoffice.extensions.about" url="extensions-about.html"/>
+    <mapID target="org.openoffice.extensions.overview.clients" url="overview-uno-clients.html"/>
+    <mapID target="org.openoffice.extensions.working.with.clients" url="working-with-clients.html"/>
+    <mapID target="org.openoffice.extensions.overview.components" url="overview-components.html"/>
+    <mapID target="org.openoffice.extensions.working.with.components" url="working-with-components.html"/>
+    <mapID target="org.openoffice.extensions.overview.addins" url="overview-calc-addins.html"/>
+    <mapID target="org.openoffice.extensions.working.with.addins" url="working-with-addins.html"/>
+    <mapID target="org.openoffice.extensions.overview.addons" url="overview-addons.html"/>
+    <mapID target="org.openoffice.extensions.working.with.addons" url="working-with-addons.html"/>
+    <mapID target="org.openoffice.extensions.data.type.enum" url="data-type-enum.html"/>
+    <mapID target="org.openoffice.extensions.data.type.exception" url="data-type-exception.html"/>
+    <mapID target="org.openoffice.extensions.data.type.interface" url="data-type-interface.html"/>
+    <mapID target="org.openoffice.extensions.data.type.polystruct" url="data-type-polystruct.html"/>
+    <mapID target="org.openoffice.extensions.data.type.service" url="data-type-service.html"/>
+    <mapID target="org.openoffice.extensions.data.type.struct" url="data-type-struct.html"/>
+    <mapID target="org.openoffice.extensions.config.paths" url="config-paths.html"/>
+    <mapID target="org.openoffice.extensions.addon.deleted.command" url="addon-deleted-command.html"/>
+    <mapID target="org.openoffice.extensions.actions.version.properties" url="version-properties.html"/>
+    <mapID target="org.openoffice.extensions.actions.display.properties" url="display-properties.html"/>
+</map>
