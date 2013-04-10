@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontscolors>
+    <fontcolor name="idl-text" default="default"/>
+    <fontcolor name="idl-comment" default="default"/>
+    <fontcolor name="idl-keyword" default="default"/>
+    <fontcolor name="idl-precompiler" default="default"/>
+    <fontcolor name="idl-bracket" default="default"/>
+    <fontcolor name="idl-number" default="default"/>
+    <fontcolor name="idl-char" default="default"/>
+    <fontcolor name="idl-string" default="default"/>
+    <fontcolor name="idl-function" default="default"/>
+</fontscolors>

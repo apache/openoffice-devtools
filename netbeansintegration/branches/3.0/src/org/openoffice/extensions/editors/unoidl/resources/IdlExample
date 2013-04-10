@@ -1,0 +1,7 @@
+/* block comment */
+#ifndef condition
+#define value
+module tst {  // line comment
+    service tst { interface XI; };
+};
+#endif

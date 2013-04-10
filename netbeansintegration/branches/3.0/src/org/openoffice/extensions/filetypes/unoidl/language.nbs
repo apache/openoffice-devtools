@@ -1,0 +1,97 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+
+# definition of tokens
+TOKEN:keyword:(
+        # idl file types
+        "constants" | "enum" | "exception" | "interface" | "service" | "struct" | "singleton" |
+        # data types
+        "any" | "boolean" | "byte" | "char" | "double" | "float" | "hyper" | "long" |
+        "sequence" | "short" | "string" | "type" | "void" |
+        # modifiers
+        "const" | "published" | "unsigned" |
+        # namespace
+        "module" |
+        # exceptions
+        "raises" )
+TOKEN:operator:( "{" | "}" | "(" | ")" | "[" | "]" | "<" | ">")
+TOKEN:identifier:( ["a"-"z" "A"-"Z"] ["a"-"z" "A"-"Z" "0"-"9"]* )
+TOKEN:whitespace:( [" " "\t" "\n" "\r"]+ )
+TOKEN:precompile:( ["#"] ["a"-"z"]* )
+TOKEN:text:( ['a'-'z''A'-'Z''0'-'9''_''<''>''/''.'';'':''\"']+ )
+TOKEN:brackets:( "[" - "]" )
+
+TOKEN:line_comment: ( "//"[^"\n""\r"]* )
+TOKEN:comment: ("/*" - "*/")
+
+# parser should ignore whitespaces and comments
+SKIP:whitespace
+SKIP:comment
+SKIP:line_comment
+SKIP:brackets
+
+COLOR:precompile: {
+    foreground_color:"#00AA00";
+    font_type:"bold";
+}
+
+COLOR:comment,line_comment: {
+    foreground_color:"gray";
+}
+
+COLOR:brackets: {
+    foreground_color:"blue";
+}
+
+COLOR:keyword: {
+    foreground_color:"blue";
+    font_type:"bold";
+}
+
+COLOR:number: {
+    foreground_color:"red";
+}
+
+# definition of grammar
+#S = (Specification)*;
+#Specification = PrecompileStatement | Definition;
+#WhileStatement = "while" "(" ConditionalExpression ")" Block;
+#IfStatement = "if" "(" ConditionalExpression ")" Block ["else" Block];
+#Block = "{" (Statement)* "}";
+#ConditionalExpression = <identifier>;
+#ExpressionStatement = <identifier>;
+# | <comment_start> <ptext> <comment_end>;
+#Definition = <keyword>;
+#Identifier = <identifier>;
+#PrecompileStatement = <precompile> | <precompile> <text>;
+
+# code folding
+#FOLD:Block
+
+# navigator support
+#NAVIGATOR:WhileStatement: {
+#    display_name: "$ConditionalExpression$";
+#}
+
+# brace completion
+COMPLETE "{:}"
+COMPLETE "(:)"
+
+# brace matching
+BRACE "{:}"
+BRACE "(:)"
+BRACE "[:]"
+BRACE "<:>"
+
+# indentation support
+#INDENT "{:}"
+#INDENT "(:)"
+#INDENT "\\s*(((if|while)\\s*\\(|else\\s*|else\\s+if\\s*\\(|for\\s*\\(.*\\))[^{;]*)"
+
+
+# code completion
+#COMPLETION:keyword, operator, identifier, whitespace: {
+#    text1:"while";
+#    text2:"if";
+#    text3:"else";
+#}
