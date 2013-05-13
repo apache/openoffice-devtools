@@ -80,7 +80,12 @@ count = 0
 
 for download in downloads :
 
-    data = json.loads(getSourceForgeStats(download,startDate,endDate))
+    try:
+
+        data = json.loads(getSourceForgeStats(download,startDate,endDate))
+
+    except ValueError:
+        continue
 
     day_count = data["total"]
 
