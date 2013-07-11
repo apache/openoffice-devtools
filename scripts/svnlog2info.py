@@ -162,8 +162,13 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 			bug_desc = bug[ "summary"]
 			bug_type = bug[ "cf_bug_type"]
 			bug_target = bug[ "target_milestone"]
-			bug_status = bug[ "resolution"]
 			priority = bug[ "priority"]
+			if ("status" in bug):
+				bug_status = bug[ "status"]
+				if bug_status == "RESOLVED":
+					bug_status = bug[ "resolution"]
+			else:
+				bug_status = "UNKNOWN"
 
 			colortype = bug_type[0]+priority[1]
 			if colortype in type2color:
