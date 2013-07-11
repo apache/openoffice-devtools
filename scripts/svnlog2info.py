@@ -165,7 +165,7 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 			priority = bug[ "priority"]
 			if ("status" in bug):
 				bug_status = bug[ "status"]
-				if bug_status == "RESOLVED":
+				if bug_status in ["RESOLVED","VERIFIED","CLOSED"]:
 					bug_status = bug[ "resolution"]
 			else:
 				bug_status = "UNKNOWN"
