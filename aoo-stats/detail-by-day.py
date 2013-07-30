@@ -63,7 +63,7 @@ downloads = [line.strip() for line in open(sys.argv[1])]
 start_date =  datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
 end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
-print '"date","count_total","count_340","count_341","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","nb","pl","pt_BR","ru","sk","sl","es","sv"'
+print '"date","count_total","count_340","count_341","count_400","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta"'
 
 today = start_date
 
@@ -77,6 +77,7 @@ while today <= end_date:
     count_total = 0
     count_340 = 0
     count_341 = 0
+    count_400 = 0
     deb = 0
     rpm = 0
 
@@ -88,6 +89,7 @@ while today <= end_date:
     cs = 0
     da = 0
     nl = 0
+    el = 0
     en_GB = 0
     en_US = 0
     fi = 0
@@ -102,12 +104,14 @@ while today <= end_date:
     ko = 0
     nb = 0
     pl = 0
+    pt = 0
     pt_BR = 0
     ru = 0
     sk = 0
     sl = 0
     es = 0
     sv = 0
+    ta = 0
 
     date_string = today.strftime("%Y-%m-%d")
 
@@ -129,6 +133,9 @@ while today <= end_date:
 
         if download.find("3.4.1") != -1:
             count_341 = count_341 + day_count
+
+        if download.find("4.0.0") != -1:
+            count_400 = count_400 + day_count
 
 #platforms
 
@@ -175,6 +182,8 @@ while today <= end_date:
             da = da + day_count
         if download.find("_nl.") != -1:
             nl = nl + day_count
+        if download.find("_el.") != -1:
+            el = el + day_count
         if download.find("_en-GB.") != -1:
             en_GB = en_GB + day_count
         if download.find("_en-US.") != -1:
@@ -203,6 +212,8 @@ while today <= end_date:
             nb = nb + day_count
         if download.find("_pl.") != -1:
             pl = pl + day_count
+        if download.find("_pt.") != -1:
+            pt = pt + day_count
         if download.find("_pt-BR.") != -1:
             pt_BR = pt_BR + day_count
         if download.find("_ru.") != -1:
@@ -215,12 +226,24 @@ while today <= end_date:
             es = es + day_count
         if download.find("_sv.") != -1:
             sv = sv + day_count
+        if download.find("_ta.") != -1:
+            ta = ta + day_count
 
 
-    print date_string + "," + str(count_total) + "," + str(count_340) + "," + str(count_341) + "," + str(windows) + "," + str(mac) + "," + str(linux) + "," + str(linux32) + "," + \
-        str(linux64) + "," + str(deb) + "," + str(rpm) + "," + str(ar) + "," + str(ast) + "," + str(eu) + "," + str(zh_TW) + "," + str(zh_CN) + "," + str(cs) + "," + str(da) + "," + \
-        str(nl) + "," + str(en_GB) + "," + str(en_US) + "," + str(fi) + "," + str(fr) + "," + str(gd) + "," + str(gl) + "," + str(de) + "," + str(hu) + "," + str(it) + "," + \
-        str(ja) + "," + str(km) + "," + str(ko) + "," + str(nb) + "," + str(pl) + "," + str(pt_BR) + "," + str(ru) + "," + str(sk) + "," + str(sl) + "," + str(es) + "," + str(sv)  
+    print date_string + "," + str(count_total) + "," + str(count_340) + "," + str(count_341) + "," + str(count_400) + "," + \
+        str(windows) + "," + str(mac) + "," + str(linux) + "," + str(linux32) + "," + str(linux64) + "," + \
+        str(deb) + "," + str(rpm) + "," +  \
+        str(ar) + "," + str(ast) + "," + str(eu) + "," + str(zh_TW) + "," + \
+        str(zh_CN) + "," + str(cs) + "," + str(da) + "," + \
+        str(nl) + "," + str(en_GB) + "," + str(en_US) + "," + \
+        str(fi) + "," + str(fr) + "," + str(gd) + "," + \
+        str(gl) + "," + str(de) + "," + str(hu) + "," + \
+        str(it) + "," + str(ja) + "," + str(km) + "," + \
+        str(ko) + "," + str(nb) + "," + str(pl) + "," + str(pt_BR) + "," + \
+        str(ru) + "," + str(sk) + "," + str(sl) + "," + \
+        str(es) + "," + str(sv) + "," + str(el) + "," + \
+        str(pt) + "," + str(ta)
+
 
     today += datetime.timedelta(days=1)
 
