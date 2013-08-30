@@ -142,7 +142,7 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 
 	# emit info about issues referenced in revisions
 	if len(bugid_map) and bzsoap:
-		htmlfile.write( "<h2>Issues addressed:</h2>\n<table border=\"0\">\n")
+		htmlfile.write( "<h2>Issues addressed:</h2>\n<table border=\"0\" width=\"100%\">\n")
 
 		soaprc = get_bug_details( bugid_map.keys())
 		type2prio = {"FEATURE":1, "ENHANCEMENT":2, "PATCH":3, "DEFECT":4, "TASK":5, "UNKNOWN":9}
