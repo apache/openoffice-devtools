@@ -427,7 +427,7 @@ public class ProjectCreator {
         String sdkPath = (String)wiz.getProperty("SdkPath"); // NOI18N
         String sdkBinPath = sdkPath.concat(File.separator).concat(platform).concat(File.separator).concat("bin"); // NOI18N
         // np exception? should not happen this far in the code
-        if (OpenOfficeLocation.getOpenOfficeLocation().isThreeLayerOffice()) {
+        if (!OpenOfficeLocation.getOpenOfficeLocation().isThreeLayerOffice()) {
             sdkBinPath = sdkPath.concat(File.separator).concat("bin"); // NOI18N
         }
         String soPath = "";
