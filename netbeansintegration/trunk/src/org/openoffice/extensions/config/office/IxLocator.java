@@ -72,11 +72,10 @@ public class IxLocator extends PlatformLocator {
             try {
                 String path = mOfficePath.getCanonicalPath();
                 mJuhJurtRidlPath = path.concat("/program/classes"); // NOI18N
-                mUreBinPath = mSdkPath.getCanonicalPath().concat("/").concat(
-                        PlatformInfo.getPlatformBinDir()).concat("/bin");
+                mUreBinPath = path.concat("/program"); // ex. where remerge is
                 // add "/usr/lib" to path
+                // no need to also add mUreBinPath because it duplicated /program
                 mPathVariable = path.concat("/program").concat(":").concat(
-                        mUreBinPath).concat(
                         ":/usr/bin"); // // NOI18N
                 mJutUnoilPath = mJuhJurtRidlPath;
                 mTypesPath = new String[]{path.concat("/program/types.rdb")}; // NOI18N

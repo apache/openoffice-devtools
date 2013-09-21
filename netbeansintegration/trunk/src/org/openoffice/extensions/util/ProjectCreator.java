@@ -425,9 +425,9 @@ public class ProjectCreator {
     private void skeletonmaker(AddOn addon) {
         String platform = PlatformInfo.getPlatformBinDir();
         String sdkPath = (String)wiz.getProperty("SdkPath"); // NOI18N
-        String sdkBinPath = sdkPath.concat(File.separator).concat(platform).concat(File.separator).concat("bin"); // NOI18N
+        String sdkBinPath = sdkPath.concat(File.separator).concat("bin"); // NOI18N
         // np exception? should not happen this far in the code
-        if (!OpenOfficeLocation.getOpenOfficeLocation().isThreeLayerOffice()) {
+        if (OpenOfficeLocation.getOpenOfficeLocation().isThreeLayerOffice()) {
             sdkBinPath = sdkPath.concat(File.separator).concat("bin"); // NOI18N
         }
         String soPath = "";
@@ -511,8 +511,8 @@ public class ProjectCreator {
         String projDir = ((File)wiz.getProperty("projdir")).getCanonicalPath(); // NOI18N
         String platform = PlatformInfo.getPlatformBinDir();
         String sdkPath = (String)wiz.getProperty("SdkPath"); // NOI18N
-        String sdkBinPath = sdkPath.concat(File.separator).concat(platform).concat(File.separator).concat("bin"); // NOI18N
-        String ureBinPath = sdkBinPath;
+        String sdkBinPath = sdkPath.concat(File.separator).concat("bin"); // NOI18N
+        String ureBinPath = OpenOfficeLocation.getOpenOfficeLocation().getUreBinPath();
         // np exception? should not happen this far in the code
         if (OpenOfficeLocation.getOpenOfficeLocation().isThreeLayerOffice()) {
             sdkBinPath = sdkPath.concat(File.separator).concat("bin"); // NOI18N
