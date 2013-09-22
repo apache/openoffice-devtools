@@ -333,8 +333,8 @@ public class ConfigurationSettings {
             System.setProperty("sdk.bin.dir", sdkPath.concat(File.separator).concat("bin")); // NOI18N
         }
         else {
-            String platform = PlatformInfo.getPlatformBinDir();
-            System.setProperty("sdk.bin.dir", sdkPath.concat(File.separator).concat(platform).concat(File.separator).concat("bin")); // NOI18N
+            // String platform = PlatformInfo.getPlatformBinDir();
+            System.setProperty("sdk.bin.dir", sdkPath.concat(File.separator).concat("bin")); // NOI18N
         }
         System.setProperty("ure.bin.dir", loc.getUreBinPath()); // NOI18N
         String soPath = loc.getPathVariable();
