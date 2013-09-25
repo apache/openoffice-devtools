@@ -40,7 +40,7 @@ svn_viewrev_url_base = "http://svn.apache.org/viewvc?view=revision&revision=%d"
 bzsoap = "https://issues.apache.org/ooo/xmlrpc.cgi"
 bugref_url = "https://issues.apache.org/ooo/show_bug.cgi?id="
 
-issue_pattern = "^\s*(?:re)?(?:fix)?\s*(?:for)?\s*(?:bug|issue|problem)?\s*#?i?([1-9][0-9][0-9][0-9]+)[#: ]"
+issue_pattern = "^\s*(?:re)?(?:fix)?\s*(?:for)?\s*(?:bug|issue|problem)?\s*#?i?([1-9][0-9][0-9][0-9]+)[#:, ]"
 infoout_name = "izlist.htm"
 
 
