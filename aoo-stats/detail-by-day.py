@@ -63,7 +63,7 @@ downloads = [line.strip() for line in open(sys.argv[1])]
 start_date =  datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
 end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
-print '"date","count_total","count_340","count_341","count_400","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta"'
+print '"date","count_total","count_340","count_341","count_400","count_401","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta"'
 
 today = start_date
 
@@ -78,6 +78,7 @@ while today <= end_date:
     count_340 = 0
     count_341 = 0
     count_400 = 0
+    count_401 = 0
     deb = 0
     rpm = 0
 
@@ -136,6 +137,10 @@ while today <= end_date:
 
         if download.find("4.0.0") != -1:
             count_400 = count_400 + day_count
+
+        if download.find("4.0.1") != -1:
+            count_401 = count_401 + day_count
+
 
 #platforms
 
@@ -230,7 +235,7 @@ while today <= end_date:
             ta = ta + day_count
 
 
-    print date_string + "," + str(count_total) + "," + str(count_340) + "," + str(count_341) + "," + str(count_400) + "," + \
+    print date_string + "," + str(count_total) + "," + str(count_340) + "," + str(count_341) + "," + str(count_400) + "," + str(count_401) + "," \
         str(windows) + "," + str(mac) + "," + str(linux) + "," + str(linux32) + "," + str(linux64) + "," + \
         str(deb) + "," + str(rpm) + "," +  \
         str(ar) + "," + str(ast) + "," + str(eu) + "," + str(zh_TW) + "," + \
