@@ -63,7 +63,7 @@ downloads = [line.strip() for line in open(sys.argv[1])]
 start_date =  datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
 end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
-print '"date","count_total","count_340","count_341","count_400","count_401","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta"'
+print '"date","count_total","count_340","count_341","count_400","count_401","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi"'
 
 today = start_date
 
@@ -113,6 +113,9 @@ while today <= end_date:
     es = 0
     sv = 0
     ta = 0
+    sr = 0
+    tr = 0
+    vi = 0
 
     date_string = today.strftime("%Y-%m-%d")
 
@@ -233,9 +236,15 @@ while today <= end_date:
             sv = sv + day_count
         if download.find("_ta.") != -1:
             ta = ta + day_count
+        if download.find("_sr.") != -1:
+            sr = sr + day_count
+        if download.find("_tr.") != -1:
+            tr = tr + day_count
+        if download.find("_vi.") != -1:
+            vi = vi + day_count
 
 
-    print date_string + "," + str(count_total) + "," + str(count_340) + "," + str(count_341) + "," + str(count_400) + "," + str(count_401) + "," \
+    print date_string + "," + str(count_total) + "," + str(count_340) + "," + str(count_341) + "," + str(count_400) + "," + str(count_401) + "," + \
         str(windows) + "," + str(mac) + "," + str(linux) + "," + str(linux32) + "," + str(linux64) + "," + \
         str(deb) + "," + str(rpm) + "," +  \
         str(ar) + "," + str(ast) + "," + str(eu) + "," + str(zh_TW) + "," + \
@@ -247,7 +256,7 @@ while today <= end_date:
         str(ko) + "," + str(nb) + "," + str(pl) + "," + str(pt_BR) + "," + \
         str(ru) + "," + str(sk) + "," + str(sl) + "," + \
         str(es) + "," + str(sv) + "," + str(el) + "," + \
-        str(pt) + "," + str(ta)
+        str(pt) + "," + str(ta) + "," + str(sr) + "," + str(tr) + "," + str(vi)
 
 
     today += datetime.timedelta(days=1)
