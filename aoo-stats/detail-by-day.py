@@ -48,7 +48,7 @@ def getSourceForgeStats(download, startDate, endDate):
         except:
             attempts += 1
             print url
-            print "error " + str(attempts)
+            print "error " + download + "(" + str(attempts) + ")"
 
     return ""
     
