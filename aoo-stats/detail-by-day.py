@@ -36,6 +36,8 @@ def getSourceForgeStats(download, startDate, endDate):
 
     url = download + "/stats/json?start_date=" + startDate + "&" "end_date=" + endDate
 
+    #print >> sys.stderr, url
+
     attempts = 0
 
     while attempts < 3:
@@ -48,7 +50,7 @@ def getSourceForgeStats(download, startDate, endDate):
         except:
             attempts += 1
             print url
-            print "error " + download + "(" + str(attempts) + ")"
+            print >> sys.stderr, "error " + download + "(" + str(attempts) + ")"
 
     return ""
     
@@ -63,7 +65,7 @@ downloads = [line.strip() for line in open(sys.argv[1])]
 start_date =  datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
 end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
-print '"date","count_total","count_340","count_341","count_400","count_401","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi"'
+print '"date","count_total","count_340","count_341","count_400","count_401","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","lt","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi"'
 
 today = start_date
 
@@ -103,6 +105,7 @@ while today <= end_date:
     ja = 0
     km = 0
     ko = 0
+    lt = 0
     nb = 0
     pl = 0
     pt = 0
@@ -118,6 +121,8 @@ while today <= end_date:
     vi = 0
 
     date_string = today.strftime("%Y-%m-%d")
+
+    print >> sys.stderr, date_string
 
     for download in downloads :
         
@@ -216,6 +221,8 @@ while today <= end_date:
             km = km + day_count
         if download.find("_ko.") != -1:
             ko = ko + day_count
+        if download.find("_lt.") != -1:
+            lt = lt + day_count
         if download.find("_nb.") != -1:
             nb = nb + day_count
         if download.find("_pl.") != -1:
@@ -253,13 +260,15 @@ while today <= end_date:
         str(fi) + "," + str(fr) + "," + str(gd) + "," + \
         str(gl) + "," + str(de) + "," + str(hu) + "," + \
         str(it) + "," + str(ja) + "," + str(km) + "," + \
-        str(ko) + "," + str(nb) + "," + str(pl) + "," + str(pt_BR) + "," + \
+        str(ko) + "," + str(lt) + "," + str(nb) + "," + str(pl) + "," + str(pt_BR) + "," + \
         str(ru) + "," + str(sk) + "," + str(sl) + "," + \
         str(es) + "," + str(sv) + "," + str(el) + "," + \
         str(pt) + "," + str(ta) + "," + str(sr) + "," + str(tr) + "," + str(vi)
 
 
     today += datetime.timedelta(days=1)
+
+     
 
 
 
