@@ -105,12 +105,10 @@ def get_bug_details( bugs_to_get):
 	for one_id in bugs_to_get:
 		try:
 			one_bug = proxy.Bug.get( {"ids":[one_id]})["bugs"][0]
+			soaprc["bugs"].append( one_bug.copy())
 		except xmlrpclib.Fault as err:
-			one_bug = {'id':one_id, "summary":err.faultString[:32], 'priority':'P3', 'cf_bug_type':'UNKNOWN', 'resolution':'UNKNOWN', 'target_milestone':"UNKNOWN"}
-			print( err)
-			print( "ignoring #i%d#" % (one_id))
+			print( 'ignoring #i%d# because "%s"' % (one_id,err.faultString))
 			soaprc["faults"].append( one_id)
-		soaprc["bugs"].append( one_bug.copy())
 
 	return soaprc
 
@@ -209,13 +207,14 @@ def revs2info( htmlname, detail_level, all_revs, svnurl, revmin_name, revmax_nam
 		htmlfile.write( "</table>\n")
 
 	# emit info about other revisions
-	if len(other_revs) and (detail_level >= 6):
+	if (detail_level >= 6):
 		htmlfile.write( "<h2>Commits without Issue References:</h2>\n<table border=\"0\">\n")
 		for rev in all_revs:
 			if rev.issue:
-				continue
-			line = "<tr>"
+				if rev.issue not in soaprc["faults"]:
+					continue
 
+			line = "<tr>"
 			if svn_viewrev_url_base:
 				revurl = svn_viewrev_url_base % (rev.revnum)
 				line += "<td><a href=\"%s\">r%d</a></td>" % (revurl, rev.revnum)
