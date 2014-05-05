@@ -65,7 +65,7 @@ downloads = [line.strip() for line in open(sys.argv[1])]
 start_date =  datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
 end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
-print '"date","count_total","count_340","count_341","count_400","count_401","count_410","windows","mac","linux","linux32","linux64","deb","rpm","ar,"ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","lt","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi","he","bg","hi","th"'
+print '"date","count_total","count_340","count_341","count_400","count_401","count_410","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","lt","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi","he","bg","hi","th"'
 
 today = start_date
 
