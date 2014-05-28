@@ -65,68 +65,38 @@ downloads = [line.strip() for line in open(sys.argv[1])]
 start_date =  datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
 end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
-print '"date","count_total","count_340","count_341","count_400","count_401","count_410","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh_TW","zh_CN","cs","da","nl","en_GB","en_US","fi","fr","gd","gl","de","hu","it","ja","km","ko","lt","nb","pl","pt_BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi","he","bg","hi","th"'
+# columns of interest
+columns = [ "count_total","count_340","count_341","count_400","count_401","count_410","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh-TW","zh-CN","cs","da","nl","en-GB","en-US","fi","fr","gd","gl","de","hu","it","ja","km","ko","lt","nb","pl","pt-BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi","he","bg","hi","th"]
+
+# column counters are updated if the download name contains a matching pattern
+# The dictionary below maps the column names to these search patterns.
+# If there is no entry for a column then the pattern for language columns is assumed
+patternDict = {
+    "count_total" : "",
+    "count_340" : "3.4.0",
+    "count_341" : "3.4.1",
+    "count_400" : "4.0.0",
+    "count_401" : "4.0.1",
+    "count_410" : "4.1.0",
+    "windows"   : "Win_x86",
+    "mac"       : "MacOS",
+    "linux"     : "Linux",
+    "linux32"   : "Linux_x86_",
+    "linux64"   : "Linux_x86-64_",
+    "deb"       : "install-deb_",
+    "rpm"       : "install-rpm_"
+}
+
+
+print( '"date","' + '","'.join(columns) + '"')
 
 today = start_date
 
 while today <= end_date:
 
-    linux32 = 0
-    linux64 = 0
-    windows = 0
-    mac = 0
-    linux = 0
-    count_total = 0
-    count_340 = 0
-    count_341 = 0
-    count_400 = 0
-    count_401 = 0
-    count_410 = 0
-    deb = 0
-    rpm = 0
-
-    ar = 0
-    ast = 0 
-    eu = 0
-    zh_TW = 0
-    zh_CN = 0
-    cs = 0
-    da = 0
-    nl = 0
-    el = 0
-    en_GB = 0
-    en_US = 0
-    fi = 0
-    fr = 0
-    gd = 0
-    gl = 0
-    de = 0
-    hu = 0
-    it = 0
-    ja = 0
-    km = 0
-    ko = 0
-    lt = 0
-    nb = 0
-    pl = 0
-    pt = 0
-    pt_BR = 0
-    ru = 0
-    sk = 0
-    sl = 0
-    es = 0
-    sv = 0
-    ta = 0
-    sr = 0
-    tr = 0
-    vi = 0
-    he = 0
-    bg = 0
-    hi = 0
-    th = 0
+    counts = dict( [(c,0) for c in columns])
 
     date_string = today.strftime("%Y-%m-%d")
-
     print >> sys.stderr, date_string
 
     for download in downloads :
@@ -135,156 +105,15 @@ while today <= end_date:
             data = json.loads(getSourceForgeStats(download,date_string,date_string))
             day_count = data["total"]
         except ValueError:
-            data = ""
-            day_count = 0
+            continue
 
-        count_total = count_total + day_count
+        # update the per column counts
+        for c in columns:
+            pattern = patternDict[c] if c in patternDict else ("_%s." % c)
+            if download.find(pattern) != -1:
+               	counts[c] += day_count
 
-#versions
-
-        if download.find("3.4.0") != -1:
-            count_340 = count_340 + day_count
-
-        if download.find("3.4.1") != -1:
-            count_341 = count_341 + day_count
-
-        if download.find("4.0.0") != -1:
-            count_400 = count_400 + day_count
-
-        if download.find("4.0.1") != -1:
-            count_401 = count_401 + day_count
-
-        if download.find("4.1.0") != -1:
-            count_410 = count_410 + day_count
-
-
-
-#platforms
-
-        if download.find("Win_x86") != -1:
-            windows = windows + day_count
-
-        if download.find("MacOS") != -1:
-            mac = mac + day_count
-
-        if download.find("Linux") != -1:
-            linux = linux + day_count
-
-#architecture
-
-        if download.find("Linux_x86_") != -1:
-            linux32 = linux32 + day_count
-
-        if download.find("Linux_x86-64_") != -1:
-            linux64 = linux64 + day_count
-
-#packaging
-
-        if download.find("install-deb_") != -1:
-            deb = deb + day_count
-
-        if download.find("install-rpm_") != -1:
-            rpm = rpm + day_count
-
-#languages
-
-        if download.find("_ar.") != -1:
-            ar = ar + day_count
-        if download.find("_ast.") != -1:
-            ast = ast+ day_count
-        if download.find("_eu.") != -1:
-            eu = eu + day_count
-        if download.find("_zh-TW.") != -1:
-            zh_TW = zh_TW + day_count
-        if download.find("_zh-CN.") != -1:
-            zh_CN = zh_CN + day_count
-        if download.find("_cs.") != -1:
-            cs = cs + day_count
-        if download.find("_da.") != -1:
-            da = da + day_count
-        if download.find("_nl.") != -1:
-            nl = nl + day_count
-        if download.find("_el.") != -1:
-            el = el + day_count
-        if download.find("_en-GB.") != -1:
-            en_GB = en_GB + day_count
-        if download.find("_en-US.") != -1:
-            en_US = en_US + day_count
-        if download.find("_fi.") != -1:
-            fi = fi + day_count
-        if download.find("_fr.") != -1:
-            fr = fr + day_count
-        if download.find("_gd.") != -1:
-            gd = gd + day_count
-        if download.find("_gl.") != -1:
-            gl = gl + day_count
-        if download.find("_de.") != -1:
-            de = de + day_count
-        if download.find("_hu.") != -1:
-            hu = hu + day_count
-        if download.find("_it.") != -1:
-            it = it + day_count
-        if download.find("_ja.") != -1:
-            ja = ja + day_count
-        if download.find("_km.") != -1:
-            km = km + day_count
-        if download.find("_ko.") != -1:
-            ko = ko + day_count
-        if download.find("_lt.") != -1:
-            lt = lt + day_count
-        if download.find("_nb.") != -1:
-            nb = nb + day_count
-        if download.find("_pl.") != -1:
-            pl = pl + day_count
-        if download.find("_pt.") != -1:
-            pt = pt + day_count
-        if download.find("_pt-BR.") != -1:
-            pt_BR = pt_BR + day_count
-        if download.find("_ru.") != -1:
-            ru = ru + day_count
-        if download.find("_sk.") != -1:
-            sk = sk + day_count
-        if download.find("_sl.") != -1:
-            sl = sl + day_count
-        if download.find("_es.") != -1:
-            es = es + day_count
-        if download.find("_sv.") != -1:
-            sv = sv + day_count
-        if download.find("_ta.") != -1:
-            ta = ta + day_count
-        if download.find("_sr.") != -1:
-            sr = sr + day_count
-        if download.find("_tr.") != -1:
-            tr = tr + day_count
-        if download.find("_vi.") != -1:
-            vi = vi + day_count
-        if download.find("_he.") != -1:
-            he = he + day_count
-        if download.find("_bg.") != -1:
-            bg = bg + day_count
-        if download.find("_hi.") != -1:
-            hi = hi + day_count
-        if download.find("_th.") != -1:
-            th = th + day_count
-
-    print date_string + "," + str(count_total) + "," + str(count_340) + "," + str(count_341) + "," + str(count_400) + "," + str(count_401) + "," + str(count_410) + "," + \
-        str(windows) + "," + str(mac) + "," + str(linux) + "," + str(linux32) + "," + str(linux64) + "," + \
-        str(deb) + "," + str(rpm) + "," +  \
-        str(ar) + "," + str(ast) + "," + str(eu) + "," + str(zh_TW) + "," + \
-        str(zh_CN) + "," + str(cs) + "," + str(da) + "," + \
-        str(nl) + "," + str(en_GB) + "," + str(en_US) + "," + \
-        str(fi) + "," + str(fr) + "," + str(gd) + "," + \
-        str(gl) + "," + str(de) + "," + str(hu) + "," + \
-        str(it) + "," + str(ja) + "," + str(km) + "," + \
-        str(ko) + "," + str(lt) + "," + str(nb) + "," + str(pl) + "," + str(pt_BR) + "," + \
-        str(ru) + "," + str(sk) + "," + str(sl) + "," + \
-        str(es) + "," + str(sv) + "," + str(el) + "," + \
-        str(pt) + "," + str(ta) + "," + str(sr) + "," + str(tr) + "," + str(vi) + "," + str(he) + "," + str(bg)+ "," + str(hi)+ "," + str(th)
-
+    print( date_string + ',' + ','.join( [str(counts[c]) for c in columns]))
 
     today += datetime.timedelta(days=1)
-
-     
-
-
 
