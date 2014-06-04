@@ -43,7 +43,7 @@ import org.openoffice.extensions.config.office.PlatformInfo;
 
 /**
  *
- * @author js93811
+ * @author jsc
  */
 public class ConfigurationSettings {
     
@@ -318,6 +318,8 @@ public class ConfigurationSettings {
         String sdkPath = loc.getSdkPath();
         System.setProperty("office.home.dir", officePath); // NOI18N
         System.setProperty("office.program.dir", officePath.concat("/").concat(PlatformInfo.getOfficeProgramDir())); // NOI18N
+        System.setProperty("ure.bin.dir", System.getProperty("office.program.dir")); // NOI18N
+        
         System.setProperty("oo.version.number", loc.isThreeLayerOffice()?"three":"older"); // NOI18N
         System.setProperty("oo.sdk.dir", sdkPath); // NOI18N
         String[] types = loc.getUnoTypesPath();
@@ -333,13 +335,18 @@ public class ConfigurationSettings {
             System.setProperty("sdk.bin.dir", sdkPath.concat(File.separator).concat("bin")); // NOI18N
         }
         else {
-            // String platform = PlatformInfo.getPlatformBinDir();
+            String platform = PlatformInfo.getPlatformBinDir();
+//            System.setProperty("sdk.bin.dir", sdkPath.concat(File.separator).concat(platform).concat(File.separator).concat("bin")); // NOI18N
             System.setProperty("sdk.bin.dir", sdkPath.concat(File.separator).concat("bin")); // NOI18N
         }
-        System.setProperty("ure.bin.dir", loc.getUreBinPath()); // NOI18N
+        //System.setProperty("ure.bin.dir", loc.getUreBinPath()); // NOI18N
         String soPath = loc.getPathVariable();
         if (!PlatformInfo.isWindows()) {
             soPath = soPath.concat(File.pathSeparator).concat("/usr/bin"); // NOI18N
+        
+            if (PlatformInfo.isMacOS())
+                soPath = new String("/usr/lib").concat(File.pathSeparator).concat(soPath); // NOI18N
+
         }
         System.setProperty("office.tool.path", soPath); // NOI18N
     }

@@ -24,7 +24,7 @@
     </target>
        
     <!-- jar including manifest: usr's own or a created one -->
-    <target name="jar" depends="-uno-project-init,compile,-pre-jar,-do-jar-with-manifest,-do-jar-without-manifest,-do-jar-with-mainclass,-do-jar-with-libraries,-do-openoffice-manifest,-post-jar">
+    <target name="jar" depends="-uno-project-init,compile,-pre-jar,-do-jar-jar,-do-openoffice-manifest,-post-jar">
         <jar basedir="${build.classes.dir}" manifest="${build.dir}/MANIFEST.MF" filesonly="true" compress="true" jarfile="${dist.jar}">
             <fileset refid="bootstrap.glue.code"/>
         </jar>
@@ -58,7 +58,7 @@
     <!-- build list for external jars: Apache OpenOffice jars have to be excluded -->
     <target name="-build-filelist">
         <property file="nbproject/project-uno.properties"/>
-        <zipfileset id="zip.file.list" dir="${dist.dir}/lib" excludes="${exclude.office.jars}" includes="**/*.jar" casesensitive="yes"/>
+        <zipfileset id="zip.file.list" dir="${dist.dir}/lib" excludes="${exclude.office.jars}" includes="**/*.jar" casesensitive="yes" erroronmissingdir="false"/>
         <property name="file.list" refid="zip.file.list"/>
         <condition property="do.external.jars">
             <length string="${file.list}" when="greater" length="0"/>

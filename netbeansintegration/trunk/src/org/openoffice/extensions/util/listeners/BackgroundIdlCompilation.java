@@ -91,7 +91,8 @@ public class BackgroundIdlCompilation extends Thread {
             // ok, five seconds passed and nothing happened, start compilation.
             ConfigurationSettings settings = ConfigurationSettings.getSettings();
             String sdkPath = settings.getValue(ConfigurationSettings.KEY_SDK_INSTALLATION);
-            String sdkBinPath = sdkPath.concat(File.separator).concat(PlatformInfo.getPlatformBinDir()).concat(File.separator).concat("bin"); // NOI18N
+            String sdkBinPath = sdkPath.concat(File.separator).concat(File.separator).concat("bin"); // NOI18N
+//            String sdkBinPath = sdkPath.concat(File.separator).concat(PlatformInfo.getPlatformBinDir()).concat(File.separator).concat("bin"); // NOI18N
             String soProgram = settings.getValue(ConfigurationSettings.KEY_OFFICE_INSTALLATION).concat(File.separator).concat(PlatformInfo.getOfficeProgramDir());
             String outPath = System.getProperty("java.io.tmpdir");
             String buildDir = "build".concat(OOoListenerHelper.getProjectName());

@@ -19,6 +19,8 @@
  * 
  *************************************************************/
 
+
+
 package com.sun.star.lib.loader;
 
 import java.io.File;
@@ -103,32 +105,30 @@ public final class Loader {
                                 "main: cannot get manifest resources: " + e );
         }
         
-        // if no manifest entry was found, check first the system property
-        // Application-Class and if it is not set get the name of the class
+        // if no manifest entry was found, get the name of the class
         // to be loaded from the argument list
-        String[] args = arguments;            
+        String[] args;            
         if ( className == null ) {
-            className = System.getProperty("Application-Class");
-            
-            if (className == null) {
-                if ( arguments.length > 0 ) {            
-                    className = arguments[0];            
-                    args = new String[arguments.length - 1];
-                    System.arraycopy( arguments, 1, args, 0, args.length );
-                } else {
-                    throw new IllegalArgumentException(
-                        "The name of the class to be loaded must be either " +
-                        "specified in the Main-Class attribute of the " +
-                        "com/sun/star/lib/loader/Loader.class entry " +
-                        "of the manifest file or as a command line argument." );
-                }
+            if ( arguments.length > 0 ) {            
+                className = arguments[0];            
+                args = new String[arguments.length - 1];
+                System.arraycopy( arguments, 1, args, 0, args.length );
+            } else {
+                throw new IllegalArgumentException(
+                    "The name of the class to be loaded must be either " +
+                    "specified in the Main-Class attribute of the " +
+                    "com/sun/star/lib/loader/Loader.class entry " +
+                    "of the manifest file or as a command line argument." );
             }
+        } else {
+            args = arguments;            
         }
         
         // load the class with the customized class loader and
         // invoke the main method
         if ( className != null ) {
             ClassLoader cl = getCustomLoader();
+            Thread.currentThread().setContextClassLoader(cl);
             Class c = cl.loadClass( className );
             Method m = c.getMethod( "main", new Class[] { String[].class } );
             m.invoke( null, new Object[] { args } );

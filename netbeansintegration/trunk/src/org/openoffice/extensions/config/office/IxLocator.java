@@ -34,18 +34,14 @@ public class IxLocator extends PlatformLocator {
 
     private final static String[] STARTING_PATHS = 
             new String[] {"/opt", "/usr/lib", "/usr"};
+    private final static String OPENOFFICE_NAME = "openoffice4";
     private final static String OPENOFFICEORG3_NAME = "openoffice.org3";
-    private final static String STAROFFICE9_NAME = "staroffice9";
     private final static String OPENOFFICEORG_NAME = "openoffice.org";
-    private final static String STAROFFICE_NAME = "staroffice";
-    private final static String STARSUITE_NAME = "starsuite";
     // all names in an array for providing some sort of hierarchy
     private final static String[] OFFICE_NAMES = new String[] {
-         STAROFFICE9_NAME,
+         OPENOFFICE_NAME,
          OPENOFFICEORG3_NAME,
-         STAROFFICE_NAME,
-         OPENOFFICEORG_NAME,
-         STARSUITE_NAME,
+         OPENOFFICEORG_NAME
     };
     
     public IxLocator(String officePath, String sdkPath, boolean guessOfficePaths) {

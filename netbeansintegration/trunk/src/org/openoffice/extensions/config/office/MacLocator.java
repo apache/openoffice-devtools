@@ -34,12 +34,12 @@ public class MacLocator extends PlatformLocator {
 
     private final static String[] STARTING_PATHS = 
             new String[] {"/Applications"};
+    private final static String OPENOFFICE_NAME = "OpenOffice";
     private final static String OPENOFFICEORG3_NAME = "OpenOffice.org";
-    private final static String STAROFFICE9_NAME = "StarOffice";
     // all names in an array for providing some sort of hierarchy
     private final static String[] OFFICE_NAMES = new String[] {
-         OPENOFFICEORG3_NAME,
-         STAROFFICE9_NAME,
+         OPENOFFICE_NAME,
+         OPENOFFICEORG3_NAME
     };
     
     public MacLocator(String office, String sdk, boolean guessOfficePaths) {
@@ -55,30 +55,29 @@ public class MacLocator extends PlatformLocator {
         mOfficePathsSet = false;
         try {
             File startPath = new File(mOfficePath.getCanonicalPath().concat("/Contents"));
-            File[] baseLink = startPath.listFiles(new FileFilter() {
+            File[] programPath = startPath.listFiles(new FileFilter() {
 
                 public boolean accept(File pathname) {
                     String path = pathname.getPath();
-                    if (path != null && path.endsWith("basis-link")) {
+                    if (path != null && path.endsWith("program")) {
                         return true;
                     }
                     return false;
                 }
             });
-            if (baseLink != null && baseLink.length > 0) {
+            if (programPath != null && programPath.length > 0) {
                 try {
-                    String path = baseLink[0].getCanonicalPath();
-                    mJutUnoilPath = path.concat("/program/classes");
-                    mJuhJurtRidlPath = path.concat("/ure-link/share/java");
-                    mUnorcPath = path.concat("/ure-link/lib");
-                    mUreBinPath = path.concat("/ure-link/bin");
+                    String path = programPath[0].getCanonicalPath();
+                    mJutUnoilPath = path.concat("/classes");
+                    mJuhJurtRidlPath = path.concat("/classes");
+                    // URE path is equal to .../program/MacOS path
+                    mUnorcPath = path;
+                    mUreBinPath = path;
                     mPathVariable = mOfficePath.getCanonicalPath().concat(
                             "/Contents/MacOS:").concat(
-                            mSdkPath.getCanonicalPath()).concat("/bin:/usr/lib:").concat(
-                            path).concat("/program:").concat(path).concat(
-                            "/ure-link/lib:").concat(mUreBinPath); // // NOI18N
-                    mTypesPath = new String[]{path.concat("/ure-link/share/misc/types.rdb"), path.concat("/program/offapi.rdb")};
-                    mThreeLayerOffice = true;
+                            mSdkPath.getCanonicalPath()).concat("/bin:/usr/lib:").concat(path); // // NOI18N
+                    mTypesPath = new String[]{path.concat("/types.rdb")};
+                    mThreeLayerOffice = false;
                     mOfficePathsSet = true;
                 } catch (IOException ex) {
                     LogWriter.getLogWriter().printStackTrace(ex);
@@ -129,7 +128,7 @@ public class MacLocator extends PlatformLocator {
         if (mSdkPath == null && mOfficePath != null) {  // office, but no sdk yet found...
             try {
                 String path = mOfficePath.getCanonicalPath();
-                String sdkPath = path.concat("/basis-link/sdk"); // NOI18N
+                String sdkPath = path.concat("/sdk"); // NOI18N
                 File f = new File(sdkPath);
                 if (f.exists()) {
                     mSdkPath = f.getCanonicalFile();

@@ -159,7 +159,7 @@
 
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->    
 
-    <target name="jar" depends="-uno-project-init,uno-idl-compile,-jar-idl-types,compile,-pre-jar,-do-jar-with-manifest,-do-jar-without-manifest,-do-jar-with-mainclass,-do-jar-with-libraries,-do-openoffice-manifest,-post-jar">
+    <target name="jar" depends="-uno-project-init,uno-idl-compile,-jar-idl-types,compile,-pre-jar,-do-jar-jar,-do-openoffice-manifest,-post-jar">
         <jar basedir="${build.classes.dir}" compress="true" filesonly="true" manifest="${build.dir}/MANIFEST.MF" jarfile="${dist.jar}" excludes="**/*.xml,**/*.txt,${idl.file.list},${build.classes.excludes}"/>
     </target>
 
