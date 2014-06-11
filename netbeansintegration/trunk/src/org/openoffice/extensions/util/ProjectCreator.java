@@ -511,8 +511,9 @@ public class ProjectCreator {
         String projDir = ((File)wiz.getProperty("projdir")).getCanonicalPath(); // NOI18N
         String platform = PlatformInfo.getPlatformBinDir();
         String sdkPath = (String)wiz.getProperty("SdkPath"); // NOI18N
-        String sdkBinPath = sdkPath.concat(File.separator).concat("bin"); // NOI18N
+        String sdkBinPath = OpenOfficeLocation.getOpenOfficeLocation().getSdkPath().concat(File.separator).concat("bin"); // NOI18N  
         String ureBinPath = OpenOfficeLocation.getOpenOfficeLocation().getUreBinPath();
+        
         // np exception? should not happen this far in the code
         if (OpenOfficeLocation.getOpenOfficeLocation().isThreeLayerOffice()) {
             sdkBinPath = sdkPath.concat(File.separator).concat("bin"); // NOI18N
@@ -565,6 +566,13 @@ public class ProjectCreator {
             }
 
             ScriptExecutor.executeScript(command, (File)wiz.getProperty("projdir")); // NOI18N
+            if (ScriptExecutor.hasErrors()) {  // message box with errors...
+                String message = NbBundle.getMessage(ProjectCreator.class, "ERROR_CommandExecute").concat(
+                    "\n").concat(ScriptExecutor.getErrors()); // NOI18N
+                JOptionPane.showMessageDialog(null, message,
+                    NbBundle.getMessage(ProjectCreator.class, "LOG_Level_critical"), JOptionPane.ERROR_MESSAGE); // NOI18N
+                executeWorked = false;
+            }
             LogWriter.getLogWriter().log(LogWriter.LEVEL_INFO, ScriptExecutor.getOutput());
             LogWriter.getLogWriter().log(LogWriter.LEVEL_CRITICAL, ScriptExecutor.getErrors());
 

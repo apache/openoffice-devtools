@@ -58,8 +58,7 @@ public class WinLocator extends PlatformLocator {
                 String path = mOfficePath.getCanonicalPath();
                 mJuhJurtRidlPath = path.concat("\\program\\classes"); // NOI18N
                 mJutUnoilPath = mJuhJurtRidlPath;
-                mUreBinPath = mSdkPath.getCanonicalPath().concat(
-                        PlatformInfo.getPlatformBinDir()).concat("\\bin");
+                mUreBinPath = path.concat("\\program");
                 mPathVariable = path.concat("\\program").concat(";").concat( // NOI18N
                         mUreBinPath);
                 mUnorcPath = path.concat("\\program");
