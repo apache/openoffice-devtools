@@ -1,0 +1,45 @@
+﻿# Additional text for installed OpenOffice instance on Mac OS X
+#
+
+en-US,Only for Mac OS X versions 10.7 or newer
+ar,فقط لإصدارات نظام التشغيل Mac OS X 10.7 أو أحدث
+ast,Only for Mac OS X versions 10.7 or newer
+bg,Само за Mac OS X 10.7 или по-нова версия
+ca,Only for Mac OS X versions 10.7 or newer
+ca-XV,Only for Mac OS X versions 10.7 or newer
+cs,Pouze pro Mac OS verze 10.7 a novější
+da,Kun for Mac OS X version 10.7 eller nyere
+de,Nur für Mac OS X-Versionen 10.7 oder neuer
+el,Μόνο για Mac OS X εκδόσεις 10.7 ή νεότερο
+en-GB,Only for Mac OS X versions 10.7 or newer
+es,Sólo para versiones de Mac OS X 10.7 o más reciente
+eu,Mac OS X bertsioak soilik 10.7 edo berriagoa
+fi,Vain Mac OS X-versiot 10.7 tai uudempi
+fr,Seulement pour les versions Mac OS X 10.7 ou plus récent
+gd,Only for Mac OS X versions 10.7 or newer
+gl,Só para as versións de Mac OS X 10.7 ou superior
+he,רק עבור גרסאות Mac OS X 10.7 או חדש יותר
+hi,मैक ओएस एक्स संस्करणों के लिए 10.7 या नए
+hu,Csak a Mac OS X 10.7 vagy újabb verzió
+it,Solo per Mac OS X 10.7 o superiore
+ja,唯一のMac OS Xバージョン10.7以降
+km,សម្រាប់តែកំណែ Mac OS X 10.7 ឬថ្មីជាង
+ko,오직 맥 OS X 버전 10.7 이상 버전
+lt,Tik Mac OS X versijos 10.7 arba naujesnė
+nb,Bare for Mac OS X versjon 10.7 eller nyere
+nl,Alleen voor Mac OS X-versies 10.7 of nieuwer
+pl,Tylko dla wersji Mac OS X 10.7 lub nowszy
+pt,Somente para as versões do Mac OS X 10.7 ou mais recente
+pt-BR,Somente para as versões do Mac OS X 10.7 ou mais recente
+ru,Только для Mac OS X версий 10.7 или новее
+sk,Iba pre Mac OS verzie 10.7 a novšie
+sl,Samo za Mac OS X 10.7 ali novejši
+sr,Само за Мац ОС Кс 10.7 или новији верзије
+sv,Endast för Mac OS X-versioner 10.7 eller nyare
+ta,ஒரே Mac OS X, பதிப்புகள் 10.7 அல்லது புதிய
+th,เฉพาะสำหรับ Mac OS X รุ่น 10.7 หรือใหม่กว่า
+tr,Sadece Mac OS X sürümleri için 10.7 veya daha yeni
+vi,Chỉ cho các phiên bản Mac OS X 10.7 hoặc mới hơn
+zh-CN,仅适用于Mac OS X版本10.7或更高版本
+zh-TW,僅適用於Mac OS X版本10.7或更高版本
+

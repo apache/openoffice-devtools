@@ -1,0 +1,38 @@
+# Information about the released AOO versions
+#
+# Format:
+# VERSION PRODUCTNAME BUILDID DOWNLOADURL LANGUAGECODE LANGUAGECODE ...
+#
+# Legend:
+# VERSION       Version number of the product
+# PRODUCTNAME   Product name as given in the version.ini resp. versionrc file of the installation
+# BUILDID       BuildId  also given in the version.ini resp. versionrc file of the installation
+# DOWNLOADURL   Default URL the user is guided to for corresponding packages
+# LANGUAGECODE  Language code of an released language
+
+3.4.0 OpenOffice.org_3 9590 http://www.openoffice.org/download/other-341.html en-US ar cs es gl hu it ja nl pt-BR ru zh-CN zh-TW
+
+
+3.4.1 OpenOffice.org_3 9593 http://www.openoffice.org/download/other-341.html en-US ar ast cs da de en-GB es eu fi fr gd gl hu it ja km ko nb nl pl pt-BR ru sk sl sv zh-CN zh-TW
+
+
+4.0.0 OpenOffice_4 9702 http://www.openoffice.org/download en-US ast cs de el en-GB es fi fr gd gl hu it ja ko nl pt pt-BR ru sk sl ta zh-CN
+
+
+4.0.1 OpenOffice_4 9714 http://www.openoffice.org/download en-US ast cs de el en-GB es eu fi fr gd gl hu it ja km ko lt nl pl pt pt-BR ru sk sl sr sv ta tr vi zh-CN zh-TW
+
+
+4.1.0 OpenOffice_4 9764 http://www.openoffice.org/download en-US ast bg cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+
+# temporary entry for 4.1.1 - BUILDID has to be corrected; list of LANGUAGECODEs has to be corrected
+4.1.1 OpenOffice_4 9772 http://www.openoffice.org/download en-US ast bg ca ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+
+
+
+# Product names for former OpenOffice versions
+3.2.0 OpenOffice.org_3
+3.2.1 OpenOffice.org_3
+3.3.0 OpenOffice.org_3
+
+
+# end of file

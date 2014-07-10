@@ -1,0 +1,51 @@
+﻿# Map of language codes
+#
+# Format:
+# LANGUAGECODE,LANGUAGE,DOWNLOADURL
+#
+# Legend:
+# LANGUAGECODE  Language code of an released language
+# LANGUAGE      Human-readable language name
+# DOWNLOADURL   optional URL the user is guided to for corresponding package in the named language
+
+en-US,English (US)
+ar,Arabic
+ast,Asturian
+bg,Bulgarian
+ca,Catalan
+ca-XV,Catalan (Valencia AVL)
+cs,Czech,http://www.openoffice.org/cs/download
+da,Danish
+de,German,http://www.openoffice.org/de
+el,Greek
+en-GB,English (British)
+es,Spanish,http://www.openoffice.org/es/descargar
+eu,Basque
+fi,Finnish
+fr,French,http://www.openoffice.org/fr/Telecharger
+gd,Gaelic (Scottish)
+gl,Galician
+he,Hebrew
+hi,Hindi
+hu,Hungarian
+it,Italian,http://www.openoffice.org/it/download
+ja,Japanese,http://www.openoffice.org/ja/download
+km,Khmer
+ko,Korean
+lt,Lituanian
+nb,Norwegian (Bokmål)
+nl,Dutch,http://www.openoffice.org/nl/downloaden.html
+pl,Polish
+pt,Portuguese (European),http://www.openoffice.org/pt
+pt-BR,Portuguese (Brazilian)
+ru,Russian
+sk,Slovak,http://www.openoffice.org/sk/download
+sl,Slovenian
+sr,Serbian (Cyrillic)
+sv,Swedish
+ta,Tamil
+th,Thai
+tr,Turkish,http://www.openoffice.org/tr
+vi,Vietnamese
+zh-CN,Chinese (simplified),http://www.openoffice.org/zh-cn
+zh-TW,Chinese (traditional),http://www.openoffice.org/zh-tw
