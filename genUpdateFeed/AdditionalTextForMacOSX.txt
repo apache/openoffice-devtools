@@ -6,6 +6,7 @@ ar,فقط لإصدارات نظام التشغيل Mac OS X 10.7 أو أحدث
 ast,Only for Mac OS X versions 10.7 or newer
 bg,Само за Mac OS X 10.7 или по-нова версия
 ca,Only for Mac OS X versions 10.7 or newer
+ca-XR,Only for Mac OS X versions 10.7 or newer
 ca-XV,Only for Mac OS X versions 10.7 or newer
 cs,Pouze pro Mac OS verze 10.7 a novější
 da,Kun for Mac OS X version 10.7 eller nyere

@@ -24,8 +24,8 @@
 
 4.1.0 OpenOffice_4 9764 http://www.openoffice.org/download en-US ast bg cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
 
-# temporary entry for 4.1.1 - BUILDID has to be corrected; list of LANGUAGECODEs has to be corrected
-4.1.1 OpenOffice_4 9772 http://www.openoffice.org/download en-US ast bg ca ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+
+4.1.1 OpenOffice_4 9775 http://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
 
 
 

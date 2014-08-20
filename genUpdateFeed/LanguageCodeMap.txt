@@ -13,6 +13,7 @@ ar,Arabic
 ast,Asturian
 bg,Bulgarian
 ca,Catalan
+ca-XR,Catalan (Valencia RACV)
 ca-XV,Catalan (Valencia AVL)
 cs,Czech,http://www.openoffice.org/cs/download
 da,Danish
