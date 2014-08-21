@@ -62,11 +62,18 @@ if len(sys.argv) != 4:
 
 
 downloads = [line.strip() for line in open(sys.argv[1])]
-start_date =  datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
+start_date = datetime.datetime.strptime(sys.argv[2], '%Y-%m-%d')
 end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
 # columns of interest
-columns = [ "count_total","count_340","count_341","count_400","count_401","count_410","windows","mac","linux","linux32","linux64","deb","rpm","ar","ast","eu","zh-TW","zh-CN","cs","da","nl","en-GB","en-US","fi","fr","gd","gl","de","hu","it","ja","km","ko","lt","nb","pl","pt-BR","ru","sk","sl","es","sv","el","pt","ta","sr","tr","vi","he","bg","hi","th"]
+columns = [ "count_total",
+    "count_340", "count_341", "count_400", "count_401", "count_410", "count_411",
+    "windows", "mac", "linux", "linux32", "linux64", "deb", "rpm",
+    "ar", "ast", "bg", "ca", "ca-XR", "ca-XV", "cs", "da", "de",
+    "en-GB", "en-US", "el", "es", "eu", "fi", "fr", "gd", "gl",
+    "he", "hi", "hu", "it", "ja", "km", "ko", "lt", "nb", "nl",
+    "pl", "pt", "pt-BR", "ru", "sk", "sl", "sr", "sv", "ta", "tr",
+    "th", "zh-CN", "zh-TW"]
 
 # column counters are updated if the download name contains a matching pattern
 # The dictionary below maps the column names to these search patterns.
@@ -78,6 +85,7 @@ patternDict = {
     "count_400" : "4.0.0",
     "count_401" : "4.0.1",
     "count_410" : "4.1.0",
+    "count_410" : "4.1.1",
     "windows"   : "Win_x86",
     "mac"       : "MacOS",
     "linux"     : "Linux",
