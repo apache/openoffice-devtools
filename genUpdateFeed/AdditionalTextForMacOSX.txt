@@ -26,7 +26,7 @@ it,Solo per Mac OS X 10.7 o superiore
 ja,唯一のMac OS Xバージョン10.7以降
 km,សម្រាប់តែកំណែ Mac OS X 10.7 ឬថ្មីជាង
 ko,오직 맥 OS X 버전 10.7 이상 버전
-lt,Tik Mac OS X versijos 10.7 arba naujesnė
+lt,Tik "Mac OS X" 10.7 arba naujesnei laidai
 nb,Bare for Mac OS X versjon 10.7 eller nyere
 nl,Alleen voor Mac OS X-versies 10.7 of nieuwer
 pl,Tylko dla wersji Mac OS X 10.7 lub nowszy
