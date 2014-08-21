@@ -19,7 +19,7 @@ fi,Vain Mac OS X-versiot 10.7 tai uudempi
 fr,Seulement pour les versions Mac OS X 10.7 ou plus récent
 gd,Only for Mac OS X versions 10.7 or newer
 gl,Só para as versións de Mac OS X 10.7 ou superior
-he,רק עבור גרסאות Mac OS X 10.7 או חדש יותר
+he,מיועד ל־Mac OS X מגרסה 10.7 ומעלה
 hi,मैक ओएस एक्स संस्करणों के लिए 10.7 या नए
 hu,Csak a Mac OS X 10.7 vagy újabb verzió
 it,Solo per Mac OS X 10.7 o superiore
