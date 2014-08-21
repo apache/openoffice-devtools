@@ -85,7 +85,7 @@ patternDict = {
     "count_400" : "4.0.0",
     "count_401" : "4.0.1",
     "count_410" : "4.1.0",
-    "count_410" : "4.1.1",
+    "count_411" : "4.1.1",
     "windows"   : "Win_x86",
     "mac"       : "MacOS",
     "linux"     : "Linux",
