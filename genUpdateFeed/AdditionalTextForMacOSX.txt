@@ -5,9 +5,9 @@ en-US,Only for Mac OS X versions 10.7 or newer
 ar,فقط لإصدارات نظام التشغيل Mac OS X 10.7 أو أحدث
 ast,Only for Mac OS X versions 10.7 or newer
 bg,Само за Mac OS X 10.7 или по-нова версия
-ca,Only for Mac OS X versions 10.7 or newer
-ca-XR,Only for Mac OS X versions 10.7 or newer
-ca-XV,Only for Mac OS X versions 10.7 or newer
+ca,Només per a Mac OS X versió 10.7 o més recent
+ca-XR,Només per a Mac OS X versió 10.7 o més recent
+ca-XV,Només per a Mac OS X versió 10.7 o més recent
 cs,Pouze pro Mac OS verze 10.7 a novější
 da,Kun for Mac OS X version 10.7 eller nyere
 de,Nur für Mac OS X-Versionen 10.7 oder neuer
