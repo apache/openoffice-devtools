@@ -4,7 +4,7 @@
         <category term="%PRODUCTNAME%_%LANGUAGECODE%" label="Apache OpenOffice update"/>
         <summary>%ADDITIONALTEXT%</summary>
         <content type="application/xml">
-            <inst:description xmlns:inst="https://wiki.openoffice.org/wiki/Update_Service">
+            <inst:description xmlns:inst="http://installation.openoffice.org/description">
                 <inst:id>%PRODUCTNAME%_%LANGUAGECODE%</inst:id>
                 <inst:version>%NEWVERSION%</inst:version>
                 <inst:buildid>%NEWBUILDID%</inst:buildid>
