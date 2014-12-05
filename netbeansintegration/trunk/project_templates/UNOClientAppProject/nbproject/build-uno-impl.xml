@@ -24,7 +24,7 @@
     </target>
        
     <!-- jar including manifest: usr's own or a created one -->
-    <target name="jar" depends="-uno-project-init,compile,-pre-jar,-do-jar-jar,-do-openoffice-manifest,-post-jar">
+    <target name="jar" depends="-uno-project-init,compile,-pre-jar,-do-jar-jar,-do-jar-without-libraries,-do-jar-with-libraries,-do-openoffice-manifest,-post-jar">
         <jar basedir="${build.classes.dir}" manifest="${build.dir}/MANIFEST.MF" filesonly="true" compress="true" jarfile="${dist.jar}">
             <fileset refid="bootstrap.glue.code"/>
         </jar>
