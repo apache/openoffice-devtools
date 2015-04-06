@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontscolors>
+    <fontcolor name="idl-text" foreColor="black" default="default"/>
+    <fontcolor name="idl-comment" foreColor="gray" default="default"/>
+    <fontcolor name="idl-keyword" foreColor="blue" default="default">
+        <font style="bold" />
+    </fontcolor>
+    <fontcolor name="idl-precompiler" foreColor="ff00aa00" default="default"/>
+    <fontcolor name="idl-bracket" foreColor="blue" default="default"/>
+    <fontcolor name="idl-number" foreColor="red" default="default"/>
+    <fontcolor name="idl-char" foreColor="ff00aa00" default="default"/>
+    <fontcolor name="idl-string" foreColor="magenta" default="default"/>
+    <fontcolor name="idl-function" foreColor="black" default="default">
+        <font style="bold" />
+    </fontcolor>
+</fontscolors>
