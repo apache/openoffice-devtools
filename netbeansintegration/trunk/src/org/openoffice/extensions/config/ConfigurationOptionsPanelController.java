@@ -68,8 +68,9 @@ final class ConfigurationOptionsPanelController extends OptionsPanelController {
     }
     
     public boolean isChanged() {
-        return (panel.getOffice().trim().equals(settings.getValue(settings.KEY_OFFICE_INSTALLATION)) ||
-                panel.getSDK().trim().equals(settings.getValue(settings.KEY_SDK_INSTALLATION)));
+        
+        return (!panel.getOffice().trim().equals(settings.getValue(settings.KEY_OFFICE_INSTALLATION)) ||
+                !panel.getSDK().trim().equals(settings.getValue(settings.KEY_SDK_INSTALLATION)));
 //        return changed;
     }
     

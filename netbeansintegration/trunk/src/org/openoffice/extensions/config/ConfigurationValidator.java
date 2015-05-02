@@ -58,8 +58,7 @@ public class ConfigurationValidator {
             String title = ResourceBundle.getBundle(
                 "org/openoffice/extensions/config/Bundle").getString(
                 "ConfigurationDialog_Title"); // NOI18N
-            final ConfigurationPanel panel = new ConfigurationPanel(officePath, sdkPath);
-            panel.validateWithFocus();  // set the initial error message incl. focus on the right text field
+            final ConfigurationValidatorPanel panel = new ConfigurationValidatorPanel(officePath, sdkPath);
             DialogDescriptor ddscr = new DialogDescriptor(panel, title);
             ddscr.setButtonListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -72,12 +71,15 @@ public class ConfigurationValidator {
             });
             // set help to this panel
             ddscr.setHelpCtx(new HelpCtx("org.openoffice.extensions.config.paths")); // NOI18N
+            panel.setDialogDescriptor(ddscr);
+            ddscr.setValid(false); // disable OK button
+            panel.validateWithFocus();  // set the initial error message incl. focus on the right text field
             Dialog d = DialogDisplayer.getDefault().createDialog(ddscr);
             d.setVisible(true);
             officePath = settings.getValue(ConfigurationSettings.KEY_OFFICE_INSTALLATION);
             sdkPath = settings.getValue(ConfigurationSettings.KEY_SDK_INSTALLATION);
             loc = OpenOfficeLocation.getOpenOfficeLocation(officePath, sdkPath, false);
-            valid = loc != null && loc.validate();
+            valid = (loc != null && loc.validate());
         }
         return valid;
     }
