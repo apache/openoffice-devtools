@@ -58,6 +58,10 @@ public class AddOnWizardIterator implements WizardDescriptor.InstantiatingIterat
     private WizardDescriptor wiz;
     private HashSet<ChangeListener>listeners;
     
+    // to track status of valid office and sdk through ConfigurationValidator
+    // to disable next button in AddOnWizardPanel1Project if setting was skipped
+    private boolean sdkOk = false;
+    
     public AddOnWizardIterator() {
         listeners = new HashSet<ChangeListener>();
     }
@@ -154,7 +158,13 @@ public class AddOnWizardIterator implements WizardDescriptor.InstantiatingIterat
     }
     
     public void initialize(WizardDescriptor wiz) {
-        ConfigurationValidator.validateSettings();
+        // ConfigurationValidator.validateSettings();
+        if (ConfigurationValidator.validateSettings()) {
+        setSdkOk(true);
+        } else {
+            setSdkOk(false);
+        }
+        // continue so user may cancel
         this.wiz = wiz;
         index = 0;
         createPanelCache();
@@ -231,6 +241,14 @@ public class AddOnWizardIterator implements WizardDescriptor.InstantiatingIterat
         } finally {
             source.close();
         }
+    }
+    
+    public boolean isSdkOk() {
+        return this.sdkOk;
+    }
+    
+    public void setSdkOk(boolean sdkOk) {
+        this.sdkOk = sdkOk;
     }
     
 }

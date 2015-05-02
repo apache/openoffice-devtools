@@ -300,6 +300,12 @@ public class AddOnPanelVisual1Project extends JPanel implements DocumentListener
     
     boolean valid(WizardDescriptor wizardDescriptor) {
         
+        if (!panel.getAddOnWizardIterator().isSdkOk()) {
+            String message = NbBundle.getMessage(AddOnWizardIterator.class, "LBL_ErrorMessageOfficeSdk");
+            wizardDescriptor.putProperty("WizardPanel_errorMessage", message); // NOI18N
+            return false; // Office or SDK skipped during Configuration Panel
+        }
+        
         if (projectNameTextField.getText().length() == 0) {
             String message = NbBundle.getMessage(AddOnWizardIterator.class, "LBL_ErrorMessageFolder");
             wizardDescriptor.putProperty("WizardPanel_errorMessage", message); // NOI18N

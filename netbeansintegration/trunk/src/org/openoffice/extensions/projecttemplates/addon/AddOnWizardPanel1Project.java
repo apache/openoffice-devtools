@@ -108,4 +108,8 @@ public class AddOnWizardPanel1Project implements WizardDescriptor.Panel,
         component.validate(wizardDescriptor);
     }
     
+    public AddOnWizardIterator getAddOnWizardIterator() {
+        return addonIt;
+    }
+    
 }
