@@ -40,9 +40,11 @@ public class UNOClientAppWizardPanel implements WizardDescriptor.Panel,
     
     private WizardDescriptor wizardDescriptor;
     private UNOClientAppPanelVisual component;
+    private UNOClientAppWizardIterator wizIt;
     
     /** Creates a new instance of templateWizardPanel */
-    public UNOClientAppWizardPanel() {
+    public UNOClientAppWizardPanel(UNOClientAppWizardIterator it) {
+        wizIt = it;
     }
     
     public Component getComponent() {
@@ -101,6 +103,10 @@ public class UNOClientAppWizardPanel implements WizardDescriptor.Panel,
     public void validate() throws WizardValidationException {
         getComponent();
         component.validate(wizardDescriptor);
+    }
+    
+    public UNOClientAppWizardIterator getUNOClientAppWizardIterator() {
+        return wizIt;
     }
     
 }

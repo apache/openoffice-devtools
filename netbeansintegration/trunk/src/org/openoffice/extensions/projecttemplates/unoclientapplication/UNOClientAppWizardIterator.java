@@ -1,24 +1,23 @@
-/**************************************************************
- * 
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- * 
- *************************************************************/
-
+/**
+ * ************************************************************
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with this
+ * work for additional information regarding copyright ownership. The ASF
+ * licenses this file to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ *
+ ************************************************************
+ */
 package org.openoffice.extensions.projecttemplates.unoclientapplication;
 
 import java.awt.Component;
@@ -47,41 +46,44 @@ import org.openide.util.NbBundle;
 import org.openoffice.extensions.config.ConfigurationValidator;
 import org.openoffice.extensions.util.Substitutions;
 
-
 public class UNOClientAppWizardIterator implements WizardDescriptor.InstantiatingIterator {
-    
+
     private int index;
     private WizardDescriptor.Panel[] panels;
     private WizardDescriptor wiz;
-    
-    public UNOClientAppWizardIterator() {}
-    
+
+    // to track status of valid office and sdk through ConfigurationValidator
+    // to disable next button in AddOnWizardPanel1Project if setting was skipped
+    private boolean sdkOk = false;
+
+    public UNOClientAppWizardIterator() {
+    }
+
     public static UNOClientAppWizardIterator createIterator() {
         return new UNOClientAppWizardIterator();
     }
-    
+
     private WizardDescriptor.Panel[] createPanels() {
-        return new WizardDescriptor.Panel[] {
-            new UNOClientAppWizardPanel(),
-        };
+        return new WizardDescriptor.Panel[]{
+            new UNOClientAppWizardPanel(this),};
     }
-    
+
     private String[] createSteps() {
-        return new String[] {
+        return new String[]{
             NbBundle.getMessage(UNOClientAppWizardIterator.class, "LBL_CreateProjectStep")
         };
     }
-    
+
     public Set<FileObject> instantiate() throws IOException {
         Set<FileObject> resultSet = new LinkedHashSet<FileObject>();
         File dirF = FileUtil.normalizeFile((File) wiz.getProperty("ProjectDir")); // NOI18N
         dirF.mkdirs();
-        
+
         FileObject template = Templates.getTemplate(wiz);
         FileObject dir = FileUtil.toFileObject(dirF);
-      
+
         unZipFile(wiz, template.getName(), template.getInputStream(), dir);
-               
+
         // Always open top dir as a project:
         resultSet.add(dir);
         // Look for nested projects to open as well:
@@ -92,17 +94,23 @@ public class UNOClientAppWizardIterator implements WizardDescriptor.Instantiatin
                 resultSet.add(subfolder);
             }
         }
-        
+
         File parent = dirF.getParentFile();
         if (parent != null && parent.exists()) {
             ProjectChooser.setProjectsFolder(parent);
         }
-        
+
         return resultSet;
     }
-    
+
     public void initialize(WizardDescriptor wiz) {
-        ConfigurationValidator.validateSettings();
+        // ConfigurationValidator.validateSettings();
+        if (ConfigurationValidator.validateSettings()) {
+            setSdkOk(true);
+        } else {
+            setSdkOk(false);
+        }
+        // continue so user may cancel
         this.wiz = wiz;
         index = 0;
         panels = createPanels();
@@ -125,55 +133,66 @@ public class UNOClientAppWizardIterator implements WizardDescriptor.Instantiatin
             }
         }
     }
-    
+
     public void uninitialize(WizardDescriptor wiz) {
-        this.wiz.putProperty("projdir",null); // NOI18N
-        this.wiz.putProperty("name",null); // NOI18N
+        this.wiz.putProperty("projdir", null); // NOI18N
+        this.wiz.putProperty("name", null); // NOI18N
         this.wiz = null;
         panels = null;
     }
-    
+
     public String name() {
         return MessageFormat.format("{0} of {1}",
-                new Object[] {new Integer(index + 1), new Integer(panels.length)}); // NOI18N
+                new Object[]{new Integer(index + 1), new Integer(panels.length)}); // NOI18N
     }
-    
+
     public boolean hasNext() {
         return index < panels.length - 1;
     }
-    
+
     public boolean hasPrevious() {
-        return index > 0;
+            return index > 0;
     }
-    
+
     public void nextPanel() {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
         index++;
     }
-    
+
     public void previousPanel() {
         if (!hasPrevious()) {
             throw new NoSuchElementException();
         }
         index--;
     }
-    
+
     public WizardDescriptor.Panel current() {
         return panels[index];
     }
     
     // If nothing unusual changes in the middle of the wizard, simply:
-    public final void addChangeListener(ChangeListener l) {}
-    public final void removeChangeListener(ChangeListener l) {}
-    
+    public final void addChangeListener(ChangeListener l) {
+    }
+
+    public final void removeChangeListener(ChangeListener l) {
+    }
+
+    public boolean isSdkOk() {
+        return this.sdkOk;
+    }
+
+    public void setSdkOk(boolean sdkOk) {
+        this.sdkOk = sdkOk;
+    }
+
     private static void unZipFile(WizardDescriptor wiz, String templateName, InputStream source, FileObject projectRoot) throws IOException {
-        String[] pathProperties = { "UnoPackagePath", "UnoClientMain"}; // NOI18N
-        String[] contentProperties = { "UnoPackage", "UnoClientMain", "UnoClientProjectName", "TimeStamp", 
-                                       "UserName", "BuildUnoVersion", "OfficePath", "SdkPath", "OfficeLibrary"}; // NOI18N
-        
-        Substitutions substitutions = new Substitutions (wiz, new BufferedInputStream (
+        String[] pathProperties = {"UnoPackagePath", "UnoClientMain"}; // NOI18N
+        String[] contentProperties = {"UnoPackage", "UnoClientMain", "UnoClientProjectName", "TimeStamp",
+            "UserName", "BuildUnoVersion", "OfficePath", "SdkPath", "OfficeLibrary"}; // NOI18N
+
+        Substitutions substitutions = new Substitutions(wiz, new BufferedInputStream(
                 UNOClientAppWizardIterator.class.getResourceAsStream(templateName + ".properties")), pathProperties, contentProperties); // NOI18N
         try {
             ZipInputStream str = new ZipInputStream(source);
@@ -203,5 +222,5 @@ public class UNOClientAppWizardIterator implements WizardDescriptor.Instantiatin
             source.close();
         }
     }
-    
+
 }
