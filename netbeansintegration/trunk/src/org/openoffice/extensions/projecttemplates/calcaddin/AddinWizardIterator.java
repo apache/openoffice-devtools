@@ -41,6 +41,7 @@ import org.openoffice.extensions.config.ConfigurationValidator;
 import org.openoffice.extensions.projecttemplates.actions.panel.DescriptionXmlHandler;
 import org.openoffice.extensions.util.ProjectCreator;
 
+ 
 public class AddinWizardIterator implements WizardDescriptor.InstantiatingIterator {
     
     private static final long serialVersionUID = 1L;
@@ -48,6 +49,10 @@ public class AddinWizardIterator implements WizardDescriptor.InstantiatingIterat
     private transient int index;
     private transient WizardDescriptor.Panel[] panels;
     private transient WizardDescriptor wiz;
+    
+    // to track status of valid office and sdk through ConfigurationValidator
+    // to disable next button in AddOnWizardPanel1Project if setting was skipped
+    private boolean sdkOk = false;
     
     public AddinWizardIterator() {}
     
@@ -57,7 +62,7 @@ public class AddinWizardIterator implements WizardDescriptor.InstantiatingIterat
 
     private WizardDescriptor.Panel[] createPanels() {
         return new WizardDescriptor.Panel[] {
-            new AddinWizardPanel1Project(),
+            new AddinWizardPanel1Project(this),
 //            new AddinWizardPanel2Class(),
             new AddinWizardPanel2Description()
             //new AddinWizardPanel4Description(),
@@ -104,7 +109,13 @@ public class AddinWizardIterator implements WizardDescriptor.InstantiatingIterat
     }
     
     public void initialize(WizardDescriptor wiz) {
-        ConfigurationValidator.validateSettings();
+        // ConfigurationValidator.validateSettings();
+        if (ConfigurationValidator.validateSettings()) {
+            setSdkOk(true);
+        } else {
+            setSdkOk(false);
+        }
+        // continue so user may cancel
         this.wiz = wiz;
         index = 0;
         panels = createPanels();
@@ -169,5 +180,13 @@ public class AddinWizardIterator implements WizardDescriptor.InstantiatingIterat
     // If nothing unusual changes in the middle of the wizard, simply:
     public final void addChangeListener(ChangeListener l) {}
     public final void removeChangeListener(ChangeListener l) {}
+    
+    public boolean isSdkOk() {
+        return this.sdkOk;
+    }
+    
+    public void setSdkOk(boolean sdkOk) {
+        this.sdkOk = sdkOk;
+    }
 
 }
