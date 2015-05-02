@@ -40,9 +40,11 @@ public class ComponentWizardPanel1Project implements WizardDescriptor.Panel,
     
     private WizardDescriptor wizardDescriptor;
     private ComponentPanelVisual1Project component;
+    private ComponentWizardIterator wizIt;
     
     /** Creates a new instance of templateWizardPanel */
-    public ComponentWizardPanel1Project() {
+    public ComponentWizardPanel1Project(ComponentWizardIterator it) {
+        wizIt = it;
     }
     
     public Component getComponent() {
@@ -101,6 +103,10 @@ public class ComponentWizardPanel1Project implements WizardDescriptor.Panel,
     public void validate() throws WizardValidationException {
         getComponent();
         component.validate(wizardDescriptor);
+    }
+    
+    public ComponentWizardIterator getComponentWizardIterator() {
+        return wizIt;
     }
     
 }

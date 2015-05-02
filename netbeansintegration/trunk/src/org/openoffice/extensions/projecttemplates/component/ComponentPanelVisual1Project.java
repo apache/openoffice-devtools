@@ -248,6 +248,12 @@ public class ComponentPanelVisual1Project extends JPanel implements DocumentList
 
     boolean valid(WizardDescriptor wizardDescriptor) {
         
+                 if (!panel.getComponentWizardIterator().isSdkOk()) {
+            String message = NbBundle.getMessage(ComponentWizardIterator.class, "LBL_ErrorMessageOfficeSdk");
+            wizardDescriptor.putProperty("WizardPanel_errorMessage", message); // NOI18N
+            return false; // Office or SDK skipped during Configuration Panel
+        }
+                 
         if (projectNameTextField.getText().length() == 0) {
             String message = NbBundle.getMessage(ComponentWizardIterator.class, "LBL_Error_ProjectNameNotValid");
             wizardDescriptor.putProperty("WizardPanel_errorMessage", message); // NOI18N
