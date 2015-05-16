@@ -412,7 +412,8 @@ public class DescriptionXmlHandler {
             }
         }
         else {
-            deleteElements(URL_TAG_NAME);
+            // deleteElements(URL_TAG_NAME);
+            deleteElements(EXTENSION_DESCRIPTION_TAG_NAME);
         }
 
         // License Files

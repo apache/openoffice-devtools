@@ -184,7 +184,7 @@ public class VersionPanel extends javax.swing.JPanel implements DocumentListener
         if (updateURLs != null && updateURLs.length > 0) {
             String string = "";
             for (int i = 0; i < updateURLs.length; i++) {
-                string.concat(updateURLs[i]).concat("\n"); // NOI18N
+                string = string.concat(updateURLs[i]).concat("\n"); // NOI18N
             }
             jEditorPaneUpdateURL.setText(string);
         }
