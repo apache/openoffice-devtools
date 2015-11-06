@@ -33,11 +33,11 @@ it,Italian,http://www.openoffice.org/it/download
 ja,Japanese,http://www.openoffice.org/ja/download
 km,Khmer
 ko,Korean
-lt,Lituanian
+lt,Lithuanian,http://www.openoffice.org/lt/download
 nb,Norwegian (Bokmål)
 nl,Dutch,http://www.openoffice.org/nl/downloaden.html
 pl,Polish
-pt,Portuguese (European),http://www.openoffice.org/pt
+pt,Portuguese (European),http://www.openoffice.org/pt/download
 pt-BR,Portuguese (Brazilian)
 ru,Russian
 sk,Slovak,http://www.openoffice.org/sk/download
