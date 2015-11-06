@@ -27,6 +27,8 @@
 
 4.1.1 OpenOffice_4 9775 http://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
 
+4.1.2 OpenOffice_4 9782 http://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+
 
 
 # Product names for former OpenOffice versions
