@@ -184,7 +184,7 @@ FEED="check.Update."$INSTALLEDVERSION"-"$RELEASE
 if [ -e $FEED ]; then
     rm $FEED
 fi
-cat ../feed-prefix.Update | sed "s:%INSTALLED%:$INSTALLEDVERSION:g" | sed "s|%UPDATED%|$(date -u) UTC|g" > $FEED
+cat ../feed-prefix.Update | sed "s:%INSTALLED%:$INSTALLEDVERSION:g" | sed "s|%UPDATED%|$(LC_ALL=C date -u +'%a, %b %d, %Y %H:%M:%S UTC')|g" > $FEED
 
 TEMPLATE="../feed-entry-template.Update"
 if [ ! -e $TEMPLATE ]; then
