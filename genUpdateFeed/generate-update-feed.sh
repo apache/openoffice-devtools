@@ -36,6 +36,7 @@
 if [ ${#@} -ne 2 ]; then
     echo Generate Update Feed for installed AOO/OOo instances
     echo Usage: $0 [version accessing the Product Update Feed] [new version]
+    echo Example: $0 4.1.1 4.1.2
     echo Output file: check.Update.[version accessing the Product Update Feed]-[new version]
     exit
 fi
