@@ -1,0 +1,60 @@
+apply plugin: "groovy"
+apply plugin: "application"
+
+group "${project_group}"
+version "${project_version}"
+
+repositories {
+    mavenCentral()
+
+}
+
+
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    compile "org.openoffice:juh:4.1.2"
+    compile "org.openoffice:ridl:4.1.2"
+    compile "org.openoffice:unoil:4.1.2"
+    compile "org.openoffice:jurt:4.1.2"
+    // use local extension jar until available from maven repo
+    compile files('../GroovyUnoExtension/build/libs/GroovyUnoExtension-0.0.1.jar')
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+
+}
+
+
+mainClassName = "com.sun.star.lib.loader.Loader"
+
+
+task copyLibs(type: Copy) {
+    into buildDir.toString() + "/libs/lib"
+    from findJar('groovy-all')
+    // additional froms
+    from findJar('GroovyUnoExtension')
+} 
+
+// returns a file list from configurations.runtime that start with prefix
+def findJar(prefix) { 
+    println "findJar filter = " + prefix
+    configurations.runtime.filter { it.name.startsWith(prefix) } 
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'com.sun.star.lib.loader.Loader')
+        attributes('Class-Path': 'lib/groovy-all-2.4.5.jar lib/GroovyUnoExtension-0.0.1.jar') // use spaces between additional jars. use one string.
+        attributes('Application-Class': '${project_package}.${project_class_name}', 'com/sun/star/lib/loader/Loader.class')
+    }
+    
+    dependsOn 'copyLibs'
+}
+
+// executes 'java -jar 
+task runJar(dependsOn:jar) << {
+    javaexec { main="-jar"; args jar.archivePath } 
+}
+
+// make sure we always clean first
+compileJava.dependsOn clean
+
