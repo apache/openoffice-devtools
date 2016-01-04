@@ -1,0 +1,36 @@
+apply plugin: "groovy"
+apply plugin: "application"
+
+repositories {
+    mavenCentral()
+    
+}
+
+version "0.1.0" 
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    compile "org.openoffice:juh:4.1.2"
+    compile "org.openoffice:ridl:4.1.2"
+    compile "org.openoffice:unoil:4.1.2"
+    compile "org.openoffice:jurt:4.1.2"
+    
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+
+}
+
+groovydoc {
+    docTitle = "Groovy UNO Extension API"
+    header = "Apache OpenOffice Groovy UNO" // doesn't seem to work
+    footer = "Generated documentation ${version}"
+    windowTitle = docTitle
+    use = true // create class and package usage pages
+}
+
+jar.baseName = 'guno-extension'
+
+groovydoc.mustRunAfter clean
+jar.mustRunAfter groovydoc
+
+groovydoc.dependsOn clean
+jar.dependsOn groovydoc
