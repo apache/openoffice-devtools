@@ -18,7 +18,7 @@ dependencies {
     compile "org.openoffice:unoil:4.1.2"
     compile "org.openoffice:jurt:4.1.2"
     // use local extension jar until available from maven repo
-    compile files('../GroovyUnoExtension/build/libs/GroovyUnoExtension-0.0.1.jar')
+    compile files('your-path-to/guno-extension/build/libs/guno-extension-0.1.0.jar')
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 
 }
@@ -31,7 +31,7 @@ task copyLibs(type: Copy) {
     into buildDir.toString() + "/libs/lib"
     from findJar('groovy-all')
     // additional froms
-    from findJar('GroovyUnoExtension')
+    from findJar('guno-extension')
 } 
 
 // returns a file list from configurations.runtime that start with prefix
@@ -43,7 +43,7 @@ def findJar(prefix) {
 jar {
     manifest {
         attributes('Main-Class': 'com.sun.star.lib.loader.Loader')
-        attributes('Class-Path': 'lib/groovy-all-2.4.5.jar lib/GroovyUnoExtension-0.0.1.jar') // use spaces between additional jars. use one string.
+        attributes('Class-Path': 'lib/groovy-all-2.4.5.jar lib/guno-extension-0.1.0.jar') // use spaces between additional jars. use one string.
         attributes('Application-Class': '${project_package}.${project_class_name}', 'com/sun/star/lib/loader/Loader.class')
     }
     
