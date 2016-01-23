@@ -1,0 +1,17 @@
+apply plugin: "java"
+apply plugin: "application"
+
+repositories {
+    mavenCentral()
+}
+
+version "0.1.0" 
+
+dependencies {
+    compile "org.openoffice:juh:4.1.2"
+    compile "org.openoffice:ridl:4.1.2"
+    compile "org.openoffice:unoil:4.1.2"
+    compile "org.openoffice:jurt:4.1.2"
+
+}
+
