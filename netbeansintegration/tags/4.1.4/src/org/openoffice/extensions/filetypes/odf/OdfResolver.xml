@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE MIME-resolver PUBLIC "-//NetBeans//DTD MIME Resolver 1.0//EN" "http://www.netbeans.org/dtds/mime-resolver-1_0.dtd">
+<MIME-resolver>
+    <file>
+        <ext name="odt"/>
+        <ext name="ods"/>
+        <ext name="odp"/>
+        <ext name="odb"/>
+        <ext name="odg"/>  <!-- draw -->
+        <ext name="odc"/>  <!-- chart -->
+        <ext name="odf"/>  <!-- formula -->
+        <resolver mime="text/x-vnd.oasis.opendocument.text"/>
+    </file>
+</MIME-resolver>

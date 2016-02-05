@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build l10n list and zip file" default="all" basedir=".">
+    <property name="target.dirname" value="build/l10n"/>
+    <property name="src.name" value="src"/>
+    <property name="javahelp.name" value="javahelp"/>
+    <property name="base.dir" value="ooextensions"/>
+    <property name="l10n.list" value="l10n.list"/>
+    <property name="l10n.zip" value="l10n.zip"/>
+    <property name="include.properties" value="**/Bundle.properties"/>
+    <property name="include.html" value="**/*.html"/>
+    <property name="include.xml" value="**/*.xml"/>
+    <property name="include.gif" value="**/*.gif"/>
+    <property name="exclude.non.english" value="**/*ja*,**/*zh_CN*"/>
+    
+    <!-- write out the l10n.list file and the zip file with all localizable
+         strings: never change l10n.list, change this file. -->
+    <target name="build-l10n-list" description="create zip with all relevant l10n files">
+        <!-- zip file with localizeable strings -->
+        <mkdir dir="${target.dirname}"/>
+        <zip destfile="${target.dirname}/${l10n.zip}">
+            <fileset dir="${src.name}" includes="${include.properties}" excludes="${exclude.non.english}" casesensitive="yes"/>
+            <fileset dir="${src.name}" includes="${include.html}" excludes="${exclude.non.english}" casesensitive="yes"/>
+            <fileset dir="${javahelp.name}" includes="${include.html}" excludes="${exclude.non.english}" casesensitive="yes"/>
+            <fileset dir="${javahelp.name}" includes="${include.xml}" excludes="${exclude.non.english}" casesensitive="yes"/>
+            <fileset dir="${javahelp.name}" includes="${include.gif}" excludes="${exclude.non.english}" casesensitive="yes"/>
+        </zip>
+        <!-- write search patterns for localizeable strings -->
+        <echo message="${base.dir}/${src.name}/${include.properties}${line.separator}" file="${l10n.list}"/>
+        <echo message="${base.dir}/${src.name}/${include.html}${line.separator}" file="${l10n.list}" append="true"/>
+        <echo message="${base.dir}/${javahelp.name}/${include.html}${line.separator}" file="${l10n.list}" append="true"/>
+        <echo message="${base.dir}/${javahelp.name}/${include.xml}${line.separator}" file="${l10n.list}" append="true"/>
+        <echo message="${base.dir}/${javahelp.name}/${include.gif}" file="${l10n.list}" append="true"/>
+    </target>
+    
+    <!-- copy the localized files from a zip file back into their destinations.
+         Copy the zip with all localizations into the base directory and execute this target.
+         Make sure that no other zip file is located there.-->
+    <target name="copy-l10n-files-back" description="move zip into base directory: no other zip there allowed, all are extracted!">
+        <mkdir dir="${target.dirname}"/>
+        <unzip dest="${target.dirname}" overwrite="true">
+            <fileset dir=".">
+                <include name="*.zip"/>
+            </fileset>
+        </unzip>
+        <!-- copy with intelligence: some stuff is destined for javahelp, some for src tree -->
+        <!-- javahelp -->
+        <copy todir="${javahelp.name}">
+            <fileset dir="${target.dirname}">
+                <include name="**/docs/**"/>
+            </fileset>
+        </copy>
+        <!-- src -->
+        <copy todir="${src.name}">
+            <fileset dir="${target.dirname}">
+                <exclude name="**/docs/**"/>
+            </fileset>
+        </copy>
+    </target>
+   
+    
+    <!-- clean created directory -->
+    <target name="clean" description="delete the created l10n file">
+        <delete dir="${target.dirname}"/>
+    </target>
+    
+    
+    <!-- create template files for a new language -->
+    <target name="create-new-language-templates" description="create all templates for a new localization" depends="clean,-prompt-language,-get-language,-copy-src-files,-copy-help-files"/>
+    
+    <target name="-prompt-language">
+        <input message="Enter language and country that you want to translate into, e.g. zh_CN" addproperty="lang.country"/>
+    </target>
+    <target name="-get-language">
+        <property name="lang.country.filename" value="lang_country.properties"/>
+        <mkdir dir="${target.dirname}"/>
+        <echo file="${target.dirname}/${lang.country.filename}" message="${lang.country}"/>
+        <replaceregexp file="${target.dirname}/${lang.country.filename}" match=".*" replace="lang=\0"/>
+        <replace file="${target.dirname}/${lang.country.filename}" token="_" value="${line.separator}country="/>
+        <property file="${target.dirname}/${lang.country.filename}"/>
+    </target>
+    
+    <target name="-copy-src-files">
+        <copy todir="${target.dirname}">
+            <fileset dir="${src.name}">
+                <include name="${include.properties}"/>
+            </fileset>
+        </copy>
+        <copy todir="${target.dirname}">
+            <fileset dir="${src.name}">
+                <include name="${include.html}"/>
+            </fileset>
+        </copy>
+        <delete>
+            <fileset dir="${target.dirname}" includes="${exclude.non.english}"/>
+        </delete>
+        <copy todir="${target.dirname}" >
+            <fileset dir="${target.dirname}">
+                <include name="${include.properties}"/>
+            </fileset>
+            <regexpmapper from="(.*)\.properties" to="\1_${lang.country}.properties"/>
+        </copy>
+        <copy todir="${target.dirname}" >
+            <fileset dir="${target.dirname}">
+                <include name="${include.html}"/>
+            </fileset>
+            <regexpmapper from="(.*)\.html" to="\1_${lang.country}.html"/>
+        </copy>
+        <replace includes="**/*.html" dir="${target.dirname}/org/openoffice/extensions/" token="&lt;html&gt;" value="&lt;html lang='${lang}'&gt;"/>
+    </target>
+    
+    <target name="-copy-help-files">
+        <!-- help files are more difficult -->
+        <copy todir="${target.dirname}">
+            <fileset dir="${javahelp.name}" casesensitive="yes">
+                <include name="${include.html}"/>
+                <include name="${include.xml}"/>
+                <include name="${include.gif}"/>
+                <exclude name="${exclude.non.english}"/>
+            </fileset>
+        </copy> 
+        <!-- TODO: this is hacked... how to exclude subdirs from copying? -->
+        <delete dir="${target.dirname}/org/openoffice/extensions/docs/ja"/>
+        <delete dir="${target.dirname}/org/openoffice/extensions/docs/zh_CN"/>
+        <delete file="${target.dirname}/org/openoffice/extensions/docs/extensions-hs_zh_CN.xml"/>
+        <delete file="${target.dirname}/org/openoffice/extensions/docs/extensions-hs_ja.xml"/>
+        <mkdir dir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}"/>
+        <!-- single copy because of filter and different target dirs -->
+        <copy todir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}">
+            <fileset dir="${target.dirname}/org/openoffice/extensions/docs" casesensitive="yes">
+                <include name="${include.html}"/>
+                <exclude name="${exclude.non.english}"/>
+                <exclude name="${lang.country}"/>
+            </fileset>
+        </copy> 
+        <replace includes="**/*.html" dir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}" token="/org/openoffice/extensions/docs/" value="/org/openoffice/extensions/docs/${lang.country}/"/>
+        <replace includes="**/*.html" dir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}" token="/org/netbeans/modules/usersguide/" value="/org/netbeans/modules/usersguide/${lang.country}/"/>
+        <replace includes="**/*.html" dir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}" token="&lt;html&gt;" value="&lt;html lang='${lang}'&gt;"/>
+
+        <copy todir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}">
+            <fileset dir="${target.dirname}/org/openoffice/extensions/docs" casesensitive="yes">
+                <include name="${include.xml}"/>
+                <exclude name="${exclude.non.english}"/>
+                <exclude name="${lang.country}"/>
+            </fileset>
+        </copy> 
+        <copy todir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}/images">
+            <fileset dir="${target.dirname}/org/openoffice/extensions/docs/images" casesensitive="yes">
+                <include name="${include.gif}"/>
+                <exclude name="${exclude.non.english}"/>
+                <exclude name="${lang.country}"/>
+            </fileset>
+        </copy> 
+        <delete>
+            <fileset dir="${target.dirname}/org/openoffice/extensions/docs/${lang.country}">
+                <include name="${exclude.non.english}"/>
+            </fileset>
+        </delete>
+        <delete file="${target.dirname}/org/openoffice/extensions/docs/${lang.country}/extensions-hs.xml"/>
+        <copy file="${target.dirname}/org/openoffice/extensions/docs/extensions-hs.xml" 
+            tofile="${target.dirname}/org/openoffice/extensions/docs/extensions-hs_${lang.country}.xml">
+            <filterset>
+                <filter token="mapref location=&quot;" value="mapref location=&quot;${lang.country}/"/>
+                <filter token="/org/netbeans/modules/usersguide/" value="/org/netbeans/modules/usersguide/${lang.country}/"/>
+            </filterset>
+        </copy>
+        <replace file="${target.dirname}/org/openoffice/extensions/docs/extensions-hs_${lang.country}.xml" token="mapref location=&quot;" value="mapref location=&quot;${lang.country}/"/>
+        <replace file="${target.dirname}/org/openoffice/extensions/docs/extensions-hs_${lang.country}.xml" token="&lt;data&gt;" value="&lt;data&gt;${lang.country}/"/>
+        <replace file="${target.dirname}/org/openoffice/extensions/docs/extensions-hs_${lang.country}.xml" token="JavaHelpSearch" value="${lang.country}/JavaHelpSearch"/>
+    </target>
+</project>

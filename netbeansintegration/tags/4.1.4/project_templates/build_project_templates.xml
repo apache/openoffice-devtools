@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="changeme" default="all" basedir=".">
+    
+    <target name="-init">
+        <property name="AddOnProject" value="AddOnProject"/>
+        <property name="AddinProject" value="AddinProject"/>
+        <property name="ComponentProject" value="ComponentProject"/>
+        <property name="UNOClientAppProject" value="UNOClientAppProject"/>
+        <property name="templates_target_dir" value="${build.classes.dir}/org/openoffice/extensions/projecttemplates"/>
+    </target>
+
+    <!-- do always the same with every project template: zip to target directory -->
+    <macrodef name="zip_one_template_dir">
+        <attribute name="templatename"/>
+        <attribute name="targetdir"/>
+        <sequential>
+            <zip destfile="@{targetdir}/@{templatename}.zip">
+                <!-- take everything from component except special stuff -->
+                <fileset dir="./project_templates/ComponentProject" includes="**" casesensitive="yes"/>
+                <fileset dir="./project_templates/@{templatename}" includes="**" casesensitive="yes"/>
+            </zip>
+        </sequential>    
+    </macrodef>
+    
+    <!-- zip uno client app -->
+    <target name="-zip_client_app" depends="-init">
+        <zip destfile="${templates_target_dir}/unoclientapplication/UNOClientAppProject.zip">
+            <fileset dir="./project_templates/UNOClientAppProject" includes="**" casesensitive="yes"/>
+        </zip>
+    </target>
+    
+    <!-- create zips from templates -->
+    <target name="create_zip_templates" description="zip all project templates" depends="-init,-zip_client_app">
+        <!-- <mkdir dir="${templates_target_dir}"/> -->
+        <zip_one_template_dir templatename="${AddOnProject}" targetdir="${templates_target_dir}/addon"/>
+        <zip_one_template_dir templatename="${AddinProject}" targetdir="${templates_target_dir}/calcaddin"/>
+        <zip_one_template_dir templatename="${ComponentProject}" targetdir="${templates_target_dir}/component"/>
+    </target>
+    
+</project>
