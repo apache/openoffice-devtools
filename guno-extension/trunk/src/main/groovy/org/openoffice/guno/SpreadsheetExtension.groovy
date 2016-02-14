@@ -26,7 +26,10 @@ import com.sun.star.beans.XPropertySet
 import com.sun.star.container.XEnumeration
 import com.sun.star.container.XEnumerationAccess
 import com.sun.star.container.XIndexAccess
+import com.sun.star.frame.XComponentLoader
+import com.sun.star.lang.XComponent
 import com.sun.star.lang.XMultiServiceFactory
+import com.sun.star.lang.XMultiComponentFactory
 import com.sun.star.sheet.XCellAddressable
 import com.sun.star.sheet.XCellRangesQuery
 import com.sun.star.sheet.XSheetCellRangeContainer
@@ -38,38 +41,80 @@ import com.sun.star.table.CellAddress
 import com.sun.star.table.CellVertJustify
 import com.sun.star.table.XCell
 import com.sun.star.uno.UnoRuntime
+import com.sun.star.uno.XComponentContext
+
 
 /**
  *
- * @author Carl Marcum
- * 
+ * @author Carl Marcum - CodeBuilders.net
+ *
  */
 class SpreadsheetExtension {
 
+     /** Returns the component loader
+     @return XComponentLoader interface  */
+    static XComponentLoader getComponentLoader(final XComponentContext self) {
+
+        XMultiComponentFactory mxRemoteServiceManager = null
+        XComponentLoader aLoader = null
+
+        try {
+            mxRemoteServiceManager = self.getServiceManager()
+            aLoader = UnoRuntime.queryInterface(
+                    XComponentLoader.class, mxRemoteServiceManager.createInstanceWithContext(
+                    "com.sun.star.frame.Desktop", self))
+
+        } catch (Exception ex) {
+            System.err.println("Error: caught exception in getComponentLoader()!\nException Message = "
+                    + ex.getMessage())
+            ex.printStackTrace()
+        }
+        return aLoader
+    }
+
+    /** Returns the spreadsheet document with the specified index component context
+     @param mxRemoteContext the remote context.
+     @return XSpreadsheetDocument interface of the spreadsheet document.    */
+    static XSpreadsheetDocument getSpreadsheetDocument(final XComponent self, XComponentContext mxRemoteContext) {
+
+        XSpreadsheetDocument xSpreadsheetDocument = null
+
+        try {
+
+            xSpreadsheetDocument = UnoRuntime.queryInterface(
+                    XSpreadsheetDocument.class, self)
+        } catch (Exception ex) {
+            System.err.println("Error: caught exception in getSpreadsheetDocument()!\nException Message = "
+                    + ex.getMessage())
+            ex.printStackTrace()
+        }
+        return xSpreadsheetDocument
+    }
+
     /** Returns the spreadsheet with the specified index (0-based).
-    @param nIndex  The index of the sheet.
-    @return  XSpreadsheet interface of the sheet. */
+     @param nIndex The index of the sheet.
+     @return XSpreadsheet interface of the sheet.    */
     static XSpreadsheet getSheetByIndex(final XSpreadsheetDocument self, Integer nIndex) {
         // Collection of sheets
         XSpreadsheets xSheets = self.getSheets()
         XSpreadsheet xSheet = null
         try {
             XIndexAccess xSheetsIA = UnoRuntime.queryInterface(
-                XIndexAccess.class, xSheets )
+                    XIndexAccess.class, xSheets)
             xSheet = UnoRuntime.queryInterface(
-                XSpreadsheet.class, xSheetsIA.getByIndex(nIndex))
+                    XSpreadsheet.class, xSheetsIA.getByIndex(nIndex))
         } catch (Exception ex) {
-            System.err.println( "Error: caught exception in getSpreadsheet()!\nException Message = "
-                + ex.getMessage())
+            System.err.println("Error: caught exception in getSpreadsheet()!\nException Message = "
+                    + ex.getMessage())
             ex.printStackTrace()
         }
         return xSheet
-        
+
     }
-    
+
     /** Returns the spreadsheet with the specified name.
-    @param name  The name of the sheet.
-    @return  XSpreadsheet interface of the sheet. */
+     @param name The name of the sheet.
+     @return XSpreadsheet interface of the sheet.    */
     static XSpreadsheet getSheetByName(final XSpreadsheetDocument self, String name) {
         // Collection of sheets
         XSpreadsheets xSheets = self.getSheets()
@@ -78,35 +123,35 @@ class SpreadsheetExtension {
             Object sheet = xSheets.getByName(name)
             // removed cast from right side
             xSpreadsheet = UnoRuntime.queryInterface(XSpreadsheet.class, sheet)
-        } catch(Exception e){            
+        } catch (Exception e) {
             System.err.println(" Exception " + e)
             e.printStackTrace(System.err)
             return xSpreadsheet
-        } 
-        
+        }
+
     }
-    
+
     /** Returns a sheet cell range container.
-    @return  XSheetCellRangeContainer a sheet cell range container of the sheet. */
+     @return XSheetCellRangeContainer a sheet cell range container of the sheet.    */
     static XSheetCellRangeContainer getRangeContainer(final XSpreadsheetDocument self) {
         XMultiServiceFactory xDocFactory = UnoRuntime.queryInterface(
-            XMultiServiceFactory.class, self)
+                XMultiServiceFactory.class, self)
         XSheetCellRangeContainer result = UnoRuntime.queryInterface(
-            XSheetCellRangeContainer.class, xDocFactory.createInstance("com.sun.star.sheet.SheetCellRanges"))
+                XSheetCellRangeContainer.class, xDocFactory.createInstance("com.sun.star.sheet.SheetCellRanges"))
         return result
     }
-    
+
     /** Returns the cell ranges matching the specified type.
-    @param type  a combination of CellFlags flags. 
-    @return  Object all cells of the current cell range(s) with the specified content type(s). */
+     @param type a combination of CellFlags flags.
+     @return Object all cells of the current cell range(s) with the specified content type(s).    */
     static XSheetCellRanges getCellRanges(final XSpreadsheet self, Object type) {
         XCellRangesQuery xCellQuery = UnoRuntime.queryInterface(XCellRangesQuery.class, self)
-        XSheetCellRanges result = xCellQuery.queryContentCells((short)type)
+        XSheetCellRanges result = xCellQuery.queryContentCells((short) type)
         return result
     }
-    
+
     /** Returns a list of XCells contained in the range.
-    @return  List<XCell> list of XCells contained in the range. */
+     @return List < XCell >  list of XCells contained in the range.    */
     static List<XCell> getCellList(final XSheetCellRanges self) {
         def result = []
         XEnumerationAccess xFormulas = self.cells
@@ -118,9 +163,9 @@ class SpreadsheetExtension {
         }
         return result
     }
-    
+
     /** Returns a list of XCells contained in the range container.
-    @return  List<XCell> list of XCells contained in the range container. */
+     @return List < XCell >  list of XCells contained in the range container.    */
     static List<XCell> getCellList(final XSheetCellRangeContainer self) {
         def result = []
         XEnumerationAccess xFormulas = self.cells
@@ -132,54 +177,53 @@ class SpreadsheetExtension {
         }
         return result
     }
-    
+
     /** Sets the specified property with the value.
-    @param prop  The name of the property to set.
-    @param value  The value to set. */
+     @param prop The name of the property to set.
+     @param value The value to set.    */
     static void setPropertyValue(final XCell self, String prop, Object value) {
         XPropertySet xCellProps = UnoRuntime.queryInterface(
-            XPropertySet.class, self)
+                XPropertySet.class, self)
         xCellProps.setPropertyValue(prop, value)
     }
-    
+
     /** Returns the value of the property.
-    @param prop  The name of the property to get.
-    @return  Object value of a type detemined by the property. */
+     @param prop The name of the property to get.
+     @return Object value of a type detemined by the property.    */
     static Object getPropertyValue(final XCell self, String prop) {
         XPropertySet xCellProps = UnoRuntime.queryInterface(
-            XPropertySet.class, self)
+                XPropertySet.class, self)
         Object result = xCellProps.getPropertyValue(prop)
         return result
     }
-    
+
     /** Sets the CellStyle property with the value.
-    @param value  The value to set. */
+     @param value The value to set.    */
     static void setCellStyle(final XCell self, Object value) {
         self.setPropertyValue("CellStyle", value)
     }
-    
+
     /** Sets the VertJustify property with the value.
-    @param value  The value to set. */
+     @param value The value to set.    */
     static void setVertJustify(final XCell self, Object value) {
         self.setPropertyValue("VertJustify", value)
     }
-    
+
     /** Returns the value of the VertJustify property.
-    @return  Integer value of a type detemined by the property. */
+     @return Integer value of a type detemined by the property.    */
     static Integer getVertJustify(final XCell self) {
-        int result =  self.getPropertyValue("VertJustify").value
+        int result = self.getPropertyValue("VertJustify").value
         return result
     }
-    
+
     /** Returns the cell address of the cell.
-    @return  CellAddress the cell address within the spreadsheet document */
+     @return CellAddress the cell address within the spreadsheet document    */
     static CellAddress getAddress(final XCell self) {
         XCellAddressable xCellAddressable = UnoRuntime.queryInterface(XCellAddressable.class, self)
         CellAddress result = xCellAddressable.getCellAddress()
         return result
     }
-    
-    
-	
+
+
 }
 

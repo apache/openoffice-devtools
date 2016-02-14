@@ -3,6 +3,7 @@ apply plugin: "application"
 
 repositories {
     mavenCentral()
+    mavenLocal()
     
 }
 
@@ -16,7 +17,7 @@ dependencies {
     compile "org.openoffice:jurt:4.1.2"
     
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
-
+    testCompile 'net.codebuilders:bootstrapconnector:0.1.0'
 }
 
 groovydoc {
