@@ -23,9 +23,12 @@
 package org.openoffice.guno
 
 import com.sun.star.beans.XPropertySet
+import com.sun.star.container.ElementExistException
 import com.sun.star.container.XEnumeration
 import com.sun.star.container.XEnumerationAccess
 import com.sun.star.container.XIndexAccess
+import com.sun.star.container.XNameAccess
+import com.sun.star.container.XNameContainer
 import com.sun.star.frame.XComponentLoader
 import com.sun.star.lang.XComponent
 import com.sun.star.lang.XMultiServiceFactory
@@ -37,11 +40,13 @@ import com.sun.star.sheet.XSheetCellRanges
 import com.sun.star.sheet.XSpreadsheet
 import com.sun.star.sheet.XSpreadsheetDocument
 import com.sun.star.sheet.XSpreadsheets
+import com.sun.star.style.XStyleFamiliesSupplier
 import com.sun.star.table.CellAddress
 import com.sun.star.table.CellVertJustify
 import com.sun.star.table.XCell
 import com.sun.star.uno.UnoRuntime
 import com.sun.star.uno.XComponentContext
+import com.sun.star.uno.XInterface
 
 
 /**
@@ -126,8 +131,9 @@ class SpreadsheetExtension {
         } catch (Exception e) {
             System.err.println(" Exception " + e)
             e.printStackTrace(System.err)
-            return xSpreadsheet
+
         }
+        return xSpreadsheet
 
     }
 
@@ -189,7 +195,7 @@ class SpreadsheetExtension {
 
     /** Returns the value of the property.
      @param prop The name of the property to get.
-     @return Object value of a type detemined by the property.    */
+     @return Object value of a type determined by the property.    */
     static Object getPropertyValue(final XCell self, String prop) {
         XPropertySet xCellProps = UnoRuntime.queryInterface(
                 XPropertySet.class, self)
@@ -222,6 +228,58 @@ class SpreadsheetExtension {
         XCellAddressable xCellAddressable = UnoRuntime.queryInterface(XCellAddressable.class, self)
         CellAddress result = xCellAddressable.getCellAddress()
         return result
+    }
+
+    /** Returns the style families supplier
+     @return XStyleFamiliesSupplier the style families supplier of the spreadsheet document   */
+    static XStyleFamiliesSupplier getStyleFamiliesSupplier(final XSpreadsheetDocument self) {
+        XStyleFamiliesSupplier result = UnoRuntime.queryInterface(XStyleFamiliesSupplier.class, self)
+        return result
+    }
+
+    /** Returns the property set of the cell style if it exists. If not the the cell style is
+     * created and it's property set is returned.
+     * @param cellStyle the name of the cell style to return the property set of.
+     * @return XPropertySet the property set of the cell style */
+    static XPropertySet getCellStylePropertySet(final XSpreadsheetDocument self, String cellStyle) {
+
+        try {
+            XStyleFamiliesSupplier xSFS = UnoRuntime.queryInterface(XStyleFamiliesSupplier.class, self)
+            XNameAccess xSF = xSFS.getStyleFamilies()
+            // get the cell styles
+            XNameAccess xCS = UnoRuntime.queryInterface(XNameAccess.class, xSF.getByName("CellStyles"))
+
+            // see if cellStyle exists
+            if (xCS.hasByName(cellStyle)) {
+                // get the property set
+                Object oCS = xCS.getByName(cellStyle)
+
+                XPropertySet result = UnoRuntime.queryInterface(XPropertySet.class, oCS);
+                return result
+
+            } else {
+                // add cell style and return property set
+                // get the service factory
+                XMultiServiceFactory oDocMSF = UnoRuntime.queryInterface(XMultiServiceFactory.class, self)
+                // get the name container
+                XNameContainer oStyleFamilyNameContainer = UnoRuntime.queryInterface(XNameContainer.class, xCS)
+                // create the interface
+                XInterface oInt1 = oDocMSF.createInstance("com.sun.star.style.CellStyle")
+
+                // insert style
+                oStyleFamilyNameContainer.insertByName(cellStyle, oInt1)
+
+                // get the property set
+                XPropertySet result = UnoRuntime.queryInterface(XPropertySet.class, oInt1);
+                return result
+            }
+
+        } catch (all) {
+            System.err.println("Error: caught exception in getCellStylePropertySet()!\nException Message = "
+                    + all.getMessage())
+            all.printStackTrace()
+        }
+
     }
 
 
