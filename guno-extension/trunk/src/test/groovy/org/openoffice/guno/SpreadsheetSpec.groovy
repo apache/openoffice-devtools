@@ -34,13 +34,13 @@ import com.sun.star.uno.XComponentContext
 import spock.lang.Shared
 import spock.lang.Specification
 
-// TEST
 import ooo.connector.BootstrapSocketConnector
 
 /**
  *
  * @author Carl Marcum - CodeBuilders.net
  */
+
 class SpreadsheetSpec extends Specification {
 
     @Shared XComponentContext mxRemoteContext
@@ -124,7 +124,7 @@ class SpreadsheetSpec extends Specification {
     
     // feature methods
     def "get sheet by name"() {
-        // blocks go here
+
         setup:
         XSpreadsheets xSpreadsheets = xSpreadsheetDocument.getSheets()
         xSpreadsheets.insertNewByName("MySheet", (short)0)
@@ -136,8 +136,22 @@ class SpreadsheetSpec extends Specification {
         then:   // response
         xSpreadsheet != null
 
+        cleanup:
+        xSpreadsheets.removeByName("MySheet")
         
     }
+
+    def "get sheet by index"() {
+
+        when:   // stimulus
+        XSpreadsheet xSpreadsheet = xSpreadsheetDocument.getSheetByIndex(1)
+
+        then:   // response
+        xSpreadsheet != null
+
+    }
+
+
     
     // helper methods
 
