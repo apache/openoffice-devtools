@@ -51,6 +51,7 @@ class SpreadsheetSpec extends Specification {
     
     // fixture methods (setup, cleanup, setupSpec, cleanupSpec)
 
+    // put our expensive operations here like connections
     def setupSpec() {
 
         // connect to the office and get a component context
