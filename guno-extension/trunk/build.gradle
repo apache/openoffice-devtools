@@ -1,5 +1,7 @@
 apply plugin: "groovy"
 apply plugin: "application"
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 repositories {
     mavenCentral()
@@ -7,7 +9,12 @@ repositories {
     
 }
 
-version "0.1.1"
+group 'org.openoffice'
+version "0.1.3"
+description 'Groovy UNO Extension extends the Apache OpenOffice UNO API'
+mainClassName = 'org.openoffice.FakeClassName'
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT") // used to not pgp sign snapshots
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
@@ -28,10 +35,97 @@ groovydoc {
     use = true // create class and package usage pages
 }
 
-jar.baseName = 'guno-extension'
+// jar.baseName = 'guno-extension'
+archivesBaseName = 'guno-extension'
+
+signing {
+    // only pgp sign if not a snapshot and we are uploading to maven repo
+    required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        // pgp sign the pom file also
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        configuration = configurations.archives
+
+
+        // examples:
+        // url: "file://localhost/tmp/myRepo/"
+        //  url: "https://repository.apache.org/service/local/staging/deploy/maven2" // Apache Nexus
+        // was url: "http://oss.sonatype.org/service/local/staging/deploy/maven2/"
+        repository(url: "file://$buildDir/myRepo/") {
+            // authentication(userName: nexusUsername, password: nexusPassword)
+        }
+
+        // pom.project
+        pom.project {
+            name 'Groovy UNO Extension API'
+            packaging 'jar'
+            description 'Groovy UNO Extension extends the Apache OpenOffice UNO API'
+            url 'http://openoffice.org'
+            inceptionYear '2016'
+
+            scm {
+                url 'http://svn.apache.org/repos/asf/openoffice/devtools/guno-extension/trunk'
+                developerConnection 'https://svn.apache.org/repos/asf/openoffice/devtools/guno-extension/trunk'
+                connection 'http://svn.apache.org/repos/asf/openoffice/devtools/guno-extension/trunk'
+            }
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    name 'Apache OpenOffice Project'
+                    email 'dev@openoffice.apache.org'
+                    url 'http://www.openoffice.org'
+                    // see: http://www.mail-archive.com/user@gradle.codehaus.org/msg05368.html
+                    // organization 'Apache Software Foundation'
+                    organization = 'Apache Software Foundation' // <-- note we use assignment here
+                    organizationUrl 'http://www.apache.org'
+
+                }
+            }
+        }
+
+    }
+}
 
 groovydoc.mustRunAfter clean
 jar.mustRunAfter groovydoc
 
 groovydoc.dependsOn clean
 jar.dependsOn groovydoc
+
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn:classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task copyResources(type: Copy, dependsOn:groovydoc) {
+    into groovydoc.destinationDir
+    from sourceSets.main.resources
+
+}
+
+task groovydocJar(type: Jar, dependsOn:copyResources) {
+    classifier = 'javadoc'
+    from groovydoc.destinationDir
+
+}
+
+
+// add groovydoc/source jar tasks as artifacts
+artifacts {
+    archives sourcesJar
+    archives groovydocJar
+}
