@@ -57,7 +57,7 @@ class UnoExtension {
      * @param clazz the object type to return.
      * @return Object the requested object.
      */
-    static Object uno(final Object self, Class clazz) {
+    static Object guno(final Object self, Class clazz) {
         UnoRuntime.queryInterface(clazz, self)
     }
 

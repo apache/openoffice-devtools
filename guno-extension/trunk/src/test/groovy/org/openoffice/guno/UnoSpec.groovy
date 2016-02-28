@@ -136,7 +136,7 @@ class UnoSpec extends Specification {
 
     // feature methods
 
-    def "use uno method in spreadsheet"() {
+    def "use guno method in spreadsheet"() {
         setup:
         XSpreadsheets xSpreadsheets = xSpreadsheetDocument.getSheets()
         xSpreadsheets.insertNewByName("MySheet", (short) 0)
@@ -149,7 +149,7 @@ class UnoSpec extends Specification {
 
 
         when:
-        XText xCellText = xCell.uno(XText.class)
+        XText xCellText = xCell.guno(XText.class)
 
         then:
         xCellText != null
