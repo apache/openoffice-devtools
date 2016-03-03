@@ -28,6 +28,7 @@ package org.openoffice.guno
  */
 
 import com.sun.star.beans.XPropertySet
+import com.sun.star.container.XIndexAccess
 import com.sun.star.frame.XComponentLoader
 import com.sun.star.lang.XMultiComponentFactory
 import com.sun.star.uno.UnoRuntime
@@ -79,6 +80,13 @@ class UnoExtension {
         self.setPropertyValue(name, value)
     }
 
-
+    /**
+     * Provides access to the elements of a collection through an index.
+     * @param index specifies the position in the array. The first index is 0.
+     * @return Object the element at the specified index.
+     */
+    static Object getAt(final XIndexAccess self, int index) {
+        self.getByIndex(index)
+    }
 
 }
