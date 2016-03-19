@@ -54,8 +54,8 @@ uploadArchives {
 
         // examples:
         // url: "file://localhost/tmp/myRepo/"
-        //  url: "https://repository.apache.org/service/local/staging/deploy/maven2" // Apache Nexus
-        // was url: "http://oss.sonatype.org/service/local/staging/deploy/maven2/"
+        // url: "https://repository.apache.org/service/local/staging/deploy/maven2" // Apache Nexus
+        // url: "http://oss.sonatype.org/service/local/staging/deploy/maven2/"
         repository(url: "file://$buildDir/myRepo/") {
             // authentication(userName: nexusUsername, password: nexusPassword)
         }
