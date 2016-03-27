@@ -1,0 +1,16 @@
+./configure \
+--with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)")" \
+--with-directx-home="/cygdrive/c/Program Files (x86)/Microsoft DirectX SDK (June 2010)" \
+--with-ant-home="/cygdrive/c/apache-ant-1.8.3" \
+--with-nsis-path="/cygdrive/c/Program Files (x86)/NSIS/Unicode" \
+--with-dmake-url=http://dmake.apache-extras.org.codespot.com/files/dmake-4.12.tar.bz2 \
+--without-junit \
+--without-stlport \
+--enable-win-x64-shellext \
+--enable-wiki-publisher \
+--enable-category-b \
+--disable-build-mozilla \
+--with-mozilla-build=c:/mozilla-build \
+--enable-bundled-dictionaries \
+--with-packager-list=/cygdrive/c/AOO/sources/aoo-build-pack.lst \
+--with-lang="kid ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"

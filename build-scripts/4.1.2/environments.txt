@@ -1,0 +1,4 @@
+Environments for this release:
+- Linux: CentOS 5 with all available updates
+- Mac: OSX 10.9.5
+- Windows: Windows 7
