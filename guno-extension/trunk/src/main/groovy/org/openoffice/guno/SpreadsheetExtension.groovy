@@ -54,11 +54,6 @@ import com.sun.star.uno.XComponentContext
 import com.sun.star.uno.XInterface
 
 
-/**
- *
- * @author Carl Marcum - CodeBuilders.net
- *
- */
 class SpreadsheetExtension {
 
 
