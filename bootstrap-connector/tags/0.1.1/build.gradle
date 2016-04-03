@@ -1,0 +1,113 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+repositories {
+    mavenCentral()
+}
+
+group 'org.openoffice'
+version '0.1.1'
+description 'bootstrap-connector allows bootstrapping Apache OpenOffice by filepath'
+mainClassName = 'ooo.connector.example.BootstrapSocketConnectorExample'
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT") // used to not pgp sign snapshots
+
+targetCompatibility = "1.6"
+sourceCompatibility = "1.6"
+
+dependencies {
+    compile 'org.openoffice:juh:4.1.2'
+    compile 'org.openoffice:ridl:4.1.2'
+    compile 'org.openoffice:unoil:4.1.2'
+    compile 'org.openoffice:jurt:4.1.2'
+}
+
+archivesBaseName = 'bootstrap-connector'
+
+signing {
+    // only pgp sign if not a snapshot and we are uploading to maven repo
+    required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        // pgp sign the pom file also
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        configuration = configurations.archives
+
+
+        // examples:
+        // url: "file://localhost/tmp/myRepo/"
+        //  url: "https://repository.apache.org/service/local/staging/deploy/maven2" // Apache Nexus
+        // was url: "http://oss.sonatype.org/service/local/staging/deploy/maven2/"
+        repository(url: "file://$buildDir/myRepo/") {
+            // authentication(userName: nexusUsername, password: nexusPassword)
+        }
+
+        // pom.project
+        pom.project {
+            name 'BootstrapConnector for Apache OpenOffice'
+            packaging 'jar'
+            description 'bootstrap-connector allows bootstrapping Apache OpenOffice by filepath'
+            url 'http://openoffice.org'
+            inceptionYear '2016'
+
+            scm {
+                url 'http://svn.apache.org/repos/asf/openoffice/devtools/bootstrap-connector/trunk'
+                developerConnection 'https://svn.apache.org/repos/asf/openoffice/devtools/bootstrap-connector/trunk'
+                connection 'http://svn.apache.org/repos/asf/openoffice/devtools/bootstrap-connector/trunk'
+            }
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    name 'Apache OpenOffice Project'
+                    email 'dev@openoffice.apache.org'
+                    url 'http://www.openoffice.org'
+                    // see: http://www.mail-archive.com/user@gradle.codehaus.org/msg05368.html
+                    // organization 'Apache Software Foundation'
+                    organization = 'Apache Software Foundation' // <-- note we use assignment here
+                    organizationUrl 'http://www.apache.org'
+
+                }
+            }
+        }
+
+    }
+}
+
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn:classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task copyResources(type: Copy, dependsOn:javadoc) {
+    into javadoc.destinationDir
+    from sourceSets.main.resources
+
+}
+
+task javadocJar(type: Jar, dependsOn:copyResources) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+
+}
+
+
+// add javadoc/source jar tasks as artifacts
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
