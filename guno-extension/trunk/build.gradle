@@ -76,10 +76,11 @@ uploadArchives {
 
         // examples:
         // url: "file://localhost/tmp/myRepo/"
-        // url: "https://repository.apache.org/service/local/staging/deploy/maven2" // Apache Nexus
+        // url: "https://repository.apache.org/service/local/staging/deploy/maven2/" // Apache Nexus
         // url: "http://oss.sonatype.org/service/local/staging/deploy/maven2/"
-        repository(url: "file://$buildDir/myRepo/") {
-            // authentication(userName: nexusUsername, password: nexusPassword)
+        // url: "file://$buildDir/myRepo/" // local build directory
+        repository(url: "https://repository.apache.org/service/local/staging/deploy/maven2/") {
+            authentication(userName: mavenUser, password: mavenPassword)
         }
 
         // pom.project
