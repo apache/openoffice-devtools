@@ -60,14 +60,16 @@ groovydoc {
 // jar.baseName = 'guno-extension'
 archivesBaseName = 'guno-extension'
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 signing {
     // only pgp sign if not a snapshot and we are uploading to maven repo
     required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
 
-uploadArchives {
-    repositories.mavenDeployer {
+uploadArchives.repositories.mavenDeployer {
         // pgp sign the pom file also
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
@@ -120,7 +122,7 @@ uploadArchives {
         }
 
     }
-}
+
 
 groovydoc.mustRunAfter clean
 jar.mustRunAfter groovydoc
