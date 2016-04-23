@@ -32,7 +32,7 @@ repositories {
 }
 
 group 'org.openoffice'
-version "0.1.4"
+version "0.1.5"
 description 'Groovy UNO Extension extends the Apache OpenOffice UNO API'
 mainClassName = 'org.openoffice.FakeClassName'
 
