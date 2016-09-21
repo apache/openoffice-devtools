@@ -20,6 +20,9 @@ autoconf && ./configure   \
 	--enable-opengl  \
 	--enable-dbus  \
 	--enable-gstreamer \
+	--without-junit \
+	--without-stlport \
+	--with-ant-home=$HOME/ant \
 	--with-package-format="rpm deb" \
 	--with-lang="${LANGS}" \
 	--with-dmake-url=http://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2 \
