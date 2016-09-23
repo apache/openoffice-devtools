@@ -10,21 +10,23 @@ if [ ! -d 'main' ] ; then
 fi
 # TODO: Extend to cover other platforms; this is for Linux-64 only.
 PLATFORM="unxlngx6.pro"
-PRODUCT="Apache_OpenOffice"
+PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack"
 DESTINATION="../binaries"
 # For future use.
 # FORMATS=`ls -1 main/instsetoo_native/$PLATFORM/$PRODUCT`
 
 # Move all packages to the appropriate location in ../binaries
-PACKAGES=`ls -1 main/instsetoo_native/unxlngx6.pro/Apache_OpenOffice/*/install/*/*.tar.gz` || echo "Warning: no packages found."
-for PACKAGE in $PACKAGES; do
-  LANGUAGE=`echo "$PACKAGE" | sed s!main/instsetoo_native/$PLATFORM/$PRODUCT/[^/]*/install/!! | sed s!_download.*!!`
-  FILENAME=`basename $PACKAGE`
-  OUTPUT_DIR="$DESTINATION/$LANGUAGE/"
-  # For future use.
-  # FORMAT=`echo $PACKAGE | sed s!main/instsetoo_native/$PLATFORM/$PRODUCT/!! | sed s!/.*!!`
-  mkdir -p "$OUTPUT_DIR"
-  mv "$PACKAGE" "$OUTPUT_DIR"
+for PRODUCT in $PRODUCTS; do
+  PACKAGES=`ls -1 main/instsetoo_native/unxlngx6.pro/$PRODUCT/*/install/*/*.tar.gz` || echo "Warning: no packages found."
+  for PACKAGE in $PACKAGES; do
+    LANGUAGE=`echo "$PACKAGE" | sed s!main/instsetoo_native/$PLATFORM/$PRODUCT/[^/]*/install/!! | sed s!_download.*!!`
+    FILENAME=`basename $PACKAGE`
+    OUTPUT_DIR="$DESTINATION/$LANGUAGE/"
+    # For future use.
+    # FORMAT=`echo $PACKAGE | sed s!main/instsetoo_native/$PLATFORM/$PRODUCT/!! | sed s!/.*!!`
+    mkdir -p "$OUTPUT_DIR"
+    mv "$PACKAGE" "$OUTPUT_DIR"
+  done
 done
 
 # Add hashes/signatures.
