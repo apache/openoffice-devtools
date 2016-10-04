@@ -29,7 +29,8 @@ fi
 	--enable-category-b \
 	--enable-wiki-publisher \
 	--enable-bundled-dictionaries \
-	--with-junit=/usr/local/share/java/junit.jar \
+	--with-junit="/usr/local/share/java/junit.jar" \
+	--with-jdk-home="$(/usr/libexec/java_home)" \
 	--without-stlport \
 	--with-package-format="installed" \
 	--with-lang="${LANGS}" 
@@ -37,7 +38,7 @@ fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1 
 cd instsetoo_native
-perl "$SOLARENV/bin/build.pl" --all -P4 -- -P4 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -P4 -- -P4 || exit 1
 #cd util
 #dmake ooolanguagepack || exit 1
 #dmake sdkoo_en-US || exit 1 
