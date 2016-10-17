@@ -162,13 +162,14 @@ echo
 echo start generation of Update Feed
 
 FEED="check.Update."$INSTALLEDVERSION"-"$RELEASE
+OUTPUT_DIR="output"
 
-if [ ! -e output ];
+if [ ! -e "${OUTPUT_DIR}" ];
 then
-    mkdir output
+    mkdir "${OUTPUT_DIR}"
 fi
-echo -n Update Feed $FEED will be found in " "
-cd output
+echo "Update Feed $FEED will be found in ${OUTPUT_DIR}"
+cd "${OUTPUT_DIR}"
 
 declare platforms=(Windows MacOSX Linux Linux)
 declare architectures
