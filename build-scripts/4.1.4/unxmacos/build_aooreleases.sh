@@ -92,7 +92,7 @@ if [ ! -e configure -o configure.in -nt configure ] ; then
 	autoconf || exit 1
 fi
 ./configure   \
-	--with-build-version="$(date +"%Y-%m-%d %H:%M") - `uname -sm`" \
+    --with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`" \
 	--with-vendor="Apache OpenOffice Community Build" \
 	--enable-verbose \
 	--with-openldap \
