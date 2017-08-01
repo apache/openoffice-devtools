@@ -19,10 +19,10 @@
 ### 4.1.2 Script: 
 ### 4.1.2 Script: 
 #
-# Build-script for AOO 4.1.x on OSX 10.11
+# Build-script for AOO 4.1.x on OSX 10.12
 #
 # System Setup:
-#  XCode 7.3.1
+#  XCode 8.3.3 (Updated w/ https://github.com/devernay/xcodelegacy.git)
 #
 # Local Changes:
 #   MacPorts:
