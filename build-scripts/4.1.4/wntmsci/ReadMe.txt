@@ -1,4 +1,4 @@
-This is the latest configuration used for building AOO 4.1.4:
+This is the latest configuration used for building AOO 4.1.4 RC1:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#Windows_7.2C_Windows_8.1.2C_Windows_10
@@ -15,7 +15,7 @@ Build Environment:
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
  - Java SE Development Kit 7 Update 80 (32bit)
- - NSIS 3.02
+ - NSIS 3.02.1
 
 Bundled Runtime:
 
