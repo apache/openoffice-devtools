@@ -13,7 +13,7 @@ case "$1" in
     ;;
 esac
 
-allfiles=`find . -type f \\(-name '*.tar.gz' -or -name '*.dmg'\\)`
+allfiles=`find . -type f \\( -name '*.tar.gz' -or -name '*.dmg' \\)`
 
 echo ""
 echo "Generating MD5/SHA1/SHA256 checksum files ..."
