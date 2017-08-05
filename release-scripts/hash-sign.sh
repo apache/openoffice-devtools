@@ -1,8 +1,7 @@
 #!/bin/sh
 #
-# hash-sign.sh : hash and sign the specified files
-#
-# USAGE: hash-sign.sh file1 file2 ...
+# hash-sign.sh : hash and sign the specified files (.tar.gz or .dmg)
+#                in the current dir
 #
 
 user=""
@@ -14,12 +13,8 @@ case "$1" in
     ;;
 esac
 
-allfiles=$*
+allfiles=`find . -type f \\(-name '*.tar.gz' -or -name '*.dmg'\\)`
 
-
-split="---------------------------------------------------------------------"
-
-echo $split
 echo ""
 echo "Generating MD5/SHA1/SHA256 checksum files ..."
 echo ""
@@ -28,13 +23,13 @@ echo ""
 gpg2="`which gpg2 2> /dev/null | head -1`"
 gpg="`which gpg 2> /dev/null | head -1`"
 pgp="`which pgp 2> /dev/null | head -1`"
-openssl="`which openssl 2> /dev/null | head -1`"
 md5sum="`which md5sum 2> /dev/null | head -1`"
 sha1sum="`which sha1sum 2> /dev/null | head -1`"
 sha256sum="`which sha256sum 2> /dev/null | head -1`"
 md5="`which md5 2> /dev/null | head -1`"
 sha1="`which sha1 2> /dev/null | head -1`"
 sha256="`which sha256 2> /dev/null | head -1`"
+openssl="`which openssl 2> /dev/null | head -1`"
 sed="`which gsed 2> /dev/null | head -1`"
 if ! test -x "${sed}"; then
   sed="`which sed 2> /dev/null | head -1`"
