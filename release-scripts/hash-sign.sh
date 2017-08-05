@@ -1,9 +1,9 @@
 #!/bin/sh
 #
-# hash-sign.sh : hash and sign the specified files (.tar.gz or .dmg)
-#                in the current dir
+# hash-sign.sh : hash and sign the following file types
+#                in the current dir: .tar.gz, .tar.bz2, .dmg, .zip
+#                and .exe
 #
-## NOTE: This is macOS and Linux specific... 
 user=""
 case "$1" in
   -u)
@@ -13,7 +13,7 @@ case "$1" in
     ;;
 esac
 
-allfiles=`find . -type f \\( -name '*.tar.gz' -or -name '*.tar.bz2' -or -name '*.dmg' -or -name '*.zip' \\)`
+allfiles=`find . -type f \\( -name '*.tar.gz' -or -name '*.tar.bz2' -or -name '*.dmg' -or -name '*.zip' -or -name '*.exe' \\)`
 
 echo ""
 echo "Generating MD5/SHA1/SHA256 checksum files ..."
