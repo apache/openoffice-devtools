@@ -1,13 +1,14 @@
 #!/bin/sh
 # Prepare the OpenOffice download tree: after build and move files.
 # Use hash-sign.sh to sign the binaries (and source files).
+## NOTE: This is macOS and Linux specific... 
 
 if [ ! -d 'main' ] ; then
   echo "Run from the root of an OpenOffice build tree (the one containing the 'main' directory)."
   exit 1
 fi
 
-# TODO: Extend to cover other platforms; this is for Linux only.
+# TODO: Extend to cover other platforms; this is for Linux and macOS only.
 PLATFORMS="unxlngx6.pro unxlngi6.pro unxmaccx.pro"
 PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK/"
 DESTINATION="../binaries"

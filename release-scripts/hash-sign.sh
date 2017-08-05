@@ -3,7 +3,7 @@
 # hash-sign.sh : hash and sign the specified files (.tar.gz or .dmg)
 #                in the current dir
 #
-
+## NOTE: This is macOS and Linux specific... 
 user=""
 case "$1" in
   -u)
