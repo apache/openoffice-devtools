@@ -28,7 +28,7 @@ for PLATFORM in $PLATFORMS; do
       fi
       PACKAGES=`ls -1 main/instsetoo_native/$PLATFORM/$PRODUCT/*/install/*/*.$FTYPE` || echo "Warning: no packages found."
       for PACKAGE in $PACKAGES; do
-        LANGUAGE=`echo "$PACKAGE" | sed -e "s:main/instsetoo_native/$PLATFORM/$PRODUCT/[^/]*/install/::" | sed -e "s:/.*::"`
+        LANGUAGE=`echo "$PACKAGE" | sed -e "s:main/instsetoo_native/$PLATFORM/$PRODUCT/[^/]*/install/::" | sed -e "s:_download.*::" | sed -e "s:/.*::"`
         FILENAME=`basename $PACKAGE`
         if [ "$PRODUCT" = "Apache_OpenOffice_SDK" ]; then
           OUTPUT_DIR="$DESTINATION/SDK/"
