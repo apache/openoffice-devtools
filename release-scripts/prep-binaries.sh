@@ -10,7 +10,7 @@ fi
 
 # TODO: Extend to cover other platforms; this is for Linux and macOS only.
 PLATFORMS="unxlngx6.pro unxlngi6.pro unxmaccx.pro"
-PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK/"
+PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK"
 DESTINATION="../binaries"
 # For future use.
 # FORMATS=`ls -1 main/instsetoo_native/$PLATFORM/$PRODUCT`
@@ -21,16 +21,16 @@ for PLATFORM in $PLATFORMS; do
   if [ -d "main/instsetoo_native/$PLATFORM" ]; then
     echo "Working on main/instsetoo_native/$PLATFORM"
     for PRODUCT in $PRODUCTS; do
-      if [ "$PLATFORM" == "unxmaccx.pro" ]; then
+      if [ "$PLATFORM" = "unxmaccx.pro" ]; then
         FTYPE="dmg"
       else
         FTYPE="tar.gz"
       fi
       PACKAGES=`ls -1 main/instsetoo_native/$PLATFORM/$PRODUCT/*/install/*/*.$FTYPE` || echo "Warning: no packages found."
       for PACKAGE in $PACKAGES; do
-        LANGUAGE=`echo "$PACKAGE" | sed s!main/instsetoo_native/$PLATFORM/$PRODUCT/[^/]*/install/!! | sed s!_download.*!!`
+        LANGUAGE=`echo "$PACKAGE" | sed -e "s:main/instsetoo_native/$PLATFORM/$PRODUCT/[^/]*/install/::" | sed -e "s:/.*::"`
         FILENAME=`basename $PACKAGE`
-        if [ "$PRODUCT" == "Apache_OpenOffice_SDK" ]; then
+        if [ "$PRODUCT" = "Apache_OpenOffice_SDK" ]; then
           OUTPUT_DIR="$DESTINATION/SDK/"
         else
           OUTPUT_DIR="$DESTINATION/$LANGUAGE/"
