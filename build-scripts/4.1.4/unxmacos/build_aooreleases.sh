@@ -108,7 +108,8 @@ fi
 	--with-package-format="installed dmg" \
 	--disable-systray \
 	--with-alloc=system \
-	--with-lang="${LANGS}"
+	--with-lang="${LANGS}" \
+	| tee config.out
 
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
