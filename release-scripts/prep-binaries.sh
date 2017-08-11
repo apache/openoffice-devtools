@@ -30,7 +30,7 @@ for PLATFORM in $PLATFORMS; do
       for PACKAGE in $PACKAGES; do
         LANGUAGE=`echo "$PACKAGE" | sed s!main/instsetoo_native/$PLATFORM/$PRODUCT/[^/]*/install/!! | sed s!_download.*!!`
         FILENAME=`basename $PACKAGE`
-        if [ "$PRODUCT" == "Apache_OpenOffice_SDK"]; then
+        if [ "$PRODUCT" == "Apache_OpenOffice_SDK" ]; then
           OUTPUT_DIR="$DESTINATION/SDK/"
         else
           OUTPUT_DIR="$DESTINATION/$LANGUAGE/"
