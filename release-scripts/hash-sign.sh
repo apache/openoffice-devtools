@@ -24,10 +24,8 @@ gpg2="`which gpg2 2> /dev/null | head -1`"
 gpg="`which gpg 2> /dev/null | head -1`"
 pgp="`which pgp 2> /dev/null | head -1`"
 md5sum="`which md5sum 2> /dev/null | head -1`"
-sha1sum="`which sha1sum 2> /dev/null | head -1`"
 sha256sum="`which sha256sum 2> /dev/null | head -1`"
 md5="`which md5 2> /dev/null | head -1`"
-sha1="`which sha1 2> /dev/null | head -1`"
 sha256="`which sha256 2> /dev/null | head -1`"
 openssl="`which openssl 2> /dev/null | head -1`"
 sed="`which gsed 2> /dev/null | head -1`"
@@ -43,9 +41,6 @@ if test -x "${openssl}"; then
       echo "openssl: creating md5 checksum file for ${file} ..."
       ${openssl} md5 ${file} |\
           ${sed} -e 's#^MD5(\(.*\))= \([0-9a-f]*\)$#\2 *\1#' > ${file}.md5
-      echo "openssl: creating sha1 checksum file for ${file} ..."
-      ${openssl} sha1 ${file} |\
-          ${sed} -e 's#^SHA1(\(.*\))= \([0-9a-f]*\)$#\2 *\1#' > ${file}.sha1
       echo "openssl: creating sha256 checksum file for ${file} ..."
       ${openssl} sha256 ${file} |\
           ${sed} -e 's#^SHA256(\(.*\))= \([0-9a-f]*\)$#\2 *\1#' > ${file}.sha256
@@ -60,11 +55,6 @@ elif test -x "${gpg2}"; then
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
               -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.md5
-      echo "gpg: creating sha1 checksum file for ${file} ..."
-      ${gpg2} --print-md sha1 ${file} |\
-          ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha1
       ${gpg2} --print-md sha256 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
@@ -80,11 +70,6 @@ elif test -x "${gpg}"; then
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
               -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.md5
-      echo "gpg: creating sha1 checksum file for ${file} ..."
-      ${gpg} --print-md sha1 ${file} |\
-          ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha1
       ${gpg} --print-md sha256 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
@@ -106,23 +91,6 @@ else
       if test -f "${file}"; then
         echo "md5: creating md5 checksum file for ${file} ..."
         ${md5} -r ${file} | ${sed} -e 's# # *#' > ${file}.md5
-      fi
-    done
-  fi
-  # no openssl or gpg found - check for sha1sum
-  if test -x "${sha1sum}"; then
-    for file in ${allfiles}; do
-      if test -f "${file}"; then
-        echo "sha1sum: creating sha1 checksum file for ${file} ..."
-        ${sha1sum} -b ${file} > ${file}.sha1
-      fi
-    done
-  # no openssl or gpg found - check for sha1
-  elif test -x "${sha1}"; then
-    for file in ${allfiles}; do
-      if test -f "${file}"; then
-        echo "sha1: creating sha1 checksum file for ${file} ..."
-        ${sha1} -r ${file} | ${sed} -e 's# # *#' > ${file}.sha1
       fi
     done
   fi
