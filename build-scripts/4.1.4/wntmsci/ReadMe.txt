@@ -1,4 +1,4 @@
-This is the latest configuration used for building AOO 4.1.4 RC1:
+This is the configuration used for building AOO 4.1.4 RC2:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#Windows_7.2C_Windows_8.1.2C_Windows_10
@@ -54,3 +54,4 @@ WDK_HOME="/cygdrive/c/WinDDK/7600.16385.1"
     --with-nsis-path="C:/NSIS"
 
 For further details see "config.log"
+
