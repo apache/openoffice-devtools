@@ -9,7 +9,11 @@ wget -O external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinr
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 
-autoconf && ./configure   \
+if [ ! -e configure -o configure.in -nt configure ] ; then
+	echo "Running autoconf..."
+	autoconf || exit 1
+fi
+./configure   \
 	--with-build-version="$(date +"%Y-%m-%d %H:%M") - `uname -sm`" \
 	--enable-verbose \
 	--with-system-stdlibs \
@@ -32,7 +36,7 @@ autoconf && ./configure   \
 source ./LinuxX86Env.Set.sh || exit 1
 ./bootstrap || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -P2 -- -P2 || exit 1
+time build --all -- -P4 || exit 1
 cd util
 dmake ooolanguagepack || exit 1
 dmake sdkoo_en-US || exit 1 

@@ -70,15 +70,33 @@ fi
 
 if [ -z "$JAVA_HOME" ] ; then
 	JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
-	export JAVA_HOME
-	echo "Setting JAVA_HOME to $JAVA_HOME..."
 fi
+if [ ! -d "$JAVA_HOME" ] ; then
+    echo "JAVA_HOME not found: $JAVA_HOME"
+    exit 1
+fi
+export JAVA_HOME
+echo "JAVA_HOME is: $JAVA_HOME..."
 
 if [ -z "$ANT_HOME" ] ; then
 	ANT_HOME=/usr/local/share/java/apache-ant
-	export ANT_HOME
-	echo "Setting ANT_HOME to $ANT_HOME..."
 fi
+if [ ! -d "$ANT_HOME" ] ; then
+    echo "ANT_HOME not found: $ANT_HOME"
+    exit 1
+fi
+export ANT_HOME
+echo "ANT_HOME is: $ANT_HOME..."
+
+if [ -z "$JUNIT_PATH" ] ; then
+	JUNIT_PATH=/usr/local/share/java/junit.jar
+fi
+if [ ! -e "$JUNIT_PATH" ] ; then
+    echo "JUNIT_PATH not found: $JUNIT_PATH"
+    exit 1
+fi
+export JUNIT_PATH
+echo "JUNIT_PATH is: $JUNIT_PATH..."
 
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
@@ -99,7 +117,7 @@ fi
 	--enable-category-b \
 	--enable-bundled-dictionaries \
 	--enable-wiki-publisher \
-	--with-junit="/usr/local/share/java/junit.jar" \
+	--with-junit="$JUNIT_PATH" \
 	--with-jdk-home="$JAVA_HOME" \
 	--with-ant-home="$ANT_HOME" \
 	--with-epm=/usr/local/bin/epm \
@@ -114,7 +132,7 @@ fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -P2 -- -P2 || exit 1
+time build --all -- -P4 || exit 1
 cd util
 dmake ooolanguagepack || exit 1
 dmake sdkoo_en-US || exit 1
