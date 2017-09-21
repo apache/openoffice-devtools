@@ -36,7 +36,7 @@ fi
 source ./LinuxX86-64Env.Set.sh || exit 1 
 ./bootstrap || exit 1
 cd instsetoo_native
-time build --all -- -P4 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P4 || exit 1
 cd util
 dmake ooolanguagepack || exit 1
 dmake sdkoo_en-US || exit 1 
