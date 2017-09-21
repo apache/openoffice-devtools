@@ -1,4 +1,4 @@
-This is the configuration used for building AOO 4.1.4 RC2:
+This is the configuration used for building AOO 4.1.4 RC4:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#Windows_7.2C_Windows_8.1.2C_Windows_10
@@ -6,7 +6,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#W
 Build Environment:
 
  - Windows 10 Pro (64bit)
- - Cygwin 2.8.2 (32bit)
+ - Cygwin 2.9.0 (32bit)
  - Apache Ant 1.9.9
  - Mozilla Build 2.2.0
  - MS Visual C++ Compilers 2008 Standard Edition (32bit)
@@ -44,6 +44,7 @@ WDK_HOME="/cygdrive/c/WinDDK/7600.16385.1"
     --with-dmake-url="https://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2" \
     --with-directx-home="C:\Microsoft_DirectX_SDK_June_2010" \
     --enable-win-x64-shellext \
+    --enable-wiki-publisher \
     --without-junit \
     --without-stlport \
     --with-mozilla-build="/cygdrive/c/mozilla-build" \
