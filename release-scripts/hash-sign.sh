@@ -13,10 +13,10 @@ case "$1" in
     ;;
 esac
 
-if test -n "$@"; then
-  allfiles="$@"
+if test -z "$@"; then
+  allfiles=`find . -type f \( -name '*.tar.gz' -or -name '*.tar.bz2' -or -name '*.dmg' -or -name '*.zip' -or -name '*.exe' \) -print`
 else
-  allfiles=`find . -type f \\( -name '*.tar.gz' -or -name '*.tar.bz2' -or -name '*.dmg' -or -name '*.zip' -or -name '*.exe' \\)`
+  allfiles="$@"
 fi
 
 echo ""
