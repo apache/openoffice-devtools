@@ -53,7 +53,6 @@
 #     C_INCLUDE_PATH=/usr/local/include
 #     CPLUS_INCLUDE_PATH=/usr/local/include
 #     MACOSX_DEPLOYMENT_TARGET=10.7
-#     CLANG_CXX_LIBRARY=libc++
 #     PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:.
 #
 #   Notes:
@@ -106,27 +105,10 @@ fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 
-if [ ! -e configure -o configure.ac -nt configure ] ; then
+if [ ! -e configure -o configure.in -nt configure ] ; then
 	echo "Running autoconf..."
 	autoconf || exit 1
-	sleep 2
 fi
-#CXXFLAGS="-stdlib=libc++ -std=c++11"
-LIBRARY_PATH=/usr/local/lib
-C_INCLUDE_PATH=/usr/local/include
-CPLUS_INCLUDE_PATH=/usr/local/include
-MACOSX_DEPLOYMENT_TARGET=10.7
-#CLANG_CXX_LIBRARY=libc++
-#CXX="clang++ -stdlib=libstdc++ -std=c++11"
-
-#export CXXFLAGS
-export LIBRARY_PATH
-export C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH
-export MACOSX_DEPLOYMENT_TARGET
-#export CLANG_CXX_LIBRARY
-#export CXX
-
 ./configure   \
     --with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`" \
 	--with-vendor="Apache OpenOffice Community Build" \
