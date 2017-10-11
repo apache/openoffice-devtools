@@ -31,7 +31,7 @@ fi
 	--with-lang="${LANGS}" \
 	--with-dmake-url=http://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2 \
 	--with-epm-url=http://sourceforge.net/projects/oooextras.mirror/files/epm-3.7.tar.gz \
-	| tee config.out
+	| tee config.out || exit 1
 
 source ./LinuxX86Env.Set.sh || exit 1
 ./bootstrap || exit 1
