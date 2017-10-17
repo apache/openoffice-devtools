@@ -44,10 +44,10 @@ if test -x "${openssl}"; then
     if test -f "${file}"; then
       echo "openssl: creating md5 checksum file for ${file} ..."
       ${openssl} md5 ${file} |\
-          ${sed} -e 's#^MD5(\(.*\))= \([0-9a-f]*\)$#\2 *\1#' > ${file}.md5
+          ${sed} -e 's#^MD5(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.md5
       echo "openssl: creating sha256 checksum file for ${file} ..."
       ${openssl} sha256 ${file} |\
-          ${sed} -e 's#^SHA256(\(.*\))= \([0-9a-f]*\)$#\2 *\1#' > ${file}.sha256
+          ${sed} -e 's#^SHA256(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha256
     fi
   done
 # no openssl found - check if we have gpg2
