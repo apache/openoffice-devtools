@@ -57,11 +57,11 @@ elif test -x "${gpg2}"; then
       echo "gpg2: creating md5 checksum file for ${file} ..."
       ${gpg2} --print-md md5 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
+          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
               -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.md5
       ${gpg2} --print-md sha256 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
+          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
               -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha256
     fi
   done
@@ -72,11 +72,11 @@ elif test -x "${gpg}"; then
       echo "gpg: creating md5 checksum file for ${file} ..."
       ${gpg} --print-md md5 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
+          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
               -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.md5
       ${gpg} --print-md sha256 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*\): \(.*\)#\2::\1#;s#[\r\n]##g;s# ##g' \
+          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
               -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha256
     fi
   done
