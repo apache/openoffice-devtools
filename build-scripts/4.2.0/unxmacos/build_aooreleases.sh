@@ -127,6 +127,7 @@ export MACOSX_DEPLOYMENT_TARGET
 #export CLANG_CXX_LIBRARY
 #export CXX
 
+if test "$1" != "--skip-conf"; then
 ./configure   \
     --with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`" \
 	--with-vendor="Apache OpenOffice Community Build" \
@@ -146,6 +147,7 @@ export MACOSX_DEPLOYMENT_TARGET
 	--with-alloc=system \
 	--with-lang="${LANGS}" \
 	| tee config.out || exit 1
+fi
 
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1

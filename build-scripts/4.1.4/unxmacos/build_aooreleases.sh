@@ -127,7 +127,7 @@ fi
 	--disable-systray \
 	--with-alloc=system \
 	--with-lang="${LANGS}" \
-	| tee config.out
+	| tee config.out || exit 1
 
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
