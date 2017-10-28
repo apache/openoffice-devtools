@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
     <title>Update Feed for %INSTALLED% instances</title>
     <updated>%UPDATED%</updated>
     <author>
         <name>Apache OpenOffice project</name>
-        <uri>http://openoffice.org</uri>
+        <uri>https://openoffice.org</uri>
     </author>
 
