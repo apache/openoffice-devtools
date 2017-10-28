@@ -9,6 +9,7 @@
 # DOWNLOADURL   optional URL the user is guided to for corresponding package in the named language
 
 en-US,English (US)
+ar,Arabic
 ast,Asturian
 bg,Bulgarian
 ca,Catalan
