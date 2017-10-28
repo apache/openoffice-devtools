@@ -28,7 +28,6 @@ gd,Gaelic (Scottish)
 gl,Galician
 he,Hebrew
 hi,Hindi
-he,Hebrew
 hu,Hungarian
 it,Italian,https://www.openoffice.org/it/download
 ja,Japanese,https://www.openoffice.org/ja/download
