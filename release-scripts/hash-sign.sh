@@ -20,7 +20,7 @@ else
 fi
 
 echo ""
-echo "Generating MD5/SHA1/SHA256 checksum files ..."
+echo "Generating MD5/SHA256 checksum files ..."
 echo ""
 
 # check for executables
