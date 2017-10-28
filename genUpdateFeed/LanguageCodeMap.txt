@@ -9,44 +9,44 @@
 # DOWNLOADURL   optional URL the user is guided to for corresponding package in the named language
 
 en-US,English (US)
-ar,Arabic
 ast,Asturian
 bg,Bulgarian
 ca,Catalan
 ca-XR,Catalan (Valencia RACV)
 ca-XV,Catalan (Valencia AVL)
-cs,Czech,http://www.openoffice.org/cs/download
+cs,Czech,https://www.openoffice.org/cs/download
 da,Danish
-de,German,http://www.openoffice.org/de
+de,German,https://www.openoffice.org/de/download
 el,Greek
 en-GB,English (British)
-es,Spanish,http://www.openoffice.org/es/descargar
+es,Spanish,https://www.openoffice.org/es/descargar
 eu,Basque
 fi,Finnish
-fr,French,http://www.openoffice.org/fr/Telecharger
+fr,French,https://www.openoffice.org/fr/Telecharger
 gd,Gaelic (Scottish)
 gl,Galician
 he,Hebrew
 hi,Hindi
+he,Hebrew
 hu,Hungarian
-it,Italian,http://www.openoffice.org/it/download
-ja,Japanese,http://www.openoffice.org/ja/download
+it,Italian,https://www.openoffice.org/it/download
+ja,Japanese,https://www.openoffice.org/ja/download
 km,Khmer
 ko,Korean
-lt,Lithuanian,http://www.openoffice.org/lt/download
+lt,Lithuanian,https://www.openoffice.org/lt/download
 nb,Norwegian (Bokmål)
-nl,Dutch,http://www.openoffice.org/nl/downloaden.html
+nl,Dutch,https://www.openoffice.org/nl/downloaden.html
 pl,Polish
-pt,Portuguese (European),http://www.openoffice.org/pt/download
+pt,Portuguese (European),https://www.openoffice.org/pt/download
 pt-BR,Portuguese (Brazilian)
 ru,Russian
-sk,Slovak,http://www.openoffice.org/sk/download
+sk,Slovak,https://www.openoffice.org/sk/download
 sl,Slovenian
 sr,Serbian (Cyrillic)
 sv,Swedish
 ta,Tamil
 th,Thai
-tr,Turkish,http://www.openoffice.org/tr
+tr,Turkish,https://www.openoffice.org/tr
 vi,Vietnamese
-zh-CN,Chinese (simplified),http://www.openoffice.org/zh-cn
-zh-TW,Chinese (traditional),http://www.openoffice.org/zh-tw
+zh-CN,Chinese (simplified),https://www.openoffice.org/zh-cn
+zh-TW,Chinese (traditional),https://www.openoffice.org/zh-tw
