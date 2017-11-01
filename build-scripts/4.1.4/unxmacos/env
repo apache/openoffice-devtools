@@ -1,0 +1,36 @@
+# AOO Build Stuff
+#################################################
+JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+LC_ALL=en_US.UTF-8
+LANG="en_US.UTF-8"
+LIBRARY_PATH=/usr/local/lib
+C_INCLUDE_PATH=/usr/local/include
+CPLUS_INCLUDE_PATH=/usr/local/include
+MACOSX_DEPLOYMENT_TARGET=10.7
+ANT_HOME=/usr/local/share/java/apache-ant
+ANT_CLASSPATH=/usr/local/share/java/apache-ant/lib
+PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:.
+#################################################
+
+Installed in /usr/local:
+
+  o Apache ant 1.9.9
+  o dmake 4.12
+  o epm 4.4
+  o openssl 1.0.2l (no-shared)
+  o libxml2-2.9.6 (--enable-shared=no)
+  o libxslt-1.1.31 (--enable-shared=no)
+
+Macports (/opt/local):
+
+  o autoconf (symlinked to ~/bin)
+  o gnutar (symlinked to ~/bin)
+  o perl5 (symlinked to ~/bin)
+  o subversion
+  o git
+
+OS:
+
+  o OSX 10.11.6 (El Capitan)
+  o Xcode 7.3.1
+  o jdk-7u80-macosx-x64
