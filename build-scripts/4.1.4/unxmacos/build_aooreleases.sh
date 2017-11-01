@@ -125,7 +125,7 @@ fi
 	--without-stlport \
 	--with-package-format="installed dmg" \
 	--disable-systray \
-	--with-alloc=system \
+	--with-alloc=internal \
 	--with-lang="${LANGS}" \
 	| tee config.out || exit 1
 
@@ -134,7 +134,7 @@ source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P4 || exit 1
 cd util
-dmake ooolanguagepack || exit 1
-dmake sdkoo_en-US || exit 1
+dmake -P2 ooolanguagepack || exit 1
+dmake -P2 sdkoo_en-US || exit 1
 
 date "+Build ended at %H:%M:%S"
