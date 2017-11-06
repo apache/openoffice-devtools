@@ -1,8 +1,8 @@
 # AOO Build Stuff
 #################################################
 JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-LC_ALL=en_US.UTF-8
-LANG="en_US.UTF-8"
+LC_CTYPE=en_US.UTF-8
+LANG=en_US.UTF-8
 LIBRARY_PATH=/usr/local/lib
 C_INCLUDE_PATH=/usr/local/include
 CPLUS_INCLUDE_PATH=/usr/local/include
@@ -18,8 +18,9 @@ Installed in /usr/local:
   o dmake 4.12
   o epm 4.4
   o openssl 1.0.2l (no-shared)
-  o libxml2-2.9.6 (--enable-shared=no)
-  o libxslt-1.1.31 (--enable-shared=no)
+  o libxml2-2.9.6 (--prefix=/usr/local --enable-shared=no --without-iconv)
+  o libxslt-1.1.31 (--prefix=/usr/local --enable-shared=no)
+  o pkg-config 0.29.2 (--prefix=/usr/local)
 
 Macports (/opt/local):
 
@@ -31,6 +32,7 @@ Macports (/opt/local):
 
 OS:
 
-  o OSX 10.11.6 (El Capitan)
-  o Xcode 7.3.1
+  o OSX 10.12.6 (Sierra)
+  o Xcode 8.3.3
+     - sdk macosx10.11 installed via https://github.com/devernay/xcodelegacy
   o jdk-7u80-macosx-x64

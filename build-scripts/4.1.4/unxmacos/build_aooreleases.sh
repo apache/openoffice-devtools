@@ -125,7 +125,7 @@ fi
 	--without-stlport \
 	--with-package-format="installed dmg" \
 	--disable-systray \
-	--with-alloc=internal \
+	--with-alloc=system \
 	--with-lang="${LANGS}" \
 	| tee config.out || exit 1
 
