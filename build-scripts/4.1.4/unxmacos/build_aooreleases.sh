@@ -111,8 +111,8 @@ if [ ! -e configure -o configure.in -nt configure ] ; then
 fi
 ./configure   \
     --with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`" \
-	--with-vendor="Apache OpenOffice Community Build" \
 	--enable-verbose \
+	--with-vendor="Apache OpenOffice Community Build" \
 	--with-openldap \
 	--enable-category-b \
 	--enable-bundled-dictionaries \
@@ -123,7 +123,8 @@ fi
 	--with-epm=/usr/local/bin/epm \
 	--with-dmake-path=/usr/local/bin/dmake \
 	--without-stlport \
-	--with-package-format="installed dmg" \
+	--with-package-format="dmg" \
+	--with-system-expat=yes \
 	--disable-systray \
 	--with-alloc=internal \
 	--with-lang="${LANGS}" \

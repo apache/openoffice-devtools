@@ -33,6 +33,17 @@ Macports (/opt/local):
 OS:
 
   o OSX 10.12.6 (Sierra)
-  o Xcode 8.3.3
-     - sdk macosx10.11 installed via https://github.com/devernay/xcodelegacy
+  o Xcode 7.3.1
   o jdk-7u80-macosx-x64
+
+Build Adjustments:
+
+  o After a completed build:
+     - cd ..
+     - vi solenv/gbuild/platform/macosx.mk
+       -- s/O2/O1/
+     - cd frameworks
+     - make clean
+     - make
+     - cd ../instsetoo_native
+     - dmake
