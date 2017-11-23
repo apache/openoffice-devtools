@@ -9,7 +9,7 @@ if [ ! -d 'main' ] ; then
 fi
 
 # TODO: Extend to cover other platforms; this is for Linux and macOS only.
-PLATFORMS="unxlngx6.pro unxlngi6.pro unxmaccx.pro"
+PLATFORMS="unxlngx6.pro unxlngi6.pro unxmaccx.pro wntmsci12.pro"
 PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK"
 DESTINATION="../binaries"
 # For future use.
@@ -23,6 +23,8 @@ for PLATFORM in $PLATFORMS; do
     for PRODUCT in $PRODUCTS; do
       if [ "$PLATFORM" = "unxmaccx.pro" ]; then
         FTYPE="dmg"
+	  elif [ "$PLATFORM" = "wntmsci12.pro" ]; then
+	    FTYPE="exe"
       else
         FTYPE="tar.gz"
       fi
