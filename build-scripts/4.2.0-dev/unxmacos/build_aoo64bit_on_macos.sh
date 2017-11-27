@@ -13,7 +13,7 @@
 #    LIBRARY_PATH=/usr/local/lib
 #    C_INCLUDE_PATH=/usr/local/include
 #    CPLUS_INCLUDE_PATH=/usr/local/include
-#    MACOSX_DEPLOYMENT_TARGET=10.7
+#    MACOSX_DEPLOYMENT_TARGET=10.9
 #    ANT_HOME=/usr/local/share/java/apache-ant
 #    ANT_CLASSPATH=/usr/local/share/java/apache-ant/lib
 #    PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:.
@@ -97,6 +97,15 @@ if [ ! -e "$JUNIT_PATH" ] ; then
 fi
 export JUNIT_PATH
 echo "JUNIT_PATH is: $JUNIT_PATH..."
+
+MACOSX_DEPLOYMENT_TARGET=10.9
+export MACOSX_DEPLOYMENT_TARGET
+#CLANG_CXX_LANGUAGE_STANDARD="gnu++0x"
+#CLANG_CXX_LIBRARY="libc++"
+#GCC_C_LANGUAGE_STANDARD=gnu99
+#export CLANG_CXX_LANGUAGE_STANDARD
+#export CLANG_CXX_LIBRARY
+#export GCC_C_LANGUAGE_STANDARD
 
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
