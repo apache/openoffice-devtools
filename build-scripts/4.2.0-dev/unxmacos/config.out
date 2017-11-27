@@ -1,0 +1,667 @@
+checking whether configure is up-to-date... yes
+********************************************************************
+*                                                                  *
+*   Apache OpenOffice build configuration.                         *
+*                                                                  *
+*   The configure process checks your platform to see whether      *
+*   you can build Apache OpenOffice on it.                         *
+*   This process checks all pre-requisites and generates a file    *
+*   containing the necessary environment variables.                *
+*   Source this file after configure has ended successfully.       *
+*                                                                  *
+*   Warnings that are generated during the configure process       *
+*   must be taken into account since it can be a reason for        *
+*   an unsuccessful build of Apache OpenOffice.                    *
+*                                                                  *
+********************************************************************
+
+********************************************************************
+*                                                                  *
+*   Checking the platform pre-requisites.                          *
+*                                                                  *
+********************************************************************
+
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for gawk... no
+checking for mawk... no
+checking for nawk... no
+checking for awk... awk
+checking for awk... /usr/bin/awk
+checking for sed... /usr/bin/sed
+checking for solenv environment... default
+checking for custom pack.lst... no
+checking build system type... x86_64-apple-darwin16.7.0
+checking host system type... x86_64-apple-darwin16.7.0
+checking target system type... x86_64-apple-darwin16.7.0
+Darwin builder-vm.local 16.7.0 Darwin Kernel Version 16.7.0: Wed Oct  4 00:17:00 PDT 2017; root:xnu-3789.71.6~1/RELEASE_X86_64 x86_64
+configure: Detected Darwin version: 16 (10.12)
+checking for pkg-config... /usr/local/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking whether to enable crashdump feature... no
+checking whether to turn warnings to errors... no
+checking whether to do a debug build... no
+checking whether to build with additional debug utilities... no, full product build
+checking whether to include symbols into final build... no
+checking whether to strip the solver or not.... yes
+checking whether to enable category B components... yes: allow modules nss, hunspell, hyphen, saxon, rhino, beanshell, graphite, coinmp to be built
+checking whether to enable the Online Update support... yes
+checking whether to enable unit tests... yes
+checking whether to enable native CUPS support... yes
+checking whether to enable fontconfig support... no
+checking whether to use RPATH in shared libraries... yes
+checking whether to use dicts from external paths... no
+checking for bash... /bin/bash
+checking gcc home... /usr
+checking for gcc... /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 accepts -g... yes
+checking for /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 option to accept ISO C89... none needed
+checking the GNU gcc compiler version... implicitly using CC=/Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64
+checking for -Bsymbolic-functions linker support ... not found 
+checking whether to enable pch feature... no
+checking for GNU make... make
+checking the GNU make version... make 3.81
+checking for dmake... configure: looking for dmake at /usr/local/bin/dmake
+using user provided dmake
+checking whether the found dmake is the right dmake... yes
+checking the dmake version... OK, >= 4.11
+checking for GNU or compatible BSD tar... gtar
+checking for --hash-style=both linker support ... not found 
+checking for perl... /Users/jim/bin/perl
+checking the Perl version... checked (perl 5)
+checking for required Perl modules... all modules found
+checking how to run the C preprocessor... /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -E
+checking for ANSI C header files... yes
+checking whether we are using the GNU C++ compiler... yes
+checking whether /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 accepts -g... yes
+checking how to run the C++ preprocessor... /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -E
+checking how to run the C preprocessor... /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -E
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking size of long... 8
+checking whether byte ordering is bigendian... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking cups/cups.h usability... yes
+checking cups/cups.h presence... yes
+checking for cups/cups.h... yes
+checking whether we are using the GNU C++ compiler... (cached) yes
+checking whether /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 accepts -g... (cached) yes
+checking the GNU C++ compiler version... checked (g++ 4.2.1)
+no g++ includes
+checking exception type... 
+checking what the default STL should be... checking whether /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 supports -fvisibility=hidden... yes
+checking whether we are allowed and able to use --ccache-skip... probing...
+checking for ccache... not_found
+configure: not enabling --ccache-skip (ccache not found)
+checking which memory allocator to use... internal
+checking whether to add custom build version... yes, 2017-11-27 11:42:30 (Mon, 27 Nov 2017) - Darwin x86_64 [Development Build]
+checking whether to build with Java support... yes
+checking the installed JDK... checked (JDK 1.7.0_80)
+checking for jawt lib name... -ljawt
+checking whether to enable gcj aot compilation... no
+checking whether to enable EPM for packing... yes
+checking whether the found epm is the right epm... yes
+checking epm version... OK, >= 3.7
+checking checking if OS X pkgbuild is supported... OK, >= 4.3
+checking which package format to use... dmg
+checking for gperf... /usr/bin/gperf
+checking for gperf... (cached) /usr/bin/gperf
+checking gperf version... OK
+checking whether to build the stax... yes
+checking whether to build the ODK... yes
+checking for external/unowinreg/unowinreg.dll... found
+checking whether to provide libstdc++/libgcc_s in the installset... yes
+checking which zlib to use... external
+checking zlib.h usability... yes
+checking zlib.h presence... yes
+checking for zlib.h... yes
+checking for deflate in -lz... yes
+checking which jpeg to use... internal
+checking which expat to use... internal
+checking which libxslt to use... external
+checking for xsltproc... /usr/local/bin/xsltproc
+checking which libxml to use... external
+checking checking SDK compatibility with OSX 10.9... yes, by using SDK macosx10.10
+checking for /Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk... yes
+checking which python to use... compiling against system python (/usr/bin/python)
+compiling against system python (version 2.7)
+checking Python.h usability... yes
+checking Python.h presence... yes
+checking for Python.h... yes
+checking which lucene to use... internal
+checking whether to build the MySQL Connector extension... no
+checking which hsqldb to use... internal
+checking which beanshell to use... none (disabled)
+checking which saxon to use... internal
+checking whether to enable support for JavaScript... yes
+checking which libapr to use... internal
+checking which libapr-util to use... internal
+checking which libserf to use... internal
+checking whether to enable support for CoinMP... yes
+checking which coinmp to use... internal
+checking which curl to use... external
+checking for curl-config... /usr/bin/curl-config
+checking whether curl is >= 7.13.1... yes
+checking which mdds to use... internal
+checking which boost to use... internal
+checking which vigra to use... internal
+checking which odbc headers to use... internal
+checking whether to build XML Security support... yes
+checking whether to build LDAP configuration backend... yes
+checking which LDAP SDK to use... OpenLDAP
+checking ldap.h usability... yes
+checking ldap.h presence... yes
+checking for ldap.h... yes
+checking for ldap_simple_bind_s in -lldap... yes
+checking for ldap_set_option in -lldap... yes
+checking whether to build the internal NSS module... yes
+checking which sane header to use... internal
+checking which icu to use... internal
+checking whether to enable graphite support... no
+checking for /System/Library/Frameworks/AppKit.framework... yes
+Do Nothing for _os = Darwin
+checking whether to link to Xrender... no, dynamically open it
+checking which Xrender headers to use... internal
+checking whether to enable RandR support... no
+checking which libnss to use... internal
+checking which libssl to use... external
+checking which redland library to use... internal
+checking whether to build the Spell Checking component... checking which libhunspell to use... internal
+checking whether to build the Hyphenator component... checking which libhyphen to use... internal
+checking which mythes to use... internal
+checking which libtextcat to use... internal
+checking which libtextcat data directory to use... internal
+checking for getopt... yes
+checking for readdir_r... yes
+checking for bison... /usr/bin/bison
+checking the bison version... checked (/usr/bin/bison 2.3)
+checking for flex... /usr/bin/flex
+checking for patch... /usr/bin/patch
+checking whether /usr/bin/patch is GNU patch... yes
+checking for gnucp... no
+checking for cp... /bin/cp
+checking whether /bin/cp is GNU cp from coreutils with preserve= support... no
+no GNU cp from coreutils found - using the system's cp command
+checking for zip... /usr/bin/zip
+checking for unzip... /usr/bin/unzip
+checking which VCLplugs shall be built... none
+checking whether to enable GConf support... no
+checking whether to enable GNOME VFS support... no
+checking whether to use cairo... no
+checking whether to build the OpenGL Transitions component... no
+checking whether to build the PDF Import extension... no
+checking whether to build the Wiki Publisher extension... yes
+checking for swext module... OK
+checking which Servlet API Jar to use... internal
+checking whether to build the Report Builder extension... no
+checking which Apache commons-* libs to use... internal
+checking whether to enable the lockdown pieces... no
+checking whether to enable evolution 2 support... no
+checking whether to include MathMLDTD... yes
+checking whether to include category B fonts... yes
+checking whether to include category A fonts... yes
+checking whether any fonts are included... yes
+checking whether to include PPDs... yes
+checking whether to include AFMs... yes
+checking whether and how to use Xinerama... yes
+checking whether to build own version of libpng... yes
+checking whether to build own version of libjpeg... yes
+checking whether to trigger rat scan... no
+checking for jakarta-ant... no
+checking for ant... /usr/local/share/java/apache-ant/bin/ant
+checking if /usr/local/share/java/apache-ant/bin/ant works... Ant works
+checking Ant lib directory... Ant lib directory found.
+checking whether ant is >= 1.7.0... yes, 1.9.9
+checking whether ant supports mapper type="regexp"... yes
+checking for JUnit 4... /usr/local/share/java/junit.jar
+checking which languages to be built... ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+checking which languages have poor help localizations... none
+checking which dictionaries to include... ALL
+checking for additional 'intro' bitmaps... none
+checking for additional 'about' bitmaps... none
+checking for vendor... Apache OpenOffice Development Build
+checking for UNIX wrapper name... not set
+checking whether to statically link to Gtk... no
+checking whether to use layout dialogs... no
+checking build verbosity... not set
+checking whether to enable dependency tracking... yes
+********************************************************************
+*                                                                  *
+*   Setting up the build environment variables.                    *
+*                                                                  *
+********************************************************************
+checking solver path... default
+configure: writing config.status
+configure: creating ./config.status
+config.status: creating set_soenv
+config.status: creating Makefile
+Setting up the environment for building Apache OpenOffice 
+Setting platform independent values... Setting Mac OS X/Darwin specific values... Darwin platform = x86_64-apple-darwin16.7.0 Setting values for MacOSX/Darwin on x86_64... done
+Setting the environment variables... done
+Setting the aliases... done
+The variable SRC_ROOT          is set to: /Users/jim/src/asf/AOO420/main
+The variable OOO_SHELL         is set to: /bin/bash
+The variable JAVA_HOME         is set to: /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+The variable ANT_HOME          is set to: /usr/local/share/java/apache-ant
+The variable ANT_LIB           is set to: /usr/local/share/java/apache-ant/lib
+The variable ANT               is set to: /usr/local/share/java/apache-ant/bin/ant
+The variable JDKLIB            is set to: unset
+The variable ASM_PATH          is set to: unset
+The variable NASM_PATH         is set to: unset
+The variable BUILD_SOSL        is set to: true
+The variable FRAMEWORKSHOME    is set to: /Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks
+
+#
+# Platform independent constant values.
+#
+The variable DIC_DADK          is set to: TRUE
+The variable DIC_DEDE          is set to: TRUE
+The variable DIC_ENGB          is set to: TRUE
+The variable DIC_ENUS          is set to: TRUE
+The variable DIC_HUHU          is set to: TRUE
+The variable DIC_ITIT          is set to: TRUE
+The variable DIC_RURU          is set to: TRUE
+The variable DIC_THTH          is set to: TRUE
+The variable DIC_SWTZ          is set to: TRUE
+The variable DIC_ALL           is set to: TRUE
+The variable WITH_LANG         is set to: ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+The variable INTRO_BITMAPS     is set to: unset
+The variable ABOUT_BITMAPS     is set to: unset
+The variable OOO_VENDOR        is set to: Apache OpenOffice Development Build
+The variable OOODMAKEMODE      is set to: YES
+The variable WITH_POOR_HELP_LOCALIZATIONS is set to: unset
+The variable CALL_CDECL        is set to: TRUE
+The variable COMMON_OUTDIR     is set to: unset
+The variable common_build      is set to: unset
+The variable BMP_WRITES_FLAG   is set to: TRUE
+The variable BUILD_SOSL_RELEASE is set to: TRUE
+The variable NO_REC_RES        is set to: TRUE
+The variable SO3               is set to: TRUE
+The variable SOLAR_PLUGIN      is set to: TRUE
+The variable UPDATER           is set to: YES
+The variable build_deliver     is set to: true
+The variable VCL               is set to: TRUE
+The variable ENABLEUNICODE     is set to: TRUE
+The variable NEW_JAR_PACK      is set to: TRUE
+The variable NO_BSYMBOLIC      is set to: TRUE
+The variable TF_FILTER         is set to: TRUE
+The variable EXTERNAL_WARNINGS_NOT_ERRORS is set to: TRUE
+The variable PRODUCT           is set to: full
+The variable PROFULLSWITCH     is set to: product=full
+The variable PROEXT            is set to: .pro
+The variable VALGRIND_CFLAGS   is set to: unset
+The variable UNIXWRAPPERNAME   is set to: unset
+The variable ENABLE_NSS_MODULE is set to: YES
+The variable MOZILLABUILD      is set to: unset
+The variable BUILD_VER_STRING  is set to: 2017-11-27 11:42:30 (Mon, 27 Nov 2017) - Darwin x86_64 [Development Build]
+The variable DEFAULT_TO_ENGLISH_FOR_PACKING is set to: yes
+The variable ENABLE_GTK        is set to: unset
+The variable GTK_CFLAGS        is set to: unset
+The variable GTK_LIBS          is set to: unset
+The variable GTHREAD_CFLAGS    is set to: unset
+The variable GTHREAD_LIBS      is set to: unset
+The variable ENABLE_SYSTRAY_GTK is set to: unset
+The variable ENABLE_STATIC_GTK is set to: FALSE
+The variable ENABLE_GSTREAMER  is set to: unset
+The variable ENABLE_CAIRO      is set to: unset
+The variable ENABLE_CAIRO_CANVAS is set to: FALSE
+The variable ENABLE_OPENGL     is set to: unset
+The variable ENABLE_PDFIMPORT  is set to: NO
+The variable ENABLE_REPORTBUILDER is set to: NO
+The variable SYSTEM_JFREEREPORT is set to: unset
+The variable OOO_JUNIT_JAR     is set to: /usr/local/share/java/junit.jar
+The variable HAMCREST_CORE_JAR is set to: unset
+The variable SAC_JAR           is set to: unset
+The variable LIBXML_JAR        is set to: unset
+The variable FLUTE_JAR         is set to: unset
+The variable JFREEREPORT_JAR   is set to: unset
+The variable LIBLAYOUT_JAR     is set to: unset
+The variable LIBLOADER_JAR     is set to: unset
+The variable LIBFORMULA_JAR    is set to: unset
+The variable LIBREPOSITORY_JAR is set to: unset
+The variable LIBBASE_JAR       is set to: unset
+The variable LIBFONTS_JAR      is set to: unset
+The variable LIBSERIALIZER_JAR is set to: unset
+The variable ENABLE_MEDIAWIKI  is set to: YES
+The variable SYSTEM_APACHE_COMMONS is set to: NO
+The variable COMMONS_CODEC_JAR is set to: unset
+The variable COMMONS_LANG_JAR  is set to: unset
+The variable COMMONS_HTTPCLIENT_JAR is set to: unset
+The variable COMMONS_LOGGING_JAR is set to: unset
+The variable SYSTEM_SERVLETAPI is set to: NO
+The variable SERVLETAPI_JAR    is set to: unset
+The variable ENABLE_DBUS       is set to: unset
+The variable ENABLE_GCONF      is set to: unset
+The variable ENABLE_GNOMEVFS   is set to: unset
+The variable GNOMEVFS_CFLAGS   is set to: unset
+The variable GNOMEVFS_LIBS     is set to: unset
+The variable ENABLE_GIO        is set to: unset
+The variable GIO_CFLAGS        is set to: unset
+The variable GIO_LIBS          is set to: unset
+The variable ENABLE_KDE        is set to: unset
+The variable KDE_CFLAGS        is set to: unset
+The variable KDE_LIBS          is set to: unset
+The variable MOC               is set to: moc
+The variable ENABLE_KDE4       is set to: unset
+The variable KDE4_CFLAGS       is set to: unset
+The variable KDE4_LIBS         is set to: unset
+The variable MOC4              is set to: moc
+The variable PSPRINT           is set to: TRUE
+The variable MKDEPENDSOLVER    is set to: TRUE
+The variable nodep             is set to: unset
+The variable TARFILE_LOCATION  is set to: /Users/jim/src/asf/AOO420/ext_sources
+The variable DO_FETCH_TARBALLS is set to: yes
+The variable CUSTOM_PACK_LIST  is set to: unset
+The variable USE_PACKAGER      is set to: unset
+The variable ENABLE_ONLINE_UPDATE is set to: YES
+
+#
+# Platform dependent constant values.
+#
+The variable SOLAR_JAVA        is set to: TRUE
+The variable BIG_SVX           is set to: TRUE
+The variable COM               is set to: CLANG
+The variable COMPATH           is set to: /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr
+The variable CC_PATH           is set to: /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/
+The variable CXX_X64_BINARY    is set to: unset
+The variable LINK_X64_BINARY   is set to: unset
+The variable LIBMGR_X64_BINARY is set to: unset
+The variable CPU               is set to: X
+The variable CPUNAME           is set to: X86_64
+The variable CVER              is set to: DUMMY_CVER
+The variable GUI               is set to: UNX
+The variable GLIBC             is set to: unset
+The variable GUIBASE           is set to: aqua
+The variable GVER              is set to: VCL
+The variable OS                is set to: MACOSX
+The variable OSVERSION         is set to: unset
+The variable PTHREAD_CFLAGS    is set to: unset
+The variable PTHREAD_LIBS      is set to: unset
+The variable OUTPATH           is set to: unxmaccx
+The variable INPATH            is set to: unxmaccx.pro
+The variable PATH_SEPERATOR    is set to: :
+The variable COMEX             is set to: unset
+The variable CDPATHx           is set to: unset
+The variable DYNAMIC_CRT       is set to: unset
+The variable SET_EXCEPTIONS    is set to: unset
+The variable use_shl_versions  is set to: unset
+The variable FLIPCMD           is set to: unset
+The variable ARM_TARGET        is set to: unset
+The variable MACOSX_DEPLOYMENT_TARGET is set to: 10.9
+The variable MACOSX_SDK_PATH   is set to: /Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk
+
+#
+# Variable values.
+#
+The variable ENABLE_HUNSPELL   is set to: YES
+The variable ENABLE_HYPHEN     is set to: YES
+The variable PERL              is set to: /Users/jim/bin/perl
+The variable RPM               is set to: unset
+The variable DPKG              is set to: unset
+The variable PKGMK             is set to: unset
+The variable GNUMAKE           is set to: make
+The variable GNUTAR            is set to: gtar
+The variable UPD               is set to: 420
+The variable WORK_STAMP        is set to: AOO420
+The variable SOLARVER          is set to: /Users/jim/src/asf/AOO420/main/solver/420
+The variable SOLARVERSION      is set to: $SOLARVER
+The variable WORKDIR           is set to: $SOLARVER/$INPATH/workdir
+The variable OUTDIR            is set to: $SOLARVER/$INPATH
+The variable SOLARENV          is set to: /Users/jim/src/asf/AOO420/main/solenv
+The variable SOLARENVINC       is set to: $SOLARENV/inc
+The variable LOCALINI          is set to: $SOLARENV/config
+The variable STAR_INIROOT      is set to: $SOLARENV/config
+The variable STAR_INIROOTOLD   is set to: $SOLARENV/config
+The variable STAR_STANDLST     is set to: $SOLARENV/config/stand.lst
+The variable STAR_SSCOMMON     is set to: $SOLARENV/config/ssolar.cmn
+The variable STAR_SSOLARINI    is set to: $SOLARENV/config/ssolar.ini
+The variable DMAKEROOT         is set to: $SOLARENVINC/startup
+The variable CLASSPATH         is set to: $JAVA_HOME/jre/lib/rt.jar:.
+The variable XCLASSPATH        is set to: $JAVA_HOME/jre/lib/rt.jar:.
+The variable AWTLIB            is set to: -ljawt
+The variable JDK               is set to: sun
+The variable JAVAFLAGS         is set to: unset
+The variable JAVAINTERPRETER   is set to: /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/bin/java
+The variable JAVAIFLAGS        is set to: unset
+The variable JAVACOMPILER      is set to: /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/bin/javac
+The variable JAVAAOTCOMPILER   is set to: unset
+The variable JAVADOC           is set to: /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/bin/javadoc
+The variable SCPDEFS           is set to:  -DENABLE_ONLINE_UPDATE -DWITH_CATB_FONTS -DWITH_CATA_FONTS
+The variable SOLAREXTRAINC     is set to: unset
+The variable SOLAREXTRALIB     is set to:  -L/lib -L/usr/lib
+The variable PATH              is set to: .:$SOLARENV/$INPATH/bin:$SOLARENV/bin:/Users/jim/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:.
+The variable SOLARLIB          is set to:  -L$SOLARVER/$INPATH/lib -L/usr/lib
+The variable SOLARINC          is set to:  -I. -I$SOLARVER/$INPATH/inc/stl -I$SOLARVER/$INPATH/inc/external -I$SOLARVER/$INPATH/inc -I$SOLARENV/$OUTPATH/inc -I$SOLARENV/inc -I$SRC_ROOT/res -I$SRC_ROOT/tools/inc -I$SRC_ROOT/comphelper/inc -I/Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/ -I/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/JavaVM.framework/Headers
+The variable COMP_ENV          is set to: unset
+The variable JAVAHOME          is set to: unset
+The variable CC                is set to: /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64
+The variable HAVE_GCC_VISIBILITY_FEATURE is set to: TRUE
+The variable HAVE_LD_HASH_STYLE is set to: FALSE
+The variable HAVE_LD_BSYMBOLIC_FUNCTIONS is set to: unset
+The variable CXX               is set to: /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64
+The variable USE_CCACHE        is set to: unset
+The variable MINGWCXX          is set to: unset
+The variable MINGWSTRIP        is set to: unset
+The variable USE_SYSTEM_STL    is set to: YES
+The variable ALLOC             is set to: unset
+The variable ENABLE_SYMBOLS    is set to: unset
+The variable DISABLE_STRIP     is set to: unset
+The variable LFS_CFLAGS        is set to: -D_FILE_OFFSET_BITS=no
+The variable ENABLE_CRASHDUMP  is set to: unset
+The variable ENABLE_CUPS       is set to: unset
+The variable ENABLE_RANDR      is set to: unset
+The variable ENABLE_FONTCONFIG is set to: unset
+The variable ENABLE_DIRECTX    is set to: unset
+The variable ENABLE_DIRECT_DRAW is set to: unset
+The variable ENABLE_LAYOUT     is set to: FALSE
+The variable ENABLE_PCH        is set to: unset
+The variable ENABLE_GRAPHITE   is set to: FALSE
+The variable SYSTEM_GRAPHITE   is set to: unset
+The variable GRAPHITE_LIBS     is set to: unset
+The variable GRAPHITE_CFLAGS   is set to: unset
+The variable VC_STANDARD       is set to: unset
+The variable BUILD_X64         is set to: unset
+The variable ENABLE_CATEGORY_B is set to: YES
+The variable BUNDLED_EXTENSION_BLOBS is set to: unset
+The variable BUNDLED_PREREG_EXTENSIONS is set to: unset
+The variable ENABLE_BUNDLED_DICTIONARIES is set to: YES
+The variable SYSTEM_DICTS      is set to: NO
+The variable DICT_SYSTEM_DIR   is set to: unset
+The variable HYPH_SYSTEM_DIR   is set to: unset
+The variable THES_SYSTEM_DIR   is set to: unset
+The variable ENABLE_LOCKDOWN   is set to: unset
+The variable WITH_LDAP         is set to: YES
+The variable WITH_OPENLDAP     is set to: YES
+The variable MOZ_INC           is set to: unset
+The variable WITH_CATA_FONTS   is set to: YES
+The variable WITH_CATB_FONTS   is set to: YES
+The variable WITH_FONTS        is set to: YES
+The variable WITHOUT_AFMS      is set to: unset
+The variable WITHOUT_PPDS      is set to: unset
+The variable BUILD_TYPE        is set to: OOo GTEST ODK JPEG EXPAT LIBXMLSEC LUCENE HSQLDB SAXON RHINO APR APR_UTIL SERF COINMP COINMP MDDS BOOST VIGRA UNIXODBC NSS SANE ICU X11_EXTENSIONS NSS REDLAND HUNSPELL HYPHEN MYTHES LIBTEXTCAT LIBTEXTCATDATA SWEXT TOMCAT APACHE_COMMONS TOMCAT MATHMLDTD CATB_FONTS MORE_FONTS AFMS L10N
+The variable ADDITIONAL_REPOSITORIES is set to: ../ext_libraries ../extras
+The variable VERBOSE           is set to: unset
+The variable ENABLE_EVOAB2     is set to: unset
+The variable GOBJECT_CFLAGS    is set to: unset
+The variable GOBJECT_LIBS      is set to: unset
+The variable EPM               is set to: /usr/local/bin/epm
+The variable EPM_URL           is set to: unset
+The variable EPM_FLAGS         is set to: unset
+The variable BUILD_EPM         is set to: NO
+The variable PKGFORMAT         is set to: dmg
+The variable SYSTEM_STDLIBS    is set to: NO
+The variable SYSTEM_ZLIB       is set to: YES
+The variable SYSTEM_NSS        is set to: NO
+The variable NSS_CFLAGS        is set to: unset
+The variable NSS_LIBS          is set to: unset
+The variable SYSTEM_OPENSSL    is set to: YES
+The variable OPENSSL_CFLAGS    is set to: unset
+The variable OPENSSL_LIBS      is set to: -lssl -lcrypto
+The variable SYSTEM_PYTHON     is set to: YES
+The variable PYTHON_CFLAGS     is set to: -I/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/python2.7
+The variable PYTHON_LIBS       is set to: -framework Python
+The variable SYSTEM_ICU        is set to: NO
+The variable ICU_MAJOR         is set to: unset
+The variable ICU_MINOR         is set to: unset
+The variable ICU_MICRO         is set to: unset
+The variable SYSTEM_GENBRK     is set to: unset
+The variable SYSTEM_GENCCODE   is set to: unset
+The variable SYSTEM_GENCMN     is set to: unset
+The variable SYSTEM_JPEG       is set to: NO
+The variable FREETYPE_CFLAGS   is set to: unset
+The variable FREETYPE_LIBS     is set to: unset
+The variable SYSTEM_POPPLER    is set to: unset
+The variable POPPLER_CFLAGS    is set to: unset
+The variable POPPLER_LIBS      is set to: unset
+The variable GSTREAMER_CFLAGS  is set to: unset
+The variable GSTREAMER_LIBS    is set to: unset
+The variable SYSTEM_CAIRO      is set to: unset
+The variable BUILD_PIXMAN      is set to: unset
+The variable CAIRO_CFLAGS      is set to: unset
+The variable CAIRO_LIBS        is set to: unset
+The variable XRANDR_CFLAGS     is set to: unset
+The variable XRANDR_LIBS       is set to: unset
+The variable XRANDR_DLOPEN     is set to: unset
+The variable ENABLE_UNIT_TESTS is set to: YES
+The variable SYSTEM_LIBXML     is set to: YES
+The variable USE_FT_EMBOLDEN   is set to: unset
+The variable LIBXML_CFLAGS     is set to: -I/usr/local/include/libxml2
+The variable LIBXML_LIBS       is set to: -L/usr/local/lib -lxml2 -lz -lpthread -lm
+The variable SYSTEM_EXPAT      is set to: NO
+The variable ENABLE_MYSQLC     is set to: NO
+The variable SYSTEM_MYSQL      is set to: unset
+The variable SYSTEM_MYSQL_CPPCONN is set to: unset
+The variable MYSQL_INC         is set to: unset
+The variable MYSQL_LIB         is set to: unset
+The variable MYSQL_DEFINES     is set to: unset
+The variable LIBMYSQL_PATH     is set to: unset
+The variable SYSTEM_HSQLDB     is set to: NO
+The variable HSQLDB_JAR        is set to: unset
+The variable SYSTEM_LUCENE     is set to: NO
+The variable LUCENE_CORE_JAR   is set to: unset
+The variable LUCENE_ANALYZERS_JAR is set to: unset
+The variable SYSTEM_BSH        is set to: NO
+The variable BSH_JAR           is set to: unset
+The variable ENABLE_BEANSHELL  is set to: NO
+The variable SYSTEM_SAXON      is set to: NO
+The variable SAXON_JAR         is set to: unset
+The variable DISABLE_SAXON     is set to: unset
+The variable ENABLE_JAVASCRIPT is set to: YES
+The variable SYSTEM_APR        is set to: NO
+The variable APR_CFLAGS        is set to: unset
+The variable APR_LIBS          is set to: unset
+The variable SYSTEM_APR_UTIL   is set to: NO
+The variable APR_UTIL_CFLAGS   is set to: unset
+The variable APR_UTIL_LIBS     is set to: unset
+The variable SYSTEM_SERF       is set to: NO
+The variable SERF_CFLAGS       is set to: unset
+The variable SERF_LIBS         is set to: unset
+The variable SYSTEM_COINMP     is set to: NO
+The variable ENABLE_COINMP     is set to: YES
+The variable COINMP_CFLAGS     is set to: unset
+The variable COINMP_LIBS       is set to: unset
+The variable SYSTEM_ODBC_HEADERS is set to: NO
+The variable SYSTEM_LIBXSLT    is set to: YES
+The variable LIBXSLT_CFLAGS    is set to: -I/usr/local/include -I/usr/local/include/libxml2
+The variable LIBXSLT_LIBS      is set to: -L/usr/local/lib -lxslt -lxml2
+The variable SYSTEM_SANE_HEADER is set to: NO
+The variable SYSTEM_XRENDER_HEADERS is set to: NO
+The variable SYSTEM_CURL       is set to: YES
+The variable CURL_CFLAGS       is set to: unset
+The variable CURL_LIBS         is set to: -lcurl
+The variable SYSTEM_BOOST      is set to: NO
+The variable SYSTEM_MDDS       is set to: NO
+The variable SYSTEM_VIGRA      is set to: NO
+The variable SYSTEM_GDKPIXBUF  is set to: YES
+The variable SYSTEM_GLIB       is set to: YES
+The variable SYSTEM_GETTEXT    is set to: YES
+The variable SYSTEM_PANGO      is set to: YES
+The variable SYSTEM_LIBPNG     is set to: NO
+The variable SYSTEM_LIBJPEG    is set to: NO
+The variable RAT_JAR_HOME      is set to: unset
+The variable DMAKE_URL         is set to: unset
+The variable DMAKE_PATH        is set to: /usr/local/bin/dmake
+The variable IS_SYSTEM_DMAKE   is set to: unset
+The variable BUILD_STAX        is set to: YES
+The variable BUILD_UNOWINREG   is set to: NO
+The variable USE_XINERAMA      is set to: YES
+The variable XINERAMA_LINK     is set to: dynamic
+The variable SYSTEM_REDLAND    is set to: NO
+The variable REDLAND_CFLAGS    is set to: unset
+The variable REDLAND_LIBS      is set to: unset
+The variable SYSTEM_HUNSPELL   is set to: NO
+The variable HUNSPELL_CFLAGS   is set to: unset
+The variable HUNSPELL_LIBS     is set to: unset
+The variable HAVE_GETOPT       is set to: YES
+The variable HAVE_READDIR_R    is set to: YES
+The variable SYSTEM_LIBC       is set to: YES
+The variable SYSTEM_HYPH       is set to: NO
+The variable HYPHEN_LIB        is set to: unset
+The variable SYSTEM_MYTHES     is set to: NO
+The variable MYTHES_CFLAGS     is set to: unset
+The variable MYTHES_LIBS       is set to: unset
+The variable SYSTEM_LIBTEXTCAT is set to: NO
+The variable SYSTEM_LIBTEXTCAT_DATA is set to: unset
+The variable PAM               is set to: unset
+The variable NEW_SHADOW_API    is set to: unset
+The variable PAM_LINK          is set to: unset
+The variable CRYPT_LINK        is set to: unset
+The variable XAU_LIBS          is set to: unset
+The variable GXX_INCLUDE_PATH  is set to: NO_GXX_INCLUDE
+The variable COMMON_BUILD_TOOLS is set to: $SRC_ROOT/external/common
+The variable TMPDIR            is set to: /var/folders/_p/nx0kp5h157197n6ssf35ft7h0000gn/T/
+The variable SOLARSRC          is set to: $SRC_ROOT
+The variable SOURCE_ROOT_DIR   is set to: /Users/jim/src/asf/AOO420
+The variable gb_REPOS          is set to: /Users/jim/src/asf/AOO420/main /Users/jim/src/asf/AOO420/ext_libraries /Users/jim/src/asf/AOO420/extras
+The variable DELIVER           is set to: deliver.pl
+The variable MKOUT             is set to: mkout.pl
+The variable ZIPDEP            is set to: zipdep.pl
+
+#
+# Aliases.
+#
+The alias mkout is set to: "$PERL $SOLARENV/bin/mkout.pl"
+The alias deliver is set to: "$PERL $SOLARENV/bin/deliver.pl"
+The alias build is set to: "$PERL $SOLARENV/bin/build.pl"
+The alias build_client is set to: "$PERL $SOLARENV/bin/build_client.pl"
+The alias zipdep is set to: "$PERL $SOLARENV/bin/zipdep.pl"
+The alias nmake is set to: "dmake"
+The variable GNUPATCH          is set to: /usr/bin/patch
+The variable GPERF             is set to: /usr/bin/gperf
+The variable GNUCOPY           is set to: unset
+The variable SAL_ENABLE_FILE_LOCKING is set to: 1
+**************************************************************************** 
+*
+* Apache OpenOffice 420 configuration. 
+* 
+* 
+* Configuration part of Apache OpenOffice 420 build is finished. 
+* 
+* Note: Be aware that you might not be able to build Apache OpenOffice if 
+* you ignore any warnings that were generated during this configuration 
+* process. 
+* 
+*
+* USAGE: 
+* Source MacOSXX64Env.Set.sh (in sh)
+* in order to set up the build-environment variables.
+* 
+* 
+**************************************************************************** 
+Configure completed
+
+Run ./bootstrap in /Users/jim/src/asf/AOO420/main to provide build tools and get third-party packages
