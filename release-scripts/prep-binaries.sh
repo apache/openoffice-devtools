@@ -8,9 +8,9 @@ if [ ! -d 'main' ] ; then
   exit 1
 fi
 
-# TODO: Extend to cover other platforms; this is for Linux and macOS only.
+#
 PLATFORMS="unxlngx6.pro unxlngi6.pro unxmaccx.pro wntmsci12.pro"
-PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK"
+PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK Apache_OpenOffice_Beta"
 DESTINATION="../binaries"
 # For future use.
 # FORMATS=`ls -1 main/instsetoo_native/$PLATFORM/$PRODUCT`
@@ -34,6 +34,8 @@ for PLATFORM in $PLATFORMS; do
         FILENAME=`basename $PACKAGE`
         if [ "$PRODUCT" = "Apache_OpenOffice_SDK" ]; then
           OUTPUT_DIR="$DESTINATION/SDK/"
+        elif [ "$PRODUCT" = "Apache_OpenOffice_Beta" ]; then
+          OUTPUT_DIR="$DESTINATION/Beta/$LANGUAGE/"
         else
           OUTPUT_DIR="$DESTINATION/$LANGUAGE/"
         fi
