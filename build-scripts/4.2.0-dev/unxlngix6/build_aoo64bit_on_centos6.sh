@@ -8,7 +8,7 @@ AOO_JUST_CONFIG=
 AOO_VERBOSE_BUILD=
 AOO_BUILD_TYPE="Community Build"
 AOO_BUILD_VERSION=
-AOO_PACKAGER_LIST="./pack.lst"
+AOO_BUILD_BETA=
 
 while true; do
   case "$1" in
@@ -16,7 +16,7 @@ while true; do
     "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
     "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
     "--dev" ) AOO_BUILD_TYPE="Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
-    "--beta" ) AOO_BUILD_TYPE="Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_PACKAGER_LIST="./pack-beta.lst"; shift ;;
+    "--beta" ) AOO_BUILD_TYPE="Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
     "--" ) shift; break ;;
     "" ) break ;;
     * ) echo "unknown option: $1"; shift ;;
@@ -33,8 +33,7 @@ if [ ! -e external/unowinreg/unowinreg.dll ] ; then
     wget -O external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinreg_prebuild/680/unowinreg.dll
 fi
 
-# See pack.lst
-#LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
+LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 
 if [ -e configure.in ]; then
     AOO_CONF_T="configure.in"
@@ -63,7 +62,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--without-stlport \
 	--with-ant-home=$ANT_HOME \
 	--with-package-format="rpm deb" \
-	--with-packager-list="${AOO_PACKAGER_LIST}" \
+	--with-lang="${LANGS}" \
 	--with-dmake-url=http://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2 \
 	--with-epm-url=http://sourceforge.net/projects/oooextras.mirror/files/epm-3.7.tar.gz \
 	| tee config.out ) || exit 1
@@ -74,6 +73,9 @@ source ./LinuxX86-64Env.Set.sh || exit 1
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P5 || exit 1
 cd util
+if [ "$AOO_BUILD_BETA" = "yes" ]; then
+    dmake openofficebeta -P5 || exit 1
+fi
 dmake -P2 ooolanguagepack || exit 1
 dmake -P2 sdkoo_en-US || exit 1 
 
