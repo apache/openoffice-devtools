@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # Build-script for AOO 4.1.x on OSX 10.12
 #
@@ -10,10 +10,7 @@
 #    JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 #    LC_CTYPE=en_US.UTF-8
 #    LANG=en_US.UTF-8
-#    LIBRARY_PATH=/usr/local/lib
-#    C_INCLUDE_PATH=/usr/local/include
-#    CPLUS_INCLUDE_PATH=/usr/local/include
-#    MACOSX_DEPLOYMENT_TARGET=10.9
+#    MACOSX_DEPLOYMENT_TARGET=10.7
 #    ANT_HOME=/usr/local/share/java/apache-ant
 #    ANT_CLASSPATH=/usr/local/share/java/apache-ant/lib
 #    PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:.
@@ -48,15 +45,19 @@
 # Parse options
 #
 AOO_SKIP_CONFIG=
+AOO_JUST_CONFIG=
 AOO_VERBOSE_BUILD=
 AOO_BUILD_TYPE="Community Build"
 AOO_BUILD_VERSION=
+AOO_PACKAGER_LIST="./pack.lst"
 
 while true; do
   case "$1" in
     "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
+    "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
     "--dev" ) AOO_BUILD_TYPE="Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
+    "--beta" ) AOO_BUILD_TYPE="Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_PACKAGER_LIST="./pack-beta.lst"; shift ;;
     "--" ) shift; break ;;
     "" ) break ;;
     * ) echo "unknown option: $1"; shift ;;
@@ -98,21 +99,19 @@ fi
 export JUNIT_PATH
 echo "JUNIT_PATH is: $JUNIT_PATH..."
 
-MACOSX_DEPLOYMENT_TARGET=10.9
-export MACOSX_DEPLOYMENT_TARGET
-#CLANG_CXX_LANGUAGE_STANDARD="gnu++0x"
-#CLANG_CXX_LIBRARY="libc++"
-#GCC_C_LANGUAGE_STANDARD=gnu99
-#export CLANG_CXX_LANGUAGE_STANDARD
-#export CLANG_CXX_LIBRARY
-#export GCC_C_LANGUAGE_STANDARD
+#Setup build Env
+export MACOSX_DEPLOYMENT_TARGET=10.7
+export LIBRARY_PATH=/usr/local/lib
+export C_INCLUDE_PATH=/usr/local/include
+export CPLUS_INCLUDE_PATH=/usr/local/include
 
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
 	curl -o external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinreg_prebuild/680/unowinreg.dll
 fi
 
-LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
+# See pack.lst
+#LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 
 if [ -e configure.in ]; then
     AOO_CONF_T="configure.in"
@@ -141,17 +140,18 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--without-stlport \
 	--with-package-format="dmg" \
 	--disable-systray \
+	--with-macosx-target=10.7 \
 	--with-alloc=internal \
-	--with-lang="${LANGS}" \
+	--with-packager-list="${AOO_PACKAGER_LIST}" \
 	| tee config.out ) || exit 1
 fi
 
+if [ "$AOO_JUST_CONFIG" = "yes" ]; then
+    exit
+fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P5 || exit 1
-cd util
-dmake -P2 ooolanguagepack || exit 1
-dmake -P2 sdkoo_en-US || exit 1
 
 date "+Build ended at %H:%M:%S"
