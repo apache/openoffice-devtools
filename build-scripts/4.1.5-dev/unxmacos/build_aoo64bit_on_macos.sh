@@ -1,28 +1,9 @@
 #!/bin/sh
-### 4.1.2 Script: 
-### 4.1.2 Script: echo "### Configure"
-### 4.1.2 Script: ./configure \
-### 4.1.2 Script:              --with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)")" \
-### 4.1.2 Script:              --enable-verbose \
-### 4.1.2 Script:              --enable-category-b \
-### 4.1.2 Script:              --enable-wiki-publisher \
-### 4.1.2 Script:              --enable-bundled-dictionaries \
-### 4.1.2 Script:              --without-stlport \
-### 4.1.2 Script:              --with-dmake-path=/Users/jsc/dev/tools/bin/dmake \
-### 4.1.2 Script:              --with-epm=/Users/jsc/dev/tools/bin/epm/epm \
-### 4.1.2 Script:              --with-openldap \
-### 4.1.2 Script:              --with-junit=/Users/jsc/dev/tools/junit/junit-4.11.jar \
-### 4.1.2 Script:              --with-packager-list=/Users/jsc/dev/svn/aoo-build-pack.lst
-### 4.1.2 Script:              --with-jdk-home=/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home \
-### 4.1.2 Script:              --with-ant-home=/Users/jsc/dev/tools/apache-ant-1.9.3/dist \
-### 4.1.2 Script:              --with-lang="kid ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
-### 4.1.2 Script: 
-### 4.1.2 Script: 
 #
 # Build-script for AOO 4.1.x on OSX 10.12
 #
 # System Setup:
-#  XCode 8.3.3 (Updated w/ https://github.com/devernay/xcodelegacy.git)
+#  XCode 7.3.1
 #
 # Local Changes:
 #   MacPorts:
@@ -111,8 +92,8 @@ if [ ! -e configure -o configure.in -nt configure ] ; then
 fi
 ./configure   \
     --with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`" \
-	--with-vendor="Apache OpenOffice Community Build" \
 	--enable-verbose \
+	--with-vendor="Apache OpenOffice Community Build" \
 	--with-openldap \
 	--enable-category-b \
 	--enable-bundled-dictionaries \
@@ -123,18 +104,18 @@ fi
 	--with-epm=/usr/local/bin/epm \
 	--with-dmake-path=/usr/local/bin/dmake \
 	--without-stlport \
-	--with-package-format="installed dmg" \
+	--with-package-format="dmg" \
 	--disable-systray \
-	--with-alloc=system \
+	--with-alloc=internal \
 	--with-lang="${LANGS}" \
-	| tee config.out
+	| tee config.out || exit 1
 
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P4 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P5 || exit 1
 cd util
-dmake ooolanguagepack || exit 1
-dmake sdkoo_en-US || exit 1
+dmake -P2 ooolanguagepack || exit 1
+dmake -P2 sdkoo_en-US || exit 1
 
 date "+Build ended at %H:%M:%S"
