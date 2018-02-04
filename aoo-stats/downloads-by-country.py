@@ -92,7 +92,7 @@ print "<title>OpenOffice Downloads by Country</title>"
 print "<html>"
 print "<body>"
 print "<p>This table shows downloads per <a href='http://en.wikipedia.org/wiki/Country_code_top-level_domain'>country</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>"
-print "<table border='1'>"
+print "<table border='1' cellpadding='10'>"
 
 print "<tr>"
 print "<th>Rank</th>"
