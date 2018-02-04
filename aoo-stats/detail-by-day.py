@@ -67,13 +67,13 @@ end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
 # columns of interest
 columns = [ "count_total",
-    "count_340", "count_341", "count_400", "count_401", "count_410", "count_411","count_412","count_413",
+    "count_340", "count_341", "count_400", "count_401", "count_410", "count_411", "count_412", "count_413", "count_414", "count_415",
     "windows", "mac", "linux", "linux32", "linux64", "deb", "rpm",
     "ar", "ast", "bg", "ca", "ca-XR", "ca-XV", "cs", "da", "de",
-    "en-GB", "en-US", "el", "es", "eu", "fi", "fr", "gd", "gl",
+    "el", "en-GB", "en-US", "es", "eu", "fi", "fr", "gd", "gl",
     "he", "hi", "hu", "it", "ja", "km", "ko", "lt", "nb", "nl",
-    "pl", "pt", "pt-BR", "ru", "sk", "sl", "sr", "sv", "ta", "tr",
-    "th", "zh-CN", "zh-TW"]
+    "pl", "pt", "pt-BR", "ru", "sk", "sl", "sr", "sv", "ta", "th",
+    "tr", "vi", "zh-CN", "zh-TW"]
 
 # column counters are updated if the download name contains a matching pattern
 # The dictionary below maps the column names to these search patterns.
@@ -88,6 +88,8 @@ patternDict = {
     "count_411" : "4.1.1",
     "count_412" : "4.1.2",
     "count_413" : "4.1.3",
+    "count_414" : "4.1.4",
+    "count_415" : "4.1.5",
     "windows"   : "Win_x86",
     "mac"       : "MacOS",
     "linux"     : "Linux",
