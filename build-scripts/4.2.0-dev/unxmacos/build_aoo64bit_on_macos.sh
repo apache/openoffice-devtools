@@ -25,6 +25,7 @@
 #   o libxml2-2.9.7 (--prefix=/usr/local --enable-shared=no --without-iconv)
 #   o libxslt-1.1.32 (--prefix=/usr/local --enable-shared=no)
 #   o pkg-config 0.29.2 (--prefix=/usr/local)
+#   o GNU patch 2.7.6 (--prefix=/usr/local)
 # 
 # Macports (/opt/local):
 # 
