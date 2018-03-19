@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Build-script for AOO 4.1.x on OSX 10.12
+# Build-script for AOO 4.2.x on OSX 10.12
 #
 # System Setup:
 #  XCode 7.2.1
@@ -140,7 +140,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-package-format="dmg" \
 	--disable-systray \
 	--with-macosx-target=10.7 \
-	--with-alloc=internal \
+	--with-alloc=system \
 	--with-lang="${LANGS}" \
 	| tee config.out ) || exit 1
 fi
