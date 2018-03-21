@@ -68,7 +68,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	| tee config.out ) || exit 1
 fi
 
-source ./LinuxX86-64Env.Set.sh || exit 1 
+source ./LinuxX86Env.Set.sh || exit 1 
 ./bootstrap || exit 1
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P5 || exit 1
