@@ -88,7 +88,8 @@ for download in downloads :
 
 print "<html>"
 print "<head>"
-print "<title>OpenOffice Downloads by Country</title>"
+print "<title>OpenOffice Downloads by Country/Territory</title>"
+print "<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />"
 print "</head>"
 print "<body>"
 print "<h2>Downloads by Country</h2>"
@@ -98,12 +99,12 @@ print "The data is collected and aggregated by a <a href='https://svn.apache.org
 print "<p>The download figures are for full-install downloads of Apache OpenOffice downloaded via SourceForge. This does not include downloads of language packs, SDKs or source tarballs. "
 print "It does not include downloads of earlier versions of OpenOffice.org or downloads made from copies of OpenOffice hosted on other repositories.</p>"
 print "<p>This table is <b>not</b> live. The data is manually updated.</p>"
-print "<p>This table shows downloads per <a href='https://en.wikipedia.org/wiki/Country_code_top-level_domain'>country</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>"
-print "<table border='1' cellpadding='20'>"
+print "<p>This table shows downloads per <a href='https://en.wikipedia.org/wiki/Country_code_top-level_domain'>country/territory</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>"
+print "<table border='1' cellpadding='10'>"
 
 print "<tr>"
 print "<th>Rank</th>"
-print "<th>Country</th>"
+print "<th>Country/Territory</th>"
 print "<th>Downloads</th>"
 print "</tr>"
 

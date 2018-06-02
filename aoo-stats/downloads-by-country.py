@@ -88,15 +88,15 @@ for download in downloads :
 
 print "<html>"
 print "<head>"
-print "<title>OpenOffice Downloads by Country</title>"
+print "<title>OpenOffice Downloads by Country/Territory</title>"
 print "<html>"
 print "<body>"
-print "<p>This table shows downloads per <a href='http://en.wikipedia.org/wiki/Country_code_top-level_domain'>country</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>"
+print "<p>This table shows downloads per <a href='http://en.wikipedia.org/wiki/Country_code_top-level_domain'>country/territory</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>"
 print "<table border='1' cellpadding='10'>"
 
 print "<tr>"
 print "<th>Rank</th>"
-print "<th>Country</th>"
+print "<th>Country/Territory</th>"
 print "<th>Downloads</th>"
 print "</tr>"
 
