@@ -6,17 +6,23 @@
 # usage: auto-index [dir] [filetype] [title]
 if [ $# -eq 0 ]; then
 	echo "Parameters: [directory to process] [filetypes to process] [title for index page]"
-	echo "[directory to process] is mandatory"
+	echo "[directory to process] MANDATORY"
 	echo "No parameters given: using current directory with html files and default title"
 fi
 FILETYPE="html"
-TITLE=$1
-if [ $2 ]; then FILETYPE = $2;  fi
-if [ $3 ]; then TITLE = $3;  fi
+TITLE=""
+if [ "$2" != ""  ]; then FILETYPE = $2;  fi
+if [ "$3" != "" ]; then
+	TITLE= $3
+else 
+	TITLE=$(basename $1)
+fi
 
 cd $1
 echo "Now in " $1 
+echo "Title: "$TITLE
 read -p "OK?..."
+exit
 
 rm -f index.html
 
