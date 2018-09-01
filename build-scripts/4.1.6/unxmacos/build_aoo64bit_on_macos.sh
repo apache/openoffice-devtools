@@ -24,8 +24,8 @@
 #         http://www.msweet.org/files/project2/epm-4.3-source.tar.gz
 #         $ ./configure --prefix=/usr/local ; make install
 #
-#     o openssl (1.0.2j)
-#         https://www.openssl.org/source/openssl-1.0.2j.tar.gz
+#     o openssl (1.0.2p)
+#         https://www.openssl.org/source/openssl-1.0.2p.tar.gz
 #         $ export MACOSX_DEPLOYMENT_TARGET=10.7
 #         $ ./Configure darwin64-x86_64-cc no-shared --prefix=/usr/local --openssldir=/usr/local ; make install
 #
