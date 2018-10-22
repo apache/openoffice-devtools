@@ -20,16 +20,16 @@ else
 fi
 
 echo ""
-echo "Generating MD5/SHA256 checksum files ..."
+echo "Generating SHA256/SHA512 checksum files ..."
 echo ""
 
 # check for executables
 gpg2="`which gpg2 2> /dev/null | head -1`"
 gpg="`which gpg 2> /dev/null | head -1`"
 pgp="`which pgp 2> /dev/null | head -1`"
-md5sum="`which md5sum 2> /dev/null | head -1`"
+sha512sum="`which sha512sum 2> /dev/null | head -1`"
 sha256sum="`which sha256sum 2> /dev/null | head -1`"
-md5="`which md5 2> /dev/null | head -1`"
+sha512="`which sha512 2> /dev/null | head -1`"
 sha256="`which sha256 2> /dev/null | head -1`"
 openssl="`which openssl 2> /dev/null | head -1`"
 sed="`which gsed 2> /dev/null | head -1`"
@@ -42,9 +42,9 @@ fi;
 if test -x "${openssl}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      echo "openssl: creating md5 checksum file for ${file} ..."
-      ${openssl} md5 ${file} |\
-          ${sed} -e 's#^MD5(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.md5
+      echo "openssl: creating sha512 checksum file for ${file} ..."
+      ${openssl} sha512 ${file} |\
+          ${sed} -e 's#^sha512(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha512
       echo "openssl: creating sha256 checksum file for ${file} ..."
       ${openssl} sha256 ${file} |\
           ${sed} -e 's#^SHA256(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha256
@@ -54,11 +54,11 @@ if test -x "${openssl}"; then
 elif test -x "${gpg2}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      echo "gpg2: creating md5 checksum file for ${file} ..."
-      ${gpg2} --print-md md5 ${file} |\
+      echo "gpg2: creating sha512 checksum file for ${file} ..."
+      ${gpg2} --print-md sha512 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.md5
+              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
       ${gpg2} --print-md sha256 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
@@ -69,11 +69,11 @@ elif test -x "${gpg2}"; then
 elif test -x "${gpg}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      echo "gpg: creating md5 checksum file for ${file} ..."
-      ${gpg} --print-md md5 ${file} |\
+      echo "gpg: creating sha512 checksum file for ${file} ..."
+      ${gpg} --print-md sha512 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.md5
+              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
       ${gpg} --print-md sha256 ${file} |\
           ${sed} -e '{N;s#\n##;}' |\
           ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
@@ -81,20 +81,20 @@ elif test -x "${gpg}"; then
     fi
   done
 else
-  # no openssl or gpg found - check for md5sum
-  if test -x "${md5sum}"; then
+  # no openssl or gpg found - check for sha512sum
+  if test -x "${sha512sum}"; then
     for file in ${allfiles}; do
       if test -f "${file}"; then
-        echo "md5sum: creating md5 checksum file for ${file} ..."
-        ${md5sum} -b ${file} > ${file}.md5
+        echo "sha512sum: creating sha512 checksum file for ${file} ..."
+        ${sha512sum} -b ${file} > ${file}.sha512
       fi
     done
-  # no openssl or gpg found - check for md5
-  elif test -x "${md5}"; then
+  # no openssl or gpg found - check for sha512
+  elif test -x "${sha512}"; then
     for file in ${allfiles}; do
       if test -f "${file}"; then
-        echo "md5: creating md5 checksum file for ${file} ..."
-        ${md5} -r ${file} | ${sed} -e 's# # *#' > ${file}.md5
+        echo "sha512: creating sha512 checksum file for ${file} ..."
+        ${sha512} -r ${file} | ${sed} -e 's# # *#' > ${file}.sha512
       fi
     done
   fi
