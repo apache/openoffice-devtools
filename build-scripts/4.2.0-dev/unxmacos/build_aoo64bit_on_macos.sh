@@ -21,8 +21,8 @@
 #   o Apache ant 1.9.9
 #   o dmake 4.12
 #   o epm 4.4
-#   o openssl 1.0.2l (no-shared)
-#   o libxml2-2.9.7 (--prefix=/usr/local --enable-shared=no --without-iconv)
+#   o openssl 1.0.2p (no-shared)
+#   o libxml2-2.9.8 (--prefix=/usr/local --enable-shared=no --without-iconv)
 #   o libxslt-1.1.32 (--prefix=/usr/local --enable-shared=no)
 #   o pkg-config 0.29.2 (--prefix=/usr/local)
 #   o GNU patch 2.7.6 (--prefix=/usr/local)

@@ -15,7 +15,6 @@ if [ ! -e configure -o configure.in -nt configure ] ; then
 fi
 ./configure   \
 	--with-build-version="$(date +"%Y-%m-%d %H:%M") - `uname -sm`" \
-	--with-vendor="Apache OpenOffice Community Build" \
 	--enable-verbose \
 	--with-system-stdlibs \
 	--enable-crashdump=yes \

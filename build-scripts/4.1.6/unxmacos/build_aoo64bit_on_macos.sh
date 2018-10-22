@@ -93,7 +93,6 @@ fi
 ./configure   \
     --with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`" \
 	--enable-verbose \
-	--with-vendor="Apache OpenOffice Community Build" \
 	--with-openldap \
 	--enable-category-b \
 	--enable-bundled-dictionaries \
