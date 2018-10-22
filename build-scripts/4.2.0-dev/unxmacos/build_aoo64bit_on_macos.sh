@@ -48,7 +48,7 @@
 AOO_SKIP_CONFIG=
 AOO_JUST_CONFIG=
 AOO_VERBOSE_BUILD=
-AOO_BUILD_TYPE="Community Build"
+AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 
@@ -57,8 +57,8 @@ while true; do
     "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
     "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
-    "--dev" ) AOO_BUILD_TYPE="Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
-    "--beta" ) AOO_BUILD_TYPE="Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
+    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
+    "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
     "--" ) shift; break ;;
     "" ) break ;;
     * ) echo "unknown option: $1"; shift ;;
@@ -126,8 +126,7 @@ fi
 if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
     ( ./configure   \
 	--with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`${AOO_BUILD_VERSION}" \
-	${AOO_VERBOSE_BUILD} \
-	--with-vendor="Apache OpenOffice ${AOO_BUILD_TYPE}" \
+	${AOO_VERBOSE_BUILD} ${AOO_BUILD_TYPE} \
 	--with-openldap \
 	--enable-category-b \
 	--enable-bundled-dictionaries \
