@@ -1,4 +1,4 @@
-This is the configuration used for AOO 4.1.6:
+This is the configuration used for AOO 4.1.6 RC1:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#Windows_7.2C_Windows_8.1.2C_Windows_10
@@ -6,7 +6,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#W
 Build Environment:
 
  - Windows 10 Pro 1803 (64-bit)
- - Cygwin 2.10.0 (32-bit)
+ - Cygwin 2.11.1 (32-bit)
  - Apache Ant 1.9.13
  - Mozilla Build 2.2.0
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
