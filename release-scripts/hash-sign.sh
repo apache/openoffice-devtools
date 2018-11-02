@@ -44,7 +44,7 @@ if test -x "${openssl}"; then
     if test -f "${file}"; then
       echo "openssl: creating sha512 checksum file for ${file} ..."
       ${openssl} sha512 ${file} |\
-          ${sed} -e 's#^sha512(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha512
+          ${sed} -e 's#^SHA512(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha512
       echo "openssl: creating sha256 checksum file for ${file} ..."
       ${openssl} sha256 ${file} |\
           ${sed} -e 's#^SHA256(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha256
