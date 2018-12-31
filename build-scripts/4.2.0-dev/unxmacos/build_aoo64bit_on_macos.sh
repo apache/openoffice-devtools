@@ -91,7 +91,7 @@ export ANT_HOME
 echo "ANT_HOME is: $ANT_HOME..."
 
 if [ -z "$JUNIT_PATH" ] ; then
-	JUNIT_PATH=/usr/local/share/java/junit.jar
+	JUNIT_PATH=/usr/local/share/java/junit-4.12.jar
 fi
 if [ ! -e "$JUNIT_PATH" ] ; then
     echo "JUNIT_PATH not found: $JUNIT_PATH"
@@ -132,6 +132,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--enable-bundled-dictionaries \
 	--enable-wiki-publisher \
 	--with-junit="$JUNIT_PATH" \
+	--with-hamcrest-core=/usr/local/share/java/hamcrest-core-2.1.jar \
 	--with-jdk-home="$JAVA_HOME" \
 	--with-ant-home="$ANT_HOME" \
 	--with-epm=/usr/local/bin/epm \
