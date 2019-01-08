@@ -7,18 +7,14 @@
 #
 #
 # ENV:
-#    JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 #    LC_CTYPE=en_US.UTF-8
 #    LANG=en_US.UTF-8
-#    MACOSX_DEPLOYMENT_TARGET=10.7
-#    ANT_HOME=/usr/local/share/java/apache-ant
-#    ANT_CLASSPATH=/usr/local/share/java/apache-ant/lib
 #    PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:.
 # 
 # 
 # Installed in /usr/local:
 # 
-#   o Apache ant 1.9.9
+#   o Apache ant 1.9.13
 #   o dmake 4.12
 #   o epm 4.4
 #   o openssl 1.0.2p (no-shared)
@@ -41,6 +37,13 @@
 #   o Xcode 7.3.1
 #   o jdk-7u80-macosx-x64
 # 
+
+#
+# Build options
+#
+AOO_MACOS_TARGET=10.8
+AOO_JAVA_VERSION=1.7
+AOO_ANT_VERSION=1.9
 
 #
 # Parse options
@@ -70,9 +73,8 @@ if [ ! -d ../main -o ! -d sal ] ; then
 	exit 1
 fi
 
-if [ -z "$JAVA_HOME" ] ; then
-	JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
-fi
+
+JAVA_HOME=$(/usr/libexec/java_home -v ${AOO_JAVA_VERSION})
 if [ ! -d "$JAVA_HOME" ] ; then
     echo "JAVA_HOME not found: $JAVA_HOME"
     exit 1
@@ -80,15 +82,16 @@ fi
 export JAVA_HOME
 echo "JAVA_HOME is: $JAVA_HOME..."
 
-if [ -z "$ANT_HOME" ] ; then
-	ANT_HOME=/usr/local/share/java/apache-ant
-fi
+ANT_HOME=/usr/local/share/java/apache-ant-${AOO_ANT_VERSION}
 if [ ! -d "$ANT_HOME" ] ; then
     echo "ANT_HOME not found: $ANT_HOME"
     exit 1
 fi
 export ANT_HOME
+ANT_CLASSPATH=${ANT_HOME}/lib
+export ANT_CLASSPATH
 echo "ANT_HOME is: $ANT_HOME..."
+echo "ANT_CLASSPATH is: $ANT_CLASSPATH..."
 
 if [ -z "$JUNIT_PATH" ] ; then
 	JUNIT_PATH=/usr/local/share/java/junit-4.12.jar
@@ -100,8 +103,10 @@ fi
 export JUNIT_PATH
 echo "JUNIT_PATH is: $JUNIT_PATH..."
 
+echo "Building for min macOS ${AOO_MACOS_TARGET}"
+echo "---"
 #Setup build Env
-export MACOSX_DEPLOYMENT_TARGET=10.7
+export MACOSX_DEPLOYMENT_TARGET=${AOO_MACOS_TARGET}
 export LIBRARY_PATH=/usr/local/lib
 export C_INCLUDE_PATH=/usr/local/include
 export CPLUS_INCLUDE_PATH=/usr/local/include
@@ -140,7 +145,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--without-stlport \
 	--with-package-format="dmg" \
 	--disable-systray \
-	--with-macosx-target=10.7 \
+	--with-macosx-target=${AOO_MACOS_TARGET} \
 	--with-alloc=system \
 	--with-lang="${LANGS}" \
 	| tee config.out ) || exit 1
