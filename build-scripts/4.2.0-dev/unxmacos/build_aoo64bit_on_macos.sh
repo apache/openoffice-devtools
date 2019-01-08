@@ -14,7 +14,7 @@
 # 
 # Installed in /usr/local:
 # 
-#   o Apache ant 1.9.13
+#   o Apache ant 1.9.13 / 1.10.4
 #   o dmake 4.12
 #   o epm 4.4
 #   o openssl 1.0.2p (no-shared)
@@ -35,13 +35,14 @@
 # 
 #   o OSX 10.12.6 (Sierra)
 #   o Xcode 7.3.1
-#   o jdk-7u80-macosx-x64
+#   o jdk1.7.0_80.jdk
+#   o jdk1.8.0_181.jdk
 # 
 
 #
 # Build options
 #
-AOO_MACOS_TARGET=10.8
+AOO_MACOS_TARGET=10.7
 AOO_JAVA_VERSION=1.7
 AOO_ANT_VERSION=1.9
 
@@ -55,11 +56,20 @@ AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 
+OPTS=`getopt --long verbose,skip-config,just-config,dev,beta,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
+
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
+#echo "$OPTS"
+eval set -- "$OPTS"
+
 while true; do
   case "$1" in
     "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
     "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
+	"--ant-version" ) AOO_ANT_VERSION=$2; shift ;;
+	"--java-version" ) AOO_JAVA_VERSION=$2; shift ;;
+	"--macos-target" ) AOO_MACOS_TARGET=$2; shift ;;
     "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
     "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
     "--" ) shift; break ;;
@@ -105,6 +115,9 @@ echo "JUNIT_PATH is: $JUNIT_PATH..."
 
 echo "Building for min macOS ${AOO_MACOS_TARGET}"
 echo "---"
+echo "Starting build:"
+echo ""
+sleep 5
 #Setup build Env
 export MACOSX_DEPLOYMENT_TARGET=${AOO_MACOS_TARGET}
 export LIBRARY_PATH=/usr/local/lib
