@@ -28,6 +28,7 @@
 #   o autoconf (symlinked to ~/bin)
 #   o gnutar (symlinked to ~/bin)
 #   o perl5 (symlinked to ~/bin)
+#   o getopt (symlinked to ~/bin)
 #   o subversion
 #   o git
 # 
@@ -56,24 +57,22 @@ AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 
-OPTS=`getopt --long verbose,skip-config,just-config,dev,beta,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
-
+AOPTS=`getopt -o vsjdba:j:m: --long verbose,skip-config,just-config,dev,beta,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
-#echo "$OPTS"
-eval set -- "$OPTS"
+#echo "$AOPTS"
+eval set -- "$AOPTS"
 
 while true; do
   case "$1" in
-    "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
-    "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
-    "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
-	"--ant-version" ) AOO_ANT_VERSION=$2; shift ;;
-	"--java-version" ) AOO_JAVA_VERSION=$2; shift ;;
-	"--macos-target" ) AOO_MACOS_TARGET=$2; shift ;;
-    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
-    "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
-    "--" ) shift; break ;;
-    "" ) break ;;
+    -v | --verbose ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
+    -s | --skip-config ) AOO_SKIP_CONFIG="yes"; shift ;;
+    -j | --just-config ) AOO_JUST_CONFIG="yes"; shift ;;
+    -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
+    -j | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
+    -m | --macos-target ) AOO_MACOS_TARGET=$2; shift 2 ;;
+    -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
+    -b | --beta ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
+    -- ) shift; break ;;
     * ) echo "unknown option: $1"; shift ;;
   esac
 done
