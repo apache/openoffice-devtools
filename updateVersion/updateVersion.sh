@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #-------------------------------------------------------------------
 #
 #              UPDATE VERSION FOR OO
@@ -134,9 +134,9 @@ do
                     for (( s=0; s<${#lines[@]}; s++ ))
                     do
                         echo "line: ${lines[$s]}"
-                        newline=`echo ${lines[$s]} | sed -E "s|(value=\")[0-9]+.?[0-9]*.?[0-9]*(\")|\1${version}\2|"`
+                        newline=`echo ${lines[$s]} | gsed -E "s|(value=\")[0-9]+.?[0-9]*.?[0-9]*(\")|\1${version}\2|"`
                         echo "newline: ${newline}"
-                        sed -E -i "s|(value=\")[0-9]+.?[0-9]*.?[0-9]*(\")|\1${version}\2|" ${filepath}
+                        gsed -E -i "s|(value=\")[0-9]+.?[0-9]*.?[0-9]*(\")|\1${version}\2|" ${filepath}
                         echo "**********"
                     done
                 #
@@ -154,16 +154,16 @@ do
                     then
                         replStr=`grep -w ${patt2brepl} ${filepath} | tr '(' '+'`
                         replStr=`echo ${replStr} | tr ')' '+'`
-                        sed -E -i "s/(.*)${patt2brepl}.*/\1${replStr}/" ${filepath}
+                        gsed -E -i "s/(.*)${patt2brepl}.*/\1${replStr}/" ${filepath}
                         echo "temporarily changing file contents replStr ${replStr}"
                     fi
                     readarray -t lines < <(grep -w ${patt2brepl} ${filepath} | grep -v -e '{' -e '(')
                     for (( s=0; s<${#lines[@]}; s++ ))
                     do
                         echo "line: ${lines[$s]}"
-                        newline=`echo ${lines[$s]} | sed -E "s|(${patt2brepl} ?=? ?)[a-zA-Z0-9]+.?[a-zA-Z0-9]*.?[a-zA-Z0-9]*[+]*|\1${patt2replWith}|"`
+                        newline=`echo ${lines[$s]} | gsed -E "s|(${patt2brepl} ?=? ?)[a-zA-Z0-9]+.?[a-zA-Z0-9]*.?[a-zA-Z0-9]*[+]*|\1${patt2replWith}|"`
                         echo "newline: ${newline}"
-                        sed -E -i "s|(${patt2brepl} ?=? ?)[a-zA-Z0-9]+.?[a-zA-Z0-9]*.?[a-zA-Z0-9]*[+]*|\1${patt2replWith}|" ${filepath}
+                        gsed -E -i "s|(${patt2brepl} ?=? ?)[a-zA-Z0-9]+.?[a-zA-Z0-9]*.?[a-zA-Z0-9]*[+]*|\1${patt2replWith}|" ${filepath}
                         echo "**********"
                     done
                 else
@@ -186,8 +186,8 @@ do
                         insStrPatt=`echo ${patt2brepl} | egrep -w "[aA][oO][oO][0-9]+.?[0-9]*.?[0-9]*"`
                         if [[ ${patt2brepl} == ${insStrPatt} ]]
                         then
-                            partAOO=`echo ${patt2brepl} | sed -E -n "s|.*([aA][oO][oO])[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/].*|\1|p"`
-                            partVer=`echo ${patt2brepl} | sed -E -n "s|.*([aA][oO][oO])([0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]).*|\2|p"`
+                            partAOO=`echo ${patt2brepl} | gsed -E -n "s|.*([aA][oO][oO])[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/].*|\1|p"`
+                            partVer=`echo ${patt2brepl} | gsed -E -n "s|.*([aA][oO][oO])([0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]).*|\2|p"`
                             patt2brepl=${partVer}
                         fi
                         echo "patt2brepl: [${patt2brepl}]"
@@ -209,35 +209,35 @@ do
                             nbr=${#patt2brepl}
                             if [[ ${nbr} -eq 1 ]]   # right side is just x
                             then
-                                newline=`echo ${line} | sed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}|"`
+                                newline=`echo ${line} | gsed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}|"`
                             else
                                 if [[ ${nbr} -eq 2 ]]   # right side is xx
                                 then
                                     if [[ ${p0}+1 -eq ${v0} ]]  # right side + 1 is version
                                     then
-                                        newline=`echo ${line} | sed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}|"`
+                                        newline=`echo ${line} | gsed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}|"`
                                     else
-                                        newline=`echo ${line} | sed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}${v1}|"`
+                                        newline=`echo ${line} | gsed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}${v1}|"`
                                     fi
                                 else
-                                    newline=`echo ${line} | sed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}${v1}${v2}|"`
+                                    newline=`echo ${line} | gsed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}${v1}${v2}|"`
                                 fi
                             fi
                         elif [[ -z ${p2} ]]  # right side is in the form x.x
                             then
                                 if [[ -n ${v1} ]]
                                 then 
-                                    newline=`echo ${line} | sed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}.${v1}|"`
+                                    newline=`echo ${line} | gsed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${v0}.${v1}|"`
                                 else
-                                    newline=`echo ${line} | sed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${version}|"`
+                                    newline=`echo ${line} | gsed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${version}|"`
                                 fi
                             else
-                                newline=`echo ${line} | sed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${version}|"`
+                                newline=`echo ${line} | gsed -E "s|(${partAOO})[0-9]+.?[0-9]*.?[0-9]*[^a-zA-Z/]|\1${version}|"`
                         fi
                         
                         echo "newline: ${newline}"
                         echo "**********"
-                        sed -E -i "s|${line}|${newline}|" ${filepath}
+                        gsed -E -i "s|${line}|${newline}|" ${filepath}
                     done
                 fi
             done
