@@ -102,17 +102,7 @@ export ANT_CLASSPATH
 echo "ANT_HOME is: $ANT_HOME..."
 echo "ANT_CLASSPATH is: $ANT_CLASSPATH..."
 
-if [ -z "$JUNIT_PATH" ] ; then
-	JUNIT_PATH=/usr/local/share/java/junit-4.12.jar
-fi
-if [ ! -e "$JUNIT_PATH" ] ; then
-    echo "JUNIT_PATH not found: $JUNIT_PATH"
-    exit 1
-fi
-export JUNIT_PATH
-echo "JUNIT_PATH is: $JUNIT_PATH..."
-
-echo "Building for min macOS ${AOO_MACOS_TARGET}"
+echo "Building for ${AOO_BUILD_TYPE}: min macOS ${AOO_MACOS_TARGET}, Java $(echo ${AOO_JAVA_VERSION} | sed -e s/..//) : Ant ${AOO_ANT_VERSION}"
 echo "---"
 echo "Starting build:"
 echo ""
@@ -143,15 +133,14 @@ fi
 if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
     ( ./configure   \
 	--with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`${AOO_BUILD_VERSION}" \
-	${AOO_VERBOSE_BUILD} ${AOO_BUILD_TYPE} \
+	${AOO_VERBOSE_BUILD} \
 	--with-openldap \
 	--enable-category-b \
 	--enable-bundled-dictionaries \
 	--enable-wiki-publisher \
-	--with-junit="$JUNIT_PATH" \
-	--with-hamcrest-core=/usr/local/share/java/hamcrest-core-2.1.jar \
 	--with-jdk-home="$JAVA_HOME" \
 	--with-ant-home="$ANT_HOME" \
+	--without-junit \
 	--with-epm=/usr/local/bin/epm \
 	--with-dmake-path=/usr/local/bin/dmake \
 	--without-stlport \
@@ -169,13 +158,13 @@ fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P5 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P7 || exit 1
 
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake openofficebeta -P5 || exit 1
+    dmake openofficebeta -P7 || exit 1
 fi
-dmake ooolanguagepack -P2 || exit 1
-dmake sdkoo_en-US -P2 || exit 1
+dmake ooolanguagepack -P4 || exit 1
+dmake sdkoo_en-US -P4 || exit 1
 
 date "+Build ended at %H:%M:%S"
