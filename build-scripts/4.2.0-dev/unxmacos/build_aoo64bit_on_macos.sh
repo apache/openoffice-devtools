@@ -158,11 +158,11 @@ fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P7 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P6 || exit 1
 
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake openofficebeta -P7 || exit 1
+    dmake openofficebeta -P6 || exit 1
 fi
 dmake ooolanguagepack -P4 || exit 1
 dmake sdkoo_en-US -P4 || exit 1
