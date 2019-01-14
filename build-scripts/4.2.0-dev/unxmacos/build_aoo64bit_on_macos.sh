@@ -70,7 +70,7 @@ while true; do
     -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
     -j | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
     -m | --macos-target ) AOO_MACOS_TARGET=$2; shift 2 ;;
-    -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
+    -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Test/Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
     -b | --beta ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
     -- ) shift; break ;;
     * ) echo "unknown option: $1"; shift ;;
