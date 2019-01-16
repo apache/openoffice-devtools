@@ -63,8 +63,8 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-jdk-home=/usr/lib/jvm/java-1.7.0-openjdk \
 	--with-package-format="rpm deb" \
 	--with-lang="${LANGS}" \
-	--with-dmake-url=http://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2 \
-	--with-epm-url=http://sourceforge.net/projects/oooextras.mirror/files/epm-3.7.tar.gz \
+	--with-epm=/usr/local/bin/epm \
+	--with-dmake-path=/usr/local/bin/dmake \
 	| tee config.out ) || exit 1
 fi
 
