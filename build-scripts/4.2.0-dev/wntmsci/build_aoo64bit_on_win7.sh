@@ -103,6 +103,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-vendor="Apache OpenOffice ${AOO_BUILD_TYPE}" \
 	--enable-wiki-publisher \
 	--enable-category-b \
+	--enable-beanshell \
 	--enable-bundled-dictionaries \
 	--with-jdk-home="$JDK_HOME" \
 	--with-ant-home="$ANT_HOME" \

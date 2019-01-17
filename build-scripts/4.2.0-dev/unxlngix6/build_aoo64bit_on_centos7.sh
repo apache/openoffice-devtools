@@ -52,6 +52,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-system-stdlibs \
 	--enable-crashdump=yes \
 	--enable-category-b \
+	--enable-beanshell \
 	--enable-wiki-publisher \
 	--enable-bundled-dictionaries \
 	--enable-opengl  \

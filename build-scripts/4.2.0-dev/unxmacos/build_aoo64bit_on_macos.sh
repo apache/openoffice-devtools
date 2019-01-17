@@ -136,6 +136,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	${AOO_VERBOSE_BUILD} \
 	--with-openldap \
 	--enable-category-b \
+	--enable-beanshell \
 	--enable-bundled-dictionaries \
 	--enable-wiki-publisher \
 	--with-jdk-home="$JAVA_HOME" \
