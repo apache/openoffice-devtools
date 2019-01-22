@@ -15,8 +15,8 @@
 # Installed in /usr/local:
 # 
 #   o Apache ant 1.9.13 / 1.10.4
-#   o dmake 4.12
-#   o epm 4.4
+#   o dmake 4.12.3 (https://github.com/jimjag/dmake/archive/dmake-4.12.3.tar.gz)
+#   o epm 4.4.1 (https://github.com/jimjag/epm/archive/epm-4.4.1.tar.gz)
 #   o openssl 1.0.2p (no-shared)
 #   o libxml2-2.9.8 (--prefix=/usr/local --enable-shared=no --without-iconv)
 #   o libxslt-1.1.32 (--prefix=/usr/local --enable-shared=no)
