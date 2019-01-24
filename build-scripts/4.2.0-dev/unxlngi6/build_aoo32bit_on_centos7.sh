@@ -74,10 +74,13 @@ cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P5 || exit 1
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake openofficebeta -P5 || exit 1
+    dmake -P5 openofficebeta  || exit 1
+	dmake -P5 sdkoobeta_en-US || exit 1
+	dmake -P5 ooobetalanguagepack || exit 1
+else
+	dmake -P5 ooolanguagepack || exit 1
+	dmake -P5 sdkoo_en-US || exit 1 
 fi
-dmake -P2 ooolanguagepack || exit 1
-dmake -P2 sdkoo_en-US || exit 1 
 
 date "+Build ended at %H:%M:%S"
 
