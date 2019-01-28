@@ -34,7 +34,11 @@ for PLATFORM in $PLATFORMS; do
         FILENAME=`basename $PACKAGE`
         if [ "$PRODUCT" = "Apache_OpenOffice_SDK" ]; then
           OUTPUT_DIR="$DESTINATION/SDK/"
+        elif [ "$PRODUCT" = "Apache_OpenOffice_Beta_SDK" ]; then
+          OUTPUT_DIR="$DESTINATION/Beta/SDK/"
         elif [ "$PRODUCT" = "Apache_OpenOffice_Beta" ]; then
+          OUTPUT_DIR="$DESTINATION/Beta/$LANGUAGE/"
+        elif [ "$PRODUCT" = "Apache_OpenOffice_Beta_languagepack" ]; then
           OUTPUT_DIR="$DESTINATION/Beta/$LANGUAGE/"
         else
           OUTPUT_DIR="$DESTINATION/$LANGUAGE/"
