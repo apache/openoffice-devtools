@@ -10,7 +10,7 @@ fi
 
 #
 PLATFORMS="unxlngx6.pro unxlngi6.pro unxmaccx.pro wntmsci12.pro"
-PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK Apache_OpenOffice_Beta"
+PRODUCTS="Apache_OpenOffice Apache_OpenOffice_languagepack Apache_OpenOffice_SDK Apache_OpenOffice_Beta Apache_OpenOffice_Beta_SDK Apache_OpenOffice_Beta_languagepack"
 DESTINATION="../binaries"
 # For future use.
 # FORMATS=`ls -1 main/instsetoo_native/$PLATFORM/$PRODUCT`
