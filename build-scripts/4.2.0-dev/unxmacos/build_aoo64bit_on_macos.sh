@@ -56,6 +56,7 @@ AOO_VERBOSE_BUILD=
 AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
+AOO_BUILD_DEV=
 
 AOPTS=`getopt -o vsjdba:j:m: --long verbose,skip-config,just-config,dev,beta,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
@@ -70,7 +71,7 @@ while true; do
     -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
     -j | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
     -m | --macos-target ) AOO_MACOS_TARGET=$2; shift 2 ;;
-    -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
+    -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; shift ;;
     -b | --beta ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
     -- ) shift; break ;;
     * ) echo "unknown option: $1"; shift ;;
@@ -166,6 +167,10 @@ if [ "$AOO_BUILD_BETA" = "yes" ]; then
     dmake -P5 openofficebeta  || exit 1
 	dmake -P5 sdkoobeta_en-US || exit 1
 	dmake -P5 ooobetalanguagepack || exit 1
+elif [ "$AOO_BUILD_DEV" = "yes" ]; then
+    dmake -P5 openofficedev  || exit 1
+	dmake -P5 sdkoodev_en-US || exit 1
+	dmake -P5 ooodevlanguagepack || exit 1
 else
 	dmake -P5 ooolanguagepack || exit 1
 	dmake -P5 sdkoo_en-US || exit 1 
