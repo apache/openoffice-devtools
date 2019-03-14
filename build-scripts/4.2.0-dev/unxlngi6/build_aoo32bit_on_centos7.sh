@@ -9,13 +9,14 @@ AOO_VERBOSE_BUILD=
 AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
+AOO_BUILD_DEV=
 
 while true; do
   case "$1" in
     "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
     "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
-    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; shift ;;
+    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; shift ;;
     "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
     "--" ) shift; break ;;
     "" ) break ;;
@@ -78,6 +79,10 @@ if [ "$AOO_BUILD_BETA" = "yes" ]; then
     dmake -P5 openofficebeta  || exit 1
 	dmake -P5 sdkoobeta_en-US || exit 1
 	dmake -P5 ooobetalanguagepack || exit 1
+elif [ "$AOO_BUILD_DEV" = "yes" ]; then
+    dmake -P5 openofficedev  || exit 1
+	dmake -P5 sdkoodev_en-US || exit 1
+	dmake -P5 ooodevlanguagepack || exit 1
 else
 	dmake -P5 ooolanguagepack || exit 1
 	dmake -P5 sdkoo_en-US || exit 1 
