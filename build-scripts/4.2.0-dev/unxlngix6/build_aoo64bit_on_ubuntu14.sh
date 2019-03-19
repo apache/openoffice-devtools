@@ -16,8 +16,8 @@ while true; do
     "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
     "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
-    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; shift ;;
-    "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; shift ;;
+    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
+    "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
     "--" ) shift; break ;;
     "" ) break ;;
     * ) echo "unknown option: $1"; shift ;;
