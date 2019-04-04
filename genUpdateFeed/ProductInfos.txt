@@ -6,9 +6,9 @@
 # Legend:
 # VERSION       Version number of the product
 # PRODUCTNAME   Product name as given in the version.ini resp. versionrc file of the installation
-# BUILDID       BuildId  also given in the version.ini resp. versionrc file of the installation
+# BUILDID       BuildId also given in the version.ini resp. versionrc file of the installation
 # DOWNLOADURL   Default URL the user is guided to for corresponding packages
-# LANGUAGECODE  Language code of an released language
+# LANGUAGECODE  Language code of every released language
 
 3.4.0 OpenOffice.org_3 9590 https://www.openoffice.org/download/other-341.html en-US ar cs es gl hu it ja nl pt-BR ru zh-CN zh-TW
 
