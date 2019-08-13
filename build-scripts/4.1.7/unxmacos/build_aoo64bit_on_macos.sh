@@ -156,8 +156,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--without-stlport \
 	--with-package-format="dmg" \
 	--disable-systray \
-	--with-macosx-target=${AOO_MACOS_TARGET} \
-	--with-alloc=system \
+	--with-alloc=internal \
 	--with-lang="${LANGS}" \
 	| tee config.out ) || exit 1
 fi
