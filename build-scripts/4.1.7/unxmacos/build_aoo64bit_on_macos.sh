@@ -112,6 +112,17 @@ export ANT_CLASSPATH
 echo "ANT_HOME is: $ANT_HOME..."
 echo "ANT_CLASSPATH is: $ANT_CLASSPATH..."
 
+if [ -z "$JUNIT_PATH" ] ; then
+	JUNIT_PATH=/usr/local/share/java/junit.jar
+fi
+if [ ! -e "$JUNIT_PATH" ] ; then
+    echo "JUNIT_PATH not found: $JUNIT_PATH"
+    exit 1
+fi
+export JUNIT_PATH
+echo "JUNIT_PATH is: $JUNIT_PATH..."
+
+
 echo "Building for ${AOO_BUILD_TYPE}: min macOS ${AOO_MACOS_TARGET}, Java $(echo ${AOO_JAVA_VERSION} | sed -e s/..//) : Ant ${AOO_ANT_VERSION}"
 echo "---"
 echo "Starting build:"
@@ -150,7 +161,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--enable-wiki-publisher \
 	--with-jdk-home="$JAVA_HOME" \
 	--with-ant-home="$ANT_HOME" \
-	--without-junit \
+	--with-junit="$JUNIT_PATH" \
 	--with-epm=/usr/local/bin/epm \
 	--with-dmake-path=/usr/local/bin/dmake \
 	--without-stlport \
