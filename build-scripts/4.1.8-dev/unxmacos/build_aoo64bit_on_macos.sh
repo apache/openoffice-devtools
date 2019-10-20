@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 #
-# Build-script for AOO 4.1.x on OSX 10.13
+# Build-script for AOO 4.1.x on OSX 10.14
 #
 # System Setup:
 #  XCode 7.3.1
+#  $ sudo xcode-select -s /Applications/Xcode7.app
 #
 # Local Changes:
 #   MacPorts:
@@ -36,7 +37,7 @@
 #   Env:
 #     LIBRARY_PATH=/usr/local/lib
 #     C_INCLUDE_PATH=/usr/local/include
-#     CPLUS_INCLUDE_PATH=/usr/local/include
+#     CPLUS_INCLUDE_PATH=/usr/local/include:/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1
 #     MACOSX_DEPLOYMENT_TARGET=10.7
 #     PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:.
 #
