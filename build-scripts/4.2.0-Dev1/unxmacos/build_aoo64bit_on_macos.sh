@@ -57,8 +57,9 @@ AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 AOO_BUILD_DEV=
+AOO_BUILD_ALL="yes"
 
-AOPTS=`getopt -o vsjdba:j:m: --long verbose,skip-config,just-config,dev,beta,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
+AOPTS=`getopt -o vsjdbqa:j:m: --long verbose,skip-config,just-config,dev,beta,quick,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 #echo "$AOPTS"
 eval set -- "$AOPTS"
@@ -68,6 +69,7 @@ while true; do
     -v | --verbose ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     -s | --skip-config ) AOO_SKIP_CONFIG="yes"; shift ;;
     -j | --just-config ) AOO_JUST_CONFIG="yes"; shift ;;
+    -q | --quick ) AOO_BUILD_ALL="no"; shift ;;
     -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
     -j | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
     -m | --macos-target ) AOO_MACOS_TARGET=$2; shift 2 ;;
@@ -171,7 +173,7 @@ elif [ "$AOO_BUILD_DEV" = "yes" ]; then
     dmake -P5 openofficedev  || exit 1
 	dmake -P5 sdkoodev_en-US || exit 1
 	dmake -P5 ooodevlanguagepack || exit 1
-else
+elif [ "$AOO_BUILD_ALL" = "yes" ]; then
 	dmake -P5 ooolanguagepack || exit 1
 	dmake -P5 sdkoo_en-US || exit 1 
 fi
