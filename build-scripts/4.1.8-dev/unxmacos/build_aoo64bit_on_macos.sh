@@ -71,6 +71,12 @@ AOO_BUILD_BETA=
 AOO_BUILD_DEV=
 AOO_BUILD_ALL="yes"
 
+$(xcode-select -p | grep "Xcode7" -q)
+if [ $? != 0 ]; then
+    echo "xcode-select must point to Xcode7."
+    exit 1
+fi
+
 AOPTS=`getopt -o vsjdbqa:j:m: --long verbose,skip-config,just-config,dev,beta,quick,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 #echo "$AOPTS"
