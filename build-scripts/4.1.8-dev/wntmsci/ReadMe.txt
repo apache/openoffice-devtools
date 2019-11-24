@@ -5,7 +5,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#W
 
 Build Environment:
 
- - Windows 10 Pro 1903 (64-bit)
+ - Windows 10 Pro 1909 (64-bit)
  - Cygwin 3.0.7 (32-bit)
  - Apache Ant 1.9.14
  - Mozilla Build 2.2.0
