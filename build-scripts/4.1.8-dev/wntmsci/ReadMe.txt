@@ -15,7 +15,7 @@ Build Environment:
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
- - NSIS 3.04
+ - NSIS 3.05
 
 Bundled Runtime:
 
