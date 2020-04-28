@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# Build-script for AOO 4.2.x on OSX 10.13
+# Build-script for AOO 4.2.x on OSX 10.14
 #
 # System Setup:
-#  XCode 10.1
+#  XCode 11.3
 #
 #
 # ENV:
@@ -16,7 +16,7 @@
 # 
 #   o Apache ant 1.9.13 / 1.10.4
 #   o dmake 4.12.3 (https://github.com/jimjag/dmake/archive/dmake-4.12.3.tar.gz)
-#   o epm 4.4.2 (https://github.com/jimjag/epm/archive/epm-4.4.2.tar.gz)
+#   o epm 4.5.0-jj (https://github.com/jimjag/epm/archive/epm-4.5.0-jj.tar.gz)
 #   o openssl 1.0.2p (no-shared)
 #   o libxml2-2.9.8 (--prefix=/usr/local --enable-shared=no --without-iconv)
 #   o libxslt-1.1.32 (--prefix=/usr/local --enable-shared=no)
@@ -34,8 +34,8 @@
 # 
 # OS:
 # 
-#   o OSX 10.13.6 (High Sierra)
-#   o Xcode 10.1 w/ SDK 10.11
+#   o OSX 10.14.6 (Mojave)
+#   o Xcode 11.3 w/ SDK 10.11
 #   o jdk1.7.0_80.jdk
 #   o jdk1.8.0_181.jdk
 # 
