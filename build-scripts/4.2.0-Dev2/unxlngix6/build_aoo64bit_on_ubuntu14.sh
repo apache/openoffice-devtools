@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#   o dmake 4.12.3 (https://github.com/jimjag/dmake/archive/dmake-4.12.3.tar.gz)
+#   o epm 4.5.0-jj (https://github.com/jimjag/epm/archive/epm-4.5.0-jj.tar.gz)
+
 #
 # Parse options
 #
@@ -65,8 +68,8 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-jdk-home=/usr/lib/jvm/java-1.7.0-openjdk \
 	--with-package-format="rpm deb" \
 	--with-lang="${LANGS}" \
-	--with-dmake-url=http://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2 \
-	--with-epm-url=http://sourceforge.net/projects/oooextras.mirror/files/epm-3.7.tar.gz \
+	--with-dmake-url=https://github.com/jimjag/dmake/archive/dmake-4.12.3.tar.gz \
+	--with-epm-url=https://github.com/jimjag/epm/archive/epm-4.5.0-jj.tar.gz \
 	| tee config.out ) || exit 1
 fi
 

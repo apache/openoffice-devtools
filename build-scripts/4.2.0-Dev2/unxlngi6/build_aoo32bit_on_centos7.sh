@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#   o dmake 4.12.3 (https://github.com/jimjag/dmake/archive/dmake-4.12.3.tar.gz)
+#   o epm 4.5.0-jj (https://github.com/jimjag/epm/archive/epm-4.5.0-jj.tar.gz)
+
 #
 # Parse options
 #
