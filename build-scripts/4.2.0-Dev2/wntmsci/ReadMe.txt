@@ -30,32 +30,33 @@ Configure:
 
 SDK_PATH="/cygdrive/c/Microsoft_SDKs/Windows/v7.0"
 WDK_HOME="/cygdrive/c/WinDDK/7600.16385.1"
+LANGS_DEV="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
 ./configure \
     --with-build-version="$(date +"%Y-%m-%d %H:%M") - `uname -sm`  -  Developer Build 2" \
     --with-frame-home="$SDK_PATH" \
     --with-psdk-home="$SDK_PATH" \
     --with-midl-path="$SDK_PATH/bin" \
     --with-ant-home="/cygdrive/c/apache-ant-1.10.7" \
-    --with-jdk-home="C:/PROGRA~2/Java/JDK18~1.0_2" \
+    --with-jdk-home="/cygdrive/c/Program Files (x86)/Java/jdk1.8.0_251" \
     --with-dmake-url="https://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2" \
-    --with-directx-home="C:/Microsoft_DirectX_SDK_June_2010" \
-    --with-csc-path="C:/Windows/Microsoft.NET/Framework/v3.5" \
+    --with-directx-home="/cygdrive/c/Microsoft_DirectX_SDK_June_2010" \
+    --with-csc-path="/cygdrive/c/Windows/Microsoft.NET/Framework/v3.5" \
     --with-atl-include-dir="$WDK_HOME/inc/atl71" \
     --with-atl-lib-dir="$WDK_HOME/lib/atl/i386" \
     --with-mfc-include-dir="$WDK_HOME/inc/mfc42" \
     --with-mfc-lib-dir="$WDK_HOME/lib/mfc/i386" \
-    --with-nasm-home="C:/Program Files/NASM" \
+    --with-nasm-home="/cygdrive/c/Program Files/NASM" \
     --enable-win-x64-shellext \
     --enable-wiki-publisher \
-    --with-junit="C:/junit/junit-4.12.jar" \
-    --with-hamcrest-core="C:/hamcrest/hamcrest-core-1.3.jar" \
+    --with-junit="/cygdrive/c/junit/junit-4.12.jar" \
+    --with-hamcrest-core="/cygdrive/c/hamcrest/hamcrest-core-1.3.jar" \
     --without-stlport \
     --with-mozilla-build="/cygdrive/c/mozilla-build-3.3" \
     --enable-category-b \
-    --with-lang="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW" \
+    --with-lang="${LANGS_DEV}" \
     --enable-bundled-dictionaries \
     --with-packager-list=/cygdrive/c/Source/Pack-dev.lst \
-    --with-nsis-path="C:/NSIS"
+    --with-nsis-path="/cygdrive/c/NSIS"
 
 For further details see "config.log"
 
