@@ -13,12 +13,14 @@ AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 AOO_BUILD_DEV=
+AOO_BUILD_SRC=
 
 while true; do
   case "$1" in
     "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
     "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
+	"--build-src" ) AOO_BUILD_SRC="yes"; shift ;;
     "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
     "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
     "--" ) shift; break ;;
@@ -89,6 +91,9 @@ elif [ "$AOO_BUILD_DEV" = "yes" ]; then
 else
 	dmake -P5 ooolanguagepack || exit 1
 	dmake -P5 sdkoo_en-US || exit 1 
+fi
+if [ "$AOO_BUILD_SRC" = "yes" ]; then
+	dmake aoo_srcrelease || exit 1
 fi
 
 date "+Build ended at %H:%M:%S"
