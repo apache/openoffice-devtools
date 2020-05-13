@@ -42,42 +42,56 @@ fi;
 if test -x "${openssl}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      echo "openssl: creating sha512 checksum file for ${file} ..."
-      ${openssl} sha512 ${file} |\
-          ${sed} -e 's#^SHA512(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha512
-      echo "openssl: creating sha256 checksum file for ${file} ..."
-      ${openssl} sha256 ${file} |\
-          ${sed} -e 's#^SHA256(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha256
+      if ! test -f "${file}.sha512" ; then
+        echo "openssl: creating sha512 checksum file for ${file} ..."
+        ${openssl} sha512 ${file} |\
+            ${sed} -e 's#^SHA512(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha512
+      fi
+      if ! test -f "${file}.sha256" ; then
+        echo "openssl: creating sha256 checksum file for ${file} ..."
+        ${openssl} sha256 ${file} |\
+            ${sed} -e 's#^SHA256(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha256
+      fi
     fi
   done
 # no openssl found - check if we have gpg2
 elif test -x "${gpg2}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      echo "gpg2: creating sha512 checksum file for ${file} ..."
-      ${gpg2} --print-md sha512 ${file} |\
-          ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
-      ${gpg2} --print-md sha256 ${file} |\
-          ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha256
+      if ! test -f "${file}.sha512" ; then
+        echo "gpg2: creating sha512 checksum file for ${file} ..."
+        ${gpg2} --print-md sha512 ${file} |\
+            ${sed} -e '{N;s#\n##;}' |\
+            ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
+                -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
+      fi
+      if ! test -f "${file}.sha256" ; then
+        echo "gpg2: creating sha256 checksum file for ${file} ..."
+        ${gpg2} --print-md sha256 ${file} |\
+            ${sed} -e '{N;s#\n##;}' |\
+            ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
+                -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha256
+      fi
     fi
   done
 # no gpg2 found - check if we have gpg
 elif test -x "${gpg}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      echo "gpg: creating sha512 checksum file for ${file} ..."
-      ${gpg} --print-md sha512 ${file} |\
-          ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
-      ${gpg} --print-md sha256 ${file} |\
-          ${sed} -e '{N;s#\n##;}' |\
-          ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
-              -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha256
+      if ! test -f "${file}.sha512" ; then
+        echo "gpg: creating sha512 checksum file for ${file} ..."
+        ${gpg} --print-md sha512 ${file} |\
+            ${sed} -e '{N;s#\n##;}' |\
+            ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
+                -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
+      fi
+      if ! test -f "${file}.sha256" ; then
+        echo "gpg: creating sha256 checksum file for ${file} ..."
+        ${gpg} --print-md sha256 ${file} |\
+            ${sed} -e '{N;s#\n##;}' |\
+            ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
+                -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha256
+      fi
     fi
   done
 else
