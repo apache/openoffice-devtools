@@ -5,9 +5,9 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#W
 
 Build Environment:
 
- - Windows 10 Pro 1909 (64-bit)
- - Cygwin 3.0.7 (32-bit)
- - Apache Ant 1.9.14
+ - Windows 10 Pro 2004 (64-bit)
+ - Cygwin 3.1.5 (32-bit)
+ - Apache Ant 1.9.15
  - Mozilla Build 2.2.0
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
  - MS Visual C++ Compiler 2008 Standard Edition (64-bit)
@@ -27,32 +27,34 @@ Configure:
 
 SDK_PATH="/cygdrive/c/Microsoft_SDKs/Windows/v7.0"
 WDK_HOME="/cygdrive/c/WinDDK/7600.16385.1"
+LANGS_RC="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 ./configure \
     --with-build-version="$(date +"%Y-%m-%d %H:%M")" \
     --with-frame-home="$SDK_PATH" \
     --with-psdk-home="$SDK_PATH" \
     --with-midl-path="$SDK_PATH/bin" \
-    --with-ant-home="/cygdrive/c/apache-ant-1.9.14" \
-    --with-jdk-home="C:/PROGRA~2/Java/JDK17~1.0_8" \
-    --with-csc-path="C:/Windows/Microsoft.NET/Framework/v3.5" \
-    --with-cl-home="C:/PROGRA~2/MICROS~1.0/VC" \
-    --with-asm-home="C:/PROGRA~2/MICROS~1.0/VC/bin" \
+    --with-ant-home="/cygdrive/c/apache-ant-1.9.15" \
+    --with-jdk-home="/cygdrive/c/Program Files (x86)/Java/jdk1.7.0_80" \
+    --with-csc-path="/cygdrive/c/Windows/Microsoft.NET/Framework/v3.5" \
+    --with-cl-home="/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 9.0/VC" \
+    --with-asm-home="/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 9.0/VC/bin" \
     --with-atl-include-dir="$WDK_HOME/inc/atl71" \
     --with-atl-lib-dir="$WDK_HOME/lib/atl/i386" \
     --with-mfc-include-dir="$WDK_HOME/inc/mfc42" \
     --with-mfc-lib-dir="$WDK_HOME/lib/mfc/i386" \
     --with-dmake-url="https://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2" \
-    --with-directx-home="C:/Microsoft_DirectX_SDK_June_2010" \
+    --with-directx-home="/cygdrive/c/Microsoft_DirectX_SDK_June_2010" \
     --enable-win-x64-shellext \
     --enable-wiki-publisher \
     --without-junit \
     --without-stlport \
     --with-mozilla-build="/cygdrive/c/mozilla-build" \
+    --with-about-bitmaps="/cygdrive/c/bitmaps/20yrs/about/about.png" \
     --enable-category-b \
-    --with-lang="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW" \
+    --with-lang="${LANGS_RC}" \
     --enable-bundled-dictionaries \
     --with-packager-list=/cygdrive/c/Source/Pack.lst \
-    --with-nsis-path="C:/NSIS"
+    --with-nsis-path="/cygdrive/c/NSIS"
 
 For further details see "config.log"
 
