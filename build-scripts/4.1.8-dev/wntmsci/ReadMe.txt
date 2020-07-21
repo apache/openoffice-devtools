@@ -6,7 +6,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#W
 Build Environment:
 
  - Windows 10 Pro 2004 (64-bit)
- - Cygwin 3.1.5 (32-bit)
+ - Cygwin 3.1.6 (32-bit)
  - Apache Ant 1.9.15
  - Mozilla Build 2.2.0
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
@@ -49,7 +49,7 @@ LANGS_RC="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi 
     --without-junit \
     --without-stlport \
     --with-mozilla-build="/cygdrive/c/mozilla-build" \
-    --with-about-bitmaps="/cygdrive/c/bitmaps/20yrs/about/about.png" \
+    --with-about-bitmaps="/cygdrive/c/bitmaps/20yrs/about.png" \
     --enable-category-b \
     --with-lang="${LANGS_RC}" \
     --enable-bundled-dictionaries \
