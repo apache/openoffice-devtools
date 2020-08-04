@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Build-script for AOO 4.2.x on OSX 10.13
+# Build-script for AOO 4.1.x on OSX 10.13
 #
 # OS:
 #   o OSX 10.14.6 (Mojave)
