@@ -6,7 +6,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#W
 Build Environment:
 
  - Windows 10 Pro 2004 (64-bit)
- - Cygwin 3.1.6 (32-bit)
+ - Cygwin 3.1.7 (32-bit)
  - Apache Ant 1.9.15
  - Mozilla Build 2.2.0
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
@@ -14,8 +14,9 @@ Build Environment:
  - MS Windows Driver Kit 7.1.0.7600
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
+ - NASM 2.15.03 (64-bit)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
- - NSIS 3.05
+ - NSIS 3.06.1
 
 Bundled Runtime:
 
@@ -44,6 +45,7 @@ LANGS_RC="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi 
     --with-mfc-lib-dir="$WDK_HOME/lib/mfc/i386" \
     --with-dmake-url="https://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2" \
     --with-directx-home="/cygdrive/c/Microsoft_DirectX_SDK_June_2010" \
+    --with-nasm-home="/cygdrive/c/Program Files/NASM" \
     --enable-win-x64-shellext \
     --enable-wiki-publisher \
     --without-junit \
