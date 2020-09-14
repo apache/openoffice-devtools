@@ -1,4 +1,4 @@
-This is the configuration used for AOO 4.1.8:
+This is the configuration used for AOO 4.1.8 RC1:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#Windows_7.2C_Windows_8.1.2C_Windows_10
@@ -14,7 +14,7 @@ Build Environment:
  - MS Windows Driver Kit 7.1.0.7600
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
- - NASM 2.15.03 (64-bit)
+ - NASM 2.15.05 (64-bit)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
  - NSIS 3.06.1
 
@@ -51,7 +51,6 @@ LANGS_RC="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi 
     --without-junit \
     --without-stlport \
     --with-mozilla-build="/cygdrive/c/mozilla-build" \
-    --with-about-bitmaps="/cygdrive/c/bitmaps/20yrs/about.png" \
     --enable-category-b \
     --with-lang="${LANGS_RC}" \
     --enable-bundled-dictionaries \
