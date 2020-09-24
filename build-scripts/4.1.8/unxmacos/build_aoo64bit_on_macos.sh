@@ -3,12 +3,10 @@
 # Build-script for AOO 4.1.x on OSX 10.13
 #
 # OS:
-#   o OSX 10.14.6 (Mojave)
-#   o Xcode 11.1 w/ SDK 10.11
+#   o OSX 10.13.6 (High Sierra)
 #   o jdk1.7.0_80.jdk
 #   o jdk1.8.0_181.jdk
-#   o XCode 7.3.1
-#     $ sudo xcode-select -s /Applications/Xcode7.app
+#   o XCode 10 w/ 10.11 SDK
 #
 # Local Changes:
 #   MacPorts:
@@ -143,8 +141,8 @@ sleep 5
 export MACOSX_DEPLOYMENT_TARGET=${AOO_MACOS_TARGET}
 export LIBRARY_PATH=/usr/local/lib
 export C_INCLUDE_PATH=/usr/local/include
-export CPLUS_INCLUDE_PATH=/usr/local/include:/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1
-export GXX_INCLUDE_PATH=/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1
+#export CPLUS_INCLUDE_PATH=/usr/local/include:/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1
+#export GXX_INCLUDE_PATH=/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1
 
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
@@ -178,7 +176,6 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-dmake-path=/usr/local/bin/dmake \
 	--without-stlport \
 	--with-package-format="dmg" \
-	--with-gxx-include-path="/Applications/Xcode7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1" \
 	--disable-systray \
 	--with-macosx-target=${AOO_MACOS_TARGET} \
 	--with-alloc=internal \
