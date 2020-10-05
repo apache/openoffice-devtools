@@ -8,7 +8,7 @@ Build Environment:
  - Windows 10 Pro 2004 (64-bit)
  - Cygwin 3.1.7 (32-bit)
  - Apache Ant 1.9.15
- - Mozilla Build 2.2.0
+ - MozillaBuild 3.3
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
  - MS Visual C++ Compiler 2008 Standard Edition (64-bit)
  - MS Windows Driver Kit 7.1.0.7600
@@ -50,7 +50,7 @@ LANGS_RC="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi 
     --enable-wiki-publisher \
     --without-junit \
     --without-stlport \
-    --with-mozilla-build="/cygdrive/c/mozilla-build" \
+    --with-mozilla-build="/cygdrive/c/mozilla-build-3.3" \
     --enable-category-b \
     --with-lang="${LANGS_RC}" \
     --enable-bundled-dictionaries \
