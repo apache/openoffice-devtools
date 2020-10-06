@@ -6,7 +6,7 @@
 #   o OSX 10.13.6 (High Sierra)
 #   o jdk1.7.0_80.jdk
 #   o jdk1.8.0_181.jdk
-#   o XCode 10 w/ 10.11 SDK
+#   o XCode 7 w/ 10.11 SDK
 #
 # Local Changes:
 #   MacPorts:

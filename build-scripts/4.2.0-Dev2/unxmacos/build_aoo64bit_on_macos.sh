@@ -35,7 +35,7 @@
 # OS:
 # 
 #   o OSX 10.14.6 (Mojave)
-#   o Xcode 11.3 w/ SDK 10.11
+#   o Xcode 11.3 w/ SDK 10.11 (see https://github.com/devernay/xcodelegacy.git)
 #   o jdk1.7.0_80.jdk
 #   o jdk1.8.0_181.jdk
 # 
