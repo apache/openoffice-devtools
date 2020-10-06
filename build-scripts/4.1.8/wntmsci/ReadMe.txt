@@ -1,4 +1,4 @@
-This is the configuration used for AOO 4.1.8 RC1:
+This is the configuration used for AOO 4.1.8 RC2:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#Windows_7.2C_Windows_8.1.2C_Windows_10
@@ -28,7 +28,7 @@ Configure:
 
 SDK_PATH="/cygdrive/c/Microsoft_SDKs/Windows/v7.0"
 WDK_HOME="/cygdrive/c/WinDDK/7600.16385.1"
-LANGS_RC="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
+LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 ./configure \
     --with-build-version="$(date +"%Y-%m-%d %H:%M")" \
     --with-frame-home="$SDK_PATH" \
@@ -52,7 +52,7 @@ LANGS_RC="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi 
     --without-stlport \
     --with-mozilla-build="/cygdrive/c/mozilla-build-3.3" \
     --enable-category-b \
-    --with-lang="${LANGS_RC}" \
+    --with-lang="${LANGS}" \
     --enable-bundled-dictionaries \
     --with-packager-list=/cygdrive/c/Source/Pack.lst \
     --with-nsis-path="/cygdrive/c/NSIS"
