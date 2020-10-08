@@ -67,6 +67,7 @@ AOO_BUILD_TYPE=
 AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 AOO_BUILD_DEV=
+AOO_BUILD_SRC=
 AOO_BUILD_ALL="yes"
 
 $(xcode-select -p | grep "Xcode7" -q)
@@ -75,7 +76,7 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
-AOPTS=`getopt -o vsjdbqa:j:m: --long verbose,skip-config,just-config,dev,beta,quick,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
+AOPTS=`getopt -o vsjdtbqa:j:m: --long verbose,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 #echo "$AOPTS"
 eval set -- "$AOPTS"
@@ -86,6 +87,7 @@ while true; do
     -s | --skip-config ) AOO_SKIP_CONFIG="yes"; shift ;;
     -j | --just-config ) AOO_JUST_CONFIG="yes"; shift ;;
     -q | --quick ) AOO_BUILD_ALL="no"; shift ;;
+    -t | --build-src ) AOO_BUILD_SRC="yes"; shift ;;
     -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
     -j | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
     -m | --macos-target ) AOO_MACOS_TARGET=$2; shift 2 ;;
@@ -204,4 +206,8 @@ elif [ "$AOO_BUILD_ALL" = "yes" ]; then
 	dmake -P5 ooolanguagepack || exit 1
 	dmake -P5 sdkoo_en-US || exit 1 
 fi
+if [ "$AOO_BUILD_SRC" = "yes" ]; then
+	dmake aoo_srcrelease || exit 1
+fi
+
 date "+Build ended at %H:%M:%S"
