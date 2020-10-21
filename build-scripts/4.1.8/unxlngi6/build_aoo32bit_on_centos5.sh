@@ -36,9 +36,9 @@ fi
 source ./LinuxX86Env.Set.sh || exit 1
 ./bootstrap || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P4 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P5 || exit 1
 cd util
-dmake -P4 ooolanguagepack || exit 1
+dmake -P5 ooolanguagepack || exit 1
 dmake -P2 sdkoo_en-US || exit 1 
 
 date "+Build ended at %H:%M:%S"
