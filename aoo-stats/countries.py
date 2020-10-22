@@ -1,5 +1,5 @@
 ################################################################
-# 
+#
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -7,16 +7,16 @@
 #  to you under the Apache License, Version 2.0 (the
 #  "License"); you may not use this file except in compliance
 #  with the License.  You may obtain a copy of the License at
-#  
+#
 #    http://www.apache.org/licenses/LICENSE-2.0
-#  
+#
 #  Unless required by applicable law or agreed to in writing,
 #  software distributed under the License is distributed on an
 #  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 #  KIND, either express or implied.  See the License for the
 #  specific language governing permissions and limitations
 #  under the License.
-#  
+#
 ################################################################
 
 
@@ -33,14 +33,14 @@ from urllib import urlencode
 def getSourceForgeStats(download, start_date, end_date):
     print download
     url = download + "/stats/json?start_date=" + start_date + "&" "end_date=" + end_date
-    
+
     attempts = 0
 
     while attempts < 3:
-        try:    
+        try:
             conn = urllib.urlopen(url)
             data = conn.read()
-            
+
             return data
 
         except:
@@ -51,7 +51,7 @@ def getSourceForgeStats(download, start_date, end_date):
 
 
 
-#extracts the language code from the URL
+# extracts the language code from the URL
 # this logic is very sensitive to the exact naming conventions
 def getLanguage(url):
 
@@ -68,7 +68,7 @@ def getLanguage(url):
 
 
 
-# dictionary of language code to country_dict (dictionary of country name to  count)
+# dictionary of language code to country_dict (dictionary of country name to count)
 master_dict = {}
 
 def mergeCountries(lang, countries):
@@ -89,12 +89,12 @@ def mergeCountries(lang, countries):
         else:
             country_dict[country_name] = country_count
 
-    
+
 
 
 
 if len(sys.argv) == 0:
-    print "syntax:  python countries.py <urls.lst> <start-date> <end-date>"
+    print "syntax: python countries.py <urls.lst> <start-date> <end-date>"
     print "where <file.list> is a list of files URL's to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format."
 
 downloads = [line.strip() for line in open(sys.argv[1])]
@@ -118,5 +118,4 @@ for lang in master_dict:
         print out_str.encode("utf-8")
     print
     print
-
 

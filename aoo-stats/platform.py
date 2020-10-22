@@ -1,5 +1,5 @@
 ################################################################
-# 
+#
 #  Licensed to the Apache Software Foundation (ASF) under one
 #  or more contributor license agreements.  See the NOTICE file
 #  distributed with this work for additional information
@@ -7,22 +7,22 @@
 #  to you under the Apache License, Version 2.0 (the
 #  "License"); you may not use this file except in compliance
 #  with the License.  You may obtain a copy of the License at
-#  
+#
 #    http://www.apache.org/licenses/LICENSE-2.0
-#  
+#
 #  Unless required by applicable law or agreed to in writing,
 #  software distributed under the License is distributed on an
 #  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 #  KIND, either express or implied.  See the License for the
 #  specific language governing permissions and limitations
 #  under the License.
-#  
+#
 ################################################################
 
 
-# This script queries the SourceForce REST API for download statistics for
+# This script queries the SourceForge REST API for download statistics for
 # sets of files on SourceForge, on a given date, in ISO format (YYYY-MM-DD)
-# passed in as a command line argument.  The download count for that date
+# passed in as a command line argument. The download count for that date
 # is written to stdout.
 
 
@@ -55,7 +55,7 @@ def getSourceForgeStats(download, startDate, endDate):
     
 
 if len(sys.argv) != 4:
-    print "syntax:  python platform.py <urls.lst> <start-date> <end-date>"
+    print "syntax: python platform.py <urls.lst> <start-date> <end-date>"
     print "where <file.list> is a list of files URL's to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format."
     exit(-1)
 
@@ -102,12 +102,11 @@ print
 
 total = windows + mac + linux + android + solaris + bsd + unknown
 
-print "Windows: " + str(windows) + " (" +  "%0.2f" % (100.0*windows/total) + "%)"
+print "Windows: " + str(windows) + " (" + "%0.2f" % (100.0*windows/total) + "%)"
 print "Macintosh: " + str(mac) + " (" + "%0.2f" % (100.0*mac/total) + "%)"
 print "Linux: " + str(linux) + " (" + "%0.2f" % (100.0*linux/total) + "%)"
 print "Android: " + str(android) + " (" + "%0.2f" % (100.0*android/total) + "%)"
 print "Solaris: " + str(solaris) + " (" + "%0.2f" % (100.0*solaris/total) + "%)"
 print "BSD: " + str(bsd) + " (" + "%0.2f" % (100.0*bsd/total) + "%)"
 print "Unknown: " + str(unknown) + " (" + "%0.2f" % (100.0*unknown/total) + "%)"
-
 
