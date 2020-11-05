@@ -143,7 +143,7 @@ if test -x "${gpg2}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
       echo "gpg2: creating asc signature file for ${file} ..."
-      ${gpg2} --armor ${args} --detach-sign ${file}
+      ${gpg2} --yes --armor ${args} --detach-sign ${file}
     fi
   done
 # no gpg2 found - check for gpg
@@ -154,7 +154,7 @@ elif test -x "${gpg}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
       echo "gpg: creating asc signature file for ${file} ..."
-      ${gpg} --armor ${args} --detach-sign ${file}
+      ${gpg} --yes --armor ${args} --detach-sign ${file}
     fi
   done
 # ... no GnuPG? Try PGP
