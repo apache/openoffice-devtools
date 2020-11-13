@@ -111,6 +111,7 @@ echo "Starting build:"
 echo ""
 sleep 5
 #Setup build Env
+export SYSTEM_VERSION_COMPAT=1
 export MACOSX_DEPLOYMENT_TARGET=${AOO_MACOS_TARGET}
 export LIBRARY_PATH=/usr/local/lib
 export C_INCLUDE_PATH=/usr/local/include
