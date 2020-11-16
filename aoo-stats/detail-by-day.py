@@ -57,7 +57,7 @@ def getSourceForgeStats(download, startDate, endDate):
 
 if len(sys.argv) != 4:
     print "syntax: python detail-by-day.py <urls.lst> <start-date> <end-date>"
-    print "where <file.list> is a list of files URL's to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format."
+    print "where <urls.list> is a list of files URL's to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format."
     exit(-1)
 
 
@@ -67,7 +67,7 @@ end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
 # columns of interest
 columns = [ "count_total",
-    "count_340", "count_341", "count_400", "count_401", "count_410", "count_411", "count_412", "count_413", "count_414", "count_415", "count_416", "count_417",
+    "count_340", "count_341", "count_400", "count_401", "count_410", "count_411", "count_412", "count_413", "count_414", "count_415", "count_416", "count_417", "count_418",
     "windows", "mac", "linux", "linux32", "linux64", "deb", "rpm",
     "ar", "ast", "bg", "ca", "ca-XR", "ca-XV", "cs", "da", "de",
     "el", "en-GB", "en-US", "es", "eu", "fi", "fr", "gd", "gl",
@@ -92,6 +92,7 @@ patternDict = {
     "count_415" : "4.1.5",
     "count_416" : "4.1.6",
     "count_417" : "4.1.7",
+    "count_418" : "4.1.8",
     "windows"   : "Win_x86",
     "mac"       : "MacOS",
     "linux"     : "Linux",
