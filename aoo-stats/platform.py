@@ -56,7 +56,7 @@ def getSourceForgeStats(download, startDate, endDate):
 
 if len(sys.argv) != 4:
     print "syntax: python platform.py <urls.lst> <start-date> <end-date>"
-    print "where <file.list> is a list of files URL's to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format."
+    print "where <urls.lst> is a list of files URLs to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format."
     exit(-1)
 
 downloads = [line.strip() for line in open(sys.argv[1])]

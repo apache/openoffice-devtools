@@ -55,7 +55,7 @@ def getSourceForgeStats(download, startDate, endDate):
 
 def printSyntax():
     print "syntax: python get-aoo-stats.py <urls.lst> <iso-date> [<iso-date>]"
-    print "where <file.list> is a list of files URL's to gather stats on,"
+    print "where <urls.lst> is a list of files URLs to gather stats on,"
     print "and <iso-date> is a date of interest, in YYYY-MM-DD format."
     print "If two dates are given this expresses a range of dates."
 
