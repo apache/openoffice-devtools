@@ -29,8 +29,8 @@ fi
 	--with-ant-home=$HOME/ant \
 	--with-package-format="rpm deb" \
 	--with-lang="${LANGS}" \
-	--with-dmake-url=http://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2 \
-	--with-epm-url=http://sourceforge.net/projects/oooextras.mirror/files/epm-3.7.tar.gz \
+	--with-dmake-url=https://github.com/jimjag/dmake/archive/v4.13.0/dmake-4.13.0.tar.gz \
+	--with-epm-url=https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz \
 	| tee config.out || exit 1
 
 source ./LinuxX86Env.Set.sh || exit 1
