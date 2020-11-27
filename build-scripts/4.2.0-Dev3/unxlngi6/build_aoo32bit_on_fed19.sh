@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Installed in /usr/local:
-#   o dmake 4.13.0 (https://github.com/jimjag/dmake/archive/v4.13.0/dmake-4.13.0.tar.gz)
+#   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
 #   o epm 5.0.0 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz)
 
 ANT_HOME=/usr/local/share/java/apache-ant
