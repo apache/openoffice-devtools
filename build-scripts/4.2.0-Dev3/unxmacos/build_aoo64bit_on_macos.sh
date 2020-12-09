@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #
+
+set -eo pipefail
+
 # Build-script for AOO 4.2.x (and later) on macOS
 #
 # ENV:
