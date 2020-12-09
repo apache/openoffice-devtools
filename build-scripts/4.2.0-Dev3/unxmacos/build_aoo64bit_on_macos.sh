@@ -13,9 +13,10 @@
 #   o Apache ant 1.9.13 / 1.10.4
 #   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
 #   o epm 5.0.0 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz)
-#   o openssl 1.0.2p (no-shared)
+#   o openssl 1.0.2u (no-shared)
 #   o libxml2-2.9.8 (--prefix=/usr/local --enable-shared=no --without-iconv)
 #   o libxslt-1.1.32 (--prefix=/usr/local --enable-shared=no)
+#   o jemalloc-5.2.1 (--prefix=/usr/local --enable-shared=no)
 #   o pkg-config 0.29.2 (--prefix=/usr/local)
 #   o GNU patch 2.7.6 (--prefix=/usr/local)
 # 
@@ -32,16 +33,20 @@
 # 
 #   o OSX 10.15.7 (Catalina)
 #   o Xcode 12.2
-#   o jdk1.7.0_80.jdk
-#   o jdk1.8.0_181.jdk
+#   o jdk 1.7.0_80.jdk
+#   o openjdk 1.8.0_275.jdk
 # 
 
 #
 # Build options
 #
-AOO_MACOS_TARGET=10.7
+AOO_MACOS_TARGET=10.9
+AOO_MACOS_SDK=
 AOO_JAVA_VERSION=1.7
 AOO_ANT_VERSION=1.9
+#
+# Just for now, for configure
+export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 
 #
 # Parse options
@@ -55,8 +60,9 @@ AOO_BUILD_BETA=
 AOO_BUILD_DEV=
 AOO_BUILD_SRC=
 AOO_BUILD_ALL="yes"
+AOO_BUILD_DEBUG=
 
-AOPTS=`getopt -o vsjtdbqa:j:m: --long verbose,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
+AOPTS=`getopt -o vsjtdbqa:j:m:k: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target:,macos-sdk -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 #echo "$AOPTS"
 eval set -- "$AOPTS"
@@ -66,13 +72,15 @@ while true; do
     -v | --verbose ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
     -s | --skip-config ) AOO_SKIP_CONFIG="yes"; shift ;;
     -j | --just-config ) AOO_JUST_CONFIG="yes"; shift ;;
-	-t | --build-src ) AOO_BUILD_SRC="yes"; shift ;;
+    -t | --build-src ) AOO_BUILD_SRC="yes"; shift ;;
     -q | --quick ) AOO_BUILD_ALL="no"; shift ;;
     -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
     -j | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
     -m | --macos-target ) AOO_MACOS_TARGET=$2; shift 2 ;;
+    -k | --macos-sdk ) AOO_MACOS_SDK=$2; shift 2 ;;
     -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
     -b | --beta ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
+    --debug ) AOO_BUILD_DEBUG="--enable-symbols"; shift ;;
     -- ) shift; break ;;
     * ) echo "unknown option: $1"; shift ;;
   esac
@@ -122,20 +130,21 @@ fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
 
-if [ -e configure.in ]; then
-    AOO_CONF_T="configure.in"
-else
-    AOO_CONF_T="configure.ac"
-fi
-if [ ! -e configure -o $AOO_CONF_T -nt configure ] ; then
+if [ ! -e configure -o configure.ac -nt configure ] ; then
 	echo "Running autoconf..."
 	autoconf || exit 1
+fi
+
+if [ ! -z "$AOO_MACOS_SDK" ]; then
+    AOO_MACOS_SDK="--with-macosx-sdk=$AOO_MACOS_SDK"
 fi
 
 if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
     ( ./configure   \
 	--with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`${AOO_BUILD_VERSION}" \
 	${AOO_VERBOSE_BUILD} \
+	${AOO_BUILD_DEBUG} \
+	${AOO_MACOS_SDK} \
 	--with-openldap \
 	--enable-category-b \
 	--enable-beanshell \
@@ -150,8 +159,9 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-package-format="dmg" \
 	--disable-systray \
 	--with-macosx-target=${AOO_MACOS_TARGET} \
-	--with-alloc=system \
+	--with-alloc="jemalloc" \
 	--with-lang="${LANGS}" \
+	"$@" \
 	| tee config.out ) || exit 1
 fi
 
@@ -161,20 +171,20 @@ fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P7 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P9 || exit 1
 
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake -P7 openofficebeta  || exit 1
-	dmake -P7 sdkoobeta_en-US || exit 1
-	dmake -P7 ooobetalanguagepack || exit 1
+    dmake -P9 openofficebeta  || exit 1
+	dmake -P9 sdkoobeta_en-US || exit 1
+	dmake -P9 ooobetalanguagepack || exit 1
 elif [ "$AOO_BUILD_DEV" = "yes" ]; then
-    dmake -P7 openofficedev  || exit 1
-	dmake -P7 sdkoodev_en-US || exit 1
-	dmake -P7 ooodevlanguagepack || exit 1
+    dmake -P9 openofficedev  || exit 1
+	dmake -P9 sdkoodev_en-US || exit 1
+	dmake -P9 ooodevlanguagepack || exit 1
 elif [ "$AOO_BUILD_ALL" = "yes" ]; then
-	dmake -P7 ooolanguagepack || exit 1
-	dmake -P7 sdkoo_en-US || exit 1 
+	dmake -P9 ooolanguagepack || exit 1
+	dmake -P9 sdkoo_en-US || exit 1 
 fi
 if [ "$AOO_BUILD_SRC" = "yes" ]; then
 	dmake aoo_srcrelease || exit 1

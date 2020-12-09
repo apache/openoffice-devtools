@@ -87,6 +87,10 @@ if [ ! -d ../main -o ! -d sal ] ; then
 	exit 1
 fi
 
+#DEVELOPER_DIR="/Applications/Xcode11.app/Contents/Developer"; export DEVELOPER_DIR
+#echo "DEVELOPER_DIR is: $DEVELOPER_DIR..."
+export SDKROOT=$(xcrun --show-sdk-path)
+echo "SDKROOT is: $SDKROOT..."
 
 JAVA_HOME=$(/usr/libexec/java_home -v ${AOO_JAVA_VERSION})
 if [ ! -d "$JAVA_HOME" ] ; then
