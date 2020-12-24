@@ -13,12 +13,12 @@ set -eo pipefail
 # 
 # Installed in /usr/local:
 # 
-#   o Apache ant 1.9.13 / 1.10.4
+#   o Apache ant 1.9.15 / 1.10.9
 #   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
 #   o epm 5.0.0 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz)
 #   o openssl 1.0.2u (no-shared)
-#   o libxml2-2.9.8 (--prefix=/usr/local --enable-shared=no --without-iconv)
-#   o libxslt-1.1.32 (--prefix=/usr/local --enable-shared=no)
+#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no --without-iconv)
+#   o libxslt-1.1.34 (--prefix=/usr/local --enable-shared=no)
 #   o jemalloc-5.2.1 (--prefix=/usr/local --enable-shared=no)
 #   o pkg-config 0.29.2 (--prefix=/usr/local)
 #   o GNU patch 2.7.6 (--prefix=/usr/local)
@@ -65,7 +65,7 @@ AOO_BUILD_SRC=
 AOO_BUILD_ALL="yes"
 AOO_BUILD_DEBUG=
 
-AOPTS=`getopt -o vsjtdbqa:j:m:k: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target:,macos-sdk -n 'parse-options' -- "$@"`
+AOPTS=`getopt -o vsjtdbqa:j:m:k: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target:,macos-sdk: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 #echo "$AOPTS"
 eval set -- "$AOPTS"
@@ -149,6 +149,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	${AOO_BUILD_DEBUG} \
 	${AOO_MACOS_SDK} \
 	--with-openldap \
+	--with-system-openssl \
 	--enable-category-b \
 	--enable-beanshell \
 	--enable-bundled-dictionaries \
@@ -162,7 +163,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-package-format="dmg" \
 	--disable-systray \
 	--with-macosx-target=${AOO_MACOS_TARGET} \
-	--with-alloc="jemalloc" \
+	--with-alloc=jemalloc \
 	--with-lang="${LANGS}" \
 	"$@" \
 	| tee config.out ) || exit 1
