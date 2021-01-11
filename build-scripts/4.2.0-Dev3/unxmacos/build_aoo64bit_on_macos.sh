@@ -174,6 +174,7 @@ if [ "$AOO_JUST_CONFIG" = "yes" ]; then
 fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
+\rm solenv/inc/reporevision.lst
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P9 || exit 1
 

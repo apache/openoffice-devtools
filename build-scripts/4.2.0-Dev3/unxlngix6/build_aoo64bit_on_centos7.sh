@@ -19,17 +19,17 @@ AOO_BUILD_DEV=
 AOO_BUILD_SRC=
 
 while true; do
-  case "$1" in
-    "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
-    "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
-    "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
-	"--build-src" ) AOO_BUILD_SRC="yes"; shift ;;
-    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
-    "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
-    "--" ) shift; break ;;
-    "" ) break ;;
-    * ) echo "unknown option: $1"; shift ;;
-  esac
+	case "$1" in
+		"--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
+		"--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
+		"--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
+		"--build-src" ) AOO_BUILD_SRC="yes"; shift ;;
+		"--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
+		"--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
+		"--" ) shift; break ;;
+		"" ) break ;;
+		* ) echo "unknown option: $1"; shift ;;
+	esac
 done
 
 if [ ! -d ../main -o ! -d sal ] ; then
@@ -39,7 +39,7 @@ fi
 
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
-    wget -O external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinreg_prebuild/680/unowinreg.dll
+	wget -O external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinreg_prebuild/680/unowinreg.dll
 fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
@@ -80,15 +80,16 @@ fi
 
 source ./LinuxX86-64Env.Set.sh || exit 1 
 ./bootstrap || exit 1
+\rm solenv/inc/reporevision.lst
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P7 || exit 1
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake -P7 openofficebeta  || exit 1
+	dmake -P7 openofficebeta  || exit 1
 	dmake -P7 sdkoobeta_en-US || exit 1
 	dmake -P7 ooobetalanguagepack || exit 1
 elif [ "$AOO_BUILD_DEV" = "yes" ]; then
-    dmake -P7 openofficedev  || exit 1
+	dmake -P7 openofficedev  || exit 1
 	dmake -P7 sdkoodev_en-US || exit 1
 	dmake -P7 ooodevlanguagepack || exit 1
 else
