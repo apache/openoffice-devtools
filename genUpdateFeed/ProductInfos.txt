@@ -36,6 +36,8 @@
 
 4.1.8 OpenOffice_4 9803 https://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
 
+4.1.9 OpenOffice_4 9805 https://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+
 # Product names for former OpenOffice versions
 3.2.0 OpenOffice.org_3
 3.2.1 OpenOffice.org_3
