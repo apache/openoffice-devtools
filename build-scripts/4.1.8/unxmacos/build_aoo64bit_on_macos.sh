@@ -70,11 +70,11 @@ AOO_BUILD_DEV=
 AOO_BUILD_SRC=
 AOO_BUILD_ALL="yes"
 
-$(xcode-select -p | grep "Xcode7" -q)
-if [ $? != 0 ]; then
-    echo "xcode-select must point to Xcode7."
-    exit 1
-fi
+#$(xcode-select -p | grep "Xcode7" -q)
+#if [ $? != 0 ]; then
+#    echo "xcode-select must point to Xcode7."
+#    exit 1
+#fi
 
 AOPTS=`getopt -o vsjdtbqa:j:m: --long verbose,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
@@ -152,6 +152,7 @@ if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
+LANGS="en-US"
 
 if [ -e configure.in ]; then
     AOO_CONF_T="configure.in"
@@ -191,20 +192,20 @@ fi
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P6 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P8 || exit 1
 
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake -P5 openofficebeta  || exit 1
-	dmake -P5 sdkoobeta_en-US || exit 1
-	dmake -P5 ooobetalanguagepack || exit 1
+    dmake -P8 openofficebeta  || exit 1
+	dmake -P8 sdkoobeta_en-US || exit 1
+	dmake -P8 ooobetalanguagepack || exit 1
 elif [ "$AOO_BUILD_DEV" = "yes" ]; then
-    dmake -P5 openofficedev  || exit 1
-	dmake -P5 sdkoodev_en-US || exit 1
-	dmake -P5 ooodevlanguagepack || exit 1
+    dmake -P8 openofficedev  || exit 1
+	dmake -P8 sdkoodev_en-US || exit 1
+	dmake -P8 ooodevlanguagepack || exit 1
 elif [ "$AOO_BUILD_ALL" = "yes" ]; then
-	dmake -P5 ooolanguagepack || exit 1
-	dmake -P5 sdkoo_en-US || exit 1 
+	dmake -P8 ooolanguagepack || exit 1
+	dmake -P8 sdkoo_en-US || exit 1 
 fi
 if [ "$AOO_BUILD_SRC" = "yes" ]; then
 	dmake aoo_srcrelease || exit 1
