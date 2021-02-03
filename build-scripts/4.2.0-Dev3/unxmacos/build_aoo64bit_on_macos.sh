@@ -37,7 +37,7 @@ set -eo pipefail
 # OS:
 # 
 #   o OSX 10.15.7 (Catalina)
-#   o Xcode 12.4
+#   o Xcode 11.7 (for community builds)
 #   o jdk 1.7.0_80.jdk
 #   o openjdk 1.8.0_275.jdk
 # 
