@@ -17,8 +17,10 @@ set -eo pipefail
 #   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
 #   o epm 5.0.0 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz)
 #   o openssl 1.0.2u (no-shared)
-#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no --without-iconv)
+#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no)
 #   o libxslt-1.1.34 (--prefix=/usr/local --enable-shared=no)
+#   o libiconv-1.16 (./configure --enable-static --disable-shared --prefix=/usr/local)
+#   o curl-7.56.1 (--prefix=/usr/local --enable-shared=no)
 #   o jemalloc-5.2.1 (--prefix=/usr/local --enable-shared=no)
 #   o pkg-config 0.29.2 (--prefix=/usr/local)
 #   o GNU patch 2.7.6 (--prefix=/usr/local)
@@ -35,7 +37,7 @@ set -eo pipefail
 # OS:
 # 
 #   o OSX 10.15.7 (Catalina)
-#   o Xcode 12.2
+#   o Xcode 12.4
 #   o jdk 1.7.0_80.jdk
 #   o openjdk 1.8.0_275.jdk
 # 
@@ -49,7 +51,9 @@ AOO_JAVA_VERSION=1.7
 AOO_ANT_VERSION=1.9
 #
 # Just for now, for configure
-export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+if [ -z "$SDKROOT" ] ; then
+  export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+fi
 
 #
 # Parse options
@@ -149,7 +153,10 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	${AOO_BUILD_DEBUG} \
 	${AOO_MACOS_SDK} \
 	--with-openldap \
-	--with-system-openssl \
+	--with-system-openssl=/usr/local \
+	--with-system-libxslt=/usr/local \
+	--with-system-libxml=/usr/local \
+	--with-system-curl=/usr/local \
 	--enable-category-b \
 	--enable-beanshell \
 	--enable-bundled-dictionaries \
@@ -172,24 +179,26 @@ fi
 if [ "$AOO_JUST_CONFIG" = "yes" ]; then
     exit
 fi
+unset SDKROOT
+export SDKROOT
+\rm -f solenv/inc/reporevision.lst
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
-\rm solenv/inc/reporevision.lst
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P9 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -- -P8 || exit 1
 
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake -P9 openofficebeta  || exit 1
-	dmake -P9 sdkoobeta_en-US || exit 1
-	dmake -P9 ooobetalanguagepack || exit 1
+    dmake -P8 openofficebeta  || exit 1
+	dmake -P8 sdkoobeta_en-US || exit 1
+	dmake -P8 ooobetalanguagepack || exit 1
 elif [ "$AOO_BUILD_DEV" = "yes" ]; then
-    dmake -P9 openofficedev  || exit 1
-	dmake -P9 sdkoodev_en-US || exit 1
-	dmake -P9 ooodevlanguagepack || exit 1
+    dmake -P8 openofficedev  || exit 1
+	dmake -P8 sdkoodev_en-US || exit 1
+	dmake -P8 ooodevlanguagepack || exit 1
 elif [ "$AOO_BUILD_ALL" = "yes" ]; then
-	dmake -P9 ooolanguagepack || exit 1
-	dmake -P9 sdkoo_en-US || exit 1 
+	dmake -P8 ooolanguagepack || exit 1
+	dmake -P8 sdkoo_en-US || exit 1 
 fi
 if [ "$AOO_BUILD_SRC" = "yes" ]; then
 	dmake aoo_srcrelease || exit 1
