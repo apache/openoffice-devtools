@@ -16,7 +16,7 @@ Build Environment:
  - MS DirectX SDK (June 2010)
  - NASM 2.15.05 (64-bit)
  - Oracle Java Development Kit 8 Update 281 (32-bit)
- - JUnit 4.13
+ - JUnit 4.13.1
  - Hamcrest-Core 1.3
  - NSIS 3.06.1
 
@@ -48,7 +48,7 @@ LANGS_DEV="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he
     --with-nasm-home="/cygdrive/c/Program Files/NASM" \
     --enable-win-x64-shellext \
     --enable-wiki-publisher \
-    --with-junit="/cygdrive/c/junit/junit-4.13.jar" \
+    --with-junit="/cygdrive/c/junit/junit-4.13.1.jar" \
     --with-hamcrest-core="/cygdrive/c/hamcrest/hamcrest-core-1.3.jar" \
     --without-stlport \
     --with-mozilla-build="/cygdrive/c/mozilla-build-3.3" \
