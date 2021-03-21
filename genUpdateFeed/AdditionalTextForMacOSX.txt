@@ -10,7 +10,7 @@ ca-XR,Només per a Mac OS X versió 10.7 o més recent
 ca-XV,Només per a Mac OS X versió 10.7 o més recent
 cs,Pouze pro Mac OS verze 10.7 a novější
 da,Kun for Mac OS X version 10.7 eller nyere
-de,Nur für Mac OS X-Versionen 10.7 oder neuer
+de,Nur für Mac OS X-Version 10.7 oder neuer
 el,Μόνο για Mac OS X εκδόσεις 10.7 ή νεότερο
 en-GB,Only for Mac OS X versions 10.7 or newer
 es,Sólo para versiones de Mac OS X 10.7 o más reciente
