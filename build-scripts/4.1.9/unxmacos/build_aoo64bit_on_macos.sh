@@ -152,6 +152,7 @@ if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
+LANGS="en-US"
 
 if [ -e configure.in ]; then
     AOO_CONF_T="configure.in"
