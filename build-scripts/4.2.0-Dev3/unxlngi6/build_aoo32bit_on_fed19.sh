@@ -41,7 +41,7 @@ if [ ! -d ../main -o ! -d sal ] ; then
 	echo "CHDIR into AOO's main/ directory first!"
 	exit 1
 fi
-
+\rm -f solenv/inc/reporevision.lst
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
     wget -O external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinreg_prebuild/680/unowinreg.dll
