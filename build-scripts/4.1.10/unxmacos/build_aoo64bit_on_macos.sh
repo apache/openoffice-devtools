@@ -158,6 +158,9 @@ if [ -e configure.in ]; then
 else
     AOO_CONF_T="configure.ac"
 fi
+
+rm -rf ./solenv/inc/reporevision.lst
+
 if [ ! -e configure -o $AOO_CONF_T -nt configure ] ; then
 	echo "Running autoconf..."
 	autoconf || exit 1
