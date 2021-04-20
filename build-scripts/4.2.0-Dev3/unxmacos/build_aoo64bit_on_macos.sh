@@ -122,6 +122,7 @@ echo "Building for ${AOO_BUILD_TYPE}: min macOS ${AOO_MACOS_TARGET}, Java $(echo
 echo "---"
 echo "Starting build:"
 echo ""
+\rm -f solenv/inc/reporevision.lst
 sleep 5
 #Setup build Env
 export SYSTEM_VERSION_COMPAT=1
@@ -181,7 +182,6 @@ if [ "$AOO_JUST_CONFIG" = "yes" ]; then
 fi
 unset SDKROOT
 export SDKROOT
-\rm -f solenv/inc/reporevision.lst
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
