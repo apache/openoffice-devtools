@@ -202,7 +202,7 @@ do
     echo -n feed entries for language ${sortedlanglist[$langidx]} - ${langname[${sortedlanglist[$langidx]}]}
 
     if [[ ${langlatestrelease[${sortedlanglist[$langidx]}]} < $INSTALLEDVERSION ]]; then
-        echo ..skipped as it its latest release was ${langlatestrelease[${sortedlanglist[$langidx]}]}
+        echo ..skipped as its latest release was ${langlatestrelease[${sortedlanglist[$langidx]}]}
         continue
     fi
 
