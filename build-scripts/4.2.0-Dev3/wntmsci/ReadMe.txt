@@ -7,7 +7,7 @@ Build Environment:
 
  - Windows 10 Pro 21H1 (64-bit)
  - Cygwin 3.2.0 (64-bit)
- - Apache Ant 1.10.10
+ - Apache Ant 1.10.11
  - MozillaBuild 3.3
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
  - MS Visual C++ Compiler 2008 Standard Edition (64-bit)
@@ -15,10 +15,10 @@ Build Environment:
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
  - NASM 2.15.05 (64-bit)
- - Oracle Java Development Kit 8 Update 291 (32-bit)
+ - Oracle Java Development Kit 8 Update 301 (32-bit)
  - JUnit 4.13.2
  - Hamcrest-Core 1.3
- - NSIS 3.06.1
+ - NSIS 3.07
 
 Bundled Runtime:
 
@@ -36,8 +36,8 @@ LANGS_DEV="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he
     --with-frame-home="$SDK_PATH" \
     --with-psdk-home="$SDK_PATH" \
     --with-midl-path="$SDK_PATH/bin" \
-    --with-ant-home="/cygdrive/c/apache-ant-1.10.10" \
-    --with-jdk-home="/cygdrive/c/Program Files (x86)/Java/jdk1.8.0_291" \
+    --with-ant-home="/cygdrive/c/apache-ant-1.10.11" \
+    --with-jdk-home="/cygdrive/c/Program Files (x86)/Java/jdk1.8.0_301" \
     --with-dmake-url="https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz" \
     --with-directx-home="/cygdrive/c/Microsoft_DirectX_SDK_June_2010" \
     --with-csc-path="/cygdrive/c/Windows/Microsoft.NET/Framework/v3.5" \
