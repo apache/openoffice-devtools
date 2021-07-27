@@ -5,9 +5,9 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step#W
 
 Build Environment:
 
- - Windows 10 Pro 20H2 (64-bit)
- - Cygwin 3.1.7 (32-bit)
- - Apache Ant 1.9.15
+ - Windows 10 Pro 21H1 (64-bit)
+ - Cygwin 3.2.0 (32-bit)
+ - Apache Ant 1.9.16
  - MozillaBuild 3.3
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
  - MS Visual C++ Compiler 2008 Standard Edition (64-bit)
@@ -16,7 +16,7 @@ Build Environment:
  - MS DirectX SDK (June 2010)
  - NASM 2.15.05 (64-bit)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
- - NSIS 3.06.1
+ - NSIS 3.07
 
 Bundled Runtime:
 
@@ -34,7 +34,7 @@ LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu 
     --with-frame-home="$SDK_PATH" \
     --with-psdk-home="$SDK_PATH" \
     --with-midl-path="$SDK_PATH/bin" \
-    --with-ant-home="/cygdrive/c/apache-ant-1.9.15" \
+    --with-ant-home="/cygdrive/c/apache-ant-1.9.16" \
     --with-jdk-home="/cygdrive/c/Program Files (x86)/Java/jdk1.7.0_80" \
     --with-csc-path="/cygdrive/c/Windows/Microsoft.NET/Framework/v3.5" \
     --with-cl-home="/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 9.0/VC" \
