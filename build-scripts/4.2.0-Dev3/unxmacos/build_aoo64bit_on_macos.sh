@@ -47,8 +47,8 @@ set -eo pipefail
 #
 AOO_MACOS_TARGET=10.9
 AOO_MACOS_SDK=
-AOO_JAVA_VERSION=1.7
-AOO_ANT_VERSION=1.9
+AOO_JAVA_VERSION=1.8
+AOO_ANT_VERSION=1.10
 #
 # Just for now, for configure
 if [ -z "$SDKROOT" ] ; then
@@ -137,6 +137,7 @@ if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
+#LANGS="en-US"
 
 if [ ! -e configure -o configure.ac -nt configure ] ; then
 	echo "Running autoconf..."
