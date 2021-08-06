@@ -80,7 +80,9 @@ fi
 
 source ./LinuxX86-64Env.Set.sh || exit 1 
 ./bootstrap || exit 1
-\rm solenv/inc/reporevision.lst
+if [ -e solenv/inc/reporevision.lst ]; then
+	\rm solenv/inc/reporevision.lst
+fi
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P7 || exit 1
 cd util
