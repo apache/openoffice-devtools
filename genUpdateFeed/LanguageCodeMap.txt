@@ -4,49 +4,49 @@
 # LANGUAGECODE,LANGUAGE,DOWNLOADURL
 #
 # Legend:
-# LANGUAGECODE  Language code of an released language
+# LANGUAGECODE  Language code of a released language
 # LANGUAGE      Human-readable language name
 # DOWNLOADURL   optional URL the user is guided to for corresponding package in the named language
 
 en-US,English (US)
 ar,Arabic
-ast,Asturian
-bg,Bulgarian
-ca,Catalan
+ast,Asturian,https://www.openoffice.org/ast/download
+bg,Bulgarian,https://www.openoffice.org/bg/download
+ca,Catalan,https://www.openoffice.org/ca/download
 ca-XR,Catalan (Valencia RACV)
 ca-XV,Catalan (Valencia AVL)
 cs,Czech,https://www.openoffice.org/cs/download
-da,Danish
+da,Danish,https://www.openoffice.org/da/download
 de,German,https://www.openoffice.org/de/download
-el,Greek
+el,Greek,https://www.openoffice.org/el/download
 en-GB,English (British)
 es,Spanish,https://www.openoffice.org/es/descargar
-eu,Basque
-fi,Finnish
+eu,Basque,https://www.openoffice.org/eu/download
+fi,Finnish,https://www.openoffice.org/fi/download
 fr,French,https://www.openoffice.org/fr/Telecharger
-gd,Gaelic (Scottish)
-gl,Galician
-he,Hebrew
-hi,Hindi
-hu,Hungarian
+gd,Gaelic (Scottish),https://www.openoffice.org/gd/download
+gl,Galician,https://www.openoffice.org/gl/download
+he,Hebrew,https://www.openoffice.org/he/download
+hi,Hindi,https://www.openoffice.org/hi/download
+hu,Hungarian,https://www.openoffice.org/hu/download
 it,Italian,https://www.openoffice.org/it/download
 ja,Japanese,https://www.openoffice.org/ja/download
-km,Khmer
-ko,Korean
+km,Khmer,https://www.openoffice.org/km/download
+ko,Korean,https://www.openoffice.org/ko/download
 lt,Lithuanian,https://www.openoffice.org/lt/download
-nb,Norwegian (Bokmål)
+nb,Norwegian (Bokmål),https://www.openoffice.org/nb/download
 nl,Dutch,https://www.openoffice.org/nl/downloaden.html
-pl,Polish
+pl,Polish,https://www.openoffice.org/pl/download
 pt,Portuguese (European),https://www.openoffice.org/pt/download
-pt-BR,Portuguese (Brazilian)
-ru,Russian
+pt-BR,Portuguese (Brazilian),https://www.openoffice.org/pt-br/download
+ru,Russian,https://www.openoffice.org/ru/download
 sk,Slovak,https://www.openoffice.org/sk/download
-sl,Slovenian
-sr,Serbian (Cyrillic)
-sv,Swedish
-ta,Tamil
-th,Thai
-tr,Turkish,https://www.openoffice.org/tr
-vi,Vietnamese
-zh-CN,Chinese (simplified),https://www.openoffice.org/zh-cn
-zh-TW,Chinese (traditional),https://www.openoffice.org/zh-tw
+sl,Slovenian,https://www.openoffice.org/sl/download
+sr,Serbian (Cyrillic),https://www.openoffice.org/sr/download
+sv,Swedish,https://www.openoffice.org/sv/download
+ta,Tamil,https://www.openoffice.org/ta/download
+th,Thai,https://www.openoffice.org/th/download
+tr,Turkish,https://www.openoffice.org/tr/download
+vi,Vietnamese,https://www.openoffice.org/vi/download
+zh-CN,Chinese (simplified),https://www.openoffice.org/zh-cn/download
+zh-TW,Chinese (traditional),https://www.openoffice.org/zh-tw/download
