@@ -67,7 +67,7 @@ end_date = datetime.datetime.strptime(sys.argv[3], '%Y-%m-%d')
 
 # columns of interest
 columns = [ "count_total",
-    "count_340", "count_341", "count_400", "count_401", "count_410", "count_411", "count_412", "count_413", "count_414", "count_415", "count_416", "count_417", "count_418", "count_419", "count_4110",
+    "count_340", "count_341", "count_400", "count_401", "count_410", "count_411", "count_412", "count_413", "count_414", "count_415", "count_416", "count_417", "count_418", "count_419", "count_4110", "count_4111",
     "windows", "mac", "linux", "linux32", "linux64", "deb", "rpm",
     "ar", "ast", "bg", "ca", "ca-XR", "ca-XV", "cs", "da", "de",
     "el", "en-GB", "en-US", "es", "eu", "fi", "fr", "gd", "gl",
@@ -95,6 +95,7 @@ patternDict = {
     "count_418"  : "4.1.8",
     "count_419"  : "4.1.9",
     "count_4110" : "4.1.10",
+    "count_4111" : "4.1.11",
     "windows"    : "Win_x86",
     "mac"        : "MacOS",
     "linux"      : "Linux",
