@@ -1,0 +1,47 @@
+Description
+-----------
+
+Apache OpenOffice® to darmowy i otwarty pakiet oprogramowania biurowego Apache Software Foundation.
+
+Apache OpenOffice zawiera sześć aplikacji zwiększających osobistą efektywność: edytor tekstu (z komponentem do tworzenia stron internetowych), arkusz kalkulacyjny, prezentację, rysunek, edytor równań i bazę danych. Niektóre funkcjonalności wymagają środowiska Java Runtime Environment (JRE).
+
+What's new in this version?
+---------------------------
+
+Apache OpenOffice 4.1.11 to wydanie bezpieczeństwa z usuniętymi ważnymi błędami. Wszystkim użytkownikom Apache OpenOffice 4.1.10 lub wersji wcześniejszych zaleca się dokonanie aktualizacji.
+
+Product features
+----------------
+
+Writer - edytor tekstu, którego można używać do wszystkiego: od napisania krótkiego listu po stworzenie całej książki.
+Calc - potężny arkusz kalkulacyjny z wszystkimi narzędziami potrzebnymi do liczenia, analizowania i prezentowania Twoich danych w raportach liczbowych czy w oszałamiających grafikach.
+Impress - najszybszy, najpotężniejszy sposób na stworzenie efektywnych prezentacji multimedialnych.
+Draw - pozwala na stworzenie wszystkiego: od prostych diagramów do dynamicznych ilustracji 3D.
+Math - daje możliwość stworzenia równań matematycznych za pomocą interfejsu graficznego lub poprzez bezpośrednie wpisywanie wzorów w edytorze równań.
+Base - umożliwia bezproblemowe operowanie bazami danych. Twórz i modyfikuj tabele, formularze, kwerendy i raporty - wszystko z poziomu pakietu Apache OpenOffice.
+
+Short description
+-----------------
+
+Apache OpenOffice® to darmowy i otwarty pakiet oprogramowania biurowego Apache Software Foundation.
+
+Search terms
+------------
+
+Apache OpenOffice Writer Calc Impress
+Draw Math Base office open-source
+
+Copyright and trademark info
+----------------------------
+
+Apache Software Foundation
+
+Applicable license terms
+------------------------
+
+Apache License v2.0
+
+Developed by
+------------
+
+Apache OpenOffice

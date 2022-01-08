@@ -1,0 +1,47 @@
+Description
+-----------
+
+Apache OpenOffice® is the free and open productivity suite from the Apache Software Foundation.
+
+Apache OpenOffice features six personal productivity applications: a word processor (and its web-authoring component), spreadsheet, presentation graphics, drawing, equation editor, and database. For some functionality a Java Runtime Environment (JRE) is needed.
+
+What's new in this version?
+---------------------------
+
+Apache OpenOffice 4.1.11 is a Security release incorporating important bug fixes. All users of Apache OpenOffice 4.1.10 or earlier are advised to upgrade.
+
+Product features
+----------------
+
+Writer - a word processor you can use for anything from writing a quick letter to producing an entire book.
+Calc - a powerful spreadsheet with all the tools you need to calculate, analyze, and present your data in numerical reports or sizzling graphics.
+Impress - the fastest, most powerful way to create effective multimedia presentations.
+Draw - lets you produce everything from simple diagrams to dynamic 3D illustrations.
+Math - lets you create mathematical equations with a graphic user interface or by directly typing your formulas into the equation editor.
+Base - lets you manipulate databases seamlessly. Create and modify tables, forms, queries, and reports, all from within Apache OpenOffice.
+
+Short description
+-----------------
+
+Apache OpenOffice® is the free and open productivity suite from the Apache Software Foundation.
+
+Search terms
+------------
+
+Apache OpenOffice Writer Calc Impress
+Draw Math Base office open-source
+
+Copyright and trademark info
+----------------------------
+
+Apache Software Foundation
+
+Applicable license terms
+------------------------
+
+Apache License v2.0
+
+Developed by
+------------
+
+Apache OpenOffice

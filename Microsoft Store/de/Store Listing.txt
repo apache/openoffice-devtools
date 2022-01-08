@@ -1,0 +1,48 @@
+Description
+-----------
+
+Apache OpenOffice® ist das freie und offene Produktivitätspaket der Apache Software Foundation.
+
+Apache OpenOffice bietet sechs einzelne Produktivitätsanwendungen: ein Textverarbeitungsprogramm (und seine Web-Authoring-Komponente), Tabellenkalkulation, Präsentationsgrafik, Vektorgrafik, Gleichungseditor und Datenbank. Für einige Funktionen ist eine Java-Laufzeitumgebung (JRE) erforderlich.
+
+What's new in this version?
+---------------------------
+
+Apache OpenOffice 4.1.11 ist eine Sicherheitsversion, die wichtige Fehlerkorrekturen enthält. Allen Benutzern von Apache OpenOffice 4.1.10 oder älter wird ein Upgrade empfohlen.
+
+Product features
+----------------
+
+Writer - ein Textverarbeitungsprogramm, das Sie für alles verwenden können, vom Verfassen eines kurzen Briefes bis zum Verfassen eines ganzen Buches.
+Calc - eine leistungsstarke Tabellenkalkulation mit allen Werkzeugen, die Sie zum Berechnen, Analysieren und Präsentieren Ihrer Daten in numerischen Berichten oder ansprechenden Grafiken benötigen.
+Impress - die schnellste und leistungsfähigste Methode zur Erstellung effektiver Multimedia-Präsentationen.
+Draw - ermöglicht Ihnen die Erstellung von einfachen Diagrammen bis hin zu dynamischen 3D-Illustrationen.
+Math - ermöglicht die Erstellung mathematischer Gleichungen über eine grafische Benutzeroberfläche oder durch direkte Eingabe der Formeln in den Gleichungseditor.
+Base - ermöglicht Ihnen die nahtlose Bearbeitung von Datenbanken. Erstellen und ändern Sie Tabellen, Formulare, Abfragen und Berichte - alles aus Apache OpenOffice heraus.
+
+Short description
+-----------------
+
+Apache OpenOffice® ist das freie und offene Produktivitätspaket der Apache Software Foundation.
+
+Search terms
+------------
+
+Apache OpenOffice Writer Calc Impress
+Draw Math Base office open-source
+Textverarbeitung Tabellenkalkulation
+
+Copyright and trademark info
+----------------------------
+
+Apache Software Foundation
+
+Applicable license terms
+------------------------
+
+Apache License v2.0
+
+Developed by
+------------
+
+Apache OpenOffice
