@@ -10,6 +10,7 @@ RUN yum install -y\
        gcc-c++ \
        cups-devel \
        pam-devel \
+       java-1.7.0-openjdk-devel \
        java-1.8.0-openjdk-devel \
        rpm-build \
        dpkg \
@@ -38,9 +39,10 @@ RUN yum install -y\
        perl \
        ORBit2-devel
 RUN ccache -M 2G
-RUN wget http://mirrors.nxnethosting.com/apache//ant/binaries/apache-ant-1.9.15-bin.tar.bz2
-RUN tar xvf apache-ant-1.9.15-bin.tar.bz2
-RUN mv apache-ant-1.9.15 ant
+RUN wget https://dlcdn.apache.org/ant/binaries/apache-ant-1.9.16-bin.tar.bz2
+RUN tar xvf apache-ant-1.9.16-bin.tar.bz2
+RUN mv apache-ant-1.9.16 ant
+ENV ANT_HOME=/ant
 RUN yum install \
        cpan \
        perl-libwww-perl \
