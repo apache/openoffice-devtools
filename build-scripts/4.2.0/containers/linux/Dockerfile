@@ -64,3 +64,4 @@ RUN tar xvf epm-5.0.0.tar.gz
 WORKDIR epm-5.0.0
 RUN ./configure --prefix=/usr/local ; make -i install
 RUN yum install -y git autoconf
+RUN yum install -y scons
