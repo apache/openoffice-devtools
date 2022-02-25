@@ -1,35 +1,36 @@
 Description
 -----------
 
-Apache OpenOffice® is the free and open productivity suite from the Apache Software Foundation.
+Apache OpenOffice® on Apache Software Foundation:in ilmainen avoimen lähdekoodin toimistosovellusperhe.
 
-Apache OpenOffice features six personal productivity applications: a word processor (and its web-authoring component), spreadsheet, presentation graphics, drawing, equation editor, and database. For some functionality a Java Runtime Environment (JRE) is needed.
+Apache OpenOffice®:ssa on kuusi toimistosovellusta: tekstinkäsittelyohjelma (ja sen internet-julkaisukomponentti), taulukkolaskentaohjelma, diaesitysohjelma, piirrosohjelma, laskentakaavaeditori ja tietokantaohjelma. Joihinkin toimintoihin vaaditaan Java Runtime Environment (JRE).
 
 What's new in this version?
 ---------------------------
 
-Apache OpenOffice 4.1.11 is a Security release incorporating important bug fixes. All users of Apache OpenOffice 4.1.10 or earlier are advised to upgrade.
+Apache OpenOffice 4.1.11 on tietoturvapäivitys, joka sisältää tärkeitä bugikorjauksia. Kaikkia Apache OpenOffice 4.1.10 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
 
 Product features
 ----------------
 
-Writer - a word processor you can use for anything from writing a quick letter to producing an entire book.
-Calc - a powerful spreadsheet with all the tools you need to calculate, analyze, and present your data in numerical reports or sizzling graphics.
-Impress - the fastest, most powerful way to create effective multimedia presentations.
-Draw - lets you produce everything from simple diagrams to dynamic 3D illustrations.
-Math - lets you create mathematical equations with a graphic user interface or by directly typing your formulas into the equation editor.
-Base - lets you manipulate databases seamlessly. Create and modify tables, forms, queries, and reports, all from within Apache OpenOffice.
+Writer - tekstinkäsittelyohjelma, jota voit käyttää mihin tahansa kirjeistä romaanin kirjoittamiseen.
+Calc - tehokas taulukkolaskentaohjelma, jossa on kaikki tarvittava datan laskentaan, analysointiin ja esittämiseen raportteina tai näyttävinä kuvaajina.
+Impress - nopein ja tehokkain tapa tehdä multimediaesityksiä.
+Draw - voit piirtää mitä vaan diagrammeista 3D-piirroksiin.
+Math - voit luoda matemaattisia laskentakaavoja graafisella käyttöliittymällä tai suoraan kirjoittamalla kaavasi editoriin.
+Base - voit luoda ja muokata tietokantoja helposti. Luo ja muokkaa tauluja, lomakkeita, kyselyitä ja raportteja suoraan Apache OpenOffice:ssa.
 
 Short description
 -----------------
 
-Apache OpenOffice® is the free and open productivity suite from the Apache Software Foundation.
+Apache OpenOffice® on Apache Software Foundation:in ilmainen avoimen lähdekoodin toimistosovellusperhe.
 
 Search terms
 ------------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source
+toimisto-ohjelma avoin lähdekoodi
 
 Copyright and trademark info
 ----------------------------
