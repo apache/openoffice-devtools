@@ -8,7 +8,7 @@ Apache OpenOffice bietet sechs einzelne Produktivitätsanwendungen: ein Textvera
 What's new in this version?
 ---------------------------
 
-Apache OpenOffice 4.1.11 ist eine Sicherheitsversion, die wichtige Fehlerkorrekturen enthält. Allen Benutzern von Apache OpenOffice 4.1.10 oder älter wird ein Upgrade empfohlen.
+Apache OpenOffice 4.1.12 ist eine Sicherheitsversion, die wichtige Fehlerkorrekturen enthält. Allen Benutzern von Apache OpenOffice 4.1.11 oder älter wird ein Upgrade empfohlen.
 
 Product features
 ----------------

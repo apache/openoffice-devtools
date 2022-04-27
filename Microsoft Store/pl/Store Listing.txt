@@ -8,7 +8,7 @@ Apache OpenOffice zawiera sześć aplikacji zwiększających osobistą efektywno
 What's new in this version?
 ---------------------------
 
-Apache OpenOffice 4.1.11 to wydanie bezpieczeństwa z usuniętymi ważnymi błędami. Wszystkim użytkownikom Apache OpenOffice 4.1.10 lub wersji wcześniejszych zaleca się dokonanie aktualizacji.
+Apache OpenOffice 4.1.12 to wydanie bezpieczeństwa z usuniętymi ważnymi błędami. Wszystkim użytkownikom Apache OpenOffice 4.1.11 lub wersji wcześniejszych zaleca się dokonanie aktualizacji.
 
 Product features
 ----------------

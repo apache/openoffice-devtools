@@ -8,7 +8,7 @@ Apache OpenOffice vous fournit six applications : traitement de textes (ainsi qu
 What's new in this version?
 ---------------------------
 
-Apache OpenOffice 4.1.11 est une version de sécurité incorporant des correctifs de bogues. Tous les utilisateurs de Apache OpenOffice 4.1.10 et des versions précédentes sont invités à se mettre à jour.
+Apache OpenOffice 4.1.12 est une version de sécurité incorporant des correctifs de bogues. Tous les utilisateurs de Apache OpenOffice 4.1.11 et des versions précédentes sont invités à se mettre à jour.
 
 Product features
 ----------------

@@ -8,7 +8,7 @@ Apache OpenOffice®:ssa on kuusi toimistosovellusta: tekstinkäsittelyohjelma (j
 What's new in this version?
 ---------------------------
 
-Apache OpenOffice 4.1.11 on tietoturvapäivitys, joka sisältää tärkeitä bugikorjauksia. Kaikkia Apache OpenOffice 4.1.10 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
+Apache OpenOffice 4.1.12 on tietoturvapäivitys, joka sisältää tärkeitä bugikorjauksia. Kaikkia Apache OpenOffice 4.1.11 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
 
 Product features
 ----------------
