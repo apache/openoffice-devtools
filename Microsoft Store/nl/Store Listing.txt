@@ -1,0 +1,48 @@
+Description
+-----------
+
+Apache OpenOffice® is de gratis en open kantoorsuite van de Apache Software Foundation.
+
+Apache OpenOffice bevat zes persoonlijke kantoortoepassingen: een tekstbewerker (en zijn component voor werken op het web), werkblad, presentaties, tekeningen, bewerker voor vergelijkingen en database. Voor sommige functionalititen is een Java Runtime Environment (JRE) nodig.
+
+What's new in this version?
+---------------------------
+
+Apache OpenOffice 4.1.12 is een beveiligingsuitgave die belangrijke reparaties van problemen bevat. Alle gebruikers van Apache OpenOffice 4.1.11 of eerder worden geadviseerd om te upgraden.
+
+Product features
+----------------
+
+Writer - een tekstbewerker die u voor van alles kunt gebruiken, van het schrijven een snelle brief tot het produceren van een heel boek.
+Calc - een krachtig werkblad met alle gereedschappen die u nodig hebt voor berekeningen, analyses, en voor het presenteren van uw gegevens in numerieke rapporten of zinderende afbeeldingen.
+Impress - de snelste, meest krachtige manier om effectieve multimedia-presentaties te maken.
+Draw - laat u alles maken, van eenvoudige diagrammen tot dynamische 3D-illustraties.
+Math - laat u rekenkundige vergelijkingen maken met een grafische gebruikersinterface of door het direct typen vcan uw formules in de bewerker voor vergelijkingen.
+Base - laat u naadloos databases bewerken. Tabellen maken en aanpassen, formulieren, query's en rapporten, allees vanuit Apache OpenOffice.
+
+Short description
+-----------------
+
+Apache OpenOffice® is de gratis en open kantoorsuite van de Apache Software Foundation.
+
+Search terms
+------------
+
+Apache OpenOffice Writer Calc Impress
+Draw Math Base office open-source
+kantoorsuite gratis
+
+Copyright and trademark info
+----------------------------
+
+Apache Software Foundation
+
+Applicable license terms
+------------------------
+
+Apache License v2.0
+
+Developed by
+------------
+
+Apache OpenOffice
