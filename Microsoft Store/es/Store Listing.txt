@@ -8,7 +8,11 @@ Apache OpenOffice features six personal productivity applications: a word proces
 What's new in this version?
 ---------------------------
 
+Security release:
 Apache OpenOffice 4.1.12 is a Security release incorporating important bug fixes. All users of Apache OpenOffice 4.1.11 or earlier are advised to upgrade.
+
+Mainenance release:
+Apache OpenOffice 4.1.12 is a Maintenance release incorporating bug fixes and other enhancements. All users of Apache OpenOffice 4.1.11 or earlier are advised to upgrade. 
 
 Product features
 ----------------
