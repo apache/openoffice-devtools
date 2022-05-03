@@ -8,7 +8,11 @@ Apache OpenOffice bevat zes persoonlijke kantoortoepassingen: een tekstbewerker 
 What's new in this version?
 ---------------------------
 
+Security release:
 Apache OpenOffice 4.1.12 is een beveiligingsuitgave die belangrijke reparaties van problemen bevat. Alle gebruikers van Apache OpenOffice 4.1.11 of eerder worden geadviseerd om te upgraden.
+
+Maintenance release:
+Apache OpenOffice 4.1.12 is een onderhoudsuitgave met reparaties van problemen en andere verbeteringen. Alle gebruikers van Apache OpenOffice 4.1.11 of eerder worden geadviseerd om te upgraden.
 
 Product features
 ----------------
