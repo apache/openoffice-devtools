@@ -12,7 +12,7 @@ Security release:
 La versione 4.1.12 di Apache OpenOffice è stata rilasciata per correggere alcuni bug e problemi di sicurezza. Tutti gli utenti delle versioni 4.1.11 o precedenti sono invitati ad eseguire l'aggiornamento.
 
 Maintenance release:
-Versione 4.1.12 di Apache OpenOffice. Tutti gli utenti delle versioni 4.1.11 o precedenti sono invitati ad eseguire l'aggiornamento.
+La versione 4.1.12 di Apache OpenOffice corregge alcuni bug e contiene altri miglioramenti. Tutti gli utenti delle versioni 4.1.11 o precedenti sono invitati ad eseguire l'aggiornamento.
 
 Product features
 ----------------
