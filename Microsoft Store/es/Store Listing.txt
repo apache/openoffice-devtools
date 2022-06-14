@@ -1,39 +1,40 @@
 Description
 -----------
 
-Apache OpenOffice® is the free and open productivity suite from the Apache Software Foundation.
+Apache OpenOffice® es la suite de productividad abierta y gratuita de Apache Software Foundation.
 
-Apache OpenOffice features six personal productivity applications: a word processor (and its web-authoring component), spreadsheet, presentation graphics, drawing, equation editor, and database. For some functionality a Java Runtime Environment (JRE) is needed.
+Apache OpenOffice ofrece seis aplicaciones de productividad personal: un procesador de texto (y su componente de creación web), una hoja de cálculo, gráficos de presentación, dibujos, un editor de ecuaciones y una base de datos. Se requiere un Java Runtime Environment (JRE) para algunas funciones.
 
 What's new in this version?
 ---------------------------
 
 Security release:
-Apache OpenOffice 4.1.12 is a Security release incorporating important bug fixes. All users of Apache OpenOffice 4.1.11 or earlier are advised to upgrade.
+Apache OpenOffice 4.1.12 es una versión de seguridad que incorpora correcciones de errores importantes. Se recomienda actualizar a todos los usuarios de Apache OpenOffice 4.1.11 o anterior.
 
 Mainenance release:
-Apache OpenOffice 4.1.12 is a Maintenance release incorporating bug fixes and other enhancements. All users of Apache OpenOffice 4.1.11 or earlier are advised to upgrade. 
+Apache OpenOffice 4.1.12 es una versión de mantenimiento que incorpora correcciones de errores y otras mejoramientos. Se recomienda actualizar a todos los usuarios de Apache OpenOffice 4.1.11 o anterior.
 
 Product features
 ----------------
 
-Writer - a word processor you can use for anything from writing a quick letter to producing an entire book.
-Calc - a powerful spreadsheet with all the tools you need to calculate, analyze, and present your data in numerical reports or sizzling graphics.
-Impress - the fastest, most powerful way to create effective multimedia presentations.
-Draw - lets you produce everything from simple diagrams to dynamic 3D illustrations.
-Math - lets you create mathematical equations with a graphic user interface or by directly typing your formulas into the equation editor.
-Base - lets you manipulate databases seamlessly. Create and modify tables, forms, queries, and reports, all from within Apache OpenOffice.
+Writer - un procesador de textos que puede utilizar para todo, desde escribir una breve carta hasta producir un libro completo.
+Calc - una poderosa hoja de cálculo con todas las herramientas necesarias para calcular, analizar y presentar sus datos en informes numéricos o en llamativos gráficos.
+Impress - el medio más rápido y poderoso de crear efectivas presentaciones multimedia.
+Draw - para generar desde simples diagramas hasta ilustaciones 3D dinámicas.
+Math - le permite crear ecuaciones matemáticas con una interfaz de usuario o escribiendo las fórmulas directamente en el editor de ecuaciones.
+Base - permite la manipulación completa de bases de datos. Crear y modificar tablas, formularios, consultas e informes, todo ello desde Apache OpenOffice.
 
 Short description
 -----------------
 
-Apache OpenOffice® is the free and open productivity suite from the Apache Software Foundation.
+Apache OpenOffice® es la suite de productividad abierta y gratuita de Apache Software Foundation.
 
 Search terms
 ------------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF
+procesador texto gratuita cálculo
 
 Copyright and trademark info
 ----------------------------
