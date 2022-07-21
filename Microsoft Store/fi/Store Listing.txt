@@ -9,10 +9,10 @@ What's new in this version?
 ---------------------------
 
 Security release:
-Apache OpenOffice 4.1.12 on tietoturvapäivitys, joka sisältää tärkeitä bugikorjauksia. Kaikkia Apache OpenOffice 4.1.11 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
+Apache OpenOffice 4.1.13 on tietoturvapäivitys, joka sisältää tärkeitä bugikorjauksia. Kaikkia Apache OpenOffice 4.1.12 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
 
 Maintenance release:
-Apache OpenOffice 4.1.12 on ylläpitopäivitys, joka sisältää virheenkorjauksia ja muita parannuksia. Kaikkia Apache OpenOffice 4.1.11 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
+Apache OpenOffice 4.1.13 on ylläpitopäivitys, joka sisältää virheenkorjauksia ja muita parannuksia. Kaikkia Apache OpenOffice 4.1.12 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
 
 Product features
 ----------------
