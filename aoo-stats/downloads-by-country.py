@@ -89,7 +89,7 @@ for download in downloads :
 print "<html>"
 print "<head>"
 print "<title>OpenOffice Downloads by Country/Territory</title>"
-print "<html>"
+print "</head>"
 print "<body>"
 print "<p>This table shows downloads per <a href='https://en.wikipedia.org/wiki/Country_code_top-level_domain'>country/territory</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>"
 print "<table border='1' cellpadding='10'>"
