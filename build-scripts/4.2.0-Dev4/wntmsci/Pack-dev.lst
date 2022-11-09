@@ -7,6 +7,6 @@
 
 # Product                 List_of_platforms   List_of_languages                                                                                                                                                  Target
 
-OpenOffice                wntmsci12.pro       ast|bg|ca|ca-XR|ca-XV|cs|da|de|el|en-GB|en-US|es|et|eu|fi|fr|gd|gl|he|hi|hu|hy|it|ja|kab|km|ko|lt|nb|nl|om|pl|pt|pt-BR|ru|sk|sl|sr|sv|ta|th|tr|uk|vi|zh-CN|zh-TW   openofficedev
-OpenOffice_SDK            wntmsci12.pro       en-US                                                                                                                                                              sdkoodev
-OpenOffice_Languagepack   wntmsci12.pro       ast|bg|ca|ca-XR|ca-XV|cs|da|de|el|en-GB|en-US|es|et|eu|fi|fr|gd|gl|he|hi|hu|hy|it|ja|kab|km|ko|lt|nb|nl|om|pl|pt|pt-BR|ru|sk|sl|sr|sv|ta|th|tr|uk|vi|zh-CN|zh-TW   ooodevlanguagepack
+OpenOffice                wntmsci12.pro       ast|bg|ca|ca-XR|ca-XV|cs|da|de|el|en-GB|en-US|es|et|eu|fi|fr|gd|gl|he|hi|hu|hy|it|ja|kab|km|ko|lt|nb|nl|om|pl|pt|pt-BR|ru|sk|sl|sr|sv|ta|th|tr|uk|vi|zh-CN|zh-TW   openoffice
+OpenOffice_SDK            wntmsci12.pro       en-US                                                                                                                                                              sdkoo
+OpenOffice_Languagepack   wntmsci12.pro       ast|bg|ca|ca-XR|ca-XV|cs|da|de|el|en-GB|en-US|es|et|eu|fi|fr|gd|gl|he|hi|hu|hy|it|ja|kab|km|ko|lt|nb|nl|om|pl|pt|pt-BR|ru|sk|sl|sr|sv|ta|th|tr|uk|vi|zh-CN|zh-TW   ooolanguagepack
