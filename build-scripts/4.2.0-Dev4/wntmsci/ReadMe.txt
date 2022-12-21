@@ -1,7 +1,7 @@
 This is the configuration used for AOO 4.2.0-Dev4:
 
 Step by step building guide can be found here:
-https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step
+https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step_Windows
 
 Build Environment:
 
