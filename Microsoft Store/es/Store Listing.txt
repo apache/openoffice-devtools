@@ -34,7 +34,7 @@ Search terms
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF
-procesador texto gratuita cálculo
+ODT procesador texto gratuita cálculo
 
 Copyright and trademark info
 ----------------------------

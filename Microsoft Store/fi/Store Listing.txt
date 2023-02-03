@@ -34,7 +34,7 @@ Search terms
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF
-toimisto-ohjelma avoin lähdekoodi
+ODT toimisto-ohjelma avoin lähdekoodi
 
 Copyright and trademark info
 ----------------------------

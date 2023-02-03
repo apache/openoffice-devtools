@@ -35,7 +35,7 @@ Search terms
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF
 ufficio testi presentazioni spreadsheet
-formule disegni database
+ODT formule disegni database
 
 Copyright and trademark info
 ----------------------------
