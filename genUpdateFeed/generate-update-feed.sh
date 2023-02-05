@@ -32,6 +32,23 @@
 #
 
 
+# compare two 3-part version strings
+# returns true if first is strictly greater than second
+isgreaterthan() {
+    one=(${1//./ })
+    two=(${2//./ })
+    # compare each digit separately
+    [[ ${one[0]} -gt ${two[0]} ]] && return 0
+    [[ ${one[0]} -lt ${two[0]} ]] && return 1 # must be smaller
+    # first digits are equal, check next digit
+    [[ ${one[1]} -gt ${two[1]} ]] && return 0
+    [[ ${one[1]} -lt ${two[1]} ]] && return 1
+    # etc
+    [[ ${one[2]} -gt ${two[2]} ]] && return 0
+    return 1 # not greater
+}
+
+
 # check arguments
 if [ ${#@} -ne 2 ]; then
     echo Generate Update Feed for installed AOO/OOo instances
@@ -72,7 +89,7 @@ do
             if [ $idx -eq 0 ]; then
                 version=$data
                 # skip product versions released after the given $RELEASE
-                if [[ $version > $RELEASE ]]; then
+                if isgreaterthan $version $RELEASE ; then
                     break
                 fi
             elif [ $idx -eq 1 ]; then
@@ -174,7 +191,7 @@ cd "${OUTPUT_DIR}"
 declare platforms=(Windows MacOSX Linux Linux)
 declare architectures
 declare platformnames
-if [[ $INSTALLEDVERSION > "4.0.1" ]]; then
+if isgreaterthan $INSTALLEDVERSION "4.0.1"; then
     architectures=(x86 X86_64 x86 X86_64)
     platformnames=('Windows' 'Mac OS X 64bit' 'Linux 32bit' 'Linux 64bit')
 else
@@ -201,7 +218,7 @@ for langidx in ${!sortedlanglist[*]}
 do
     echo -n feed entries for language ${sortedlanglist[$langidx]} - ${langname[${sortedlanglist[$langidx]}]}
 
-    if [[ ${langlatestrelease[${sortedlanglist[$langidx]}]} < $INSTALLEDVERSION ]]; then
+    if isgreaterthan $INSTALLEDVERSION ${langlatestrelease[${sortedlanglist[$langidx]}]}; then
         echo ..skipped as its latest release was ${langlatestrelease[${sortedlanglist[$langidx]}]}
         continue
     fi
@@ -221,7 +238,7 @@ do
     else
         downloadurl=${productdownloadurl[${langlatestrelease[${sortedlanglist[$langidx]}]}]}
     fi
-    if [[ $INSTALLEDVERSION < "4.0.0" ]]; then
+    if isgreaterthan "4.0.0" $INSTALLEDVERSION; then
         newversion="- Apache OpenOffice "$newversion
     fi
     sed "s/%NEWVERSION%/$newversion/g" -i $WORKTEMPLATE
@@ -229,7 +246,7 @@ do
     sed "s|%DOWNLOADURL%|$downloadurl|g" -i $WORKTEMPLATE
 
     downloadcode=$(echo $INSTALLEDVERSION | tr '.' '_')
-    if [[ $INSTALLEDVERSION == "3.4.0" ]] || [[ $INSTALLEDVERSION > "3.4.0" ]]; then
+    if [[ $INSTALLEDVERSION == "3.4.0" ]] || isgreaterthan $INSTALLEDVERSION "3.4.0"; then
         downloadcode=AOO$downloadcode
     else
         downloadcode=OOo$downloadcode
@@ -246,7 +263,7 @@ do
         sed "s/%PLATFORM%/${platforms[$i]}/g" -i $WORKING
         sed "s/%ARCHITECTURECODE%/${architectures[$i]}/g" -i $WORKING
         addtext=""
-        if [[ ${platforms[$i]} == "MacOSX" ]] && [[ $RELEASE > "4.0.1" ]] && [[ ${langlatestrelease[${sortedlanglist[$langidx]}]} == $RELEASE ]]; then
+        if [[ ${platforms[$i]} == "MacOSX" ]] && isgreaterthan $RELEASE "4.0.1"  && [[ ${langlatestrelease[${sortedlanglist[$langidx]}]} == $RELEASE ]]; then
             addtext=${addtextformac[${sortedlanglist[$langidx]}]}
         fi
         sed "s/%ADDITIONALTEXT%/$addtext/g" -i $WORKING
