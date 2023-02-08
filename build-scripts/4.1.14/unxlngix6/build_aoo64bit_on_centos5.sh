@@ -49,6 +49,8 @@ fi
 	--enable-bundled-dictionaries \
 	--enable-opengl  \
 	--enable-dbus  \
+	--disable-gio \
+	--enable-gnome-vfs \
 	--enable-gstreamer \
 	--without-junit \
 	--without-stlport \
@@ -59,7 +61,7 @@ fi
 	--with-epm-url=http://sourceforge.net/projects/oooextras.mirror/files/epm-3.7.tar.gz \
 	| tee config.out || exit 1
 
-source ./LinuxX86-64Env.Set.sh || exit 1 
+source ./LinuxX86-64Env.Set.sh || exit 1
 ./bootstrap || exit 1
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P6 || exit 1
@@ -74,7 +76,7 @@ elif [ "$AOO_BUILD_DEV" = "yes" ]; then
 	dmake -P6 ooodevlanguagepack || exit 1
 else
 	dmake -P6 ooolanguagepack || exit 1
-	dmake -P6 sdkoo_en-US || exit 1 
+	dmake -P6 sdkoo_en-US || exit 1
 fi
 if [ "$AOO_BUILD_SRC" = "yes" ]; then
 	dmake aoo_srcrelease || exit 1
