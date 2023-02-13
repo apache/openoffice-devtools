@@ -42,12 +42,12 @@ fi;
 if test -x "${openssl}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      if ! test -f "${file}.sha512X" ; then
+      if ! test -f "${file}.sha512" ; then
         echo "openssl: creating sha512 checksum file for ${file} ..."
         ${openssl} sha512 ${file} |\
             ${sed} -e 's#^SHA2*-*512(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha512
       fi
-      if ! test -f "${file}.sha256X" ; then
+      if ! test -f "${file}.sha256" ; then
         echo "openssl: creating sha256 checksum file for ${file} ..."
         ${openssl} sha256 ${file} |\
             ${sed} -e 's#^SHA2*-*256(\(.*/\)*\(.*\))= \([0-9a-f]*\)$#\3 *\2#' > ${file}.sha256
@@ -58,14 +58,14 @@ if test -x "${openssl}"; then
 elif test -x "${gpg2}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      if ! test -f "${file}.sha512X" ; then
+      if ! test -f "${file}.sha512" ; then
         echo "gpg2: creating sha512 checksum file for ${file} ..."
         ${gpg2} --print-md sha512 ${file} |\
             ${sed} -e '{N;s#\n##;}' |\
             ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
                 -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
       fi
-      if ! test -f "${file}.sha256X" ; then
+      if ! test -f "${file}.sha256" ; then
         echo "gpg2: creating sha256 checksum file for ${file} ..."
         ${gpg2} --print-md sha256 ${file} |\
             ${sed} -e '{N;s#\n##;}' |\
@@ -78,14 +78,14 @@ elif test -x "${gpg2}"; then
 elif test -x "${gpg}"; then
   for file in ${allfiles}; do
     if test -f "${file}"; then
-      if ! test -f "${file}.sha512X" ; then
+      if ! test -f "${file}.sha512" ; then
         echo "gpg: creating sha512 checksum file for ${file} ..."
         ${gpg} --print-md sha512 ${file} |\
             ${sed} -e '{N;s#\n##;}' |\
             ${sed} -e 's#\(.*/\)*\(.*\): \(.*\)#\3::\2#;s#[\r\n]##g;s# ##g' \
                 -e 'y#ABCDEF#abcdef#;s#::# *#' > ${file}.sha512
       fi
-      if ! test -f "${file}.sha256X" ; then
+      if ! test -f "${file}.sha256" ; then
         echo "gpg: creating sha256 checksum file for ${file} ..."
         ${gpg} --print-md sha256 ${file} |\
             ${sed} -e '{N;s#\n##;}' |\
