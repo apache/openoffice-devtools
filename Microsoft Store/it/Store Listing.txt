@@ -1,7 +1,7 @@
 Description
 -----------
 
-Apache OpenOffice® è la suite di programmi per ufficio libera e open source dell'Apache Software Foundation.
+Apache OpenOffice® 4.1.14 è la suite di programmi per ufficio libera e open source dell'Apache Software Foundation.
 
 Apache OpenOffice contiene sei applicazioni per elaborare testi (anche per il web), fogli di calcolo, presentazioni, disegni, equazioni e database. Potrebbe essere necessario un Java Runtime Environment (JRE) per accedere ad alcune funzionalità.
 
@@ -9,10 +9,10 @@ What's new in this version?
 ---------------------------
 
 Security release:
-La versione 4.1.13 di Apache OpenOffice è stata rilasciata per correggere alcuni bug e problemi di sicurezza. Tutti gli utenti delle versioni 4.1.12 o precedenti sono invitati ad eseguire l'aggiornamento.
+La versione 4.1.14 di Apache OpenOffice è stata rilasciata per correggere alcuni bug e problemi di sicurezza. Tutti gli utenti delle versioni 4.1.13 o precedenti sono invitati ad eseguire l'aggiornamento.
 
 Maintenance release:
-La versione 4.1.13 di Apache OpenOffice corregge alcuni bug e contiene altri miglioramenti. Tutti gli utenti delle versioni 4.1.12 o precedenti sono invitati ad eseguire l'aggiornamento.
+La versione 4.1.14 di Apache OpenOffice corregge alcuni bug e contiene altri miglioramenti. Tutti gli utenti delle versioni 4.1.13 o precedenti sono invitati ad eseguire l'aggiornamento.
 
 Product features
 ----------------

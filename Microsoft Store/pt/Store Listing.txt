@@ -1,7 +1,7 @@
 Description
 -----------
 
-O Apache OpenOffice® é o programa de produtividade gratuito e de código aberto da Apache Software Foundation.
+O Apache OpenOffice® 4.1.14 é o programa de produtividade gratuito e de código aberto da Apache Software Foundation.
 
 O Apache OpenOffice é constituído por seis aplicações de produtividade pessoal: processador de texto (e a sua componente de autoria para a web), folha de cálculo, apresentações, desenho, editor de equações e base de dados. Para algumas funcionalidades é necessário ter instalado um Java Runtime Environment (JRE).
 
@@ -9,10 +9,10 @@ What's new in this version?
 ---------------------------
 
 Security release:
-O Apache OpenOffice 4.1.13 é uma edição de Segurança que incorpora correcções de erros importantes. Aconselha-se a todos os utilizadores do Apache OpenOffice 4.1.12 ou anterior a proceder à actualização para esta versão.
+O Apache OpenOffice 4.1.14 é uma edição de Segurança que incorpora correcções de erros importantes. Aconselha-se a todos os utilizadores do Apache OpenOffice 4.1.13 ou anterior a proceder à actualização para esta versão.
 
 Maintenance release:
-O Apache OpenOffice 4.1.13 é uma edição de Manutenção que incorpora correcções de erros e outros melhoramentos. Aconselha-se a todos os utilizadores do Apache OpenOffice 4.1.12 ou anterior a proceder à actualização para esta versão.
+O Apache OpenOffice 4.1.14 é uma edição de Manutenção que incorpora correcções de erros e outros melhoramentos. Aconselha-se a todos os utilizadores do Apache OpenOffice 4.1.13 ou anterior a proceder à actualização para esta versão.
 
 Product features
 ----------------

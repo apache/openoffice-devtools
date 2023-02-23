@@ -1,7 +1,7 @@
 Description
 -----------
 
-Apache OpenOffice® is de gratis en open kantoorsuite van de Apache Software Foundation.
+Apache OpenOffice® 4.1.14 is de gratis en open kantoorsuite van de Apache Software Foundation.
 
 Apache OpenOffice bevat zes persoonlijke kantoortoepassingen: een tekstbewerker (en zijn component voor werken op het web), werkblad, presentaties, tekeningen, bewerker voor vergelijkingen en database. Voor sommige functionalititen is een Java Runtime Environment (JRE) nodig.
 
@@ -9,10 +9,10 @@ What's new in this version?
 ---------------------------
 
 Security release:
-Apache OpenOffice 4.1.13 is een beveiligingsuitgave die belangrijke reparaties van problemen bevat. Alle gebruikers van Apache OpenOffice 4.1.12 of eerder worden geadviseerd om te upgraden.
+Apache OpenOffice 4.1.14 is een beveiligingsuitgave die belangrijke reparaties van problemen bevat. Alle gebruikers van Apache OpenOffice 4.1.13 of eerder worden geadviseerd om te upgraden.
 
 Maintenance release:
-Apache OpenOffice 4.1.13 is een onderhoudsuitgave met reparaties van problemen en andere verbeteringen. Alle gebruikers van Apache OpenOffice 4.1.12 of eerder worden geadviseerd om te upgraden.
+Apache OpenOffice 4.1.14 is een onderhoudsuitgave met reparaties van problemen en andere verbeteringen. Alle gebruikers van Apache OpenOffice 4.1.13 of eerder worden geadviseerd om te upgraden.
 
 Product features
 ----------------
