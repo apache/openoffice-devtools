@@ -106,11 +106,6 @@
      d="M 48.5,1 C 46.014719,1 44,3.0147186 44,5.5 44,7.9852814 46.014719,10 48.5,10 50.985281,10 53,7.9852814 53,5.5 53,3.0147186 50.985281,1 48.5,1 Z" />
   <path
      inkscape:connector-curvature="0"
-     style="opacity:0.66000001;fill:#00ff00;fill-opacity:1;stroke:none"
-     id="path24"
-     d="M 57.5,-8e-8 C 56.119288,-8e-8 55,1.7908609 55,4 55,6.209139 56.119288,8 57.5,8 58.880712,8 60,6.209139 60,4 60,1.7908609 58.880712,-8e-8 57.5,-8e-8 Z" />
-  <path
-     inkscape:connector-curvature="0"
      style="opacity:0.66;fill:#00ff00;fill-opacity:1;stroke:none"
      id="path26"
      d="M 65.5,1 C 63.567003,1 62,3.01472 62,5.5 62,7.98528 63.567003,10 65.5,10 67.432997,10 69,7.98528 69,5.5 69,3.01472 67.432997,1 65.5,1 Z" />
@@ -997,10 +992,6 @@
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="sccccccccccccccccsccccccccccccccccssssss" />
   <path
-     style="opacity:0.9;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35433072;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="M 57.5 0 A 3.5 4.5 0 0 0 54 4.5 A 3.5 4.5 0 0 0 57.5 9 A 3.5 4.5 0 0 0 61 4.5 A 3.5 4.5 0 0 0 57.5 0 z M 57.5 1 A 2.5 3.5 0 0 1 60 4.5 A 2.5 3.5 0 0 1 57.5 8 A 2.5 3.5 0 0 1 55 4.5 A 2.5 3.5 0 0 1 57.5 1 z "
-     id="path3532" />
-  <path
      d="M 60,15.5 C 60,13.567003 58.880712,12 57.5,12 56.119288,12 55,13.567003 55,15.5 c 0,1.932997 1.119288,3.5 2.5,3.5 1.380712,0 2.5,-1.567003 2.5,-3.5 z"
      id="path4343"
      style="opacity:0.66000001;fill:#003cff;fill-opacity:1;stroke:none"
@@ -1075,4 +1066,15 @@
      id="path3543"
      d="M 16.318,85.025145 18.792874,87.500019 16.318,89.974893 17.025107,90.682 19.499981,88.207126 21.974855,90.682 22.681962,89.974893 20.207088,87.500019 22.681962,85.025145 21.974855,84.318038 19.499981,86.792912 17.025107,84.318038 16.318,85.025145 Z"
      style="opacity:0.9;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35433072;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     style="opacity:0.9;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08099997;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 57.5 0 A 3.5 4.5 0 0 0 54 4.5 A 3.5 4.5 0 0 0 57.5 9 A 3.5 4.5 0 0 0 61 4.5 A 3.5 4.5 0 0 0 57.5 0 z M 57.5 1 A 2.5 3.5 0 0 1 60 4.5 A 2.5 3.5 0 0 1 57.5 8 A 2.5 3.5 0 0 1 55 4.5 A 2.5 3.5 0 0 1 57.5 1 z "
+     id="path3534" />
+  <ellipse
+     style="opacity:0.66;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08099997;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path3536"
+     cx="57.5"
+     cy="4.5"
+     rx="2.5"
+     ry="3.5" />
 </svg>
