@@ -14,7 +14,7 @@
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
    id="svg2"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="cropmarkers.svg"
+   sodipodi:docname="cropmarkers2.svg"
    inkscape:export-filename="/home/seidel/Schreibtisch/cropmarkers2.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -59,16 +59,6 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
      units="px" />
-  <path
-     inkscape:connector-curvature="0"
-     style="opacity:0.9;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08099997;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="m 4.6566666,-63.000001 a 0.98777777,0.98777781 0 0 0 -0.9877777,0.987778 0.98777777,0.98777781 0 0 0 0.9877777,0.987778 l 1.6933334,0 A 0.98777777,0.98777781 0 0 0 7.3377777,-62.012223 0.98777777,0.98777781 0 0 0 6.35,-63.000001 l -1.6933334,0 z m 0,0.282222 1.6933334,0 A 0.70555555,0.7055556 0 0 1 7.0555555,-62.012223 0.70555555,0.7055556 0 0 1 6.35,-61.306668 l -1.6933334,0 a 0.70555555,0.7055556 0 0 1 -0.7055555,-0.705555 0.70555555,0.7055556 0 0 1 0.7055555,-0.705556 z"
-     id="rect4560" />
-  <path
-     inkscape:connector-curvature="0"
-     style="opacity:0.66000001;fill:#969696;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08099997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="m 4.6566667,-62.717779 a 0.70555556,0.70555561 0 0 0 -0.7055556,0.705556 0.70555556,0.70555561 0 0 0 0.7055556,0.705556 l 1.6933333,0 A 0.70555556,0.70555561 0 0 0 7.0555556,-62.012223 0.70555556,0.70555561 0 0 0 6.35,-62.717779 l -1.6933333,0 z"
-     id="rect4568" />
   <path
      inkscape:connector-curvature="0"
      id="path4603"
@@ -297,6 +287,16 @@
   <path
      id="path4237"
      d="m 41.627778,-56.791111 a 1.27,1.2700001 0 0 0 -1.27,1.270001 l 0,2.822222 a 1.27,1.2700001 0 0 0 1.27,1.27 1.27,1.2700001 0 0 0 1.27,-1.27 l 0,-2.822222 a 1.27,1.2700001 0 0 0 -1.27,-1.270001 z"
+     style="opacity:0.66000001;fill:#969696;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08099997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:connector-curvature="0" />
+  <path
+     id="path3386"
+     d="m 4.656667,-63.000001 a 0.98777781,0.98777784 0 0 0 -0.9877779,0.987778 0.98777781,0.98777784 0 0 0 0.9877779,0.987778 l 1.6933339,0 a 0.98777781,0.98777784 0 0 0 0.9877769,-0.987778 0.98777781,0.98777784 0 0 0 -0.9877769,-0.987778 l -1.6933339,0 z m 0,0.282223 1.6933339,0 a 0.70555558,0.70555562 0 0 1 0.705555,0.705555 0.70555558,0.70555562 0 0 1 -0.705555,0.705556 l -1.6933339,0 a 0.70555558,0.70555562 0 0 1 -0.7055549,-0.705556 0.70555558,0.70555562 0 0 1 0.7055549,-0.705555 z"
+     style="opacity:0.9;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08099997;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:connector-curvature="0" />
+  <path
+     id="path3388"
+     d="m 4.656667,-62.717779 a 0.70555558,0.70555563 0 0 0 -0.7055559,0.705556 0.70555558,0.70555563 0 0 0 0.7055559,0.705556 l 1.6933339,0 a 0.70555558,0.70555563 0 0 0 0.705555,-0.705556 0.70555558,0.70555563 0 0 0 -0.705555,-0.705556 l -1.6933339,0 z"
      style="opacity:0.66000001;fill:#969696;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08099997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      inkscape:connector-curvature="0" />
 </svg>
