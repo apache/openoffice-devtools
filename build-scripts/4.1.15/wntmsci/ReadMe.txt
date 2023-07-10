@@ -16,7 +16,7 @@ Build Environment:
  - MS DirectX SDK (June 2010)
  - NASM 2.16.01 (64-bit)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
- - NSIS 3.08
+ - NSIS 3.09
 
 Bundled Runtime:
 
