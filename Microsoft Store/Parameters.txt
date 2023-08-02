@@ -2,7 +2,7 @@ The Microsoft Store requires programs to be installed "silently".
 
 Our Windows binaries (Full Installation) are downloaded from:
 
-https://dlcdn.apache.org/openoffice/4.1.15/binaries
+https://dlcdn.apache.org/openoffice/4.1.14/binaries
 
 and installed with the following parameters:
 
@@ -19,6 +19,6 @@ Explanation:
 
 /POSTREMOVE=ON - Remove files after installation (from %TEMP% dir)
 
-/PARAM1="REGISTER_NO_MSO_TYPES=1" - This parameter is passed to the Windows installer
+/PARAM1="REGISTER_NO_MSO_TYPES=1" - This parameter is passed to the Windows installer (setup.exe)
 
 /PARAM2="/norestart" - This parameter is passed to the Windows installer to avoid a restart
