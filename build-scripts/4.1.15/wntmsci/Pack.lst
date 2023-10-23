@@ -1,7 +1,7 @@
 # Pack.lst: Contains the information for the packaging process.
 # Syntax: Product, list of platforms, list of languages, target (Separator: spaces)
 # Syntax for list of languages: One multilingual installation set uses separator ","
-# (Example: "en-US,de" creates english-german multilingual installation set)
+# (Example: "en-US,de" creates English-German multilingual installation set)
 # Different installation sets use the "|" as separator
 
 
