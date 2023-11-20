@@ -1,4 +1,4 @@
-This is the configuration used for AOO 4.1.15-RC1:
+This is the configuration used for AOO 4.1.15-RC2:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step_Windows
@@ -6,7 +6,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step_W
 Build Environment:
 
  - Windows 10 Pro 22H2 (64-bit)
- - Cygwin 3.4.8 (64-bit)
+ - Cygwin 3.4.9 (64-bit)
  - Apache Ant 1.9.16
  - MozillaBuild 3.4
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
