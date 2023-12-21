@@ -1,7 +1,7 @@
 Description
 -----------
 
-Apache OpenOffice® 4.1.14 on Apache Software Foundation:in ilmainen avoimen lähdekoodin toimistosovellusperhe.
+Apache OpenOffice® 4.1.15 on Apache Software Foundation:in ilmainen avoimen lähdekoodin toimistosovellusperhe.
 
 Apache OpenOffice®:ssa on kuusi toimistosovellusta: tekstinkäsittelyohjelma (ja sen internet-julkaisukomponentti), taulukkolaskentaohjelma, diaesitysohjelma, piirrosohjelma, laskentakaavaeditori ja tietokantaohjelma. Joihinkin toimintoihin vaaditaan Java Runtime Environment (JRE).
 
@@ -9,10 +9,10 @@ What's new in this version?
 ---------------------------
 
 Security release:
-Apache OpenOffice 4.1.14 on tietoturvapäivitys, joka sisältää tärkeitä bugikorjauksia. Kaikkia Apache OpenOffice 4.1.13 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
+Apache OpenOffice 4.1.15 on tietoturvapäivitys, joka sisältää tärkeitä bugikorjauksia. Kaikkia Apache OpenOffice 4.1.14 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
 
 Maintenance release:
-Apache OpenOffice 4.1.14 on ylläpitopäivitys, joka sisältää virheenkorjauksia ja muita parannuksia. Kaikkia Apache OpenOffice 4.1.13 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
+Apache OpenOffice 4.1.15 on ylläpitopäivitys, joka sisältää virheenkorjauksia ja muita parannuksia. Kaikkia Apache OpenOffice 4.1.14 tai aiemman version käyttäjiä kehotetaan päivittämään nykyinen versio tähän uusimpaan versioon.
 
 Product features
 ----------------
