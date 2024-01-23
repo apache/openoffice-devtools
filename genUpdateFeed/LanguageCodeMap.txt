@@ -35,7 +35,7 @@ km,Khmer,https://www.openoffice.org/km/download
 ko,Korean,https://www.openoffice.org/ko/download
 lt,Lithuanian,https://www.openoffice.org/lt/download
 nb,Norwegian (Bokmål),https://www.openoffice.org/nb/download
-nl,Dutch,https://www.openoffice.org/nl/downloaden.html
+nl,Dutch,https://www.openoffice.org/nl/download
 pl,Polish,https://www.openoffice.org/pl/download
 pt,Portuguese (European),https://www.openoffice.org/pt/download
 pt-BR,Portuguese (Brazilian),https://www.openoffice.org/pt-br/download
