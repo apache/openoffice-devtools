@@ -6,7 +6,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step_W
 Build Environment:
 
  - Windows 10 Pro 22H2 (64-bit)
- - Cygwin 3.4.9 (64-bit)
+ - Cygwin 3.4.8 (64-bit)
  - Apache Ant 1.9.16
  - MozillaBuild 3.4
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
@@ -15,7 +15,7 @@ Build Environment:
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
  - NASM 2.16.01 (64-bit)
- - Adoptium OpenJDK 8 Update 392 (32-bit)
+ - Adoptium OpenJDK 8 Update 402 (32-bit)
  - NSIS 3.09
 
 Bundled Runtime:
@@ -30,12 +30,12 @@ SDK_PATH="/cygdrive/c/Microsoft_SDKs/Windows/v7.0"
 WDK_HOME="/cygdrive/c/WinDDK/7600.16385.1"
 LANGS_DEV="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
 ./configure \
-    --with-build-version="$(date +"%Y-%m-%d %H:%M") - `uname -sm`  -  Developer Build 4" \
+    --with-build-version="$(date +"%Y-%m-%d %H:%M") - `uname -sm`  -  Developer Build 5" \
     --with-frame-home="$SDK_PATH" \
     --with-psdk-home="$SDK_PATH" \
     --with-midl-path="$SDK_PATH/bin" \
     --with-ant-home="/cygdrive/c/apache-ant-1.9.16" \
-    --with-jdk-home="/cygdrive/c/Program Files (x86)/Eclipse Adoptium/jdk-8.0.392.8-hotspot" \
+    --with-jdk-home="/cygdrive/c/Program Files (x86)/Eclipse Adoptium/jdk-8.0.402.6-hotspot" \
     --with-dmake-url="https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz" \
     --with-directx-home="/cygdrive/c/Microsoft_DirectX_SDK_June_2010" \
     --with-csc-path="/cygdrive/c/Windows/Microsoft.NET/Framework/v3.5" \
