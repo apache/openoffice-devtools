@@ -90,7 +90,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--without-junit \
 	--without-stlport \
 	--with-ant-home=$ANT_HOME \
-	--with-jdk-home=/usr/lib64/jvm/java-1.8.0-openjdk \
+	--with-jdk-home=/usr/lib/jvm/java-1.8.0-openjdk-amd64 \
 	--with-package-format="$AOO_PACKAGE_FORMAT" \
 	--with-lang="${AOO_LANGS}" \
 	$AOO_DEBUG \

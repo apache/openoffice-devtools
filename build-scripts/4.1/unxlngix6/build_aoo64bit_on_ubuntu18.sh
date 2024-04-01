@@ -23,7 +23,7 @@ AOO_BUILD_BETA=
 AOO_BUILD_DEV=
 AOO_BUILD_SRC=
 AOO_DEBUG=
-AOO_LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
+AOO_LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 AOO_PACKAGE_FORMAT="deb rpm"
 
 while true; do
@@ -68,29 +68,26 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
     if [ -e /usr/local/bin/epm ]; then
         epm_param="--with-epm=/usr/local/bin/epm"
     else
-        epm_param="--with-epm-url=https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz"
+        epm_param="--with-epm-url=http://sourceforge.net/projects/oooextras.mirror/files/epm-3.7.tar.gz"
     fi
     if [ -e /usr/local/bin/dmake ]; then
         dmake_param="--with-dmake-path=/usr/local/bin/dmake"
     else
-        dmake_param="--with-dmake-url=https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz"
+        dmake_param="--with-dmake-url=http://sourceforge.net/projects/oooextras.mirror/files/dmake-4.12.tar.bz2"
     fi
-    ( ./configure   \
-	--with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`${AOO_BUILD_VERSION}" \
+    (./configure   \
+	--with-build-version="$(date +"%Y-%m-%d %H:%M") - `uname -sm`${AOO_BUILD_VERSION}" \
 	${AOO_VERBOSE_BUILD} \
 	--with-system-stdlibs \
 	--enable-crashdump=yes \
 	--enable-category-b \
-	--enable-beanshell \
 	--enable-wiki-publisher \
 	--enable-bundled-dictionaries \
 	--enable-opengl  \
 	--enable-dbus  \
-	--enable-gstreamer \
 	--without-junit \
 	--without-stlport \
-	--with-ant-home=$ANT_HOME \
-	--with-jdk-home=/usr/lib64/jvm/java-1.8.0-openjdk \
+	--with-jdk-home=/usr/lib/jvm/java-1.8.0-openjdk-amd64 \
 	--with-package-format="$AOO_PACKAGE_FORMAT" \
 	--with-lang="${AOO_LANGS}" \
 	$AOO_DEBUG \
