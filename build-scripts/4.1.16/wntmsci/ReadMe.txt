@@ -6,7 +6,7 @@ https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step_W
 Build Environment:
 
  - Windows 10 Pro 22H2 (64-bit)
- - Cygwin 3.4.9 (64-bit)
+ - Cygwin 3.5.1 (64-bit)
  - Apache Ant 1.9.16
  - MozillaBuild 3.4
  - MS Visual C++ Compiler 2008 Standard Edition (32-bit)
@@ -16,7 +16,7 @@ Build Environment:
  - MS DirectX SDK (June 2010)
  - NASM 2.16.01 (64-bit)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
- - NSIS 3.09
+ - NSIS 3.10
 
 Bundled Runtime:
 
