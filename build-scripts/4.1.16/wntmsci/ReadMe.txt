@@ -14,7 +14,7 @@ Build Environment:
  - MS Windows Driver Kit 7.1.0.7600
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
- - NASM 2.16.01 (64-bit)
+ - NASM 2.16.02 (64-bit)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
  - NSIS 3.10
 
