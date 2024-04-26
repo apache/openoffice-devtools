@@ -51,6 +51,7 @@ RUN yum install \
        perl-XML-Parser \
        perl-Crypt-SSLeay \
        perl-Env \
+       perl-IPC-Cmd \
        perl-LWP-Protocol-https \
        perl-Test-Simple \
        perl-File-Path
