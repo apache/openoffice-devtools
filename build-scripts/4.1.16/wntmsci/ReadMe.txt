@@ -1,4 +1,4 @@
-This is the configuration used for AOO 4.1.16.RC1:
+This is the configuration used for AOO 4.1.16-RC1:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step_Windows
@@ -14,7 +14,7 @@ Build Environment:
  - MS Windows Driver Kit 7.1.0.7600
  - MS Windows SDK for Windows 7.0.7600
  - MS DirectX SDK (June 2010)
- - NASM 2.16.02 (64-bit)
+ - NASM 2.16.03 (64-bit)
  - Oracle Java Development Kit 7 Update 80 (32-bit)
  - NSIS 3.10
 
