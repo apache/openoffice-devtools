@@ -14,7 +14,7 @@ AOO_BUILD_BETA=
 AOO_BUILD_DEV=
 AOO_BUILD_SRC=
 AOO_LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
-AOO_ANT_HOME="/cygdrive/c/apache-ant-1.9.15"
+AOO_ANT_HOME="/cygdrive/c/apache-ant-1.9.16"
 AOO_JDK_HOME="/cygdrive/c/Program Files (x86)/Java/jdk1.7.0_80"
 AOO_CSC_PATH="/cygdrive/c/Windows/Microsoft.NET/Framework/v3.5"
 AOO_CL_HOME="/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 9.0/VC"
@@ -23,7 +23,7 @@ AOO_SDK_PATH="/cygdrive/c/Microsoft_SDKs/Windows/v7.0"
 AOO_WDK_HOME="/cygdrive/c/WinDDK/7600.16385.1"
 AOO_DIRECTX_HOME="/cygdrive/c/Microsoft_DirectX_SDK_June_2010"
 AOO_NASM_HOME="/cygdrive/c/Program Files/NASM"
-AOO_MOZBUILD="/cygdrive/c/mozilla-build-3.3"
+AOO_MOZBUILD="/cygdrive/c/mozilla-build-3.4"
 AOO_NSIS_HOME="/cygdrive/c/NSIS"
 
 while true; do

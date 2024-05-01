@@ -16,7 +16,7 @@ AOO_BUILD_SRC=
 AOO_DEBUG=
 AOO_LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
 AOO_ANT_HOME="/cygdrive/c/apache-ant-1.10.10"
-AOO_JDK_HOME="/cygdrive/c/Program Files (x86)/ojdkbuild/java-1.8.0-openjdk-1.8.0.312-1"
+AOO_JDK_HOME="/cygdrive/c/Program Files (x86)/Eclipse Adoptium/jdk-8.0.402.6-hotspot"
 AOO_CSC_PATH="/cygdrive/c/Windows/Microsoft.NET/Framework/v3.5"
 AOO_CL_HOME="/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 9.0/VC"
 AOO_ASM_HOME="/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 9.0/VC/bin"
@@ -26,7 +26,7 @@ AOO_DIRECTX_HOME="/cygdrive/c/Microsoft_DirectX_SDK_June_2010"
 AOO_NASM_HOME="/cygdrive/c/Program Files/NASM"
 AOO_JUNIT="/cygdrive/c/junit/junit-4.13.2.jar"
 AOO_HAMCREST="/cygdrive/c/hamcrest/hamcrest-core-1.3.jar"
-AOO_MOZBUILD="/cygdrive/c/mozilla-build-3.3"
+AOO_MOZBUILD="/cygdrive/c/mozilla-build-3.4"
 AOO_NSIS_HOME="/cygdrive/c/NSIS"
 
 while true; do
