@@ -54,35 +54,35 @@
        cx="-12.435245"
        cy="76.461525"
        r="2"
-       style="opacity:0.85;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
+       style="opacity:0.82;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
        id="circle2"
        transform="rotate(-60)" />
     <circle
        cx="-12.435245"
        cy="70.461525"
        r="2"
-       style="opacity:0.7;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
+       style="opacity:0.64;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
        id="circle3"
        transform="rotate(-60)" />
     <circle
        cx="-7.2390924"
        cy="67.461525"
        r="2"
-       style="opacity:0.55;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
+       style="opacity:0.46;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
        id="circle4"
        transform="rotate(-60)" />
     <circle
        cx="-2.0429406"
        cy="70.461525"
        r="2"
-       style="opacity:0.4;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
+       style="opacity:0.28;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
        id="circle5"
        transform="rotate(-60)" />
     <circle
        cx="-2.0429406"
        cy="76.461525"
        r="2"
-       style="opacity:0.25;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
+       style="opacity:0.1;fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1"
        id="circle6"
        transform="rotate(-60)" />
   </g>
