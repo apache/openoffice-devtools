@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16.000311"
+   height="16.000315"
+   viewBox="52 -51 16.000311 16.000315"
+   version="1.1"
+   style="fill:none;stroke-linecap:round;stroke-linejoin:round"
+   id="svg7"
+   sodipodi:docname="spinner-16-02.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   inkscape:export-filename="spinner-16-02.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="47.125736"
+     inkscape:cx="7.8725561"
+     inkscape:cy="7.8619462"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g7" />
+  <g
+     transform="matrix(1,0,0,-1,2.9001502e-5,3e-5)"
+     id="g7"
+     style="fill:none;fill-opacity:1;stroke:#df0000;stroke-opacity:1">
+    <path
+       id="path12"
+       style="fill:#505050;fill-opacity:1;stroke:none;stroke-width:0.25011"
+       d="m 64.001192,49.940546 a 2.0001645,2.0016028 0 0 1 -0.243576,0.117802 8.000658,8.0064111 0 0 1 -10.685741,-3.048412 8.000658,8.0064111 0 0 1 2.928502,-10.937173 8.000658,8.0064111 0 0 1 10.929314,2.930607 8.000658,8.0064111 0 0 1 1.068822,3.905346 8.000658,8.0064111 0 0 1 0.0014,0.09776 l -0.0017,10e-4 a 8.000658,8.0064111 0 0 1 0.0015,0.05417 2.0001645,2.0016028 0 0 1 -0.998695,1.679649 2.0001645,2.0016028 0 0 1 -2.732644,-0.73419 2.0001645,2.0016028 0 0 1 -0.267989,-1.000526 4.000329,4.0032055 0 0 0 -0.535979,-2.001053 4.000329,4.0032055 0 0 0 -5.463303,-1.46494 4.000329,4.0032055 0 0 0 -1.465606,5.468224 4.000329,4.0032055 0 0 0 5.466013,1.465666 2.0001645,2.0016028 0 0 1 2.731651,0.732471 2.0001645,2.0016028 0 0 1 -0.731944,2.733615 z" />
+  </g>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Matthias Seidel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
