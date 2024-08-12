@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   viewBox="52 -51 16 16"
+   version="1.1"
+   style="fill:none;stroke-linecap:round;stroke-linejoin:round"
+   id="svg38"
+   sodipodi:docname="spinner-16-07.svg"
+   inkscape:export-filename="spinner-16-07.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs38" />
+  <sodipodi:namedview
+     id="namedview38"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="55.062304"
+     inkscape:cx="7.9909479"
+     inkscape:cy="8.0000285"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg38" />
+  <path
+     d="m 53.071769,-47.000244 a 1.5001348,1.5001348 0 1 0 2.598291,1.500167 5,5 0 0 1 1.829863,-1.829863 1.5001348,1.5001348 0 0 1 -1.500167,-2.598291 8,8 0 0 0 -2.927987,2.927987 z"
+     style="fill:#0a0a0a;stroke:none;stroke-width:0.25;opacity:0.3"
+     id="path48" />
+  <path
+     d="m 52,-42.999972 a 8,8 0 0 0 1.071769,3.999756 1.5000103,1.5000103 0 0 0 2.598291,-1.49965 5,5 0 0 1 -0.670243,-2.500106 1.5,1.5 0 0 1 -2.999817,0 z"
+     style="fill:#0a0a0a;stroke:none;opacity:0.1"
+     id="path47" />
+  <path
+     d="m 52,-42.999972 a 1.5,1.5 0 0 0 2.999817,0 5,5 0 0 1 0.670243,-2.500105 1.5001348,1.5001348 0 1 1 -2.598291,-1.500167 A 8,8 0 0 0 52,-42.999972 Z"
+     style="fill:#0a0a0a;stroke:none;opacity:0.2"
+     id="path46" />
+  <path
+     d="m 63.999784,-36.071712 a 1.5000103,1.5000103 0 0 0 -1.49965,-2.598291 5,5 0 0 1 -0.999939,0.439766 v -4.769735 a 1.5001668,1.5001668 0 0 0 -3.000333,0 v 6.499862 a 1.5,1.5 0 0 0 1.500166,1.500167 8,8 0 0 0 3.999756,-1.071769 z"
+     style="fill:#0a0a0a;stroke:none"
+     id="path45" />
+  <path
+     d="m 66.928288,-39.000216 a 1.5000103,1.5000103 0 0 0 -2.598291,-1.49965 5,5 0 0 1 -1.829863,1.829863 1.5000103,1.5000103 0 0 1 1.49965,2.598291 8,8 0 0 0 2.928504,-2.928504 z"
+     style="fill:#0a0a0a;stroke:none;opacity:0.9"
+     id="path44" />
+  <path
+     d="m 68.000057,-42.999972 a 1.5,1.5 0 0 0 -2.999817,0 5,5 0 0 1 -0.670243,2.500106 1.5000103,1.5000103 0 0 1 2.598291,1.49965 8,8 0 0 0 1.071769,-3.999756 z"
+     style="fill:#0a0a0a;stroke:none;opacity:0.8"
+     id="path43" />
+  <path
+     d="m 66.928288,-47.000244 a 1.5001348,1.5001348 0 0 0 -2.598291,1.500167 5,5 0 0 1 0.670243,2.500105 1.5,1.5 0 0 1 2.999817,0 8,8 0 0 0 -1.071769,-4.000272 z"
+     style="fill:#0a0a0a;stroke:none;opacity:0.7"
+     id="path42" />
+  <path
+     d="m 62.500134,-47.32994 a 5,5 0 0 1 1.829863,1.829863 1.5001348,1.5001348 0 0 1 2.598291,-1.500167 8,8 0 0 0 -2.928504,-2.927987 1.5000103,1.5000103 0 0 0 -1.49965,2.598291 z"
+     style="fill:#0a0a0a;stroke:none;opacity:0.6"
+     id="path41" />
+  <path
+     d="m 60.000028,-51 a 8,8 0 0 0 -4.000272,1.071769 1.5001348,1.5001348 0 0 0 1.500167,2.598291 5,5 0 0 1 2.500105,-0.670243 1.5,1.5 0 0 1 0,-2.999817 z"
+     style="fill:#0a0a0a;stroke:none;stroke-width:0.25;opacity:0.4"
+     id="path40" />
+  <path
+     d="m 60.000028,-51 a 1.5,1.5 0 0 0 0,2.999817 5,5 0 0 1 2.500106,0.670243 1.5000103,1.5000103 0 0 1 1.49965,-2.598291 A 8,8 0 0 0 60.000028,-51 Z"
+     style="fill:#0a0a0a;stroke:none;opacity:0.5"
+     id="path39" />
+  <metadata
+     id="metadata48">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Matthias Seidel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
