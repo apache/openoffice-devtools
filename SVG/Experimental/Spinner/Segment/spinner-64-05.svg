@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64"
+   height="64"
+   viewBox="28 -62 64 64"
+   version="1.1"
+   style="fill:none;stroke-linecap:round;stroke-linejoin:round"
+   id="svg27"
+   sodipodi:docname="spinner-64-05.svg"
+   inkscape:export-filename="spinner-64-05.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs27" />
+  <sodipodi:namedview
+     id="namedview27"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="13.792638"
+     inkscape:cx="32.00983"
+     inkscape:cy="32.00983"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg27" />
+  <path
+     d="m 76.233748,-18.317912 a 20,20 0 0 1 -14.233756,8.217586 V 1.9371826 A 32,32 0 0 0 86.658435,-12.299158 Z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path33" />
+  <path
+     d="m 43.766479,-18.317912 -10.425203,6.018754 A 32,32 0 0 0 58.000236,1.9371826 V -10.100326 a 20,20 0 0 1 -14.233757,-8.217586 z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path32" />
+  <path
+     d="m 32.287077,-45.999943 a 32,32 0 0 0 0,32.000114 l 27.713037,-16.000057 z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     id="path31" />
+  <path
+     d="m 61.999992,-61.937472 v 12.038025 a 20,20 0 0 1 14.233756,8.217587 l 10.424687,-6.018754 A 32,32 0 0 0 61.999992,-61.937472 Z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path30" />
+  <path
+     d="m 58.000236,-61.937472 a 32,32 0 0 0 -24.65896,14.236858 l 10.425203,6.018754 a 20,20 0 0 1 14.233757,-8.217587 z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path29" />
+  <path
+     d="M 92.000228,-29.999886 A 32,32 0 0 0 88.65883,-44.236743 l -10.425204,6.018754 a 20,20 0 0 1 0,16.435689 l 10.425204,6.018754 a 32,32 0 0 0 3.341398,-14.23634 z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path28" />
+  <metadata
+     id="metadata33">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Matthias Seidel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
