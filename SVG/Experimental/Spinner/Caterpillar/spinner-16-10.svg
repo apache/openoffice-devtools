@@ -6,7 +6,7 @@
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
    id="svg10"
-   sodipodi:docname="spinner-16-10.svg"
+   sodipodi:docname="spinner-16-10a.svg"
    inkscape:export-filename="spinner-16-10.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -41,27 +41,23 @@
      inkscape:current-layer="svg10" />
   <path
      d="m 65.196094,-42.000033 a 2,2 0 0 0 -1.999878,1.999878 2,2 0 0 0 1.999878,2.000395 2,2 0 0 0 1.999878,-2.000395 2,2 0 0 0 -1.999878,-1.999878 z"
-     style="fill:#a0a0a0;stroke:none;stroke-width:0.25"
+     style="fill:#a0a0a0;stroke:none;stroke-width:0.25;stroke-opacity:1;stroke-dasharray:none"
      id="path16" />
   <path
-     d="m 65.196094,-42.000033 a 2,2 0 0 1 1.999878,1.999878 2,2 0 0 1 -1.999878,2.000395 2,2 0 0 1 -1.999878,-2.000395 2,2 0 0 1 1.999878,-1.999878 z"
-     style="fill:#a0a0a0;stroke:none;stroke-width:0.25"
-     id="path15" />
-  <path
      d="m 54.994132,-47.992432 a 2,2 0 0 0 -1.922363,0.992188 8,8 0 0 0 0,8.000028 2.0000935,2.0000935 0 0 0 3.464388,-1.999878 4,4 0 0 1 0,-3.999755 2,2 0 0 0 -1.542025,-2.992583 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-opacity:1;stroke-dasharray:none"
      id="path14" />
   <path
      d="m 65.196094,-48.000183 a 2,2 0 0 0 -1.999878,2.000395 2,2 0 0 0 1.999878,1.999878 2,2 0 0 0 1.999878,-1.999878 2,2 0 0 0 -1.999878,-2.000395 z"
-     style="fill:#a0a0a0;stroke:none;stroke-width:0.25"
+     style="fill:#a0a0a0;stroke:none;stroke-width:0.25;stroke-opacity:1;stroke-dasharray:none"
      id="path13" />
   <path
      d="m 60.000028,-34.999943 a 2,2 0 0 0 1.999878,-1.999878 2,2 0 0 0 -1.999878,-2.000395 2,2 0 0 0 -1.999877,2.000395 2,2 0 0 0 1.999877,1.999878 z"
-     style="fill:#a0a0a0;stroke:none;stroke-width:0.25"
+     style="fill:#a0a0a0;stroke:none;stroke-width:0.25;stroke-opacity:1;stroke-dasharray:none"
      id="path12" />
   <path
      d="m 60.000028,-51 a 2,2 0 0 0 -1.999877,1.999878 2,2 0 0 0 1.999877,1.999878 2,2 0 0 0 1.999878,-1.999878 A 2,2 0 0 0 60.000028,-51 Z"
-     style="fill:#a0a0a0;stroke:none;stroke-width:0.25"
+     style="fill:#a0a0a0;stroke:none;stroke-width:0.25;stroke-opacity:1;stroke-dasharray:none"
      id="path11" />
   <metadata
      id="metadata16">
