@@ -5,7 +5,7 @@
    viewBox="44 -56 31.999999 32"
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
-   id="svg20"
+   id="svg52"
    sodipodi:docname="spinner-32-12.svg"
    inkscape:export-filename="spinner-32-12.png"
    inkscape:export-xdpi="96"
@@ -19,9 +19,9 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs20" />
+     id="defs52" />
   <sodipodi:namedview
-     id="namedview20"
+     id="namedview52"
      pagecolor="#ffffff"
      bordercolor="#cccccc"
      borderopacity="1"
@@ -30,33 +30,33 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="27.53143"
-     inkscape:cx="16.018056"
-     inkscape:cy="15.999895"
+     inkscape:zoom="27.531074"
+     inkscape:cx="15.981941"
+     inkscape:cy="16.000102"
      inkscape:window-width="1920"
      inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg20" />
+     inkscape:current-layer="svg52" />
   <path
-     d="m 52.59224,-36.979972 -4.455025,7.716325 a 16,16 0 0 0 21.4328,2.086177 l -8.481652,-4.896859 a 8,8 0 0 1 -8.496123,-4.905643 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25"
-     id="path24" />
+     d="m 73.275732,-48.930664 -4.37751,7.581449 a 9,9 0 0 1 -5.617228,9.730156 l 6.884851,3.974434 a 16,16 0 0 0 3.109887,-21.286039 z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.25"
+     id="path56" />
   <path
-     d="m 72.82253,-49.569902 -4.896859,8.481653 a 8,8 0 0 1 -4.905643,8.496123 l 7.716325,4.455025 a 16,16 0 0 0 2.086177,-21.432801 z"
-     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
-     id="path23" />
+     d="m 44,-39.962219 a 16,16 0 0 0 2.724382,8.892997 l 4.37751,-7.581966 a 9,9 0 0 1 5.617228,-9.729639 l -6.884851,-3.974951 A 16,16 0 0 0 44,-39.962219 Z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.25"
+     id="path55" />
   <path
-     d="m 49.263761,-51.862785 a 16,16 0 0 0 -2.086177,21.4328 l 4.896859,-8.481652 a 8,8 0 0 1 4.905126,-8.496123 z"
-     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
-     id="path22" />
-  <path
-     d="m 59.190287,-55.979329 a 16,16 0 0 0 -8.760189,3.156913 l 8.481653,4.896859 a 8,8 0 0 1 8.496123,4.905126 l 4.455025,-7.715808 a 16,16 0 0 0 -12.672612,-5.24309 z"
+     d="m 60.037781,-23.999886 a 16,16 0 0 0 8.892997,-2.724382 l -7.581966,-4.37751 a 9,9 0 0 1 -9.729639,-5.617228 l -3.974951,6.884851 a 16,16 0 0 0 12.393559,5.834269 z"
      style="fill:#0a0a0a;fill-opacity:1;stroke:none"
-     id="path21" />
+     id="path54" />
+  <path
+     d="m 59.961816,-56 a 16,16 0 0 0 -8.89248,2.724382 l 7.581449,4.37751 a 9,9 0 0 1 9.730156,5.617228 l 3.974434,-6.884851 A 16,16 0 0 0 59.961816,-56 Z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     id="path53" />
   <metadata
-     id="metadata24">
+     id="metadata56">
     <rdf:RDF>
       <cc:Work
          rdf:about="">

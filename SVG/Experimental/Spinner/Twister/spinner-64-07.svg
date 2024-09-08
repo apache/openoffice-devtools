@@ -30,9 +30,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="13.765613"
-     inkscape:cx="31.963706"
-     inkscape:cy="32.000028"
+     inkscape:zoom="13.765586"
+     inkscape:cx="31.963768"
+     inkscape:cy="32.000091"
      inkscape:window-width="1920"
      inkscape:window-height="1056"
      inkscape:window-x="0"
@@ -40,20 +40,20 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg20" />
   <path
-     d="M 44.125631,-28.000008 31.524849,-15.399744 A 32,32 0 0 0 71.850553,-0.27508545 L 58.000236,-14.125403 A 16,16 0 0 1 44.125631,-28.000008 Z"
+     d="M 42.111283,-28.000008 30.868559,-16.757284 A 32,32 0 0 0 70.380876,0.26958415 L 58.000236,-12.111572 A 18,18 0 0 1 42.111283,-28.000008 Z"
      style="fill:#a0a0a0;fill-opacity:1;stroke:none"
      id="path24" />
   <path
-     d="M 89.724915,-41.850326 75.874597,-28.000008 A 16,16 0 0 1 61.999992,-14.125403 L 74.600256,-1.5251383 A 32,32 0 0 0 89.724915,-41.850326 Z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25"
+     d="m 90.269584,-40.380648 -12.381156,12.38064 A 18,18 0 0 1 61.999992,-12.111572 L 73.242716,-0.86884766 A 32,32 0 0 0 90.269584,-40.380648 Z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
      id="path23" />
   <path
-     d="M 45.399455,-58.475151 A 32,32 0 0 0 30.275313,-18.149447 L 44.125631,-31.999764 A 16,16 0 0 1 58.000236,-45.874369 Z"
+     d="m 46.757511,-59.131441 a 32,32 0 0 0 -17.026867,39.512317 l 12.380639,-12.38064 a 18,18 0 0 1 15.888953,-15.888953 z"
      style="fill:#0a0a0a;fill-opacity:1;stroke:none"
      id="path22" />
   <path
-     d="m 62.032031,-61.935404 a 32,32 0 0 0 -13.882357,2.210717 l 13.850318,13.850318 a 16,16 0 0 1 13.874605,13.874605 L 88.474862,-44.600545 A 32,32 0 0 0 62.032031,-61.935404 Z"
-     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     d="m 58.864783,-61.979846 a 32,32 0 0 0 -9.245431,1.71049 l 12.38064,12.380639 a 18,18 0 0 1 15.888436,15.888953 L 89.131152,-43.242489 A 32,32 0 0 0 58.864783,-61.979846 Z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.25"
      id="path21" />
   <metadata
      id="metadata24">

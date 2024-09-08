@@ -30,9 +30,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="13.765543"
-     inkscape:cx="31.963868"
-     inkscape:cy="32.000191"
+     inkscape:zoom="13.765579"
+     inkscape:cx="32.036429"
+     inkscape:cy="32.000107"
      inkscape:window-width="1920"
      inkscape:window-height="1056"
      inkscape:window-x="0"
@@ -40,20 +40,20 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg20" />
   <path
-     d="M 50.189343,-17.360864 V 0.45923665 A 32,32 0 0 0 89.398319,-17.360864 H 69.810885 a 16,16 0 0 1 -19.621542,0 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25"
+     d="M 48.765141,-15.936662 V -0.0368571 A 32,32 0 0 0 88.744096,-15.936662 H 71.235087 a 18,18 0 0 1 -22.469946,0 z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
      id="path24" />
   <path
-     d="M 29.540991,-39.810657 A 32,32 0 0 0 47.360575,-0.6016805 V -20.189115 a 16,16 0 0 1 0,-19.621542 z"
-     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     d="M 30.037085,-41.234859 A 32,32 0 0 0 45.93689,-1.2559041 V -18.764913 a 18,18 0 0 1 0,-22.469946 z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.25"
      id="path23" />
   <path
-     d="m 72.639136,-59.398092 v 19.587435 a 16,16 0 0 1 0,19.621542 H 90.459237 A 32,32 0 0 0 72.639136,-59.398092 Z"
-     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     d="m 74.063338,-58.743868 v 17.509009 a 18,18 0 0 1 0,22.469946 H 89.963143 A 32,32 0 0 0 74.063338,-58.743868 Z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.25"
      id="path22" />
   <path
-     d="m 60.522563,-61.995866 a 32,32 0 0 0 -29.920655,19.356441 h 19.587435 a 16,16 0 0 1 19.621542,0 v -17.819584 a 32,32 0 0 0 -9.288322,-1.536857 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     d="M 62.041333,-61.934888 A 32,32 0 0 0 31.256132,-44.06311 h 17.509009 a 18,18 0 0 1 22.469946,0 v -15.899805 a 32,32 0 0 0 -9.193754,-1.971973 z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25"
      id="path21" />
   <metadata
      id="metadata24">

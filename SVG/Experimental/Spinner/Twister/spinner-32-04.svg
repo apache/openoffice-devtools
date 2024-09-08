@@ -5,7 +5,7 @@
    viewBox="44 -56 31.999999 32"
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
-   id="svg20"
+   id="svg52"
    sodipodi:docname="spinner-32-04.svg"
    inkscape:export-filename="spinner-32-04.png"
    inkscape:export-xdpi="96"
@@ -19,9 +19,9 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs20" />
+     id="defs52" />
   <sodipodi:namedview
-     id="namedview20"
+     id="namedview52"
      pagecolor="#ffffff"
      bordercolor="#cccccc"
      borderopacity="1"
@@ -30,33 +30,33 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="27.531082"
-     inkscape:cx="15.981937"
-     inkscape:cy="16.000098"
+     inkscape:zoom="27.531285"
+     inkscape:cx="16.018141"
+     inkscape:cy="15.999979"
      inkscape:window-width="1920"
      inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg20" />
+     inkscape:current-layer="svg52" />
   <path
-     d="m 55.094413,-33.680432 v 8.91005 a 16,16 0 0 0 19.604488,-8.91005 h -9.793717 a 8,8 0 0 1 -9.810771,0 z"
-     style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.25"
-     id="path24" />
-  <path
-     d="m 44.770496,-44.905587 a 16,16 0 0 0 8.91005,19.604488 v -9.793717 a 8,8 0 0 1 0,-9.810771 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
-     id="path23" />
-  <path
-     d="m 66.319568,-54.699304 v 9.793717 a 8,8 0 0 1 0,9.810771 h 8.91005 a 16,16 0 0 0 -8.91005,-19.604488 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none;stroke-width:0.25"
-     id="path22" />
-  <path
-     d="m 60.26154,-55.997933 a 16,16 0 0 0 -14.960844,9.678479 h 9.793717 a 8,8 0 0 1 9.810771,0 v -8.91005 a 16,16 0 0 0 -4.643644,-0.768429 z"
+     d="m 54.382829,-32.968331 v 7.949902 a 16,16 0 0 0 19.988961,-7.949902 h -8.754505 a 9,9 0 0 1 -11.234456,0 z"
      style="fill:#a0a0a0;fill-opacity:1;stroke:none"
-     id="path21" />
+     id="path56" />
+  <path
+     d="m 45.018542,-45.617171 a 16,16 0 0 0 7.949903,19.988961 v -8.754505 a 9,9 0 0 1 0,-11.234456 z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     id="path55" />
+  <path
+     d="m 67.031669,-54.372192 v 8.755021 a 9,9 0 0 1 0,11.234456 h 7.949902 a 16,16 0 0 0 -7.949902,-19.989477 z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     id="path54" />
+  <path
+     d="m 61.020667,-55.967444 a 16,16 0 0 0 -15.392859,8.935889 h 8.755021 a 9,9 0 0 1 11.234456,0 v -7.949903 a 16,16 0 0 0 -4.596618,-0.985986 z"
+     style="fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path53" />
   <metadata
-     id="metadata24">
+     id="metadata56">
     <rdf:RDF>
       <cc:Work
          rdf:about="">

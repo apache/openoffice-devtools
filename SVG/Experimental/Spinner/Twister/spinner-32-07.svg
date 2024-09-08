@@ -5,7 +5,7 @@
    viewBox="44 -56 31.999999 32"
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
-   id="svg20"
+   id="svg52"
    sodipodi:docname="spinner-32-07.svg"
    inkscape:export-filename="spinner-32-07.png"
    inkscape:export-xdpi="96"
@@ -19,9 +19,9 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs20" />
+     id="defs52" />
   <sodipodi:namedview
-     id="namedview20"
+     id="namedview52"
      pagecolor="#ffffff"
      bordercolor="#cccccc"
      borderopacity="1"
@@ -30,33 +30,33 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="27.531607"
-     inkscape:cx="16.017953"
-     inkscape:cy="15.999793"
+     inkscape:zoom="27.531656"
+     inkscape:cx="16.017925"
+     inkscape:cy="15.999764"
      inkscape:window-width="1920"
      inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg20" />
+     inkscape:current-layer="svg52" />
   <path
-     d="m 52.062557,-39.000004 -6.299874,6.300391 a 16,16 0 0 0 20.162594,7.561812 l -6.925159,-6.924642 a 8,8 0 0 1 -6.937561,-6.937561 z"
+     d="m 51.0559,-39.000004 -5.621362,5.621362 a 16,16 0 0 0 19.7559,8.513176 l -6.19032,-6.19032 A 9,9 0 0 1 51.0559,-39.000004 Z"
      style="fill:#a0a0a0;fill-opacity:1;stroke:none"
-     id="path24" />
+     id="path56" />
   <path
-     d="m 74.862199,-45.925163 -6.924642,6.925159 a 8,8 0 0 1 -6.937561,6.937561 l 6.300391,6.299874 a 16,16 0 0 0 7.561812,-20.162594 z"
+     d="m 75.134534,-45.190324 -6.19032,6.19032 a 9,9 0 0 1 -7.944218,7.944218 l 5.621362,5.621362 a 16,16 0 0 0 8.513176,-19.7559 z"
+     style="fill:#0a0a0a;stroke-width:0.25;fill-opacity:1;stroke:none"
+     id="path55" />
+  <path
+     d="m 53.378756,-54.565462 a 16,16 0 0 0 -8.513693,19.7559 l 6.190837,-6.19032 a 9,9 0 0 1 7.944218,-7.944218 z"
      style="fill:#0a0a0a;fill-opacity:1;stroke:none"
-     id="path23" />
+     id="path54" />
   <path
-     d="m 52.699727,-54.237317 a 16,16 0 0 0 -7.562329,20.162594 l 6.925159,-6.925159 a 8,8 0 0 1 6.937561,-6.937561 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
-     id="path22" />
-  <path
-     d="m 61.016016,-55.967444 a 16,16 0 0 0 -6.941179,1.104842 l 6.925159,6.925159 a 8,8 0 0 1 6.937561,6.937561 l 6.299874,-6.300391 a 16,16 0 0 0 -13.221415,-8.667171 z"
+     d="m 59.43265,-55.989665 a 16,16 0 0 0 -4.622974,0.854728 l 6.19032,6.190837 a 9,9 0 0 1 7.944218,7.944218 l 5.621362,-5.621362 A 16,16 0 0 0 59.43265,-55.989665 Z"
      style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.25"
-     id="path21" />
+     id="path53" />
   <metadata
-     id="metadata24">
+     id="metadata56">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
