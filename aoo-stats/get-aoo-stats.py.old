@@ -19,16 +19,20 @@
 #
 ################################################################
 
+
 # This script queries the SourceForge REST API for download statistics for
 # sets of files on SourceForge, on a given date, in ISO format (YYYY-MM-DD)
 # passed in as a command line argument. The download count for that date
 # is written to stdout.
 
-import urllib.request
+
+import urllib
 import json
 import sys
 import datetime
 import time
+
+from urllib import urlencode
 
 def getSourceForgeStats(download, startDate, endDate):
 
@@ -38,22 +42,22 @@ def getSourceForgeStats(download, startDate, endDate):
 
     while attempts < 3:
         try:
-            conn = urllib.request.urlopen(url)
+            conn = urllib.urlopen(url)
             data = conn.read()
 
             return data
 
         except:
             attempts += 1
-            print("error " + str(attempts))
+            print "error " + str(attempts)
 
     return ""
 
 def printSyntax():
-    print("syntax: python get-aoo-stats.py <urls.lst> <iso-date> [<iso-date>]")
-    print("where <urls.lst> is a list of files URLs to gather stats on,")
-    print("and <iso-date> is a date of interest, in YYYY-MM-DD format.")
-    print("If two dates are given this expresses a range of dates.")
+    print "syntax: python get-aoo-stats.py <urls.lst> <iso-date> [<iso-date>]"
+    print "where <urls.lst> is a list of files URLs to gather stats on,"
+    print "and <iso-date> is a date of interest, in YYYY-MM-DD format."
+    print "If two dates are given this expresses a range of dates."
 
 
 if len(sys.argv) == 2:
@@ -69,11 +73,10 @@ else:
     printSyntax()
     exit(-1)
 
-# all of the URLs for AOO install downloads
+# all of the URLs for AOO 3.4 install downloads
 downloads = [line.strip() for line in open(sys.argv[1])]
 
 count = 0
-data = {}
 
 for download in downloads :
 
@@ -86,11 +89,11 @@ for download in downloads :
 
     day_count = data["total"]
 
-    print(download + "," + str(day_count))
+    print download + "," + str(day_count)
 
     count = count + day_count
 
-print("date range: " + startDate + " - " + endDate)
-print("stats_updated: " + data["stats_updated"])
-print("count: " + str(count))
+print "date range: " + startDate + " - " + endDate
+print "stats_updated: " + data["stats_updated"]
+print "count: " + str(count)
 
