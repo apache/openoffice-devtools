@@ -87,6 +87,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--enable-dbus  \
 	--without-junit \
 	--without-stlport \
+	--with-system-expat \
 	--with-jdk-home=/usr/lib64/jvm/java-1.8.0-openjdk \
 	--with-package-format="$AOO_PACKAGE_FORMAT" \
 	--with-lang="${AOO_LANGS}" \
