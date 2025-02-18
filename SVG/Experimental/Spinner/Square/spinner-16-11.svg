@@ -5,12 +5,12 @@
    viewBox="52 -51 16 16"
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
-   id="svg13"
+   id="svg17"
    sodipodi:docname="spinner-16-11.svg"
-   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
    inkscape:export-filename="spinner-16-11.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -19,9 +19,9 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs13" />
+     id="defs17" />
   <sodipodi:namedview
-     id="namedview13"
+     id="namedview17"
      pagecolor="#ffffff"
      bordercolor="#cccccc"
      borderopacity="1"
@@ -31,22 +31,30 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="56.562298"
-     inkscape:cx="8.0088683"
-     inkscape:cy="8.0000285"
+     inkscape:cx="8.0088684"
+     inkscape:cy="8.0000286"
      inkscape:window-width="1920"
      inkscape:window-height="1050"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg13" />
+     inkscape:current-layer="svg17" />
   <path
-     d="m 52,-39.000216 h 3.999756 v -8.000028 H 52 v 4.000272 z"
-     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
-     id="path15" />
-  <path
-     d="m 52,-51 v 3.999756 h 3.999756 8.000028 v 8.000028 H 55.999756 52 v 4.000273 H 68.000057 V -51 Z"
+     d="M 68.000057,-39.000216 H 63.999784 55.999756 52 v 4.000273 h 16.000057 z"
      style="opacity:0.8;fill:#a0a0a0;fill-opacity:1;stroke:none"
-     id="path14" />
+     id="path21" />
+  <path
+     d="m 68.000057,-47.000244 h -4.000273 v 8.000028 h 4.000273 v -3.999756 z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     id="path20" />
+  <path
+     d="m 52,-39.000216 h 3.999756 v -8.000028 H 52 Z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     id="path19" />
+  <path
+     d="m 52,-51 v 3.999756 h 3.999756 8.000028 4.000273 V -51 Z"
+     style="opacity:0.8;fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path18" />
   <metadata
      id="metadata1">
     <rdf:RDF>

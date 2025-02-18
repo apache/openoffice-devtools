@@ -5,7 +5,7 @@
    viewBox="0 -64 64 64"
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
-   id="svg13"
+   id="svg18"
    sodipodi:docname="spinner-64-12.svg"
    inkscape:export-filename="spinner-64-12.png"
    inkscape:export-xdpi="96"
@@ -19,9 +19,9 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs13" />
+     id="defs18" />
   <sodipodi:namedview
-     id="namedview13"
+     id="namedview18"
      pagecolor="#ffffff"
      bordercolor="#cccccc"
      borderopacity="1"
@@ -31,24 +31,32 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="14.140575"
-     inkscape:cx="32.035473"
-     inkscape:cy="32.000114"
+     inkscape:cx="32.035472"
+     inkscape:cy="32.000113"
      inkscape:window-width="1920"
      inkscape:window-height="1050"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg13" />
+     inkscape:current-layer="svg18" />
   <path
-     d="m 16.000057,-64 v 16.000057 h 32.000114 v 32.000114 H 16.000057 V -31.999886 H 0 V 2.2786458e-4 H 64.000228 V -64 Z"
+     d="M 48.000171,2.2786458e-4 V -15.999829 H 16.000057 V -31.999886 H 0 V 2.2786458e-4 Z"
      style="opacity:0.8;fill:#a0a0a0;fill-opacity:1;stroke:none"
-     id="path15" />
+     id="path22" />
+  <path
+     d="M 64.000228,-31.999886 H 48.000171 V -15.999829 2.2786458e-4 h 16.000057 z"
+     style="fill:#0a0a0a;fill-opacity:1;stroke:none"
+     id="path21" />
+  <path
+     d="m 16.000057,-64 v 16.000057 h 32.000114 v 16.000057 H 64.000228 V -64 Z"
+     style="opacity:0.8;fill:#a0a0a0;fill-opacity:1;stroke:none"
+     id="path20" />
   <path
      d="m 0,-64 v 32.000114 H 16.000057 V -47.999943 -64 Z"
      style="fill:#0a0a0a;fill-opacity:1;stroke:none"
-     id="path14" />
+     id="path19" />
   <metadata
-     id="metadata15">
+     id="metadata22">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
