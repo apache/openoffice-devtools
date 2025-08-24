@@ -19,7 +19,8 @@
 #
 ################################################################
 
-import urllib.request, urllib.parse, urllib.error
+
+import urllib
 import json
 import os
 import hashlib
@@ -27,26 +28,26 @@ import datetime
 import time
 import sys
 
-from urllib.parse import urlencode
+from urllib import urlencode
 
 def getSourceForgeStats(download, start_date, end_date):
 
     #print download
 
     url = download + "/stats/json?start_date=" + start_date + "&" "end_date=" + end_date
-
+    
     attempts = 0
 
     while attempts < 3:
         try:
-            conn = urllib.request.urlopen(url)
+            conn = urllib.urlopen(url)
             data = conn.read()
-
+            
             return data
 
         except:
             attempts += 1
-            print("error " + str(attempts))
+            print "error " + str(attempts)
 
     return ""
 
@@ -67,8 +68,8 @@ def mergeCountries(countries):
 
 
 if len(sys.argv) == 0:
-    print("syntax: python downloads-by-country.py <urls.lst> <start-date> <end-date>")
-    print("where <urls.lst> is a list of files URLs to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format.")
+    print "syntax: python downloads-by-country.py <urls.lst> <start-date> <end-date>"
+    print "where <urls.lst> is a list of files URLs to gather stats on, and <start-date> and <end-date> are in YYYY-MM-DD format."
 
 downloads = [line.strip() for line in open(sys.argv[1])]
 
@@ -85,30 +86,30 @@ for download in downloads :
     mergeCountries(countries)
 
 
-print("<html>")
-print("<head>")
-print("<title>OpenOffice Downloads by Country/Territory</title>")
-print("</head>")
-print("<body>")
-print("<p>This table shows downloads per <a href='https://en.wikipedia.org/wiki/Country_code_top-level_domain'>country/territory</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>")
-print("<table border='1' cellpadding='10'>")
+print "<html>"
+print "<head>"
+print "<title>OpenOffice Downloads by Country/Territory</title>"
+print "</head>"
+print "<body>"
+print "<p>This table shows downloads per <a href='https://en.wikipedia.org/wiki/Country_code_top-level_domain'>country/territory</a> for the period from " + sys.argv[2] + " to " + sys.argv[3] + ".</p>"
+print "<table border='1' cellpadding='10'>"
 
-print("<tr>")
-print("<th>Rank</th>")
-print("<th>Country/Territory</th>")
-print("<th>Downloads</th>")
-print("</tr>")
+print "<tr>"
+print "<th>Rank</th>"
+print "<th>Country/Territory</th>"
+print "<th>Downloads</th>"
+print "</tr>"
 
 rank = 1
 
 for country in sorted(country_dict,key=lambda x: country_dict[x], reverse=True):
-    print("<tr>")
-    print("<td align='right'>" + "#" + str(rank) + "</td>")
-    print("<td>" + country.encode("utf-8") + "</td>")
-    print("<td align='right'>" + str(country_dict[country]) + "</td>")
-    print("</tr>")
+    print "<tr>"
+    print "<td align='right'>" + "#" + str(rank) + "</td>"
+    print "<td>" + country.encode("utf-8") + "</td>"
+    print "<td align='right'>" + str(country_dict[country]) + "</td>"
+    print "</tr>"
     rank +=1
 
-print("</table>")
-print("</body>")
+print"</table>"
+print "</body>"
 
