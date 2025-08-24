@@ -104,8 +104,8 @@ rank = 1
 for country in sorted(country_dict,key=lambda x: country_dict[x], reverse=True):
     print("<tr>")
     print("<td align='right'>" + "#" + str(rank) + "</td>")
-    print("<td>" + country.encode("utf-8") + "</td>")
-    print("<td align='right'>" + str(country_dict[country]) + "</td>")
+    print(f"<td>{country}</td>")
+    print(f"<td align='right'>{country_dict[country]}</td>")
     print("</tr>")
     rank +=1
 
