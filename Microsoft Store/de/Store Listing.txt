@@ -1,7 +1,7 @@
 Description
 -----------
 
-Apache OpenOffice® 4.1.15 ist das freie und offene Produktivitätspaket der Apache Software Foundation.
+Apache OpenOffice® 4.1.16 ist das freie und offene Produktivitätspaket der Apache Software Foundation.
 
 Apache OpenOffice bietet sechs einzelne Produktivitätsanwendungen: ein Textverarbeitungsprogramm (und seine Web-Authoring-Komponente), Tabellenkalkulation, Präsentationsgrafik, Vektorgrafik, Gleichungseditor und Datenbank. Für einige Funktionen ist eine Java-Laufzeitumgebung (JRE) erforderlich.
 
@@ -9,10 +9,10 @@ What's new in this version?
 ---------------------------
 
 Security release:
-Apache OpenOffice 4.1.15 ist eine Sicherheitsversion, die wichtige Fehlerkorrekturen enthält. Allen Benutzern von Apache OpenOffice 4.1.14 oder älter wird ein Upgrade empfohlen.
+Apache OpenOffice 4.1.16 ist eine Sicherheitsversion, die wichtige Fehlerkorrekturen enthält. Allen Benutzern von Apache OpenOffice 4.1.15 oder älter wird ein Upgrade empfohlen.
 
 Maintenance release:
-Apache OpenOffice 4.1.15 ist eine Wartungsversion, die Fehlerkorrekturen und weitere Verbesserungen enthält. Allen Benutzern von Apache OpenOffice 4.1.14 oder älter wird ein Upgrade empfohlen.
+Apache OpenOffice 4.1.16 ist eine Wartungsversion, die Fehlerkorrekturen und weitere Verbesserungen enthält. Allen Benutzern von Apache OpenOffice 4.1.15 oder älter wird ein Upgrade empfohlen.
 
 Product features
 ----------------
