@@ -1,7 +1,7 @@
 Description
 -----------
 
-Apache OpenOffice® 4.1.15 is the free and open productivity suite from the Apache Software Foundation.
+Apache OpenOffice® 4.1.16 is the free and open productivity suite from the Apache Software Foundation.
 
 Apache OpenOffice features six personal productivity applications: a word processor (and its web-authoring component), spreadsheet, presentation graphics, drawing, equation editor, and database. For some functionality a Java Runtime Environment (JRE) is needed.
 
@@ -9,10 +9,10 @@ What's new in this version?
 ---------------------------
 
 Security release:
-Apache OpenOffice 4.1.15 is a Security release incorporating important bug fixes. All users of Apache OpenOffice 4.1.14 or earlier are advised to upgrade.
+Apache OpenOffice 4.1.16 is a Security release incorporating important bug fixes. All users of Apache OpenOffice 4.1.15 or earlier are advised to upgrade.
 
 Maintenance release:
-Apache OpenOffice 4.1.15 is a Maintenance release incorporating bug fixes and other enhancements. All users of Apache OpenOffice 4.1.14 or earlier are advised to upgrade. 
+Apache OpenOffice 4.1.16 is a Maintenance release incorporating bug fixes and other enhancements. All users of Apache OpenOffice 4.1.15 or earlier are advised to upgrade. 
 
 Product features
 ----------------
