@@ -1,4 +1,4 @@
-This is the configuration used for AOO 4.1.16-RC2:
+This is the configuration used for AOO 4.1.16-RC3:
 
 Step by step building guide can be found here:
 https://wiki.openoffice.org/wiki/Documentation/Building_Guide_AOO/Step_by_step_Windows
