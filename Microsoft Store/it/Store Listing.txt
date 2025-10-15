@@ -29,8 +29,8 @@ Short description
 
 Apache OpenOffice® è la suite di programmi per ufficio libera e open source dell'Apache Software Foundation.
 
-Search terms
-------------
+Keywords
+--------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF

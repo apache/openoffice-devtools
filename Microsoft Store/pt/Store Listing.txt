@@ -29,8 +29,8 @@ Short description
 
 O Apache OpenOffice® é o programa de produtividade gratuito e de código aberto da Apache Software Foundation.
 
-Search terms
-------------
+Keywords
+--------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base produtividade código ODF

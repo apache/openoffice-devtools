@@ -29,8 +29,8 @@ Short description
 
 Apache OpenOffice® to darmowy i otwarty pakiet oprogramowania biurowego Apache Software Foundation.
 
-Search terms
-------------
+Keywords
+--------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF

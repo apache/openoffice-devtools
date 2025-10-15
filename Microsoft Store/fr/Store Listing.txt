@@ -29,8 +29,8 @@ Short description
 
 Apache OpenOffice® est la suite bureautique libre et gratuite de la Fondation Apache (Apache Software Foundation).
 
-Search terms
-------------
+Keywords
+--------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF

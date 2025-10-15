@@ -29,8 +29,8 @@ Short description
 
 Apache OpenOffice® is de gratis en open kantoorsuite van de Apache Software Foundation.
 
-Search terms
-------------
+Keywords
+--------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF

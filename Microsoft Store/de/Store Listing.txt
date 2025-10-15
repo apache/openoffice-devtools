@@ -29,8 +29,8 @@ Short description
 
 Apache OpenOffice® ist das freie und offene Produktivitätspaket der Apache Software Foundation.
 
-Search terms
-------------
+Keywords
+--------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF

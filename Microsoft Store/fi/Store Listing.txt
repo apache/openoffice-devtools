@@ -29,8 +29,8 @@ Short description
 
 Apache OpenOffice® on Apache Software Foundation:in ilmainen avoimen lähdekoodin toimistosovellusperhe.
 
-Search terms
-------------
+Keywords
+--------
 
 Apache OpenOffice Writer Calc Impress
 Draw Math Base office open-source ODF
