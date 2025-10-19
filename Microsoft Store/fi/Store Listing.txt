@@ -21,8 +21,8 @@ Writer - tekstinkäsittelyohjelma, jota voit käyttää mihin tahansa kirjeistä
 Calc - tehokas taulukkolaskentaohjelma, jossa on kaikki tarvittava datan laskentaan, analysointiin ja esittämiseen raportteina tai näyttävinä kuvaajina.
 Impress - nopein ja tehokkain tapa tehdä multimediaesityksiä.
 Draw - voit piirtää mitä vaan diagrammeista 3D-piirroksiin.
-Math - voit luoda matemaattisia laskentakaavoja graafisella käyttöliittymällä tai suoraan kirjoittamalla kaavasi editoriin.
 Base - voit luoda ja muokata tietokantoja helposti. Luo ja muokkaa tauluja, lomakkeita, kyselyitä ja raportteja suoraan Apache OpenOffice:ssa.
+Math - voit luoda matemaattisia laskentakaavoja graafisella käyttöliittymällä tai suoraan kirjoittamalla kaavasi editoriin.
 
 Short description
 -----------------

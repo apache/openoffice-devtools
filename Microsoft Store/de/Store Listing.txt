@@ -21,8 +21,8 @@ Writer - ein Textverarbeitungsprogramm, das Sie für alles verwenden können, vo
 Calc - eine leistungsstarke Tabellenkalkulation mit allen Werkzeugen, die Sie zum Berechnen, Analysieren und Präsentieren Ihrer Daten in numerischen Berichten oder ansprechenden Grafiken benötigen.
 Impress - die schnellste und leistungsfähigste Methode zur Erstellung effektiver Multimedia-Präsentationen.
 Draw - ermöglicht Ihnen die Erstellung von einfachen Diagrammen bis hin zu dynamischen 3D-Illustrationen.
-Math - ermöglicht die Erstellung mathematischer Gleichungen über eine grafische Benutzeroberfläche oder durch direkte Eingabe der Formeln in den Gleichungseditor.
 Base - ermöglicht Ihnen die nahtlose Bearbeitung von Datenbanken. Erstellen und ändern Sie Tabellen, Formulare, Abfragen und Berichte - alles aus Apache OpenOffice heraus.
+Math - ermöglicht die Erstellung mathematischer Gleichungen über eine grafische Benutzeroberfläche oder durch direkte Eingabe der Formeln in den Gleichungseditor.
 
 Short description
 -----------------

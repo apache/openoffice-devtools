@@ -21,8 +21,8 @@ Writer - un traitement de textes que vous pouvez utiliser pour écrire une simpl
 Calc - un puissant tableur avec tout un tas d'outils pour calculer, analyser et présenter vos données sous la forme de rapports ou de graphiques.
 Impress - le plus rapide et le moyen le plus efficace de créer des présentations multimédias.
 Draw - vous permet de tout produire, de simples diagrammes jusqu'aux illustrations 3D dynamiques.
-Math - vous permet de créer des équations mathématiques via une interface graphique ou en tapant directement vos formules dans un éditeur.
 Base - vous permet de manipuler des bases de données de manière transparente. Créez et modifiez des tables, des formulaires, des requêtes et des rapports, le tout avec Apache OpenOffice.
+Math - vous permet de créer des équations mathématiques via une interface graphique ou en tapant directement vos formules dans un éditeur.
 
 Short description
 -----------------

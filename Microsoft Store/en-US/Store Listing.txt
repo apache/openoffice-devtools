@@ -21,8 +21,8 @@ Writer - a word processor you can use for anything from writing a quick letter t
 Calc - a powerful spreadsheet with all the tools you need to calculate, analyze, and present your data in numerical reports or sizzling graphics.
 Impress - the fastest, most powerful way to create effective multimedia presentations.
 Draw - lets you produce everything from simple diagrams to dynamic 3D illustrations.
-Math - lets you create mathematical equations with a graphic user interface or by directly typing your formulas into the equation editor.
 Base - lets you manipulate databases seamlessly. Create and modify tables, forms, queries, and reports, all from within Apache OpenOffice.
+Math - lets you create mathematical equations with a graphic user interface or by directly typing your formulas into the equation editor.
 
 Short description
 -----------------

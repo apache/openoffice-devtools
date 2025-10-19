@@ -21,8 +21,8 @@ Writer - un procesador de textos que puede utilizar para todo, desde escribir un
 Calc - una poderosa hoja de cálculo con todas las herramientas necesarias para calcular, analizar y presentar sus datos en informes numéricos o en llamativos gráficos.
 Impress - el medio más rápido y poderoso de crear efectivas presentaciones multimedia.
 Draw - para generar desde simples diagramas hasta ilustaciones 3D dinámicas.
-Math - le permite crear ecuaciones matemáticas con una interfaz de usuario o escribiendo las fórmulas directamente en el editor de ecuaciones.
 Base - permite la manipulación completa de bases de datos. Crear y modificar tablas, formularios, consultas e informes, todo ello desde Apache OpenOffice.
+Math - le permite crear ecuaciones matemáticas con una interfaz de usuario o escribiendo las fórmulas directamente en el editor de ecuaciones.
 
 Short description
 -----------------

@@ -21,8 +21,8 @@ Writer - een tekstbewerker die u voor van alles kunt gebruiken, van het schrijve
 Calc - een krachtig werkblad met alle gereedschappen die u nodig hebt voor berekeningen, analyses, en voor het presenteren van uw gegevens in numerieke rapporten of zinderende afbeeldingen.
 Impress - de snelste, meest krachtige manier om effectieve multimedia-presentaties te maken.
 Draw - laat u alles maken, van eenvoudige diagrammen tot dynamische 3D-illustraties.
-Math - laat u rekenkundige vergelijkingen maken met een grafische gebruikersinterface of door het direct typen vcan uw formules in de bewerker voor vergelijkingen.
 Base - laat u naadloos databases bewerken. Tabellen maken en aanpassen, formulieren, query's en rapporten, allees vanuit Apache OpenOffice.
+Math - laat u rekenkundige vergelijkingen maken met een grafische gebruikersinterface of door het direct typen vcan uw formules in de bewerker voor vergelijkingen.
 
 Short description
 -----------------

@@ -21,8 +21,8 @@ Writer - un elaboratore di testi per qualsiasi lavoro, dalla lettera al libro.
 Calc - un potente foglio di calcolo che offre tutti gli strumenti per calcolare, analizzare e presentare i dati sotto forma di numeri o grafici.
 Impress - uno strumento rapido e potente per creare presentazioni efficaci, anche multimediali.
 Draw - per disegnare qualsiasi cosa, da semplici diagrammi a illustrazioni 3D dinamiche.
-Math - per scrivere equazioni, graficamente oppure tramite un linguaggio descrittivo.
 Base - permette di modificare facilmente database: creare e modificare tabelle, formulari, interrogazioni e report, tutto all'interno di Apache OpenOffice.
+Math - per scrivere equazioni, graficamente oppure tramite un linguaggio descrittivo.
 
 Short description
 -----------------

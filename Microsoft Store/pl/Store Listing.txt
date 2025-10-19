@@ -21,8 +21,8 @@ Writer - edytor tekstu, którego można używać do wszystkiego: od napisania kr
 Calc - potężny arkusz kalkulacyjny z wszystkimi narzędziami potrzebnymi do liczenia, analizowania i prezentowania Twoich danych w raportach liczbowych czy w oszałamiających grafikach.
 Impress - najszybszy, najpotężniejszy sposób na stworzenie efektywnych prezentacji multimedialnych.
 Draw - pozwala na stworzenie wszystkiego: od prostych diagramów do dynamicznych ilustracji 3D.
-Math - daje możliwość stworzenia równań matematycznych za pomocą interfejsu graficznego lub poprzez bezpośrednie wpisywanie wzorów w edytorze równań.
 Base - umożliwia bezproblemowe operowanie bazami danych. Twórz i modyfikuj tabele, formularze, kwerendy i raporty - wszystko z poziomu pakietu Apache OpenOffice.
+Math - daje możliwość stworzenia równań matematycznych za pomocą interfejsu graficznego lub poprzez bezpośrednie wpisywanie wzorów w edytorze równań.
 
 Short description
 -----------------
