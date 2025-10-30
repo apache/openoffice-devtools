@@ -1,0 +1,53 @@
+# Docker Compose configuration for Pootleversion: '3.8'
+
+services:
+  pootle:
+    image: pootle/pootle:latest
+    container_name: pootle
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./pootle_data:/opt/pootle/data
+      - ./pootle_static:/opt/pootle/static
+    environment:
+      - POOTLE_DB_NAME=pootle
+      - POOTLE_DB_USER=pootle
+      - POOTLE_DB_HOST=db
+      - POOTLE_DB_PORT=3306
+      - POOTLE_ADMIN_EMAIL=admin@example.com
+      - POOTLE_ADMIN_NAME=admin
+      - POOTLE_DEBUG=false
+    secrets:
+      - pootle_db_password
+      - pootle_secret_key
+      - pootle_admin_password
+    restart: unless-stopped
+
+  db:
+    image: mysql:5.7
+    container_name: pootle_db
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+      - MYSQL_DATABASE=pootle
+      - MYSQL_USER=pootle
+      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
+    secrets:
+      - db_password
+      - db_root_password
+    restart: unless-stopped
+
+secrets:
+  pootle_db_password:
+    file: ./secrets/db_password.txt
+  pootle_secret_key:
+    file: ./secrets/pootle_secret_key.txt
+  pootle_admin_password:
+    file: ./secrets/pootle_admin_password.txt
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
