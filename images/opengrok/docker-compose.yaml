@@ -1,7 +1,7 @@
 # Docker Compose configuration for OpenGrok
 services:
   opengrok:
-    container_name: aoo-opengrok
+    container_name: aoo-opengrok-test
     #image: opengrok/docker:latest
     image:  opengrok/docker:1.14.3
     ports:
@@ -25,21 +25,20 @@ services:
 
       # Optional: Mount host's localtime to ensure consistent timestamps
       - "/etc/localtime:/etc/localtime:ro"
-      - "${opengrok_xml_config}:/opengrok/etc/read-only.xml:ro" #/workspace/openoffice-devtools/images/opengrok/css
     environment:
           # These are default and usually good enough, but illustrate:
-      - OPENGROK_PROJECTS=AOO41XX   # Optional: Name your project
+      #- OPENGROK_PROJECTS=AOO41XX   # Optional: Name your project
       - OPENGROK_WEBAPP_CONTEXT=/opengrok/src        # Webapp path
       - OPENGROK_REFRESH_INTERVAL=1440   # Indexing interval in minutes (daily)
       - OPENGROK_CSS_DIR=/opengrok/custom-styles
       - READONLY_CONFIG_FILE=/opengrok/etc/read-only.xml
-      - OPENGROK_WEBAPP_NOINDEX=false  # Allow indexing via API
-      - OPENGROK_AUTH_REQUIRED=false   # Disable auth requirement
+      #- OPENGROK_WEBAPP_NOINDEX=false  # Allow indexing via API
+      #- OPENGROK_AUTH_REQUIRED=false   # Disable auth requirement
       # --- This is the key part for indexing! ---
       # This tells OpenGrok to index everything under /opengrok/src
       # and put the index data in /opengrok/data.
       # The '--sync' or '--scan-repositories' (newer) argument helps with VCS detection.
-      - INDEXER_OPT="-U /opengrok/src -d /opengrok/data --scan-repositories"
+      - INDEXER_OPT=-s /opengrok/src   -d /opengrok/data   -H -P -S -v
       # How often OpenGrok should synchronize and re-index repositories (in minutes).
       # Set to 0 to disable automatic synchronization.
       - SYNC_PERIOD_MINUTES=60
