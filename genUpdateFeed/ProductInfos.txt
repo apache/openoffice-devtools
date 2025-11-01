@@ -30,6 +30,7 @@
 4.1.13 OpenOffice_4 9810 https://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
 4.1.14 OpenOffice_4 9811 https://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
 4.1.15 OpenOffice_4 9813 https://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
+4.1.16 OpenOffice_4 9816 https://www.openoffice.org/download en-US ast bg ca ca-XR ca-XV cs da de el en-GB es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW
 
 # Product names for former OpenOffice versions
 3.2.0 OpenOffice.org_3
