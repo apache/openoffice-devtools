@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+opengrok_data=/x1/opengrok-test/data
+# delete the data dir
+rm -r ${opengrok_data}/*

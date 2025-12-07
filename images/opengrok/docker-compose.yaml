@@ -5,7 +5,7 @@ services:
     #image: opengrok/docker:latest
     image:  opengrok/docker:1.14.3
     ports:
-      - "127.0.0.1:8080:8080" # Maps host port 8080 to container port 8080 (where OpenGrok's web interface runs)
+      - "127.0.0.1:8002:8080" # Maps host port 8080 to container port 8080 (where OpenGrok's web interface runs)
     volumes:
       # Mount your source code directory here. Replace ./src with the actual path to your source code.
       # OpenGrok will index all subdirectories within this path.
@@ -27,10 +27,9 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
           # These are default and usually good enough, but illustrate:
-      #- OPENGROK_PROJECTS=AOO41XX   # Optional: Name your project
-      - OPENGROK_WEBAPP_CONTEXT=/opengrok/src        # Webapp path
+      # - OPENGROK_PROJECTS=AOO41X:AOO42X:trunk   # Optional: Name your project
+      - OPENGROK_WEBAPP_CONTEXT=/        # Webapp path
       - OPENGROK_REFRESH_INTERVAL=1440   # Indexing interval in minutes (daily)
-      - OPENGROK_CSS_DIR=/opengrok/custom-styles
       - READONLY_CONFIG_FILE=/opengrok/etc/read-only.xml
       #- OPENGROK_WEBAPP_NOINDEX=false  # Allow indexing via API
       #- OPENGROK_AUTH_REQUIRED=false   # Disable auth requirement
@@ -38,7 +37,7 @@ services:
       # This tells OpenGrok to index everything under /opengrok/src
       # and put the index data in /opengrok/data.
       # The '--sync' or '--scan-repositories' (newer) argument helps with VCS detection.
-      - INDEXER_OPT=-s /opengrok/src   -d /opengrok/data   -H -P -S -v
+      - INDEXER_OPT=-s /opengrok/src   -d /opengrok/data   -H -P -S -G -v -t 4
       # How often OpenGrok should synchronize and re-index repositories (in minutes).
       # Set to 0 to disable automatic synchronization.
       - SYNC_PERIOD_MINUTES=60

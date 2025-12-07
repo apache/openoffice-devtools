@@ -1,0 +1,50 @@
+#!/bin/bash
+# fix-worktrees.sh
+
+REPO_URL="https://github.com/apache/openoffice.git"  # Replace with actual URL
+SRC_DIR="/x1/opengrok/src"  # e.g., /x1/opengrok/src
+BRANCHES=("trunk" "AOO41X" "AOO42X")  # First one is the main branch
+
+cd "${SRC_DIR}"
+
+# Clone or verify main repository
+if [ ! -d "trunk" ]; then
+    echo "Cloning main repository..."
+    git clone -b trunk "${REPO_URL}" trunk
+fi
+
+cd trunk
+
+# Remove any existing worktrees that might be broken
+git worktree prune
+
+# Create worktrees for other branches
+for branch in "${BRANCHES[@]}"; do
+    if [ "$branch" != "trunk" ]; then
+        if [ -d "../${branch}" ]; then
+            echo "Removing existing ${branch} directory..."
+            rm -rf "../${branch}"
+        fi
+        
+        echo "Creating worktree for ${branch}..."
+        git worktree add "../${branch}" "${branch}"
+    fi
+done
+
+cd ..
+
+# Verify structure
+echo ""
+echo "=== Directory Structure ==="
+ls -la
+
+echo ""
+echo "=== Worktree List ==="
+cd trunk && git worktree list
+
+echo ""
+echo "=== Each Directory Contents ==="
+for branch in "${BRANCHES[@]}"; do
+    echo "--- ${branch} ---"
+    ls -la "${branch}/" | head -5
+done

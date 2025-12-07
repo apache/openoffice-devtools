@@ -1,0 +1,41 @@
+#!/bin/bash
+# setup-separate-repos.sh
+
+REPO_URL="https://github.com/apache/openoffice.git"  # Replace with actual URL
+SRC_DIR="/x1/opengrok/src"  # e.g., /x1/opengrok/src
+BRANCHES=("trunk" "AOO41X" "AOO42X")  # First one is the main branch
+
+cd "${SRC_DIR}"
+
+# Remove any existing worktrees
+if [ -d "trunk" ]; then
+    cd trunk
+    git worktree prune
+    cd ..
+fi
+
+# Clone each branch separately
+for branch in "${BRANCHES[@]}"; do
+    DIR_NAME="${branch}"
+    
+    if [ -d "${DIR_NAME}" ]; then
+        echo "Updating ${DIR_NAME}..."
+        cd "${DIR_NAME}"
+        git fetch --all
+        git checkout "${branch}"
+        git pull
+        cd ..
+    else
+        echo "Cloning ${branch} into ${DIR_NAME}..."
+        git clone -b "${branch}" --single-branch "${REPO_URL}" "${DIR_NAME}"
+    fi
+    
+    # Verify it's a real repository
+    echo "Checking ${DIR_NAME}..."
+    ls -la "${DIR_NAME}/.git/" | head -5
+done
+
+echo ""
+echo "=== Setup Complete ==="
+echo "Repositories created:"
+ls -d */
