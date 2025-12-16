@@ -2,7 +2,7 @@ The Microsoft Store requires programs to be installed "silently".
 
 Our Windows binaries (Full Installation) are downloaded from:
 
-https://dlcdn.apache.org/openoffice/4.1.15/binaries
+https://dlcdn.apache.org/openoffice/4.1.16/binaries
 
 and installed with the following parameters:
 
