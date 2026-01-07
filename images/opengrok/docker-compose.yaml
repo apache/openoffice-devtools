@@ -1,9 +1,9 @@
 # Docker Compose configuration for OpenGrok
 services:
   opengrok:
-    container_name: aoo-opengrok-test
+    container_name: aoo-opengrok-${instance}
     #image: opengrok/docker:latest
-    image:  opengrok/docker:1.14.3
+    image:  opengrok/docker:${opengrok_version}
     ports:
       - "127.0.0.1:8002:8080" # Maps host port 8080 to container port 8080 (where OpenGrok's web interface runs)
     volumes:
