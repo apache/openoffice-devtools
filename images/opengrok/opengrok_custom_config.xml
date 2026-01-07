@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_121" class="java.beans.XMLDecoder">
+  <object class="org.opengrok.indexer.configuration.Configuration">
+    <void property="tabSize">
+      <int>4</int>
+    </void>
+    <void id="IgnoredNames0" property="ignoredNames">
+      <void id="IgnoredFiles0" property="ignoredFiles">
+        <void property="items">
+          <void method="add">
+            <string>*.log</string>
+          </void>
+          <void method="add">
+            <string>*.tmp</string>
+          </void>
+          <void method="add">
+            <string>*.xls</string>
+          </void>
+          <void method="add">
+            <string>*.jpg</string>
+          </void>
+          <void method="add">
+            <string>*.ods</string>
+          </void>
+          <void method="add">
+            <string>*.otp</string>
+          </void>
+          <void method="add">
+            <string>*.ods</string>
+          </void>
+          <void method="add">
+            <string>*.odt</string>
+          </void>
+          <void method="add">
+            <string>*.zip</string>
+          </void>
+          <void method="add">
+            <string>*.txt</string>
+          </void>
+        </void>
+      </void>
+    </void>
+ </object>
+</java>

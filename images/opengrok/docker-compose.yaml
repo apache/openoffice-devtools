@@ -1,0 +1,52 @@
+# Docker Compose configuration for OpenGrok
+services:
+  opengrok:
+    container_name: aoo-opengrok-${instance}
+    #image: opengrok/docker:latest
+    image:  opengrok/docker:${opengrok_version}
+    ports:
+      - "127.0.0.1:8002:8080" # Maps host port 8080 to container port 8080 (where OpenGrok's web interface runs)
+    volumes:
+      # Mount your source code directory here. Replace ./src with the actual path to your source code.
+      # OpenGrok will index all subdirectories within this path.
+      - "${opengrok_src}:/opengrok/src" #/x1/opengrok/src
+
+      # Named volume for OpenGrok data (indexed files, history, etc.)
+      # This ensures your indexed data persists even if the container is removed or updated.
+      - "${opengrok_data}:/opengrok/data" #/x1/opengrok/data
+
+      # Optional: Volume for OpenGrok configuration files.
+      # This allows you to persist custom configurations.
+      - "${opengrok_config}:/opengrok/etc" #/x1/opengrok_config
+
+      # Optional: If your source repositories require SSH for cloning/updating (e.g., private Git repos),
+      # uncomment and replace with the path to your .ssh folder on the host.
+      # - "${HOME}/.ssh:/root/.ssh:ro"
+
+      # Optional: Mount host's localtime to ensure consistent timestamps
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+          # These are default and usually good enough, but illustrate:
+      # - OPENGROK_PROJECTS=AOO41X:AOO42X:trunk   # Optional: Name your project
+      - OPENGROK_WEBAPP_CONTEXT=/        # Webapp path
+      - OPENGROK_REFRESH_INTERVAL=1440   # Indexing interval in minutes (daily)
+      - READONLY_CONFIG_FILE=/opengrok/etc/read-only.xml
+      #- OPENGROK_WEBAPP_NOINDEX=false  # Allow indexing via API
+      #- OPENGROK_AUTH_REQUIRED=false   # Disable auth requirement
+      # --- This is the key part for indexing! ---
+      # This tells OpenGrok to index everything under /opengrok/src
+      # and put the index data in /opengrok/data.
+      # The '--sync' or '--scan-repositories' (newer) argument helps with VCS detection.
+      - INDEXER_OPT=-s /opengrok/src   -d /opengrok/data   -H -P -S -G -v -t 4
+      # How often OpenGrok should synchronize and re-index repositories (in minutes).
+      # Set to 0 to disable automatic synchronization.
+      - SYNC_PERIOD_MINUTES=60
+      # - INDEXER_OPT="-W /opengrok/etc/configuration.xml" # Example for passing indexer options
+      - OPENGROK_OPTS=-Xmx14g # Java options for OpenGrok, adjust as needed
+    restart: on-failure # Restarts the container if it exits due to an error
+
+volumes:
+  opengrok_data:
+    driver: local
+  # opengrok_config: # Uncomment if you use the opengrok_config volume
+  #   driver: local
