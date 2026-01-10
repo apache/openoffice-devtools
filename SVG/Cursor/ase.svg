@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 -32 32 32.000001"
+   version="1.1"
+   style="fill:none;stroke-linecap:round;stroke-linejoin:round"
+   id="svg11"
+   sodipodi:docname="ase.svg"
+   inkscape:export-filename="ase.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="28.28125"
+     inkscape:cx="15.98232"
+     inkscape:cy="16"
+     inkscape:window-width="1920"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11" />
+  <path
+     d="m 24.769548,-20.330428 -0.73794,0.738456 a 5.5,5.5 0 0 1 0,6.234245 l 0.73794,0.738456 a 15.5,15.5 0 0 1 6.230627,-3.330546 v -1.050065 a 15.5,15.5 0 0 1 -6.230627,-3.330546 z"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;stroke-width:2;stroke-dasharray:none;stroke-linejoin:round;paint-order:stroke markers fill"
+     id="path13" />
+  <path
+     d="m 19.500102,-18.974955 a 2.5,2.5 0 0 0 -2.500106,2.500106 2.5,2.5 0 0 0 2.500106,2.500105 2.5,2.5 0 0 0 2.500106,-2.500105 2.5,2.5 0 0 0 -2.500106,-2.500106 z"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-opacity:1;stroke-dasharray:none;stroke-linejoin:round;paint-order:stroke markers fill"
+     id="path12" />
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Matthias Seidel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 -32 32 32"
+   version="1.1"
+   style="fill:none;stroke-linecap:round;stroke-linejoin:round"
+   id="svg8"
+   sodipodi:docname="notallow.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   inkscape:export-filename="notallow.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="28.28125"
+     inkscape:cx="15.98232"
+     inkscape:cy="16"
+     inkscape:window-width="1920"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <path
+     d="m 16.000057,-24.99991 a 9,9 0 0 0 -8.9999675,8.999967 9,9 0 0 0 8.9999675,8.9999674 9,9 0 0 0 8.999967,-8.9999674 9,9 0 0 0 -8.999967,-8.999967 z m 0.26355,2.004528 a 7,7 0 0 1 5.342309,11.187431 l -9.797851,-9.798368 a 7,7 0 0 1 4.455542,-1.389063 z m -5.869926,2.803447 9.798368,9.797851 a 7,7 0 0 1 -9.798368,-9.797851 z"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+     id="path9" />
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Matthias Seidel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
