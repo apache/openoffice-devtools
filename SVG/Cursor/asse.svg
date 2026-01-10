@@ -2,15 +2,15 @@
 <svg
    width="32"
    height="32"
-   viewBox="0 -32 32 32.000001"
+   viewBox="0 -32 32 31.999999"
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
    id="svg11"
    sodipodi:docname="asse.svg"
-   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    inkscape:export-filename="asse.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -40,12 +40,12 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg11" />
   <path
-     d="m 27.776599,-8.6319173 h 1.044381 a 15.5,15.5 0 0 0 2.050004,6.7608276 l -0.742074,0.7420736 a 15.5,15.5 0 0 0 -6.760827,-2.0500041 v -1.0443807 a 5.5,5.5 0 0 0 4.408516,-4.4085164 z"
-     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;paint-order:stroke markers fill;stroke-linejoin:round;stroke-width:2;stroke-dasharray:none"
+     d="m 27.908374,-8.5001424 h 1.044381 a 15.5,15.5 0 0 0 2.050004,6.7608276 l -0.742074,0.74207359 A 15.5,15.5 0 0 0 23.499858,-3.0472453 V -4.091626 a 5.5,5.5 0 0 0 4.408516,-4.4085164 z"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke markers fill;stroke-width:2;stroke-dasharray:none"
      id="path13" />
   <path
-     d="m 22.368144,-12.131962 a 2.5,2.5 0 0 0 -2.500106,2.5001057 2.5,2.5 0 0 0 0.405143,1.3642578 l 0.0041,0.0062 a 2.5,2.5 0 0 0 2.090829,1.1296468 2.5,2.5 0 0 0 2.500106,-2.5001058 2.5,2.5 0 0 0 -2.500106,-2.5001055 z"
-     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-opacity:1;paint-order:stroke markers fill;stroke-linejoin:round;stroke-dasharray:none"
+     d="m 22.499919,-12.000187 a 2.5,2.5 0 0 0 -2.500106,2.5001056 2.5,2.5 0 0 0 0.398942,1.3544393 l 0.0067,0.010335 a 2.5,2.5 0 0 0 2.094446,1.1353312 2.5,2.5 0 0 0 2.500105,-2.5001058 2.5,2.5 0 0 0 -2.500105,-2.5001053 z"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke markers fill;stroke-dasharray:none"
      id="path12" />
   <metadata
      id="metadata13">

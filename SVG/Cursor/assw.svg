@@ -2,7 +2,7 @@
 <svg
    width="32"
    height="32"
-   viewBox="0 -32 32 32.000001"
+   viewBox="0 -32 31.999999 31.999999"
    version="1.1"
    style="fill:none;stroke-linecap:round;stroke-linejoin:round"
    id="svg11"
@@ -40,12 +40,12 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg11" />
   <path
-     d="M 9.6319702,-12.131962 A 2.5,2.5 0 0 0 7.1318644,-9.6318563 2.5,2.5 0 0 0 9.6319702,-7.1317505 2.5,2.5 0 0 0 12.131559,-9.6318563 2.5,2.5 0 0 0 9.6319702,-12.131962 Z"
-     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-opacity:1;paint-order:stroke markers fill;stroke-linejoin:round;stroke-dasharray:none"
+     d="M 3.0473592,-8.5001424 A 15.5,15.5 0 0 1 0.99683838,-1.7393148 L 1.7394287,-0.99724121 A 15.5,15.5 0 0 1 8.5002563,-3.0472453 V -4.091626 A 5.5,5.5 0 0 1 4.0917399,-8.5001424 Z"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;stroke-linejoin:round;paint-order:stroke markers fill;stroke-width:2;stroke-dasharray:none"
      id="path13" />
   <path
-     d="m 3.1791341,-8.6319173 a 15.5,15.5 0 0 1 -2.0505208,6.7608276 l 0.7425903,0.7420736 A 15.5,15.5 0 0 1 8.6315145,-3.1790202 V -4.2234009 A 5.5,5.5 0 0 1 4.2235148,-8.6319173 Z"
-     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;paint-order:stroke markers fill;stroke-linejoin:round;stroke-width:2;stroke-dasharray:none"
+     d="m 9.5001953,-12.000187 a 2.5,2.5 0 0 0 -2.5001058,2.5001056 2.5,2.5 0 0 0 2.5001058,2.5001058 2.5,2.5 0 0 0 2.0944457,-1.1353312 l 0.0088,-0.013436 v -5.167e-4 a 2.5,2.5 0 0 0 0.396358,-1.350822 2.5,2.5 0 0 0 -2.4995887,-2.5001055 z"
+     style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-opacity:1;stroke-linejoin:round;paint-order:stroke markers fill;stroke-dasharray:none"
      id="path12" />
   <metadata
      id="metadata13">
