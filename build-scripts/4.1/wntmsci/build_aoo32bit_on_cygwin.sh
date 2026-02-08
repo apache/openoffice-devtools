@@ -13,6 +13,7 @@ AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 AOO_BUILD_DEV=
 AOO_BUILD_SRC=
+AOO_DEBUG=
 AOO_LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es eu fi fr gd gl he hi hu it ja km ko lt nb nl pl pt pt-BR ru sk sl sr sv ta th tr vi zh-CN zh-TW"
 AOO_ANT_HOME="/cygdrive/c/apache-ant-1.9.16"
 AOO_JDK_HOME="/cygdrive/c/Program Files (x86)/Java/jdk1.7.0_80"
@@ -25,6 +26,7 @@ AOO_DIRECTX_HOME="/cygdrive/c/Microsoft_DirectX_SDK_June_2010"
 AOO_NASM_HOME="/cygdrive/c/Program Files/NASM"
 AOO_MOZBUILD="/cygdrive/c/mozilla-build-3.4"
 AOO_NSIS_HOME="/cygdrive/c/NSIS"
+AOO_PACKAGE_FORMAT="msi"
 
 while true; do
 	case "$1" in
@@ -34,7 +36,10 @@ while true; do
 		"--build-src" ) AOO_BUILD_SRC="yes"; shift ;;
 		"--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
 		"--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
-                "--langs" ) shift ; AOO_LANGS="$1"; shift ;;
+		"--langs" ) shift ; AOO_LANGS="$1"; shift ;;
+		"--symbols" ) AOO_DEBUG="$AOO_DEBUG --enable-symbols=yes"; shift ;;
+		"--debug" ) AOO_DEBUG="$AOO_DEBUG --enable-debug"; shift ;;
+		"--package-format" ) shift; AOO_PACKAGE_FORMAT="$1"; shift ;;
 		"--" ) shift; break ;;
 		"" ) break ;;
 		* ) echo "unknown option: $1"; shift ;;
@@ -97,10 +102,12 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
          --without-stlport \
          --with-mozilla-build="$AOO_MOZBUILD" \
          --enable-category-b \
+         --with-package-format="$AOO_PACKAGE_FORMAT" \
          --with-lang="${AOO_LANGS}" \
          --enable-bundled-dictionaries \
          --with-packager-list=/cygdrive/c/Source/Pack.lst \
          --with-nsis-path="$AOO_NSIS_HOME" \
+         $AOO_DEBUG \
          | tee config.out ) || exit 1
 fi
 
@@ -108,19 +115,30 @@ source ./winenv.set.sh || exit 1
 ./bootstrap || exit 1
 rm -f solenv/inc/reporevision.lst
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -P2 -- -P4 || exit 1
+cpus=`nproc` || cpus=4
+if [ $cpus -ge 8 ]; then
+    p1=$(( $cpus / 4 ))
+    p2=4
+elif [ $cpus -ge 2 ]; then
+    p1=$(( $cpus / 2 ))
+    p2=2
+else
+    p1=1
+    p2=2
+fi
+time perl "$SOLARENV/bin/build.pl" --all -P${p1} -- -P${p2} || exit 1
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-	dmake -P4 openofficebeta  || exit 1
-	dmake -P4 sdkoobeta_en-US || exit 1
-	dmake -P4 ooobetalanguagepack || exit 1
+	dmake -P${cpus} openofficebeta  || exit 1
+	dmake -P${cpus} sdkoobeta_en-US || exit 1
+	dmake -P${cpus} ooobetalanguagepack || exit 1
 elif [ "$AOO_BUILD_DEV" = "yes" ]; then
-	dmake -P4 openofficedev  || exit 1
-	dmake -P4 sdkoodev_en-US || exit 1
-	dmake -P4 ooodevlanguagepack || exit 1
+	dmake -P${cpus} openofficedev  || exit 1
+	dmake -P${cpus} sdkoodev_en-US || exit 1
+	dmake -P${cpus} ooodevlanguagepack || exit 1
 else
-	dmake -P4 ooolanguagepack || exit 1
-	dmake -P4 sdkoo_en-US || exit 1 
+	dmake -P${cpus} ooolanguagepack || exit 1
+	dmake -P${cpus} sdkoo_en-US || exit 1
 fi
 if [ "$AOO_BUILD_SRC" = "yes" ]; then
 	dmake aoo_srcrelease || exit 1

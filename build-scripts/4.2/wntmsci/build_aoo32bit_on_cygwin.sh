@@ -28,6 +28,7 @@ AOO_JUNIT="/cygdrive/c/junit/junit-4.13.2.jar"
 AOO_HAMCREST="/cygdrive/c/hamcrest/hamcrest-core-1.3.jar"
 AOO_MOZBUILD="/cygdrive/c/mozilla-build-3.4"
 AOO_NSIS_HOME="/cygdrive/c/NSIS"
+AOO_PACKAGE_FORMAT="msi"
 
 while true; do
 	case "$1" in
@@ -37,9 +38,10 @@ while true; do
 		"--build-src" ) AOO_BUILD_SRC="yes"; shift ;;
 		"--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
 		"--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
-                "--langs" ) shift ; AOO_LANGS="$1"; shift ;;
-                "--symbols" ) AOO_DEBUG="$AOO_DEBUG --enable-symbols=yes"; shift ;;
+		"--langs" ) shift ; AOO_LANGS="$1"; shift ;;
+		"--symbols" ) AOO_DEBUG="$AOO_DEBUG --enable-symbols=yes"; shift ;;
 		"--debug" ) AOO_DEBUG="$AOO_DEBUG --enable-debug"; shift ;;
+		"--package-format" ) shift; AOO_PACKAGE_FORMAT="$1"; shift ;;
 		"--" ) shift; break ;;
 		"" ) break ;;
 		* ) echo "unknown option: $1"; shift ;;
@@ -103,6 +105,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
          --without-stlport \
          --with-mozilla-build="$AOO_MOZBUILD" \
          --enable-category-b \
+         --with-package-format="$AOO_PACKAGE_FORMAT" \
          --enable-beanshell \
          --with-lang="${AOO_LANGS}" \
          --enable-bundled-dictionaries \
@@ -139,7 +142,7 @@ elif [ "$AOO_BUILD_DEV" = "yes" ]; then
 	dmake -P${cpus} ooodevlanguagepack || exit 1
 else
 	dmake -P${cpus} ooolanguagepack || exit 1
-	dmake -P${cpus} sdkoo_en-US || exit 1 
+	dmake -P${cpus} sdkoo_en-US || exit 1
 fi
 if [ "$AOO_BUILD_SRC" = "yes" ]; then
 	dmake aoo_srcrelease || exit 1
