@@ -158,6 +158,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-system-libxslt=/usr/local \
 	--with-system-libxml=/usr/local \
 	--with-system-curl=/usr/local \
+	--with-system-expat=/usr/local \
 	--enable-category-b \
 	--enable-beanshell \
 	--enable-bundled-dictionaries \
@@ -183,7 +184,7 @@ fi
 unset SDKROOT
 export SDKROOT
 ./bootstrap || exit 1
-source ./MacOSXX64Env.Set.sh || exit 1
+source ./MacOSXAARCH64Env.Set.sh || exit 1
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -- -P8 || exit 1
 
