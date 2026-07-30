@@ -50,9 +50,7 @@ AOO_JAVA_VERSION=1.8
 AOO_ANT_VERSION=1.10
 #
 # Just for now, for configure
-if [ -z "$SDKROOT" ] ; then
-  export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
-fi
+export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 
 #
 # Parse options
