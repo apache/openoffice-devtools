@@ -184,20 +184,20 @@ export SDKROOT
 ./bootstrap || exit 1
 source ./MacOSXX64Env.Set.sh || exit 1
 cd instsetoo_native
-time perl "$SOLARENV/bin/build.pl" --all -- -P8 || exit 1
+time perl "$SOLARENV/bin/build.pl" --all -P4 MAXPROCESS=2 EXTMAXPROCESS=2 -- -P2 || exit 1
 
 cd util
 if [ "$AOO_BUILD_BETA" = "yes" ]; then
-    dmake -P8 openofficebeta  || exit 1
-	dmake -P8 sdkoobeta_en-US || exit 1
-	dmake -P8 ooobetalanguagepack || exit 1
+    dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 openofficebeta  || exit 1
+	dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 sdkoobeta_en-US || exit 1
+	dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 ooobetalanguagepack || exit 1
 elif [ "$AOO_BUILD_DEV" = "yes" ]; then
-    dmake -P8 openofficedev  || exit 1
-	dmake -P8 sdkoodev_en-US || exit 1
-	dmake -P8 ooodevlanguagepack || exit 1
+    dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 openofficedev  || exit 1
+	dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 sdkoodev_en-US || exit 1
+	dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 ooodevlanguagepack || exit 1
 elif [ "$AOO_BUILD_ALL" = "yes" ]; then
-	dmake -P8 ooolanguagepack || exit 1
-	dmake -P8 sdkoo_en-US || exit 1 
+	dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 ooolanguagepack || exit 1
+	dmake -P8 MAXPROCESS=1 EXTMAXPROCESS=1 sdkoo_en-US || exit 1
 fi
 if [ "$AOO_BUILD_SRC" = "yes" ]; then
 	dmake aoo_srcrelease || exit 1
