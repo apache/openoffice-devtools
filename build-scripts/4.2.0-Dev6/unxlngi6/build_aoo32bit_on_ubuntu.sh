@@ -66,7 +66,6 @@ if [ ! -d ../main -o ! -d sal ] ; then
 	exit 1
 fi
 
-
 JAVA_HOME=/usr/lib/jvm/java-${AOO_JAVA_VERSION})-openjdk
 if [ ! -d "$JAVA_HOME" ] ; then
     echo "JAVA_HOME not found: $JAVA_HOME"
@@ -86,7 +85,7 @@ export ANT_CLASSPATH
 echo "ANT_HOME is: $ANT_HOME..."
 echo "ANT_CLASSPATH is: $ANT_CLASSPATH..."
 
-echo "Building for Linux 64, Java $(echo ${AOO_JAVA_VERSION} | sed -e s/..//) : Ant ${AOO_ANT_VERSION}"
+echo "Building for Linux 32, Java $(echo ${AOO_JAVA_VERSION} | sed -e s/..//) : Ant ${AOO_ANT_VERSION}"
 echo "---"
 echo "Starting build:"
 echo ""
@@ -132,7 +131,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	| tee config.out ) || exit 1
 fi
 
-source ./LinuxX86-64Env.Set.sh || exit 1 
+source ./LinuxX86Env.Set.sh || exit 1 
 ./bootstrap || exit 1
 if [ -e solenv/inc/reporevision.lst ]; then
 	\rm solenv/inc/reporevision.lst

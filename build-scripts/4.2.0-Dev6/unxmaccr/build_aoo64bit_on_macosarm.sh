@@ -13,7 +13,7 @@ set -eo pipefail
 # 
 # Installed in /usr/local:
 # 
-#   o Apache ant 1.9.15 / 1.10.9
+#   o Apache ant 1.10.9
 #   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
 #   o epm 5.0.0 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz)
 #   o openssl 1.0.2u (no-shared)
