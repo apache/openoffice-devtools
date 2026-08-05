@@ -66,7 +66,7 @@ if [ ! -d ../main -o ! -d sal ] ; then
 	exit 1
 fi
 
-JAVA_HOME=/usr/lib/jvm/java-${AOO_JAVA_VERSION})-openjdk-i386
+JAVA_HOME=/usr/lib/jvm/java-${AOO_JAVA_VERSION}-openjdk-i386
 if [ ! -d "$JAVA_HOME" ] ; then
     echo "JAVA_HOME not found: $JAVA_HOME"
     exit 1
