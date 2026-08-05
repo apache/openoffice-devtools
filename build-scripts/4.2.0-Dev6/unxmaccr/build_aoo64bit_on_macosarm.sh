@@ -6,20 +6,16 @@ set -eo pipefail
 # Build-script for AOO 4.2.x (and later) on macOS
 #
 # ENV:
-LC_CTYPE=en_US.UTF-8
-LANG=en_US.UTF-8
-PATH=~/.local/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:.
-
-export LC_CTYPE
-export LANG
-export PATH
+#   LC_CTYPE=en_US.UTF-8
+#   LANG=en_US.UTF-8
+#   PATH=~/.local/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:.
 
 # 
 # Installed in /usr/local:
 # 
 #   o Apache ant 1.10.9
 #   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
-#   o epm 5.0.0 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.0.tar.gz)
+#   o epm 5.0.1 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.1.tar.gz)
 #   o openssl 1.0.2u (no-shared)
 #   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no)
 #   o libxslt-1.1.34 (--prefix=/usr/local --enable-shared=no)
