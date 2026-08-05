@@ -6,10 +6,14 @@ set -eo pipefail
 # Build-script for AOO 4.2.x (and later) on macOS
 #
 # ENV:
-#    LC_CTYPE=en_US.UTF-8
-#    LANG=en_US.UTF-8
-#    PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:.
-# 
+LC_CTYPE=en_US.UTF-8
+LANG=en_US.UTF-8
+PATH=~/.local/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:.
+
+export LC_CTYPE
+export LANG
+export PATH
+
 # 
 # Installed in /usr/local:
 # 
@@ -114,6 +118,7 @@ ANT_CLASSPATH=${ANT_HOME}/lib
 export ANT_CLASSPATH
 echo "ANT_HOME is: $ANT_HOME..."
 echo "ANT_CLASSPATH is: $ANT_CLASSPATH..."
+echo "PATH is: $PATH"
 
 echo "Building for ${AOO_BUILD_TYPE}: min macOS ${AOO_MACOS_TARGET}, Java $(echo ${AOO_JAVA_VERSION} | sed -e s/..//) : Ant ${AOO_ANT_VERSION}"
 echo "---"
