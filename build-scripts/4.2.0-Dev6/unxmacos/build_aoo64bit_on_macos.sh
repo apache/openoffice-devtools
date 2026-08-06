@@ -8,36 +8,37 @@ set -eo pipefail
 # ENV:
 #   LC_CTYPE=en_US.UTF-8
 #   LANG=en_US.UTF-8
-#   PATH=~/.local/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:.
-
+PATH=~/.local/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:.
+export PATH
 # 
 # Installed in /usr/local:
 # 
 #   o Apache ant 1.10.9
 #   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
 #   o epm 5.0.1 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.1.tar.gz)
-#   o openssl 1.0.2u (no-shared)
-#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no)
+#   o openssl 3.0.21 (no-shared)
+#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no --without-iconv --without-python --without-lzma)
 #   o libxslt-1.1.34 (--prefix=/usr/local --enable-shared=no)
-#   o libiconv-1.16 (./configure --enable-static --disable-shared --prefix=/usr/local)
-#   o curl-7.56.1 (--prefix=/usr/local --enable-shared=no)
-#   o jemalloc-5.2.1 (--prefix=/usr/local --enable-shared=no)
+#   o libiconv-1.19 (--enable-static --disable-shared --prefix=/usr/local)
+#   o curl-7.88.1 (--prefix=/usr/local --enable-shared=no)
+#   o jemalloc-5.3.1 (--prefix=/usr/local --enable-shared=no)
 #   o pkg-config 0.29.2 (--prefix=/usr/local)
 #   o GNU patch 2.7.6 (--prefix=/usr/local)
 # 
-# Macports (/opt/local):
+# Macports (Installed in /opt/local):
 # 
-#   o autoconf (symlinked to ~/bin)
-#   o gnutar (symlinked to ~/bin)
-#   o perl5 (symlinked to ~/bin)
-#   o getopt (symlinked to ~/bin)
-#   o subversion
-#   o git
+#   o autoconf (symlinked to /usr/local/bin)
+#   o gnutar (symlinked to /usr/local/bin)
+#   o perl5 (symlinked to /usr/local/bin)
+#   o getopt (symlinked to /usr/local/bin)
+#   o python3 (symlinked to /usr/local/bin)
+#   o subversion (symlinked to /usr/local/bin)
+#   o git (symlinked to /usr/local/bin)
 # 
 # OS:
 # 
-#   o OSX 15.5
-#   o Xcode 16.4 (for community builds)
+#   o OSX 15.7.8
+#   o Developer Command Line Tools (for community builds)
 #   o openjdk 1.8
 # 
 
