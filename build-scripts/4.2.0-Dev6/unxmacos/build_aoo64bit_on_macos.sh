@@ -17,7 +17,7 @@ export PATH
 #   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
 #   o epm 5.0.1 (https://github.com/jimjag/epm/archive/v5.0.0/epm-5.0.1.tar.gz)
 #   o openssl 3.0.21 (no-shared no-dso)
-#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no --enable-static=yes --enable-ipv6=no --without-iconv --without-python --without-lzma --without-zlib)
+#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no --enable-static=yes --enable-ipv6=no --without-python --without-lzma --without-zlib)
 #   o libxslt-1.1.34 (--prefix=/usr/local --enable-shared=no --enable-static=yes --enable-ipv6=no --without-crypto --without-python)
 #   o libiconv-1.19 (--enable-static --disable-shared --prefix=/usr/local)
 #   o curl-7.88.1 (--prefix=/usr/local --enable-shared=no --without-libidn --disable-gopher --disable-file --disable-ldap --disable-telnet --disable-dict)
