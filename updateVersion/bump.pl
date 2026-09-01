@@ -1,55 +1,86 @@
 #!/usr/bin/env perl
 #
-# Simple perl script to "bump" the build numbers in
-# AOO main/solenv/inc/minor.mk
+# Bump the build and milestone numbers of an AOO source tree, for the
+# rebuilds between two version bumps.  The product version is left
+# alone; use updateVersion.sh to change that.
 #
-# We assume the string RSCREVISION is *canon*!
+#   usage: bump.pl [oo_path]
 #
-use File::Slurp;
+# RSCVERSION in main/solenv/inc/minor.mk is canon, so the same script
+# serves any release branch (AOO41X, AOO50X, trunk, ...).
 
-my $build, $milestone;
-my $s1;
-my $s2;
-my $bumped;
-print "Looking for './main/solenv/inc/minor.mk'...";
-if ( -r "main/solenv/inc/minor.mk" && -w "main/solenv/inc/minor.mk") {
-    print "Good, we can read and write the file.\n";
-} else {
-    die "Error accessing file. Wrong perms or location.\n"
+use strict;
+use warnings;
+
+my $root = shift @ARGV;
+$root = "." unless defined $root;
+$root =~ s|/+$||;
+
+die "usage: $0 [oo_path]\n" if @ARGV;
+
+my $minor = "$root/main/solenv/inc/minor.mk";
+my $nsi   = "$root/main/setup_native/source/win32/nsis/downloadtemplate.nsi";
+
+die "$minor: not readable/writable. Wrong perms or location?\n"
+    unless -r $minor && -w $minor;
+
+my @lines = read_lines($minor);
+
+my ($rscversion) = map { /^RSCVERSION=(\S+)/ ? $1 : () } @lines;
+die "$minor: no RSCVERSION found\n" unless defined $rscversion;
+
+my ($milestone, $build);
+for (@lines) {
+    ($milestone, $build) = ($1, $2) if /^RSCREVISION=\Q$rscversion\Em(\d+)\(Build:(\d+)\)/;
 }
-my @lines = read_file("main/solenv/inc/minor.mk");
+die "$minor: no RSCREVISION matching RSCVERSION=$rscversion\n"
+    unless defined $build;
 
-while (!$s1 || !$s2) {
+my $new_milestone = $milestone + 1;
+my $new_build     = $build + 1;
 
-    foreach my $i (0 .. $#lines) {
-        if ($lines[$i] =~ /^RSCREVISION=\d+m(\d+).*Build:(\d+)\).*$/) {
-            if (!$bumped) {
-                print "Build was $2, now is ";
-                $build = $2 + 1;
-                print $build . "\n";
-                print "Milestone was $1, now is ";
-                $milestone = $1 + 1;
-                print $milestone . "\n";
-                $lines[$i] = "RSCREVISION=420m${milestone}(Build:${build})$/";
-                $bumped = 1;
-                print "Now:  $lines[$i]\n";
-            }
-        } elsif ($lines[$i] =~ /^BUILD=\d+$/) {
-            if ($bumped && !$s1) {
-                $lines[$i] = "BUILD=${build}$/";
-                $s1 = 1;
-                print "Updated BUILD  ";
-            }
-        } elsif ($lines[$i] =~ /^LAST_MINOR=m\d+$/) {
-            if ($bumped && !$s2) {
-                $lines[$i] = "LAST_MINOR=m${milestone}$/";
-                $s2 = 1;
-                print "Updated LAST_MINOR  ";
-            }
-        }
+print "Version $rscversion: build $build -> $new_build, milestone m$milestone -> m$new_milestone\n";
+
+my $seen = 0;
+for (@lines) {
+    $seen++ if s/^RSCREVISION=\Q$rscversion\Em\d+\(Build:\d+\)\s*$/RSCREVISION=${rscversion}m${new_milestone}(Build:${new_build})\n/;
+    $seen++ if s/^BUILD=\d+\s*$/BUILD=${new_build}\n/;
+    $seen++ if s/^LAST_MINOR=m\d+\s*$/LAST_MINOR=m${new_milestone}\n/;
+}
+die "$minor: expected RSCREVISION, BUILD and LAST_MINOR, found $seen of 3\n"
+    unless $seen == 3;
+
+write_lines($minor, \@lines);
+print "Updated $minor\n";
+
+# VIProductVersion carries the build number as its third field
+if (-r $nsi && -w $nsi) {
+    my @nsi_lines = read_lines($nsi);
+    my $hit = 0;
+    for (@nsi_lines) {
+        $hit++ if s/^(VIProductVersion\s+"\d+\.\d+\.)\d+(\.\d+")/$1${new_build}$2/;
     }
+    if ($hit) {
+        write_lines($nsi, \@nsi_lines);
+        print "Updated $nsi\n";
+    } else {
+        print "No VIProductVersion in $nsi, skipped\n";
+    }
+} else {
+    print "Not in this branch, skipped: $nsi\n";
 }
 
-print "\nWriting file...";
-write_file("main/solenv/inc/minor.mk", @lines);
-print "Done\n";
+sub read_lines {
+    my ($file) = @_;
+    open my $fh, "<", $file or die "$file: $!\n";
+    my @l = <$fh>;
+    close $fh;
+    return @l;
+}
+
+sub write_lines {
+    my ($file, $lines) = @_;
+    open my $fh, ">", $file or die "$file: $!\n";
+    print {$fh} @$lines;
+    close $fh or die "$file: $!\n";
+}
