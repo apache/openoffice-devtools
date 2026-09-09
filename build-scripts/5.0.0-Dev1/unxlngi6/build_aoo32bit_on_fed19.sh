@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Installed in /usr/local:
-#   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
+#   o dmake 4.13.2 (https://github.com/jimjag/dmake/archive/v4.13.2/dmake-4.13.2.tar.gz)
 #   o epm 5.1.0 (https://github.com/jimjag/epm/archive/v5.1.0/epm-5.1.0.tar.gz)
 
 set -eo pipefail

@@ -14,7 +14,7 @@ export PATH
 # Installed in /usr/local:
 # 
 #   o Apache ant 1.10.9
-#   o dmake 4.13.1 (https://github.com/jimjag/dmake/archive/v4.13.1/dmake-4.13.1.tar.gz)
+#   o dmake 4.13.2 (https://github.com/jimjag/dmake/archive/v4.13.2/dmake-4.13.2.tar.gz)
 #   o epm 5.1.0 (https://github.com/jimjag/epm/archive/v5.1.0/epm-5.1.0.tar.gz)
 #   o openssl 3.0.21 (no-shared no-dso)
 #   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no --enable-static=yes --enable-ipv6=no --without-python --without-lzma --without-zlib --without-iconv)
