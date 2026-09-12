@@ -1,0 +1,17 @@
+[project]
+name = "openoffice-devtools-release-scripts-tests"
+version = "0.1.0"
+description = "Tests for release-scripts/macosx-remote-sign.sh"
+requires-python = ">=3.12"
+
+[dependency-groups]
+test = ["pytest>=8.0"]
+
+[tool.uv]
+package = false
+default-groups = ["test"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]

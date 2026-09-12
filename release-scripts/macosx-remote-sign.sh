@@ -37,7 +37,8 @@
 #                        extracted app and the rebuilt dmg (see its --help)
 #       --release        passed through: fail if spctl rejects the result
 #       --sha256 HASH    verify <unsigned.dmg> against this checksum before
-#                        doing anything else
+#                        doing anything else (a bare digest or a full
+#                        "shasum -a 256" checksum line both work)
 #   -h, --help
 #
 # Known limitation: the dmg is rebuilt with a plain "hdiutil create", without
@@ -80,7 +81,7 @@ while [ $# -gt 0 ]; do
 		--sha256)
 			[ $# -ge 2 ] || { echo "$1 requires an argument" >&2; exit 2; }
 			EXPECT_SHA256="$2"; shift 2 ;;
-		-h|--help)         sed -n '2,49p' "$0"; exit 0 ;;
+		-h|--help)         sed -n '2,50p' "$0"; exit 0 ;;
 		-*)                echo "unknown option: $1" >&2; exit 2 ;;
 		*)
 			if [ -z "$SRC_DMG" ]; then SRC_DMG="$1"
@@ -104,17 +105,32 @@ done
 	exit 2
 }
 [ -f "$SRC_DMG" ] || { echo "no such file: $SRC_DMG" >&2; exit 1; }
+[ -d "$OUT_DMG" ] && { echo "output path is a directory: $OUT_DMG" >&2; exit 2; }
+case "$OUT_DMG" in
+	*.dmg) ;;
+	*) OUT_DMG="$OUT_DMG.dmg" ;;
+esac
+if [ "$SRC_DMG" -ef "$OUT_DMG" ]; then
+	echo "output path is the input dmg: $OUT_DMG (write to a different file)" >&2
+	exit 2
+fi
 
 MOUNT_POINT=""
 STAGING_DIR=""
+TEMP_DMG=""
 cleanup() {
 	[ -z "$MOUNT_POINT" ] || hdiutil detach "$MOUNT_POINT" -quiet 2>/dev/null || true
 	[ -z "$STAGING_DIR" ] || rm -rf "$STAGING_DIR"
+	[ -z "$TEMP_DMG" ] || rm -f "$TEMP_DMG"
 }
 trap cleanup EXIT
 
 if [ -n "$EXPECT_SHA256" ]; then
 	echo "==> verifying checksum of $SRC_DMG"
+	# Accept either a bare digest or a full checksum line as written by
+	# shasum/hash-sign.sh ("<hash>  <file>" / "<hash> *<file>"): compare
+	# against the first field.
+	EXPECT_SHA256="${EXPECT_SHA256%%[[:space:]]*}"
 	actual=$(shasum -a 256 "$SRC_DMG" | awk '{print $1}')
 	if [ "$actual" != "$EXPECT_SHA256" ]; then
 		echo "checksum mismatch: expected $EXPECT_SHA256, got $actual" >&2
@@ -124,12 +140,23 @@ if [ -n "$EXPECT_SHA256" ]; then
 fi
 
 echo "==> mounting $SRC_DMG"
-MOUNT_POINT=$(hdiutil attach -readonly -nobrowse "$SRC_DMG" | tail -1 | awk -F'\t' '{print $NF}')
+# Parse the -plist form rather than the human-readable table: the mount point
+# is whichever system-entity has one (the first often does not), and its
+# tab-column position is not a documented guarantee.
+ATTACH_PLIST=$(hdiutil attach -readonly -nobrowse -plist "$SRC_DMG")
+MOUNT_POINT=""
+ATTACH_COUNT=$(printf '%s' "$ATTACH_PLIST" | plutil -extract system-entities raw -o - -)
+i=0
+while [ "$i" -lt "$ATTACH_COUNT" ]; do
+	mp=$(printf '%s' "$ATTACH_PLIST" | plutil -extract "system-entities.$i.mount-point" raw -o - - 2>/dev/null || true)
+	[ -z "$mp" ] || MOUNT_POINT="$mp"
+	i=$((i + 1))
+done
 [ -n "$MOUNT_POINT" ] && [ -d "$MOUNT_POINT" ] || {
 	echo "could not mount $SRC_DMG" >&2
 	exit 1
 }
-VOLUME_NAME=$(diskutil info "$MOUNT_POINT" | awk -F': +' '/Volume Name/{print $2; exit}')
+VOLUME_NAME=$(diskutil info "$MOUNT_POINT" | awk '/Volume Name/{sub(/^[^:]*: +/, ""); print; exit}')
 [ -n "$VOLUME_NAME" ] || VOLUME_NAME=$(basename "$MOUNT_POINT")
 
 STAGING_DIR=$(mktemp -d)
@@ -162,9 +189,16 @@ echo "==> signing $APP"
 
 echo "==> building $OUT_DMG  (volume: $VOLUME_NAME)"
 mkdir -p "$(dirname "$OUT_DMG")"
-hdiutil create -srcfolder "$STAGING_DIR" -volname "$VOLUME_NAME" -fs HFS+ -format UDZO -ov "$OUT_DMG"
+# Build and sign the image under a temp name in the output directory (same
+# filesystem, so the final mv is atomic) and only publish it once the signing
+# succeeds: a failure here must not leave an unsigned image at $OUT_DMG.
+TEMP_DMG="$OUT_DMG.tmp.$$.dmg"
+hdiutil create -srcfolder "$STAGING_DIR" -volname "$VOLUME_NAME" -fs HFS+ -format UDZO -ov "$TEMP_DMG"
 
-echo "==> signing $OUT_DMG"
-"$CODESIGN" "${sign_args[@]}" "$OUT_DMG"
+echo "==> signing $TEMP_DMG"
+"$CODESIGN" "${sign_args[@]}" "$TEMP_DMG"
+
+mv -f "$TEMP_DMG" "$OUT_DMG"
+TEMP_DMG=""
 
 echo "==> done: $OUT_DMG"
