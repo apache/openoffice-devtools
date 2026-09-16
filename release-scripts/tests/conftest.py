@@ -40,7 +40,7 @@ WRAPPER = SCRIPT_DIR / "macosx-remote-sign.sh"
 IDENTITY = "Developer ID Application: Test"
 
 requires_macos = pytest.mark.skipif(
-    os.uname().sysname != "Darwin", reason="requires macOS (hdiutil, diskutil, plutil)"
+    os.uname().sysname != "Darwin", reason="requires macOS (hdiutil and diskutil)"
 )
 
 
@@ -96,15 +96,26 @@ class Signer:
         self.path = root / name
         self.path.mkdir(parents=True)
         self.log = _stub_log(self.path)
+        self.xcrun_log = self.path / "xcrun.log"
+        self.xcrun_log.write_text("")
+        self.events = self.path / "events.log"
+        self.events.write_text("")
+        self.bin = self.path / ".test-bin"
+        self.bin.mkdir()
         self.fail = fail
         shutil.copy(WRAPPER, self.path / "macosx-remote-sign.sh")
         self._write_stub()
+        self._write_tool_stubs()
 
     def _write_stub(self):
         stub = self.path / "macosx-codesign.sh"
         body = [
             "#!/bin/bash",
             'printf "STUB: %s\\n" "$*" >> "$STUB_LOG"',
+            'case "${!#}" in',
+            '  *.dmg) printf "sign-dmg\\n" >> "$STUB_EVENTS" ;;',
+            '  *) printf "sign-app\\n" >> "$STUB_EVENTS"; touch "${!#}/Contents/.signed-by-stub" ;;',
+            "esac",
         ]
         if self.fail == "dmg":
             body += [
@@ -116,17 +127,47 @@ class Signer:
         stub.write_text("\n".join(body) + "\n")
         stub.chmod(stub.stat().st_mode | stat.S_IXUSR)
 
+    def _write_tool_stubs(self):
+        codesign = self.bin / "codesign"
+        codesign.write_text(
+            "#!/bin/bash\n"
+            'case "${!#}" in\n'
+            '  *.dmg) authority="${STUB_DMG_AUTHORITY:-Developer ID Application: Test}" ;;\n'
+            '  *) authority="${STUB_APP_AUTHORITY:-Developer ID Application: Test}" ;;\n'
+            "esac\n"
+            'printf "Authority=%s\\n" "$authority" >&2\n'
+            "exit 0\n"
+        )
+        codesign.chmod(0o755)
+
+        xcrun = self.bin / "xcrun"
+        xcrun.write_text(
+            "#!/bin/bash\n"
+            'printf "XCRUN: %s\\n" "$*" >> "$STUB_XCRUN_LOG"\n'
+            'printf "validate:%s\\n" "${!#}" >> "$STUB_EVENTS"\n'
+            '[ -f "${!#}/Contents/.signed-by-stub" ] || exit 2\n'
+            '[ "${STUB_STAPLER_FAIL:-no}" = no ] || exit 1\n'
+            "exit 0\n"
+        )
+        xcrun.chmod(0o755)
+
     def run(self, *args, env=None):
         run_env = os.environ.copy()
         run_env["STUB_LOG"] = str(self.log)
+        run_env["STUB_XCRUN_LOG"] = str(self.xcrun_log)
+        run_env["STUB_EVENTS"] = str(self.events)
         if env:
             run_env.update(env)
+        run_env["PATH"] = f"{self.bin}:{run_env['PATH']}"
         return subprocess.run(
             [str(self.path / "macosx-remote-sign.sh"), *args],
             capture_output=True,
             text=True,
             env=run_env,
         )
+
+    def run_non_release(self, *args, env=None):
+        return self.run("--non-release", *args, env=env)
 
 
 @pytest.fixture

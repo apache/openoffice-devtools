@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-# macosx-remote-sign.sh : sign an unsigned Apache OpenOffice macOS .dmg on a
+# macosx-remote-sign.sh : sign an Apache OpenOffice macOS .dmg on a
 # machine separate from the one that built it, so only this one machine ever
 # needs the Developer ID Application private key (and, if used, the notary
 # credentials) - build servers never touch that key material.
 #
-#   ./macosx-remote-sign.sh [options] <unsigned.dmg> <signed-output.dmg>
+#   ./macosx-remote-sign.sh [options] <input.dmg> <signed-output.dmg>
 #
 # This is release engineering tooling, not product source, so it lives here
 # in openoffice-devtools rather than in the openoffice/main tree. See
@@ -35,8 +35,10 @@
 #       --notarize PROFILE
 #                        passed through to macosx-codesign.sh for both the
 #                        extracted app and the rebuilt dmg (see its --help)
-#       --release        passed through: fail if spctl rejects the result
-#       --sha256 HASH    verify <unsigned.dmg> against this checksum before
+#       --release        fail if spctl rejects the result (required for release)
+#       --non-release    permit signing without notarization or Gatekeeper
+#                        acceptance; intended only for diagnostics
+#       --sha256 HASH    verify <input.dmg> against this checksum before
 #                        doing anything else (a bare digest or a full
 #                        "shasum -a 256" checksum line both work)
 #   -h, --help
@@ -59,6 +61,7 @@ KEYCHAIN=""
 ENTITLEMENTS=""
 NOTARY_PROFILE=""
 RELEASE=no
+NON_RELEASE=no
 EXPECT_SHA256=""
 SRC_DMG=""
 OUT_DMG=""
@@ -78,10 +81,11 @@ while [ $# -gt 0 ]; do
 			[ $# -ge 2 ] || { echo "$1 requires an argument" >&2; exit 2; }
 			NOTARY_PROFILE="$2"; shift 2 ;;
 		--release)         RELEASE=yes; shift ;;
+		--non-release)     NON_RELEASE=yes; shift ;;
 		--sha256)
 			[ $# -ge 2 ] || { echo "$1 requires an argument" >&2; exit 2; }
 			EXPECT_SHA256="$2"; shift 2 ;;
-		-h|--help)         sed -n '2,50p' "$0"; exit 0 ;;
+		-h|--help)         sed -n '2,52p' "$0"; exit 0 ;;
 		-*)                echo "unknown option: $1" >&2; exit 2 ;;
 		*)
 			if [ -z "$SRC_DMG" ]; then SRC_DMG="$1"
@@ -93,13 +97,22 @@ while [ $# -gt 0 ]; do
 done
 
 [ -n "$SRC_DMG" ] && [ -n "$OUT_DMG" ] || {
-	echo "usage: $(basename "$0") [options] <unsigned.dmg> <signed-output.dmg>" >&2
+	echo "usage: $(basename "$0") [options] <input.dmg> <signed-output.dmg>" >&2
 	exit 2
 }
 [ -n "$IDENTITY" ] && [ "$IDENTITY" != "-" ] || {
 	echo "-i/--identity is required and must be a real Developer ID, not \"-\"" >&2
 	exit 2
 }
+if [ "$NON_RELEASE" = yes ]; then
+	[ "$RELEASE" = no ] || {
+		echo "--release and --non-release cannot be used together" >&2
+		exit 2
+	}
+elif [ -z "$NOTARY_PROFILE" ] || [ "$RELEASE" = no ]; then
+	echo "release signing requires --notarize PROFILE and --release; use --non-release only for diagnostics" >&2
+	exit 2
+fi
 [ -x "$CODESIGN" ] || {
 	echo "macosx-codesign.sh not found beside this script ($CODESIGN) - see this script's header for the required deployment file list" >&2
 	exit 2
@@ -110,6 +123,7 @@ case "$OUT_DMG" in
 	*.dmg) ;;
 	*) OUT_DMG="$OUT_DMG.dmg" ;;
 esac
+[ -d "$OUT_DMG" ] && { echo "output path is a directory: $OUT_DMG" >&2; exit 2; }
 if [ "$SRC_DMG" -ef "$OUT_DMG" ]; then
 	echo "output path is the input dmg: $OUT_DMG (write to a different file)" >&2
 	exit 2
@@ -119,11 +133,42 @@ MOUNT_POINT=""
 STAGING_DIR=""
 TEMP_DMG=""
 cleanup() {
-	[ -z "$MOUNT_POINT" ] || hdiutil detach "$MOUNT_POINT" -quiet 2>/dev/null || true
+	if [ -n "$MOUNT_POINT" ]; then
+		hdiutil detach "$MOUNT_POINT" -quiet 2>/dev/null || true
+		rmdir "$MOUNT_POINT" 2>/dev/null || true
+	fi
 	[ -z "$STAGING_DIR" ] || rm -rf "$STAGING_DIR"
 	[ -z "$TEMP_DMG" ] || rm -f "$TEMP_DMG"
 }
 trap cleanup EXIT
+
+mount_readonly() {
+	local dmg="$1"
+	MOUNT_POINT=$(mktemp -d "${TMPDIR:-/tmp}/macosx-remote-sign.mount.XXXXXX")
+	if ! hdiutil attach -readonly -nobrowse -mountpoint "$MOUNT_POINT" "$dmg" >/dev/null; then
+		echo "could not mount $dmg" >&2
+		return 1
+	fi
+}
+
+detach_mounted() {
+	local mount_point="$MOUNT_POINT"
+	hdiutil detach "$mount_point" -quiet
+	rmdir "$mount_point" 2>/dev/null || true
+	MOUNT_POINT=""
+}
+
+require_developer_id_signature() {
+	local target="$1" details
+	details=$(codesign -dv --verbose=4 "$target" 2>&1) || {
+		echo "could not inspect signature: $target" >&2
+		return 1
+	}
+	printf '%s\n' "$details" | grep -q '^[[:space:]]*Authority=Developer ID Application:' || {
+		echo "not signed with a Developer ID Application certificate: $target" >&2
+		return 1
+	}
+}
 
 if [ -n "$EXPECT_SHA256" ]; then
 	echo "==> verifying checksum of $SRC_DMG"
@@ -140,22 +185,7 @@ if [ -n "$EXPECT_SHA256" ]; then
 fi
 
 echo "==> mounting $SRC_DMG"
-# Parse the -plist form rather than the human-readable table: the mount point
-# is whichever system-entity has one (the first often does not), and its
-# tab-column position is not a documented guarantee.
-ATTACH_PLIST=$(hdiutil attach -readonly -nobrowse -plist "$SRC_DMG")
-MOUNT_POINT=""
-ATTACH_COUNT=$(printf '%s' "$ATTACH_PLIST" | plutil -extract system-entities raw -o - -)
-i=0
-while [ "$i" -lt "$ATTACH_COUNT" ]; do
-	mp=$(printf '%s' "$ATTACH_PLIST" | plutil -extract "system-entities.$i.mount-point" raw -o - - 2>/dev/null || true)
-	[ -z "$mp" ] || MOUNT_POINT="$mp"
-	i=$((i + 1))
-done
-[ -n "$MOUNT_POINT" ] && [ -d "$MOUNT_POINT" ] || {
-	echo "could not mount $SRC_DMG" >&2
-	exit 1
-}
+mount_readonly "$SRC_DMG"
 VOLUME_NAME=$(diskutil info "$MOUNT_POINT" | awk '/Volume Name/{sub(/^[^:]*: +/, ""); print; exit}')
 [ -n "$VOLUME_NAME" ] || VOLUME_NAME=$(basename "$MOUNT_POINT")
 
@@ -166,8 +196,7 @@ echo "==> copying volume contents to $STAGING_DIR"
 # background image, all of which the rebuilt dmg below should keep too.
 ditto "$MOUNT_POINT" "$STAGING_DIR"
 
-hdiutil detach "$MOUNT_POINT" -quiet
-MOUNT_POINT=""
+detach_mounted
 
 apps=("$STAGING_DIR"/*.app)
 [ -d "${apps[0]}" ] || { echo "no .app bundle found in $SRC_DMG" >&2; exit 1; }
@@ -186,6 +215,7 @@ sign_args=(-i "$IDENTITY")
 
 echo "==> signing $APP"
 "$CODESIGN" "${sign_args[@]}" "$APP"
+require_developer_id_signature "$APP"
 
 echo "==> building $OUT_DMG  (volume: $VOLUME_NAME)"
 mkdir -p "$(dirname "$OUT_DMG")"
@@ -197,6 +227,19 @@ hdiutil create -srcfolder "$STAGING_DIR" -volname "$VOLUME_NAME" -fs HFS+ -forma
 
 echo "==> signing $TEMP_DMG"
 "$CODESIGN" "${sign_args[@]}" "$TEMP_DMG"
+require_developer_id_signature "$TEMP_DMG"
+
+if [ -n "$NOTARY_PROFILE" ]; then
+	echo "==> validating enclosed app staple"
+	mount_readonly "$TEMP_DMG"
+	final_apps=("$MOUNT_POINT"/*.app)
+	[ -d "${final_apps[0]}" ] && [ ${#final_apps[@]} -eq 1 ] || {
+		echo "rebuilt dmg does not contain exactly one .app" >&2
+		exit 1
+	}
+	xcrun stapler validate "${final_apps[0]}"
+	detach_mounted
+fi
 
 mv -f "$TEMP_DMG" "$OUT_DMG"
 TEMP_DMG=""
