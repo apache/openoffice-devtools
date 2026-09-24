@@ -23,11 +23,12 @@
 
 import hashlib
 import os
+import stat
 import subprocess
 
 import pytest
 
-from conftest import IDENTITY, Signer, fixture_dmg, mount_point, requires_macos, volume_name
+from conftest import IDENTITY, SCRIPT_DIR, Signer, legacy_fixture_dmg, modern_fixture_dmg, xattrs, fixture_dmg, mount_point, requires_macos, volume_name
 
 pytestmark = requires_macos
 
@@ -233,6 +234,17 @@ def test_normal_run_publishes_output_and_no_temp(signer, workdir):
     assert r.returncode == 0, r.stderr
     assert out.exists()
     assert list(signer.path.glob("out.dmg.tmp.*")) == []
+    assert list(signer.path.glob(".macosx-remote-sign.*")) == []
+
+
+def test_dmg_signed_under_final_name(signer, workdir):
+    """codesign takes a dmg's signing identifier from its file name."""
+    src = fixture_dmg(workdir, "args")
+    out = signer.path / "final-name.dmg"
+    assert signer.run_non_release("-i", IDENTITY, src, out).returncode == 0
+    dmg_signs = [l for l in signer.log.read_text().splitlines() if l.endswith(".dmg")]
+    assert len(dmg_signs) == 1
+    assert dmg_signs[0].endswith("/final-name.dmg")
 
 
 def test_release_forwards_options_and_validates_enclosed_staple(signer, workdir):
@@ -291,6 +303,7 @@ def test_non_developer_id_signature_is_not_published(signer, workdir, env):
     assert "not signed with a Developer ID Application certificate" in r.stderr
     assert not out.exists()
     assert list(signer.path.glob("wrong-identity.dmg.tmp.*")) == []
+    assert list(signer.path.glob(".macosx-remote-sign.*")) == []
 
 
 def test_enclosed_staple_failure_is_not_published(signer, workdir):
@@ -309,6 +322,7 @@ def test_enclosed_staple_failure_is_not_published(signer, workdir):
     assert r.returncode != 0
     assert not out.exists()
     assert list(signer.path.glob("bad-staple.dmg.tmp.*")) == []
+    assert list(signer.path.glob(".macosx-remote-sign.*")) == []
 
 
 def test_whole_volume_survives(signer, workdir):
@@ -320,6 +334,32 @@ def test_whole_volume_survives(signer, workdir):
         assert (mp / "Applications").is_symlink()
         assert (mp / "READMEs" / ".DS_Store").is_file()
         assert (mp / "App1.app").is_dir()
+
+
+@pytest.mark.parametrize("mode", [0o775, 0o755])
+def test_volume_root_mode_preserved(signer, workdir, mode):
+    src = fixture_dmg(workdir, "args", root_mode=mode)
+    out = signer.path / "out.dmg"
+    assert signer.run_non_release("-i", IDENTITY, src, out).returncode == 0
+    with mount_point(src) as mp:
+        assert stat.S_IMODE(mp.stat().st_mode) == mode
+    with mount_point(out) as mp:
+        assert stat.S_IMODE(mp.stat().st_mode) == mode
+
+
+def test_app_finder_info_stripped_rest_kept(signer, workdir):
+    src = fixture_dmg(workdir, "args", finder_info=True)
+    out = signer.path / "out.dmg"
+    with mount_point(src) as mp:
+        lib = mp / "App1.app" / "Contents" / "lib.dylib"
+        assert "com.apple.FinderInfo" in xattrs(lib)
+    r = signer.run_non_release("-i", IDENTITY, src, out)
+    assert r.returncode == 0, r.stderr
+    with mount_point(out) as mp:
+        lib = mp / "App1.app" / "Contents" / "lib.dylib"
+        assert xattrs(lib) == []
+        assert stat.S_IMODE(lib.stat().st_mode) == 0o444
+        assert "com.apple.FinderInfo" in xattrs(mp / "READMEs")
 
 
 def test_original_volume_name_reused(signer, workdir):
@@ -362,6 +402,7 @@ def test_dmg_sign_failure_writes_nothing(tmp_path, workdir):
     assert r.returncode != 0
     assert not out.exists()
     assert list(signer.path.glob("final.dmg.tmp.*")) == []
+    assert list(signer.path.glob(".macosx-remote-sign.*")) == []
 
 
 def test_app_sign_failure_writes_nothing(tmp_path, workdir):
@@ -390,3 +431,89 @@ def test_spaces_in_paths(tmp_path, workdir):
     r = signer.run_non_release("-i", IDENTITY, spaced_in, out)
     assert r.returncode == 0, r.stderr
     assert out.exists()
+
+
+# ---------------------------------------------------------- legacy layout
+
+
+def test_legacy_layout_moves_non_code_out_of_macos(signer, workdir):
+    src = legacy_fixture_dmg(workdir, "legacy")
+    out = signer.path / "out.dmg"
+    r = signer.run_non_release("--legacy-layout", "-i", IDENTITY, src, out)
+    assert r.returncode == 0, r.stderr
+    with mount_point(out) as mp:
+        contents = mp / "OpenOffice.app" / "Contents"
+        macos = contents / "MacOS"
+        assert os.readlink(macos / "unorc") == "../Resources/ooo-program/unorc"
+        assert (macos / "unorc").read_text() == "unorc\n"
+        assert stat.S_IMODE((contents / "Resources" / "ooo-program" / "unorc").stat().st_mode) == 0o444
+        assert os.readlink(macos / "addin") == "../Resources/ooo-program/addin"
+        assert (macos / "addin" / "a.rdb").read_text() == "addin\n"
+        assert os.readlink(macos / "startup.sh") == "../Resources/ooo-program/startup.sh"
+        assert os.readlink(macos / "regcomp") == "startup.sh"
+        assert (macos / "regcomp").is_file()
+        assert not (macos / "urelibs").is_symlink()
+        for kept in ("soffice", "libcode.dylib"):
+            assert (macos / kept).is_file() and not (macos / kept).is_symlink(), kept
+        assert os.readlink(contents / "NOTICE") == "Resources/ooo-contents/NOTICE"
+        assert (contents / "share" / "x.xcd").read_text() == "share\n"
+        assert os.readlink(contents / "program") == "MacOS"
+        for kept in ("Info.plist", "Library", "Resources"):
+            assert not (contents / kept).is_symlink(), kept
+
+
+def test_legacy_layout_without_flag_stops_before_signing(signer, workdir):
+    src = legacy_fixture_dmg(workdir, "legacy")
+    out = signer.path / "out.dmg"
+    r = signer.run_non_release("-i", IDENTITY, src, out)
+    assert r.returncode == 1
+    assert "--legacy-layout" in r.stderr
+    assert "unorc" in r.stderr and "addin" in r.stderr
+    assert "libcode.dylib" not in r.stderr and "soffice" not in r.stderr
+    assert not out.exists()
+    assert signer.events.read_text() == ""
+
+
+def test_modern_layout_signs_untouched_without_flag(signer, workdir):
+    src = modern_fixture_dmg(workdir, "modern")
+    out = signer.path / "out.dmg"
+    r = signer.run_non_release("-i", IDENTITY, src, out)
+    assert r.returncode == 0, r.stderr
+    with mount_point(out) as mp:
+        contents = mp / "OpenOffice.app" / "Contents"
+        assert not (contents / "Resources" / "ooo-program").exists()
+        assert (contents / "MacOS" / "soffice").is_file()
+        assert os.readlink(contents / "MacOS" / "libcode.1.dylib") == "libcode.dylib"
+
+
+def test_legacy_layout_refuses_code_in_moved_folder(signer, workdir):
+    src = legacy_fixture_dmg(workdir, "legacy", code_in_subdir=True)
+    out = signer.path / "out.dmg"
+    r = signer.run_non_release("--legacy-layout", "-i", IDENTITY, src, out)
+    assert r.returncode == 1
+    assert "addin" in r.stderr
+    assert not out.exists()
+    assert "sign-app" not in signer.events.read_text()
+
+
+# ------------------------------------------------------- bundled delegate
+
+
+def test_bundled_delegate_accepts_forwarded_options(workdir):
+    """The real sibling macosx-codesign.sh must parse every option the wrapper
+    forwards; a missing path makes it stop right after option parsing."""
+    delegate = SCRIPT_DIR / "macosx-codesign.sh"
+    missing = workdir / "missing.dmg"
+    r = subprocess.run(
+        [str(delegate), "-i", IDENTITY, "-k", "k", "-e", "e",
+         "--notarize", "p", "--release", str(missing)],
+        capture_output=True, text=True,
+    )
+    assert r.returncode == 1, r.stderr
+    assert f"no such path: {missing}" in r.stderr
+
+
+def test_bundled_delegate_siblings_present():
+    for name in ("macosx-codesign.sh", "macosx-check-load-commands.sh"):
+        assert os.access(SCRIPT_DIR / name, os.X_OK), name
+    assert (SCRIPT_DIR / "macosx-codesign-entitlements.plist").is_file()

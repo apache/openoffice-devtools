@@ -15,12 +15,12 @@
 # --with-macosx-codesigning-identity, which already produces an ordinary
 # unsigned .dmg with no build-side changes, and hands it to this script.
 #
-# Deploy this script to the signing host alongside copies of three files from
-# openoffice/main/solenv/bin/: macosx-codesign.sh,
-# macosx-check-load-commands.sh, macosx-codesign-entitlements.plist. All the
-# actual signing/notarizing/verifying is done by macosx-codesign.sh, resolved
-# here as a sibling of wherever this script itself was invoked from - no
-# OpenOffice source checkout is needed on the signing host.
+# Deploy this script together with its siblings macosx-codesign.sh,
+# macosx-check-load-commands.sh and macosx-codesign-entitlements.plist, which
+# do the actual signing/notarizing/verifying. They are verbatim copies of
+# openoffice trunk's main/solenv/bin/ files as of c42fc0a9ce; keep them in
+# sync from there rather than editing them here. No OpenOffice source
+# checkout is needed on the signing host.
 #
 # Not to be confused with this directory's hash-sign.sh, which GPG-signs
 # release artifacts for Apache distribution integrity (checksums + .asc
@@ -41,6 +41,10 @@
 #       --sha256 HASH    verify <input.dmg> against this checksum before
 #                        doing anything else (a bare digest or a full
 #                        "shasum -a 256" checksum line both work)
+#       --legacy-layout  first move non-code out of Contents/MacOS and loose
+#                        entries out of Contents/ into Contents/Resources,
+#                        leaving symlinks, and drop dangling symlinks: 4.1.x
+#                        bundles cannot be sealed otherwise
 #   -h, --help
 #
 # Known limitation: the dmg is rebuilt with a plain "hdiutil create", without
@@ -61,6 +65,7 @@ KEYCHAIN=""
 ENTITLEMENTS=""
 NOTARY_PROFILE=""
 RELEASE=no
+LEGACY_LAYOUT=no
 NON_RELEASE=no
 EXPECT_SHA256=""
 SRC_DMG=""
@@ -82,10 +87,11 @@ while [ $# -gt 0 ]; do
 			NOTARY_PROFILE="$2"; shift 2 ;;
 		--release)         RELEASE=yes; shift ;;
 		--non-release)     NON_RELEASE=yes; shift ;;
+		--legacy-layout)   LEGACY_LAYOUT=yes; shift ;;
 		--sha256)
 			[ $# -ge 2 ] || { echo "$1 requires an argument" >&2; exit 2; }
 			EXPECT_SHA256="$2"; shift 2 ;;
-		-h|--help)         sed -n '2,52p' "$0"; exit 0 ;;
+		-h|--help)         sed -n '2,56p' "$0"; exit 0 ;;
 		-*)                echo "unknown option: $1" >&2; exit 2 ;;
 		*)
 			if [ -z "$SRC_DMG" ]; then SRC_DMG="$1"
@@ -131,14 +137,14 @@ fi
 
 MOUNT_POINT=""
 STAGING_DIR=""
-TEMP_DMG=""
+TEMP_DIR=""
 cleanup() {
 	if [ -n "$MOUNT_POINT" ]; then
 		hdiutil detach "$MOUNT_POINT" -quiet 2>/dev/null || true
 		rmdir "$MOUNT_POINT" 2>/dev/null || true
 	fi
 	[ -z "$STAGING_DIR" ] || rm -rf "$STAGING_DIR"
-	[ -z "$TEMP_DMG" ] || rm -f "$TEMP_DMG"
+	[ -z "$TEMP_DIR" ] || rm -rf "$TEMP_DIR"
 }
 trap cleanup EXIT
 
@@ -170,6 +176,56 @@ require_developer_id_signature() {
 	}
 }
 
+is_macho() {
+	[ -f "$1" ] && [ ! -L "$1" ] && file -b "$1" | grep '^Mach-O' >/dev/null
+}
+
+# NUL-separated: what codesign refuses to seal in Contents/MacOS, i.e. every
+# entry other than Mach-O files, symlinks and the bundle's main executable.
+non_code_in_macos() {
+	local app="$1" exe e
+	[ -d "$app/Contents/MacOS" ] || return 0
+	exe=$(/usr/libexec/PlistBuddy -c 'Print CFBundleExecutable' "$app/Contents/Info.plist" 2>/dev/null) || exe=""
+	while IFS= read -r -d '' e; do
+		[ ! -L "$e" ] && [ "${e##*/}" != "$exe" ] && ! is_macho "$e" || continue
+		printf '%s\0' "$e"
+	done < <(find "$app/Contents/MacOS" -mindepth 1 -maxdepth 1 -print0)
+}
+
+# Relative symlinks keep every path the 4.1.x runtime uses resolving to the
+# same file, while codesign only sees code in Contents/MacOS.
+relayout_legacy_app() {
+	local app="$1" contents="$1/Contents" e n
+	/usr/libexec/PlistBuddy -c 'Print CFBundleExecutable' "$contents/Info.plist" >/dev/null || {
+		echo "no CFBundleExecutable in $contents/Info.plist" >&2
+		return 1
+	}
+	# codesign --strict rejects them, and they resolve to nothing anyway.
+	find "$app" -type l ! -exec test -e {} \; -print -delete | sed 's/^/    removed dangling symlink: /'
+	chmod u+w "$contents" "$contents/MacOS" "$contents/Resources"
+	mkdir -p "$contents/Resources/ooo-program" "$contents/Resources/ooo-contents"
+	while IFS= read -r -d '' e; do
+		n="${e##*/}"
+		if [ -d "$e" ] && find "$e" -type f -print0 | xargs -0 file --no-pad -- 2>/dev/null | grep ': Mach-O' >/dev/null; then
+			echo "legacy layout: $e holds code; refusing to move it into Resources" >&2
+			return 1
+		fi
+		[ ! -e "$contents/Resources/ooo-program/$n" ] || { echo "legacy layout: $n already in Resources/ooo-program" >&2; return 1; }
+		mv "$e" "$contents/Resources/ooo-program/$n"
+		ln -s "../Resources/ooo-program/$n" "$e"
+	done < <(non_code_in_macos "$app")
+	while IFS= read -r -d '' e; do
+		n="${e##*/}"
+		[ ! -L "$e" ] || continue
+		case "$n" in
+			Info.plist|PkgInfo|MacOS|Resources|Frameworks|PlugIns|Library|SharedSupport|_CodeSignature) continue ;;
+		esac
+		[ ! -e "$contents/Resources/ooo-contents/$n" ] || { echo "legacy layout: $n already in Resources/ooo-contents" >&2; return 1; }
+		mv "$e" "$contents/Resources/ooo-contents/$n"
+		ln -s "Resources/ooo-contents/$n" "$e"
+	done < <(find "$contents" -mindepth 1 -maxdepth 1 -print0)
+}
+
 if [ -n "$EXPECT_SHA256" ]; then
 	echo "==> verifying checksum of $SRC_DMG"
 	# Accept either a bare digest or a full checksum line as written by
@@ -190,15 +246,25 @@ VOLUME_NAME=$(diskutil info "$MOUNT_POINT" | awk '/Volume Name/{sub(/^[^:]*: +/,
 [ -n "$VOLUME_NAME" ] || VOLUME_NAME=$(basename "$MOUNT_POINT")
 
 STAGING_DIR=$(mktemp -d)
-echo "==> copying volume contents to $STAGING_DIR"
+# ditto into a not-yet-existing directory so it takes the volume root's mode;
+# the 0700 mktemp directory would otherwise become the rebuilt volume's root.
+VOLUME_DIR="$STAGING_DIR/volume"
+echo "==> copying volume contents to $VOLUME_DIR"
 # Copy everything on the volume, not just the .app: an install DMG normally
 # also carries an Applications symlink, license/readme folders, and a
 # background image, all of which the rebuilt dmg below should keep too.
-ditto "$MOUNT_POINT" "$STAGING_DIR"
+ditto "$MOUNT_POINT" "$VOLUME_DIR"
+# Shipped dmgs put FinderInfo on read-only files, which macosx-codesign.sh's
+# xattr -cr cannot strip and codesign rejects; recopy the app without it.
+for app in "$VOLUME_DIR"/*.app; do
+	[ -d "$app" ] || continue
+	rm -rf "$app"
+	ditto --norsrc --noextattr --noqtn "$MOUNT_POINT/${app##*/}" "$app"
+done
 
 detach_mounted
 
-apps=("$STAGING_DIR"/*.app)
+apps=("$VOLUME_DIR"/*.app)
 [ -d "${apps[0]}" ] || { echo "no .app bundle found in $SRC_DMG" >&2; exit 1; }
 [ ${#apps[@]} -eq 1 ] || {
 	echo "expected exactly one .app in $SRC_DMG, found ${#apps[@]}:" >&2
@@ -206,6 +272,20 @@ apps=("$STAGING_DIR"/*.app)
 	exit 1
 }
 APP="${apps[0]}"
+
+if [ "$LEGACY_LAYOUT" = yes ]; then
+	echo "==> moving non-code out of $APP/Contents/MacOS"
+	relayout_legacy_app "$APP"
+else
+	non_code=()
+	while IFS= read -r -d '' e; do non_code+=("${e#"$APP"/}"); done < <(non_code_in_macos "$APP")
+	[ ${#non_code[@]} -eq 0 ] || {
+		echo "$APP/Contents/MacOS holds ${#non_code[@]} non-code entries, which codesign will not seal:" >&2
+		printf '  %s\n' "${non_code[@]:0:10}" >&2
+		echo "this is the layout of 4.1.x and 4.2.0 dev builds; rerun with --legacy-layout" >&2
+		exit 1
+	}
+fi
 
 sign_args=(-i "$IDENTITY")
 [ -z "$KEYCHAIN" ] || sign_args+=(-k "$KEYCHAIN")
@@ -219,11 +299,13 @@ require_developer_id_signature "$APP"
 
 echo "==> building $OUT_DMG  (volume: $VOLUME_NAME)"
 mkdir -p "$(dirname "$OUT_DMG")"
-# Build and sign the image under a temp name in the output directory (same
+# Build and sign the image in a temp directory beside the output (same
 # filesystem, so the final mv is atomic) and only publish it once the signing
-# succeeds: a failure here must not leave an unsigned image at $OUT_DMG.
-TEMP_DMG="$OUT_DMG.tmp.$$.dmg"
-hdiutil create -srcfolder "$STAGING_DIR" -volname "$VOLUME_NAME" -fs HFS+ -format UDZO -ov "$TEMP_DMG"
+# succeeds: a failure here must not leave an unsigned image at $OUT_DMG. It
+# keeps the final file name because codesign takes the dmg's identifier from it.
+TEMP_DIR=$(mktemp -d "$(dirname "$OUT_DMG")/.macosx-remote-sign.XXXXXX")
+TEMP_DMG="$TEMP_DIR/$(basename "$OUT_DMG")"
+hdiutil create -srcfolder "$VOLUME_DIR" -volname "$VOLUME_NAME" -fs HFS+ -format UDZO -ov "$TEMP_DMG"
 
 echo "==> signing $TEMP_DMG"
 "$CODESIGN" "${sign_args[@]}" "$TEMP_DMG"
@@ -242,6 +324,7 @@ if [ -n "$NOTARY_PROFILE" ]; then
 fi
 
 mv -f "$TEMP_DMG" "$OUT_DMG"
-TEMP_DMG=""
+rmdir "$TEMP_DIR"
+TEMP_DIR=""
 
 echo "==> done: $OUT_DMG"

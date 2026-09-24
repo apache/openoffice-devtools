@@ -62,10 +62,27 @@ def make_dmg(src: Path, volname: str, out: Path) -> None:
     assert result.returncode == 0, result.stderr
 
 
-def fixture_dmg(root: Path, name: str, app_count: int = 1, extras: bool = True) -> Path:
+FINDER_INFO_HEX = "00" * 10 + "FFFFFFFF" + "00" * 18
+
+
+def set_finder_info(path: Path) -> None:
+    r = _run(["xattr", "-wx", "com.apple.FinderInfo", FINDER_INFO_HEX, str(path)])
+    assert r.returncode == 0, r.stderr
+
+
+def fixture_dmg(
+    root: Path,
+    name: str,
+    app_count: int = 1,
+    extras: bool = True,
+    root_mode: int | None = None,
+    finder_info: bool = False,
+) -> Path:
     """Build an install-dmg-like fixture and return the path to its in.dmg."""
     src = root / name / "src"
     src.mkdir(parents=True)
+    if root_mode is not None:
+        src.chmod(root_mode)
     for i in range(1, app_count + 1):
         app = src / f"App{i}.app" / "Contents"
         app.mkdir(parents=True)
@@ -77,6 +94,14 @@ def fixture_dmg(root: Path, name: str, app_count: int = 1, extras: bool = True) 
         # A nested .DS_Store survives dmg (re)creation; a root one written as a
         # plain file does not (hdiutil create drops it). See REVIEW F7.
         (src / "READMEs" / ".DS_Store").write_text("finder-layout\n")
+    if finder_info:
+        # Shipped AOO dmgs carry FinderInfo on read-only files, which xattr -c
+        # cannot strip and codesign rejects as "detritus".
+        lib = src / "App1.app" / "Contents" / "lib.dylib"
+        lib.write_text("not really a dylib\n")
+        set_finder_info(lib)
+        lib.chmod(0o444)
+        set_finder_info(src / "READMEs")
     out = root / name / "in.dmg"
     make_dmg(src, f"remote-sign-{name}", out)
     return out
@@ -208,3 +233,64 @@ def volume_name(dmg: Path) -> str:
             if line.strip().startswith("Volume Name:"):
                 return line.split(":", 1)[1].strip()
     raise AssertionError(f"no volume name for {dmg}")
+
+
+def xattrs(path: Path) -> list[str]:
+    r = _run(["xattr", str(path)])
+    assert r.returncode == 0, r.stderr
+    return r.stdout.split()
+
+
+INFO_PLIST = """<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict><key>CFBundleExecutable</key><string>soffice</string></dict></plist>
+"""
+
+
+def legacy_fixture_dmg(root: Path, name: str, code_in_subdir: bool = False) -> Path:
+    """An install dmg whose .app has the 4.1.x layout: data files and folders
+    in Contents/MacOS and loose files directly in Contents/."""
+    src = root / name / "src"
+    contents = src / "OpenOffice.app" / "Contents"
+    macos = contents / "MacOS"
+    macos.mkdir(parents=True)
+    (contents / "Info.plist").write_text(INFO_PLIST)
+    (contents / "NOTICE").write_text("notice\n")
+    (contents / "share").mkdir()
+    (contents / "share" / "x.xcd").write_text("share\n")
+    (contents / "Library").mkdir()
+    (contents / "Resources").mkdir()
+    (contents / "program").symlink_to("MacOS")
+    # The launcher is the bundle's main executable; stays put whatever it is.
+    (macos / "soffice").write_text("#!/bin/sh\n")
+    shutil.copy("/usr/bin/true", macos / "libcode.dylib")
+    (macos / "unorc").write_text("unorc\n")
+    (macos / "unorc").chmod(0o444)
+    (macos / "startup.sh").write_text("#!/bin/sh\n")
+    (macos / "regcomp").symlink_to("startup.sh")
+    (macos / "urelibs").symlink_to("../basis-link/ure-link/lib")
+    (macos / "addin").mkdir()
+    (macos / "addin" / "a.rdb").write_text("addin\n")
+    if code_in_subdir:
+        shutil.copy("/usr/bin/true", macos / "addin" / "helper")
+    (src / "Applications").symlink_to("/Applications")
+    out = root / name / "in.dmg"
+    make_dmg(src, f"remote-sign-{name}", out)
+    return out
+
+
+def modern_fixture_dmg(root: Path, name: str) -> Path:
+    """An install dmg whose .app has trunk's layout: only code in Contents/MacOS."""
+    src = root / name / "src"
+    contents = src / "OpenOffice.app" / "Contents"
+    macos = contents / "MacOS"
+    macos.mkdir(parents=True)
+    (contents / "Info.plist").write_text(INFO_PLIST)
+    (contents / "Resources").mkdir()
+    (contents / "Resources" / "unorc").write_text("unorc\n")
+    (macos / "soffice").write_text("#!/bin/sh\n")
+    shutil.copy("/usr/bin/true", macos / "libcode.dylib")
+    (macos / "libcode.1.dylib").symlink_to("libcode.dylib")
+    out = root / name / "in.dmg"
+    make_dmg(src, f"remote-sign-{name}", out)
+    return out
