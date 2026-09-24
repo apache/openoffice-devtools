@@ -23,12 +23,13 @@
 
 import hashlib
 import os
+import shutil
 import stat
 import subprocess
 
 import pytest
 
-from conftest import IDENTITY, SCRIPT_DIR, Signer, legacy_fixture_dmg, modern_fixture_dmg, xattrs, fixture_dmg, mount_point, requires_macos, volume_name
+from conftest import INFO_PLIST, IDENTITY, SCRIPT_DIR, set_finder_info, Signer, legacy_fixture_dmg, modern_fixture_dmg, xattrs, fixture_dmg, mount_point, requires_macos, volume_name
 
 pytestmark = requires_macos
 
@@ -517,3 +518,33 @@ def test_bundled_delegate_siblings_present():
     for name in ("macosx-codesign.sh", "macosx-check-load-commands.sh"):
         assert os.access(SCRIPT_DIR / name, os.X_OK), name
     assert (SCRIPT_DIR / "macosx-codesign-entitlements.plist").is_file()
+
+
+def test_bundled_delegate_clears_xattrs_on_read_only_files(workdir):
+    """xattr -c needs write permission; shipped installsets stage files
+    read-only and carry FinderInfo, which codesign rejects as detritus."""
+    contents = workdir / "X.app" / "Contents"
+    (contents / "MacOS").mkdir(parents=True)
+    (contents / "Resources").mkdir()
+    (contents / "Info.plist").write_text(INFO_PLIST.replace("soffice", "x"))
+    shutil.copy("/usr/bin/true", contents / "MacOS" / "x")
+    data = contents / "Resources" / "data.txt"
+    data.write_text("data\n")
+    set_finder_info(data)
+    data.chmod(0o444)
+    ro_dir = contents / "Resources" / "ro"
+    ro_dir.mkdir()
+    (ro_dir / "f").write_text("f\n")
+    set_finder_info(ro_dir)
+    ro_dir.chmod(0o555)
+    try:
+        r = subprocess.run(
+            [str(SCRIPT_DIR / "macosx-codesign.sh"), "-i", "-", str(workdir / "X.app")],
+            capture_output=True, text=True,
+        )
+        assert r.returncode == 0, r.stdout + r.stderr
+        assert xattrs(data) == [] and xattrs(ro_dir) == []
+        assert stat.S_IMODE(data.stat().st_mode) == 0o444
+        assert stat.S_IMODE(ro_dir.stat().st_mode) == 0o555
+    finally:
+        ro_dir.chmod(0o755)

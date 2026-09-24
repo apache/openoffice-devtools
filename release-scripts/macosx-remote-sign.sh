@@ -18,7 +18,7 @@
 # Deploy this script together with its siblings macosx-codesign.sh,
 # macosx-check-load-commands.sh and macosx-codesign-entitlements.plist, which
 # do the actual signing/notarizing/verifying. They are verbatim copies of
-# openoffice trunk's main/solenv/bin/ files as of c42fc0a9ce; keep them in
+# openoffice trunk's main/solenv/bin/ files as of ed9fccbc30; keep them in
 # sync from there rather than editing them here. No OpenOffice source
 # checkout is needed on the signing host.
 #
