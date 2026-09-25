@@ -42,7 +42,7 @@
 #                        doing anything else (a bare digest or a full
 #                        "shasum -a 256" checksum line both work)
 #       --legacy-layout  first move non-code out of Contents/MacOS and loose
-#                        entries out of Contents/ into Contents/Resources,
+#                        files out of Contents/ into Contents/Resources,
 #                        leaving symlinks, and drop dangling symlinks: 4.1.x
 #                        bundles cannot be sealed otherwise
 #   -h, --help
@@ -226,7 +226,9 @@ relayout_legacy_app() {
 	done < <(non_code_in_macos "$app")
 	while IFS= read -r -d '' e; do
 		n="${e##*/}"
-		[ ! -L "$e" ] || continue
+		# codesign seals directories here; only loose files break it. A
+		# symlinked presets/ makes the first-run profile copy fail (E_ISDIR).
+		[ ! -L "$e" ] && [ ! -d "$e" ] || continue
 		case "$n" in
 			Info.plist|PkgInfo|MacOS|Resources|Frameworks|PlugIns|Library|SharedSupport|_CodeSignature) continue ;;
 		esac

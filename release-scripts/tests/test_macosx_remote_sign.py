@@ -457,6 +457,8 @@ def test_legacy_layout_moves_non_code_out_of_macos(signer, workdir):
         for kept in ("soffice", "libcode.dylib"):
             assert (macos / kept).is_file() and not (macos / kept).is_symlink(), kept
         assert os.readlink(contents / "NOTICE") == "Resources/ooo-contents/NOTICE"
+        # A symlinked presets dir breaks the first-run profile copy (E_ISDIR).
+        assert (contents / "share").is_dir() and not (contents / "share").is_symlink()
         assert (contents / "share" / "x.xcd").read_text() == "share\n"
         assert os.readlink(contents / "program") == "MacOS"
         for kept in ("Info.plist", "Library", "Resources"):
