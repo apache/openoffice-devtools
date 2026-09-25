@@ -135,12 +135,22 @@ if [ "$SRC_DMG" -ef "$OUT_DMG" ]; then
 	exit 2
 fi
 
+# A just-validated image is often still busy for a few seconds (EBUSY).
+detach_with_retry() {
+	local mount_point="$1" try
+	for try in 1 2 3 4 5; do
+		hdiutil detach "$mount_point" -quiet 2>/dev/null && return 0
+		sleep 3
+	done
+	hdiutil detach "$mount_point" -force -quiet
+}
+
 MOUNT_POINT=""
 STAGING_DIR=""
 TEMP_DIR=""
 cleanup() {
 	if [ -n "$MOUNT_POINT" ]; then
-		hdiutil detach "$MOUNT_POINT" -quiet 2>/dev/null || true
+		detach_with_retry "$MOUNT_POINT" 2>/dev/null || true
 		rmdir "$MOUNT_POINT" 2>/dev/null || true
 	fi
 	[ -z "$STAGING_DIR" ] || rm -rf "$STAGING_DIR"
@@ -159,7 +169,7 @@ mount_readonly() {
 
 detach_mounted() {
 	local mount_point="$MOUNT_POINT"
-	hdiutil detach "$mount_point" -quiet
+	detach_with_retry "$mount_point"
 	rmdir "$mount_point" 2>/dev/null || true
 	MOUNT_POINT=""
 }
