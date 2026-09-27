@@ -52,6 +52,20 @@ For the rebuilds between two version bumps: increments the build number and the
 milestone in `minor.mk` and the build field of `VIProductVersion` in
 `downloadtemplate.nsi`, leaving the product version alone.
 
+## bumpYear.pl
+
+    bumpYear.pl [-n|--dry-run] [-y|--year <yyyy>] [oo_path]
+
+The yearly copyright-year update. The current year is read from the ASF line
+of `main/NOTICE`; the default target is that year + 1. Updates `LICENSE`,
+`LICENSE_ALv2`, `helpauthoring/license/LICENSE`, `NOTICE`, the About box
+(`cui/source/dialogs/about.cxx`), `OOOBASEVERSIONYEAR` in `version.lst` (which
+also sets the Windows `.rc` copyright), the NSIS `LegalCopyright`, the SDK HTML
+footers and the `packinfo_*.txt` files. Afterwards it lists any other
+`2011-`/`2012-<year> ... Apache Software Foundation` line still at the old year.
+
+    ./bumpYear.pl -n ../openoffice      # AOO41X: 2025 -> 2026
+
 ## Not covered
 
 Moving to a new major line (4.x -> 5.x) additionally changes install paths,
