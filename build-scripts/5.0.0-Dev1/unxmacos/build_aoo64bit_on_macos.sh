@@ -66,7 +66,7 @@ AOO_BUILD_SRC=
 AOO_BUILD_ALL="yes"
 AOO_BUILD_DEBUG=
 
-AOPTS=`getopt -o vsjtdbqa:j:m:k: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target:,macos-sdk: -n 'parse-options' -- "$@"`
+AOPTS=`getopt -o vsjtdbqa:J:m:k: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version:,macos-target:,macos-sdk: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 #echo "$AOPTS"
 eval set -- "$AOPTS"
@@ -79,7 +79,7 @@ while true; do
     -t | --build-src ) AOO_BUILD_SRC="yes"; shift ;;
     -q | --quick ) AOO_BUILD_ALL="no"; shift ;;
     -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
-    -j | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
+    -J | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
     -m | --macos-target ) AOO_MACOS_TARGET=$2; shift 2 ;;
     -k | --macos-sdk ) AOO_MACOS_SDK=$2; shift 2 ;;
     -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
@@ -158,6 +158,8 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-system-libxml=/usr/local \
 	--with-system-curl=/usr/local \
 	--with-system-expat=/usr/local \
+	--with-static-system-libs=libxml,libxslt,curl,openssl \
+	--without-system-python \
 	--enable-category-b \
 	--enable-beanshell \
 	--enable-bundled-dictionaries \

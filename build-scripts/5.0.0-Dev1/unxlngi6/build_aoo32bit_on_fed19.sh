@@ -1,15 +1,32 @@
 #!/usr/bin/env bash
 #
-# Installed in /usr/local:
-#   o dmake 4.13.2 (https://github.com/jimjag/dmake/archive/v4.13.2/dmake-4.13.2.tar.gz)
-#   o epm 5.1.0 (https://github.com/jimjag/epm/archive/v5.1.0/epm-5.1.0.tar.gz)
 
 set -eo pipefail
 
-ANT_HOME=/usr/local/share/java/apache-ant
-ANT_CLASSPATH=/usr/local/share/java/apache-ant/lib
-export ANT_HOME
-export ANT_CLASSPATH
+# Build-script for AOO 5.0.x (and later) on Fedora 19
+#
+# ENV:
+#   LC_CTYPE=en_US.UTF-8
+#   LANG=en_US.UTF-8
+#
+# Installed in /usr/local:
+#
+#   o Apache ant (unversioned apache-ant dir unless --ant-version is given)
+#   o dmake 4.13.2 (https://github.com/jimjag/dmake/archive/v4.13.2/dmake-4.13.2.tar.gz)
+#   o epm 5.1.0 (https://github.com/jimjag/epm/archive/v5.1.0/epm-5.1.0.tar.gz)
+#   o autoconf
+#
+# Everything else (zlib, expat, jpeg, libxml2, libxslt, curl, openssl, nss,
+# icu, python, ...) is built from the bundled sources, so the only
+# --with-system-* option passed to configure is --with-system-stdlibs
+# (libstdc++/libgcc_s come from the build host).
+#
+
+#
+# Build options
+#
+AOO_JAVA_VERSION=1.7.0
+AOO_ANT_VERSION=
 
 #
 # Parse options
@@ -22,17 +39,27 @@ AOO_BUILD_VERSION=
 AOO_BUILD_BETA=
 AOO_BUILD_DEV=
 AOO_BUILD_SRC=
+AOO_BUILD_ALL="yes"
+AOO_BUILD_DEBUG=
+
+AOPTS=`getopt -o vsjtdbqa:J: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version: -n 'parse-options' -- "$@"`
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
+#echo "$AOPTS"
+eval set -- "$AOPTS"
 
 while true; do
   case "$1" in
-    "--verbose" ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
-    "--skip-config" ) AOO_SKIP_CONFIG="yes"; shift ;;
-    "--just-config" ) AOO_JUST_CONFIG="yes"; shift ;;
-	"--build-src" ) AOO_BUILD_SRC="yes"; shift ;;
-    "--dev" ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
-    "--beta" ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
-    "--" ) shift; break ;;
-    "" ) break ;;
+    -v | --verbose ) AOO_VERBOSE_BUILD="--enable-verbose"; shift ;;
+    -s | --skip-config ) AOO_SKIP_CONFIG="yes"; shift ;;
+    -j | --just-config ) AOO_JUST_CONFIG="yes"; shift ;;
+    -t | --build-src ) AOO_BUILD_SRC="yes"; shift ;;
+    -q | --quick ) AOO_BUILD_ALL="no"; shift ;;
+    -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
+    -J | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
+    -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
+    -b | --beta ) AOO_BUILD_TYPE="Apache OpenOffice Beta Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_BETA="yes"; AOO_BUILD_DEV=""; shift ;;
+    --debug ) AOO_BUILD_DEBUG="--enable-symbols"; shift ;;
+    -- ) shift; break ;;
     * ) echo "unknown option: $1"; shift ;;
   esac
 done
@@ -41,20 +68,43 @@ if [ ! -d ../main -o ! -d sal ] ; then
 	echo "CHDIR into AOO's main/ directory first!"
 	exit 1
 fi
+
+
+JAVA_HOME=/usr/lib/jvm/java-${AOO_JAVA_VERSION}-openjdk
+if [ ! -d "$JAVA_HOME" ] ; then
+    echo "JAVA_HOME not found: $JAVA_HOME"
+    exit 1
+fi
+export JAVA_HOME
+echo "JAVA_HOME is: $JAVA_HOME..."
+
+ANT_HOME=/usr/local/share/java/apache-ant${AOO_ANT_VERSION:+-${AOO_ANT_VERSION}}
+if [ ! -d "$ANT_HOME" ] ; then
+    echo "ANT_HOME not found: $ANT_HOME"
+    exit 1
+fi
+export ANT_HOME
+ANT_CLASSPATH=${ANT_HOME}/lib
+export ANT_CLASSPATH
+echo "ANT_HOME is: $ANT_HOME..."
+echo "ANT_CLASSPATH is: $ANT_CLASSPATH..."
+echo "PATH is: $PATH"
+
+echo "Building for ${AOO_BUILD_TYPE}: Linux 32, Java $(echo ${AOO_JAVA_VERSION} | sed -e s/..//) : Ant ${AOO_ANT_VERSION:-default}"
+echo "---"
+echo "Starting build:"
+echo ""
 \rm -f solenv/inc/reporevision.lst
+
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
-    wget -O external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinreg_prebuild/680/unowinreg.dll
+	wget -O external/unowinreg/unowinreg.dll http://www.openoffice.org/tools/unowinreg_prebuild/680/unowinreg.dll
 fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
+#LANGS="en-US"
 
-if [ -e configure.in ]; then
-    AOO_CONF_T="configure.in"
-else
-    AOO_CONF_T="configure.ac"
-fi
-if [ ! -e configure -o $AOO_CONF_T -nt configure ] ; then
+if [ ! -e configure -o configure.ac -nt configure ] ; then
 	echo "Running autoconf..."
 	autoconf || exit 1
 fi
@@ -63,30 +113,35 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
     ( ./configure   \
 	--with-build-version="$(date +"%Y-%m-%d %H:%M:%S (%a, %d %b %Y)") - `uname -sm`${AOO_BUILD_VERSION}" \
 	${AOO_VERBOSE_BUILD} \
+	${AOO_BUILD_DEBUG} \
 	--with-system-stdlibs \
 	--enable-crashdump=yes \
 	--enable-category-b \
 	--enable-beanshell \
-	--enable-wiki-publisher \
 	--enable-bundled-dictionaries \
-	--enable-opengl  \
-	--enable-dbus  \
+	--enable-wiki-publisher \
+	--enable-opengl \
+	--enable-dbus \
 	--enable-gstreamer \
+	--with-jdk-home="$JAVA_HOME" \
+	--with-ant-home="$ANT_HOME" \
 	--without-junit \
+	--with-epm=/usr/local/bin/epm \
+	--with-dmake-path=/usr/local/bin/dmake \
 	--without-stlport \
-	--with-ant-home=$ANT_HOME \
-	--with-jdk-home=/usr/lib/jvm/java-1.7.0-openjdk \
 	--with-package-format="rpm deb" \
 	--with-lang="${LANGS}" \
-        --with-epm=/usr/local/bin/epm \
-        --with-dmake-path=/usr/local/bin/dmake \
+	"$@" \
 	| tee config.out ) || exit 1
 fi
 
-source ./LinuxX86Env.Set.sh || exit 1 
+if [ "$AOO_JUST_CONFIG" = "yes" ]; then
+    exit
+fi
+source ./LinuxX86Env.Set.sh || exit 1
 ./bootstrap || exit 1
 if [ -e solenv/inc/reporevision.lst ]; then
-	rm solenv/inc/reporevision.lst
+	\rm solenv/inc/reporevision.lst
 fi
 cd instsetoo_native
 time perl "$SOLARENV/bin/build.pl" --all -P4 MAXPROCESS=2 EXTMAXPROCESS=2 -- -P2 || exit 1
