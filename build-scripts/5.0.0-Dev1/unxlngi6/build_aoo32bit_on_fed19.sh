@@ -41,8 +41,9 @@ AOO_BUILD_DEV=
 AOO_BUILD_SRC=
 AOO_BUILD_ALL="yes"
 AOO_BUILD_DEBUG=
+AOO_FAST=
 
-AOPTS=`getopt -o vsjtdbqa:J: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,ant-version:,java-version: -n 'parse-options' -- "$@"`
+AOPTS=`getopt -o vsjtdbqFa:J: --long verbose,debug,skip-config,just-config,build-src,dev,beta,quick,fast,ant-version:,java-version: -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 #echo "$AOPTS"
 eval set -- "$AOPTS"
@@ -54,6 +55,7 @@ while true; do
     -j | --just-config ) AOO_JUST_CONFIG="yes"; shift ;;
     -t | --build-src ) AOO_BUILD_SRC="yes"; shift ;;
     -q | --quick ) AOO_BUILD_ALL="no"; shift ;;
+    -F | --fast ) AOO_FAST="yes"; shift ;;
     -a | --ant-version ) AOO_ANT_VERSION=$2; shift 2 ;;
     -J | --java-version ) AOO_JAVA_VERSION=$2; shift 2 ;;
     -d | --dev ) AOO_BUILD_TYPE="Apache OpenOffice Test Development Build"; AOO_BUILD_VERSION=" [${AOO_BUILD_TYPE}]"; AOO_BUILD_DEV="yes"; AOO_BUILD_BETA=""; shift ;;
@@ -102,7 +104,11 @@ if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 fi
 
 LANGS="ast bg ca ca-XR ca-XV cs da de el en-GB en-US es et eu fi fr gd gl he hi hu hy it ja kab km ko lt nb nl om pl pt pt-BR ru sk sl sr sv ta th tr uk vi zh-CN zh-TW"
-#LANGS="en-US"
+
+# --fast: only build en-US
+if [ "$AOO_FAST" = "yes" ]; then
+    LANGS="en-US"
+fi
 
 if [ ! -e configure -o configure.ac -nt configure ] ; then
 	echo "Running autoconf..."
