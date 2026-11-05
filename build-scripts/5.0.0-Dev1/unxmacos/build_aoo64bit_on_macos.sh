@@ -11,16 +11,14 @@ set -eo pipefail
 PATH=~/.local/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:.
 export PATH
 # 
+# Downloaded, built and bundled by the AOO build itself, so not needed on this
+# machine: curl, expat, libxml2, libxslt, openssl, python3, zlib and jemalloc.
+# 
 # Installed in /usr/local:
 # 
 #   o Apache ant 1.10.9
 #   o dmake 4.13.2 (https://github.com/jimjag/dmake/archive/v4.13.2/dmake-4.13.2.tar.gz)
 #   o epm 5.1.0 (https://github.com/jimjag/epm/archive/v5.1.0/epm-5.1.0.tar.gz)
-#   o openssl 3.0.21 (no-shared no-dso)
-#   o libxml2-2.9.10 (--prefix=/usr/local --enable-shared=no --enable-static=yes --enable-ipv6=no --without-python --without-lzma --without-zlib --without-iconv)
-#   o libxslt-1.1.34 (--prefix=/usr/local --enable-shared=no --enable-static=yes --enable-ipv6=no --without-crypto --without-python --without-iconv)
-#   o curl-7.88.1 (--prefix=/usr/local --enable-shared=no --without-libidn --disable-gopher --disable-file --disable-ldap --disable-telnet --disable-dict)
-#   o jemalloc-5.3.1 (--prefix=/usr/local --enable-shared=no)
 #   o pkg-config 0.29.2 (--prefix=/usr/local)
 #   o GNU patch 2.7.6 (--prefix=/usr/local)
 # 
@@ -127,9 +125,8 @@ sleep 5
 #Setup build Env
 export SYSTEM_VERSION_COMPAT=1
 export MACOSX_DEPLOYMENT_TARGET=${AOO_MACOS_TARGET}
-export LIBRARY_PATH=/usr/local/lib
-export C_INCLUDE_PATH=/usr/local/include
-export CPLUS_INCLUDE_PATH=/usr/local/include
+# The bundled libraries must not find anything else installed on this machine.
+unset LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH CPATH
 
 if [ ! -e external/unowinreg/unowinreg.dll ] ; then
 	echo "Downloading unowinreg.dll..."
@@ -159,13 +156,6 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	${AOO_BUILD_DEBUG} \
 	${AOO_MACOS_SDK} \
 	--with-openldap \
-	--with-system-openssl=/usr/local \
-	--with-system-libxslt=/usr/local \
-	--with-system-libxml=/usr/local \
-	--with-system-curl=/usr/local \
-	--with-system-expat=/usr/local \
-	--with-static-system-libs=libxml,libxslt,curl,openssl \
-	--without-system-python \
 	--enable-category-b \
 	--enable-beanshell \
 	--enable-bundled-dictionaries \
@@ -179,7 +169,7 @@ if [ "$AOO_SKIP_CONFIG" != "yes" ]; then
 	--with-package-format="dmg" \
 	--disable-systray \
 	--with-macosx-target=${AOO_MACOS_TARGET} \
-	--with-alloc=jemalloc \
+	--enable-jemalloc \
 	--with-lang="${LANGS}" \
 	"$@" \
 	| tee config.out ) || exit 1
