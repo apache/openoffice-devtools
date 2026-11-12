@@ -52,3 +52,37 @@ OpenOffice tree. No other dependencies.
 4. Copy `de.merged.sdf` over the tree file and commit it, one commit per
    language. `merge --skip de.left-out.json` gives the same result without
    running `gsicheck` again.
+
+## When the English SDF is newer than the PO files
+
+The Help sources lost their `oldref` attributes in 2024-25. `oldref` was the
+help key's lid, so tree entries keyed from the 2022 `en-US.sdf` no longer match
+the source and the build shows English for them. Extract a current `en-US.sdf`
+(`localize -e -l en-US -f en-US.sdf` on Linux), then per language:
+
+1. Move tree entries to the current keys. An entry moves only if its English
+   is the same under the old and the new key; everything else is left alone.
+
+       sdf_integrate.py rekey --lang de \
+           --tree extras/l10n/source/de/localize.sdf \
+           --old-template en-US.2022.sdf --template en-US.sdf \
+           --out de.rekeyed.sdf
+
+2. Make templates from the new `en-US.sdf` (`oo2po --pot en-US.sdf pot/`) and
+   re-key the PO files to them before `pomerge`. Without this, units whose
+   msgctxt holds the old lid come out fuzzy or empty, and `po2oo` writes
+   translations to locations whose English has changed.
+
+       fix_msgctxt.py --template pot --input PO-Files/de --output de.fixed
+       pomerge --template=pot/ --input=de.fixed/ --output=de.merged/
+       po2oo --template=en-US.sdf --skipsource --keeptimestamp \
+             --language=de de.merged/ de.po2oo.sdf
+
+   `fix_msgctxt.py` runs under the same Python as translate-toolkit.
+
+3. Gate as above, against the re-keyed file. `--add-only` takes PO text only
+   where the tree has no translation, for when the tree already holds an
+   earlier, checked integration of the same PO files.
+
+       sdf_integrate.py gate --add-only --lang de --tree de.rekeyed.sdf \
+           --new de.po2oo.sdf --template en-US.sdf --out de.merged.sdf ...

@@ -96,7 +96,7 @@ def combine(lang, template, base_path, newer_path, history_paths):
     return "".join(out), stats
 
 
-def merge(lang, tree_path, new_path, template, skip=()):
+def merge(lang, tree_path, new_path, template, skip=(), add_only=False):
     """Return (text, changed keys, added keys)."""
     new = load(new_path, lang)
     if not new:
@@ -122,6 +122,8 @@ def merge(lang, tree_path, new_path, template, skip=()):
             if n and k not in skip:
                 updated = list(cols)
                 for i in TEXT_COLUMNS:
+                    if add_only and is_translation(cols[i], e[i] if e else None):
+                        continue
                     if n[i] != cols[i] and is_translation(n[i], e[i] if e else None):
                         updated[i] = n[i]
                 if updated != cols:
@@ -145,6 +147,86 @@ def merge(lang, tree_path, new_path, template, skip=()):
     for pos in sorted(inserts, reverse=True):
         out[pos + 1:pos + 1] = inserts[pos]
     return "".join(out), changed, added
+
+
+def english(cols):
+    return tuple(cols[i] for i in TEXT_COLUMNS)
+
+
+def with_key(cols, k):
+    row = list(cols)
+    row[0], row[1], row[3], row[4], row[5], row[6], row[7] = k
+    return row
+
+
+def rekey(lang, tree_path, old_template, template):
+    """Move tree entries whose key changed to the key their English has now.
+
+    A move needs the English to be the same under both keys: first the same
+    key without the help lid (oldref), else the only key in the same file with
+    that English.  Return (text, moves, stats)."""
+    en_old, en_new = load(old_template, "en-US"), load(template, "en-US")
+    by_file = collections.defaultdict(lambda: collections.defaultdict(list))
+    old_by_file = collections.defaultdict(collections.Counter)
+    for k, cols in en_new.items():
+        by_file[k[:2]][english(cols)].append(k)
+    for k, cols in en_old.items():
+        old_by_file[k[:2]][english(cols)] += 1
+
+    with open(tree_path, encoding="utf-8", newline="") as f:
+        lines = f.read().splitlines(keepends=True)
+    # Some tree files carry an en-US line paired with the translation; gsicheck
+    # needs the pair to keep one key, so both lines move together.
+    tree_keys = []
+    for line in lines:
+        cols = line.rstrip("\r\n").split("\t")
+        ok = len(cols) == 15 and cols[9] in (lang, "en-US")
+        tree_keys.append(key(cols) if ok else None)
+
+    stats = collections.Counter()
+    plan = {}
+    for k in dict.fromkeys(filter(None, tree_keys)):
+        old, new = en_old.get(k), en_new.get(k)
+        if new is not None and (old is None or english(old) == english(new)):
+            stats["key unchanged"] += 1
+            continue
+        if old is None:
+            stats["key in neither template, left"] += 1
+            continue
+        e = english(old)
+        target = None
+        if k[4]:
+            lidless = k[:4] + ("",) + k[5:]
+            if lidless in en_new and english(en_new[lidless]) == e:
+                target = lidless
+        if target is None:
+            same = by_file[k[:2]].get(e, [])
+            if (len(same) == 1 and old_by_file[k[:2]][e] == 1
+                    and english(en_old.get(same[0], [None] * 15)) != e):
+                target = same[0]
+        if target is None:
+            stats["English changed or gone, left" if new is None else
+                  "English changed under the same key, left"] += 1
+            continue
+        plan[k] = target
+
+    # A target must end up with one line: not a tree line that stays, and not
+    # the target of another move.
+    staying = set(k for k in tree_keys if k and k not in plan)
+    hits = collections.Counter(plan.values())
+    for k, t in list(plan.items()):
+        if t in staying or hits[t] > 1:
+            del plan[k]
+            stats["target already has a line, left"] += 1
+    stats["moved"] = len(plan)
+
+    out = []
+    for line, k in zip(lines, tree_keys):
+        if k in plan:
+            body = line.rstrip("\r\n")
+            line = "\t".join(with_key(body.split("\t"), plan[k])) + line[len(body):]
+        out.append(line)
+    return "".join(out), plan, stats
 
 
 def run_gsicheck(gsicheck, libdir, path, lang):
@@ -188,9 +270,15 @@ def cmd_combine(a):
     print(a.lang, dict(stats))
 
 
+def cmd_rekey(a):
+    text, plan, stats = rekey(a.lang, a.tree, a.old_template, a.template)
+    write(a.out, text)
+    print(a.lang, dict(stats))
+
+
 def cmd_merge(a):
     skip = [tuple(k) for k in json.load(open(a.skip))] if a.skip else []
-    text, changed, added = merge(a.lang, a.tree, a.new, a.template, skip)
+    text, changed, added = merge(a.lang, a.tree, a.new, a.template, skip, a.add_only)
     write(a.out, text)
     print("%s: %d entries updated, %d keys added" % (a.lang, len(changed), len(added)))
 
@@ -199,7 +287,7 @@ def cmd_gate(a):
     baseline = run_gsicheck(a.gsicheck, a.libdir, a.tree, a.lang)
     skip = []
     for _ in range(a.rounds):
-        text, changed, added = merge(a.lang, a.tree, a.new, a.template, skip)
+        text, changed, added = merge(a.lang, a.tree, a.new, a.template, skip, a.add_only)
         write(a.out, text)
         new_errors = run_gsicheck(a.gsicheck, a.libdir, a.out, a.lang) - baseline
         keyed = {uid_to_key(uid) for _, uid in new_errors if uid} - set(skip)
@@ -232,6 +320,14 @@ def main():
     c.add_argument("--out", required=True)
     c.set_defaults(func=cmd_combine)
 
+    r = sub.add_parser("rekey", help="move tree entries to the keys of a newer en-US.sdf")
+    r.add_argument("--lang", required=True)
+    r.add_argument("--tree", required=True, help="extras/l10n/source/<lang>/localize.sdf")
+    r.add_argument("--old-template", required=True, help="en-US.sdf the tree keys come from")
+    r.add_argument("--template", required=True, help="en-US.sdf extracted from the current source")
+    r.add_argument("--out", required=True)
+    r.set_defaults(func=cmd_rekey)
+
     for name, func, helptext in (("merge", cmd_merge, "merge without checking"),
                                  ("gate", cmd_gate, "merge and gate on gsicheck")):
         m = sub.add_parser(name, help=helptext)
@@ -240,6 +336,8 @@ def main():
         m.add_argument("--new", required=True, help="po2oo (or combine) output")
         m.add_argument("--template", required=True, help="en-US.sdf used for po2oo")
         m.add_argument("--out", required=True)
+        m.add_argument("--add-only", action="store_true",
+                       help="fill only entries the tree has no translation for")
         if name == "merge":
             m.add_argument("--skip", help="JSON list of keys to leave as they are")
         else:
