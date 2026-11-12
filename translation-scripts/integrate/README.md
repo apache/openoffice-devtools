@@ -11,6 +11,42 @@ so a whole-file replacement loses them (15,441 entries for `am` in 2026).
 Needs Python 3.7+, translate-toolkit (`po2oo`) and `gsicheck` from a built
 OpenOffice tree. No other dependencies.
 
+## All languages in one command
+
+`update_translations.py` does what the Pootle server's template update and an
+integration round do together, for every tree language or for `--langs de,fr`:
+
+    update_translations.py --aoo ~/src/openoffice            # report only
+    update_translations.py --aoo ~/src/openoffice --apply    # write the tree files
+
+- English template: `../scripts/en-US.sdf`, or `--extract` to make a fresh one
+  from `--aoo` (Linux, configured and built; `localize -e` fails on macOS).
+- PO files: cloned from apache/openoffice-translation into the work directory,
+  only the languages asked for, or `--po-repo` for an existing checkout.
+- translate-toolkit: 2.2.5, the server's version, installed into a venv in the
+  work directory unless this Python already has it.
+- `gsicheck`: from `main/solver` in `--aoo`, or `--solver`.
+
+Per language it re-keys the tree file (the steps below), makes templates, runs
+`fix_msgctxt.py`, `pomerge` and `po2oo`, and gates the merge on `gsicheck`. The
+tree is matched against every committed version of `../scripts/en-US.sdf` and
+the 2022 one in openoffice-translation; if it is already keyed to the current
+template, nothing moves.
+
+`--mode add-only` (the default) fills only entries the tree has no translation
+for. `--mode update` also replaces tree text with newer PO text. Use it with
+`--history` and a few older openoffice-translation revisions, so that text from
+a Pootle rollback is not taken; this needs the repository's full history. In
+2026 the revisions `ebbd469a1c a5e2ff9195 a962caea70 4b986fdc1b 3a07d1c27e
+60e3e58b9e c1358ae8ce` held back 1,086 `uk` and 789 `pl` entries.
+
+Each run gets its own directory under `--workdir` with `report.md` (entries
+moved, updated, added and left out, and translated entries before and after),
+`langs/<lang>/` with the intermediate files and a log, `pot/`, and with
+`--export-po` the updated PO files that Pootle would offer translators. Nothing
+is committed. Languages that have PO files but no tree file are listed, not
+added. A second run on the result reports no changes.
+
 ## Steps, for one language
 
 1. Convert the PO files with the English SDF they were made from:
