@@ -187,7 +187,9 @@ def rekey(lang, tree_path, old_templates, template):
     current one, holds most of its keys; if that is the current template,
     nothing moves.  A move needs the English to be the same under both keys:
     first the same key without the help lid (oldref), else the only key in the
-    same file with that English.  Return (text, moves, stats)."""
+    same file with that English, else, if the file is gone from the template,
+    the only key elsewhere with the same type, ids and English.
+    Return (text, moves, stats)."""
     en_new = load(template, "en-US")
     own = set(key(c) for c in (l.rstrip("\r\n").split("\t") for l in read_lines(tree_path))
               if len(c) == 15 and c[9] == lang)
@@ -203,10 +205,13 @@ def rekey(lang, tree_path, old_templates, template):
             return f.read(), {}, collections.Counter({"keyed to the current template": len(own)})
     by_file = collections.defaultdict(lambda: collections.defaultdict(list))
     old_by_file = collections.defaultdict(collections.Counter)
+    elsewhere, old_elsewhere = collections.defaultdict(list), collections.Counter()
     for k, cols in en_new.items():
         by_file[k[:2]][english(cols)].append(k)
+        elsewhere[(k[0],) + k[2:] + (english(cols),)].append(k)
     for k, cols in en_old.items():
         old_by_file[k[:2]][english(cols)] += 1
+        old_elsewhere[(k[0],) + k[2:] + (english(cols),)] += 1
 
     lines = read_lines(tree_path)
     # Some tree files carry an en-US line paired with the translation; gsicheck
@@ -234,10 +239,15 @@ def rekey(lang, tree_path, old_templates, template):
             if lidless in en_new and english(en_new[lidless]) == e:
                 target = lidless
         if target is None:
-            same = by_file[k[:2]].get(e, [])
+            same = by_file.get(k[:2], {}).get(e, [])
             if (len(same) == 1 and old_by_file[k[:2]][e] == 1
                     and english(en_old.get(same[0], [None] * 15)) != e):
                 target = same[0]
+        if target is None and k[:2] not in by_file:
+            moved = elsewhere.get((k[0],) + k[2:] + (e,), [])
+            if (len(moved) == 1 and old_elsewhere[(k[0],) + k[2:] + (e,)] == 1
+                    and english(en_old.get(moved[0], [None] * 15)) != e):
+                target = moved[0]
         if target is None:
             stats["English changed or gone, left" if new is None else
                   "English changed under the same key, left"] += 1
@@ -245,13 +255,17 @@ def rekey(lang, tree_path, old_templates, template):
         plan[k] = target
 
     # A target must end up with one line: not a tree line that stays, and not
-    # the target of another move.
-    staying = set(k for k in tree_keys if k and k not in plan)
-    hits = collections.Counter(plan.values())
-    for k, t in list(plan.items()):
-        if t in staying or hits[t] > 1:
+    # the target of another move.  Dropping a move makes its line stay, which
+    # can block another move, so repeat until nothing changes.
+    while True:
+        staying = set(k for k in tree_keys if k and k not in plan)
+        hits = collections.Counter(plan.values())
+        drop = [k for k, t in plan.items() if t in staying or hits[t] > 1]
+        if not drop:
+            break
+        for k in drop:
             del plan[k]
-            stats["target already has a line, left"] += 1
+        stats["target already has a line, left"] += len(drop)
     stats["moved"] = len(plan)
 
     out = []
@@ -323,12 +337,13 @@ def gate(lang, tree, new, template, out, gsicheck, libdir, rounds=4, add_only=Fa
     Return (changed, added, left-out keys, new errors not tied to an entry)."""
     baseline = run_gsicheck(gsicheck, libdir, tree, lang)
     skip = []
-    for _ in range(rounds):
+    for n in range(max(rounds, 1)):
         text, changed, added = merge(lang, tree, new, template, skip, add_only, history)
         write(out, text)
         new_errors = run_gsicheck(gsicheck, libdir, out, lang) - baseline
         keyed = {uid_to_key(uid) for _, uid in new_errors if uid} - set(skip)
-        if not keyed:
+        # a key only counts as left out once a later merge has left it out
+        if not keyed or n == max(rounds, 1) - 1:
             break
         skip += sorted(keyed)
     return changed, added, skip, new_errors

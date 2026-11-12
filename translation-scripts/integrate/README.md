@@ -20,7 +20,10 @@ integration round do together, for every tree language or for `--langs de,fr`:
     update_translations.py --aoo ~/src/openoffice --apply    # write the tree files
 
 - English template: `../scripts/en-US.sdf`, or `--extract` to make a fresh one
-  from `--aoo` (Linux, configured and built; `localize -e` fails on macOS).
+  from `--aoo` (Linux, configured and fully built; `localize -e` fails on
+  macOS). An extract with under 90% of the committed file's entries is refused.
+  After `--extract --apply`, commit the new file as `../scripts/en-US.sdf`
+  (`--save-template` writes it there), since later runs re-key against it.
 - PO files: cloned from apache/openoffice-translation into the work directory,
   only the languages asked for, or `--po-repo` for an existing checkout.
 - translate-toolkit: 2.2.5, the server's version, installed into a venv in the
@@ -29,9 +32,9 @@ integration round do together, for every tree language or for `--langs de,fr`:
 
 Per language it re-keys the tree file (the steps below), makes templates, runs
 `fix_msgctxt.py`, `pomerge` and `po2oo`, and gates the merge on `gsicheck`. The
-tree is matched against every committed version of `../scripts/en-US.sdf` and
-the 2022 one in openoffice-translation; if it is already keyed to the current
-template, nothing moves.
+tree is matched against every committed version of `../scripts/en-US.sdf`, the
+first of which is the 2022 one, and the copy in openoffice-translation if there
+is one; if it is already keyed to the current template, nothing moves.
 
 `--mode add-only` (the default) fills only entries the tree has no translation
 for. `--mode update` also replaces tree text with newer PO text. Use it with
@@ -97,7 +100,10 @@ the source and the build shows English for them. Extract a current `en-US.sdf`
 (`localize -e -l en-US -f en-US.sdf` on Linux), then per language:
 
 1. Move tree entries to the current keys. An entry moves only if its English
-   is the same under the old and the new key; everything else is left alone.
+   is the same under the old and the new key: the same key without the lid,
+   else the only key in the file with that English, else, for a file that is
+   gone, the only key elsewhere with the same type, ids and English. Everything
+   else is left alone.
 
        sdf_integrate.py rekey --lang de \
            --tree extras/l10n/source/de/localize.sdf \

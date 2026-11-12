@@ -84,6 +84,10 @@ def extract_template(aoo, out):
         rc = log_run(["bash", "-c", cmd], log)
     if rc or not os.path.getsize(out):
         sys.exit("localize -e failed, see %s.log" % out)
+    have, before = len(si.load(out, "en-US")), len(si.load(DEFAULT_TEMPLATE, "en-US"))
+    # a partly built tree extracts only the modules it has
+    if have < 0.9 * before:
+        sys.exit("%s has %d entries, %s has %d; is the tree fully built?" % (out, have, DEFAULT_TEMPLATE, before))
 
 
 def old_templates(template, po_repo, extra, outdir):
@@ -234,7 +238,7 @@ def do_language(lang, ctx):
             result["after"] = usable(final, lang, a.en)
             result["final"] = final
             result["changed"] = not filecmp.cmp(final, tree, shallow=False)
-        except Exception as e:  # report and go on with the other languages
+        except (Exception, SystemExit) as e:  # sdf_integrate exits on errors; report and go on
             result["status"] = "failed: %s" % e
             log.write("FAILED: %s\n" % e)
     return result
@@ -245,6 +249,8 @@ def main():
     p.add_argument("--aoo", required=True, help="AOO checkout (the directory with main/ and extras/)")
     p.add_argument("--template", default=DEFAULT_TEMPLATE,
                    help="en-US.sdf of the current source (default: %(default)s)")
+    p.add_argument("--save-template", action="store_true",
+                   help="with --extract, write the new en-US.sdf over the default template")
     p.add_argument("--extract", action="store_true",
                    help="extract en-US.sdf from --aoo with localize -e first (Linux, built tree)")
     p.add_argument("--old-template", action="append", default=[],
@@ -276,6 +282,8 @@ def main():
     if a.history and a.mode != "update":
         sys.exit("--history only applies to --mode update")
     a.history = list(dict.fromkeys(a.history))
+    if a.save_template and not a.extract:
+        sys.exit("--save-template needs --extract")
     workdir = os.path.abspath(a.workdir)
     a.run = os.path.join(workdir, datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     os.makedirs(a.run)
@@ -299,6 +307,10 @@ def main():
         langs = wanted
 
     a.po_repo = get_po_repo(a, workdir, langs)
+    for rev in a.history:
+        if subprocess.run(["git", "-C", a.po_repo, "rev-parse", "--verify", "-q", rev + "^{commit}"],
+                          capture_output=True).returncode:
+            sys.exit("--history: %s is not a commit in %s" % (rev, a.po_repo))
     if a.po_repo:
         rev = subprocess.run(["git", "-C", a.po_repo, "log", "-1", "--format=%h %cs"],
                              capture_output=True, text=True).stdout.strip()
@@ -357,6 +369,12 @@ def main():
         for r in changed:
             shutil.copyfile(r["final"], os.path.join(a.l10n, r["lang"], "localize.sdf"))
         print("copied %d files into %s" % (len(changed), a.l10n))
+    if a.save_template:
+        shutil.copyfile(a.template, DEFAULT_TEMPLATE)
+        print("wrote %s; commit it together with the tree files" % os.path.realpath(DEFAULT_TEMPLATE))
+    elif a.extract and a.apply:
+        print("WARNING: the tree is now keyed to %s; commit that file as %s (or rerun with --save-template), "
+              "or later runs will re-key against an older template" % (a.template, os.path.realpath(DEFAULT_TEMPLATE)))
     else:
         print("%d languages changed; rerun with --apply, or copy langs/<lang>/final.sdf (rekeyed.sdf if there "
               "is no final.sdf) over the tree file" % len(changed))
