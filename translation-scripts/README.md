@@ -85,8 +85,10 @@ here), and `UpdateTranslation.sh` and `UpdateTranslation2.sh` hold the same step
 in one script (in the first most of them are commented out; the second asks
 whether the `en-US.sdf` it finds is a recent one). The unnumbered `Download.sh`,
 `sdf2pot.sh`, `sync-*.sh`, `pomerge.sh` and `cp2home.sh` are identical copies of
-the numbered ones. `TranslationAOO.pdf` is the maintainer's description of the
-server, in German.
+the numbered ones. 
+`TranslationAOO.pdf` is the maintainer's description of the server, in German.
+A translated `TranslationAOO.pdf` to English is later provided, 
+as well as an editable .odt.
 
 `scripts/en-US.sdf` is not fetched by these scripts. It is a trunk extract kept
 for `integrate/`. The nightly copy is empty: it is dated 2026-11-06, the day of
